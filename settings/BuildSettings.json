@@ -1,4 +1,14 @@
 {
-  "name": "LayaProject1",
-  "startupScene": "res://9b931ecf-fde9-44dd-acf3-15f8dc807965"
+  "name": "tacticgame",
+  "displayName": "策略游戏",
+  "startupScene": "res://f185fe1d-024e-49f7-bb50-d2ad1836c73a",
+  "android": {
+    "targetArchitectures": {
+      "ARMv7": true,
+      "ARM64": false,
+      "x86": false,
+      "x86-64": false
+    },
+    "exportFormat": "APK"
+  }
 }

@@ -1,0 +1,262 @@
+{
+  "frames": {
+    "Golem_01_Dying_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 425,
+        "h": 350
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 218,
+        "y": 100
+      }
+    },
+    "Golem_01_Dying_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 346,
+        "y": 352,
+        "w": 415,
+        "h": 354
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 229,
+        "y": 96
+      }
+    },
+    "Golem_01_Dying_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 756,
+        "y": 708,
+        "w": 405,
+        "h": 356
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 239,
+        "y": 93
+      }
+    },
+    "Golem_01_Dying_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 346,
+        "y": 708,
+        "w": 408,
+        "h": 356
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 236,
+        "y": 91
+      }
+    },
+    "Golem_01_Dying_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 351,
+        "y": 1066,
+        "w": 379,
+        "h": 364
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 241,
+        "y": 83
+      }
+    },
+    "Golem_01_Dying_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1063,
+        "y": 1449,
+        "w": 353,
+        "h": 371
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 75
+      }
+    },
+    "Golem_01_Dying_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 706,
+        "y": 1480,
+        "w": 336,
+        "h": 382
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 197,
+        "y": 59
+      }
+    },
+    "Golem_01_Dying_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 732,
+        "y": 1066,
+        "w": 329,
+        "h": 412
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 154,
+        "y": 30
+      }
+    },
+    "Golem_01_Dying_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 352,
+        "w": 344,
+        "h": 429
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 32
+      }
+    },
+    "Golem_01_Dying_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 763,
+        "y": 0,
+        "w": 351,
+        "h": 397
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 116,
+        "y": 73
+      }
+    },
+    "Golem_01_Dying_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1066,
+        "w": 349,
+        "h": 397
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 115,
+        "y": 73
+      }
+    },
+    "Golem_01_Dying_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1063,
+        "y": 1066,
+        "w": 353,
+        "h": 381
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 114,
+        "y": 89
+      }
+    },
+    "Golem_01_Dying_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1116,
+        "y": 0,
+        "w": 353,
+        "h": 381
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 114,
+        "y": 89
+      }
+    },
+    "Golem_01_Dying_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1163,
+        "y": 383,
+        "w": 353,
+        "h": 381
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 114,
+        "y": 89
+      }
+    },
+    "Golem_01_Dying_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 351,
+        "y": 1432,
+        "w": 353,
+        "h": 381
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 114,
+        "y": 89
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

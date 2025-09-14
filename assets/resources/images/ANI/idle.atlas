@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "Golem_01_Idle_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 860,
+        "y": 0,
+        "w": 425,
+        "h": 350
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 218,
+        "y": 100
+      }
+    },
+    "Golem_01_Idle_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 860,
+        "y": 352,
+        "w": 425,
+        "h": 350
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 217,
+        "y": 100
+      }
+    },
+    "Golem_01_Idle_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 428,
+        "y": 1079,
+        "w": 426,
+        "h": 351
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 215,
+        "y": 99
+      }
+    },
+    "Golem_01_Idle_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 859,
+        "y": 1077,
+        "w": 427,
+        "h": 353
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 213,
+        "y": 97
+      }
+    },
+    "Golem_01_Idle_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 722,
+        "w": 428,
+        "h": 355
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 95
+      }
+    },
+    "Golem_01_Idle_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 430,
+        "y": 361,
+        "w": 428,
+        "h": 357
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 210,
+        "y": 93
+      }
+    },
+    "Golem_01_Idle_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 428,
+        "h": 359
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 91
+      }
+    },
+    "Golem_01_Idle_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 361,
+        "w": 428,
+        "h": 359
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 91
+      }
+    },
+    "Golem_01_Idle_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 430,
+        "y": 0,
+        "w": 428,
+        "h": 359
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 91
+      }
+    },
+    "Golem_01_Idle_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 430,
+        "y": 720,
+        "w": 427,
+        "h": 357
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 213,
+        "y": 93
+      }
+    },
+    "Golem_01_Idle_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 859,
+        "y": 720,
+        "w": 426,
+        "h": 355
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 215,
+        "y": 95
+      }
+    },
+    "Golem_01_Idle_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1079,
+        "w": 426,
+        "h": 353
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 97
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

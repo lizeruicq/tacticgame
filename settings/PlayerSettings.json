@@ -1,9 +1,16 @@
 {
-    "modules": {
-        "laya.ui": true,
-        "laya.d3": true
-    },
-    "addons": {
-        "laya.ui": "ui2"
-    }
+  "resolution": {
+    "designWidth": 1179,
+    "designHeight": 2556,
+    "scaleMode": "showall",
+    "alignV": "middle",
+    "alignH": "center"
+  },
+  "modules": {
+    "laya.ui": true,
+    "laya.d3": true
+  },
+  "splash": {
+    "fit": "center"
+  }
 }

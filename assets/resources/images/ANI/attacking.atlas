@@ -1,0 +1,208 @@
+{
+  "frames": {
+    "Golem_01_Attacking_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1049,
+        "w": 425,
+        "h": 350
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 218,
+        "y": 100
+      }
+    },
+    "Golem_01_Attacking_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 806,
+        "y": 767,
+        "w": 405,
+        "h": 358
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 92
+      }
+    },
+    "Golem_01_Attacking_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 934,
+        "y": 350,
+        "w": 362,
+        "h": 415
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 200,
+        "y": 35
+      }
+    },
+    "Golem_01_Attacking_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 463,
+        "y": 767,
+        "w": 341,
+        "h": 428
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 22
+      }
+    },
+    "Golem_01_Attacking_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1213,
+        "y": 767,
+        "w": 335,
+        "h": 422
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 189,
+        "y": 28
+      }
+    },
+    "Golem_01_Attacking_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1298,
+        "y": 0,
+        "w": 328,
+        "h": 417
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 188,
+        "y": 33
+      }
+    },
+    "Golem_01_Attacking_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 806,
+        "y": 1127,
+        "w": 322,
+        "h": 411
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 186,
+        "y": 39
+      }
+    },
+    "Golem_01_Attacking_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 535,
+        "y": 350,
+        "w": 397,
+        "h": 415
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 178,
+        "y": 35
+      }
+    },
+    "Golem_01_Attacking_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 533,
+        "h": 349
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 178,
+        "y": 101
+      }
+    },
+    "Golem_01_Attacking_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 351,
+        "w": 510,
+        "h": 345
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 105
+      }
+    },
+    "Golem_01_Attacking_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 535,
+        "y": 0,
+        "w": 488,
+        "h": 348
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 192,
+        "y": 102
+      }
+    },
+    "Golem_01_Attacking_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 698,
+        "w": 461,
+        "h": 349
+      },
+      "sourceSize": {
+        "w": 720,
+        "h": 480
+      },
+      "spriteSourceSize": {
+        "x": 203,
+        "y": 101
+      }
+    }
+  }
+}
