@@ -34,7 +34,8 @@ export class RockAnimationManager extends BaseAnimationManager {
             autoPlay: true,
             scale: 1.0,  // 缩放比例
             offsetX: 0,  // X轴偏移
-            offsetY: 0   // Y轴偏移
+            offsetY: 0,   // Y轴偏移
+            loop: true
         },
         [RockAnimationState.ATTACKING]: {
             interval: 80,
@@ -42,7 +43,8 @@ export class RockAnimationManager extends BaseAnimationManager {
             autoPlay: false,
             scale: 1.0,  // 攻击时稍微放大
             offsetX: 0,
-            offsetY: -10 // 向上偏移一点
+            offsetY: -10, // 向上偏移一点
+            loop: true
         },
         [RockAnimationState.WALKING]: {
             interval: 60,
@@ -50,6 +52,7 @@ export class RockAnimationManager extends BaseAnimationManager {
             autoPlay: false,
             scale: 1.0,
             offsetX: 0,
+            loop: true,
             offsetY: 0
         },
         [RockAnimationState.DYING]: {
@@ -58,6 +61,7 @@ export class RockAnimationManager extends BaseAnimationManager {
             autoPlay: false,
             scale: 1.0,
             offsetX: 0,
+            loop: false, // 播放一次
             offsetY: 0
         }
     };
@@ -118,7 +122,7 @@ export class RockAnimationManager extends BaseAnimationManager {
      * 死亡动画完成处理
      */
     private onDeathComplete(): void {
-        console.log("Rock死亡动画播放完成");
+        console.log("Rock死亡事件广播");
 
         // 发送自定义事件通知其他系统
         this.owner.event("ROCK_DEATH_COMPLETE");

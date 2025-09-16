@@ -176,7 +176,7 @@ export class RockMonster extends BaseMonster {
         this.changeState(MonsterState.DEAD);
         
         // 可以在这里处理尸体移除、资源掉落等
-        Laya.timer.once(2000, this, () => {
+        Laya.timer.once(1000, this, () => {
             this.removeCorpse();
         });
     }
@@ -191,8 +191,8 @@ export class RockMonster extends BaseMonster {
         this.owner.event("ROCK_CORPSE_REMOVED", { monster: this });
         
         // 可以选择销毁节点或隐藏
-        // this.owner.removeSelf();
-        (this.owner as Laya.Sprite).visible = false;
+        this.owner.removeSelf();
+        // (this.owner as Laya.Sprite).visible = false;
     }
     
     // ========== 公共接口 ==========

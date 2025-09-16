@@ -1,0 +1,53 @@
+{
+  "_$ver": 1,
+  "_$id": "v8yruf6j",
+  "_$type": "Sprite",
+  "name": "Rock",
+  "x": 89,
+  "y": 1642,
+  "width": 720,
+  "height": 480,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "114ac8da-c5ae-460e-935e-db96a976f67e",
+      "scriptPath": "resources/scripts/RockAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "j1n5wb5h"
+      }
+    },
+    {
+      "_$type": "87e7ea3b-989b-4d5e-b92d-44cc944561cc",
+      "scriptPath": "resources/scripts/RockMonster.ts",
+      "isPlayerCamp": 0,
+      "rockLevel": 1
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "j1n5wb5h",
+      "_$type": "Animation",
+      "name": "rockAnimation",
+      "width": 720,
+      "height": 480,
+      "source": "res://5456a39b-48aa-45d6-9894-3d2f197e742a",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "ljz8vrhb",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 226,
+      "y": 50,
+      "width": 268,
+      "height": 26,
+      "centerX": 0,
+      "skin": "res://ae3de75e-ee9f-478d-9f8b-ede75a4fc296",
+      "value": 1
+    }
+  ]
+}

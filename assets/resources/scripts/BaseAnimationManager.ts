@@ -17,6 +17,7 @@ export interface IAnimationConfig {
     scale: number;       // 缩放比例
     offsetX: number;     // X轴偏移
     offsetY: number;     // Y轴偏移
+    loop: boolean;
 }
 
 /**
@@ -171,6 +172,7 @@ export abstract class BaseAnimationManager extends Laya.Script {
         this.spriteAnimation.interval = config.interval;
         this.spriteAnimation.wrapMode = config.wrapMode;
         this.spriteAnimation.autoPlay = config.autoPlay;
+        this.spriteAnimation.loop = config.loop;
         
         // 应用变换（缩放和位置偏移）
         this.applyAnimationTransform(config);
@@ -211,8 +213,6 @@ export abstract class BaseAnimationManager extends Laya.Script {
      * 动画播放完成回调
      */
     protected onAnimationComplete(): void {
-        console.log(`动画播放完成: ${this.currentState}`);
-        
         // 调用子类的完成处理方法
         this.handleAnimationComplete(this.currentState);
     }

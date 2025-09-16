@@ -5,11 +5,18 @@ import { HealthBarManager } from "./HealthBarManager";
 @regClass()
 export class GameMainManager extends Laya.Script {
 
+    // 单例实例
+    private static _instance: GameMainManager = null;
+
     @property(String)
     public text: string = "";
 
     // 获取传递的关卡数据
     private selectedLevel: number = 1;
+
+    // 场景节点引用
+    private battleField: Laya.Box = null;
+    private spawnArea: Laya.Sprite = null;
 
     // Rock怪物引用
     private rockMonster: RockMonster;
@@ -20,6 +27,13 @@ export class GameMainManager extends Laya.Script {
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         console.log("=== GameMainManager 初始化 ===");
+
+        // 设置单例
+        GameMainManager._instance = this;
+
+        // 初始化场景节点引用
+        this.initializeSceneNodes();
+
         this.initializeGame();
     }
 
@@ -33,6 +47,50 @@ export class GameMainManager extends Laya.Script {
         console.log("GameMainManager 开始");
         this.setupRockAnimation();
         this.startGameLoop();
+    }
+
+    /**
+     * 获取单例实例
+     */
+    public static getInstance(): GameMainManager {
+        return GameMainManager._instance;
+    }
+
+    /**
+     * 初始化场景节点引用
+     */
+    private initializeSceneNodes(): void {
+        const gameScene = this.owner.scene;
+
+        // 查找BattleField节点
+        this.battleField = gameScene.getChildByName("BattleField") as Laya.Box;
+        if (!this.battleField) {
+            console.error("未找到BattleField节点！");
+        } else {
+            console.log(`BattleField节点初始化成功: ${this.battleField.width}x${this.battleField.height}`);
+        }
+
+        // 查找spawnArea节点
+        this.spawnArea = gameScene.getChildByName("spawnArea") as Laya.Sprite;
+        if (!this.spawnArea) {
+            console.error("未找到spawnArea节点！");
+        } else {
+            console.log(`spawnArea节点初始化成功: 中心(${this.spawnArea.x}, ${this.spawnArea.y}), 尺寸${this.spawnArea.width}x${this.spawnArea.height}`);
+        }
+    }
+
+    /**
+     * 获取BattleField节点
+     */
+    public getBattleField(): Laya.Box {
+        return this.battleField;
+    }
+
+    /**
+     * 获取spawnArea节点
+     */
+    public getSpawnArea(): Laya.Sprite {
+        return this.spawnArea;
     }
 
     /**
@@ -243,8 +301,6 @@ export class GameMainManager extends Laya.Script {
      */
     private onMonsterDeath(data: any): void {
         const { monster } = data;
-        console.log(`${monster.constructor.name} 死亡`);
-
         // 这里可以处理死亡奖励、经验值等
         // 隐藏血条
         HealthBarManager.hideHealthBar(monster);
@@ -306,6 +362,9 @@ export class GameMainManager extends Laya.Script {
 
     //手动调用节点销毁时执行
     onDestroy(): void {
+        // 清理单例引用
+        GameMainManager._instance = null;
+
         // 清理定时器
         Laya.timer.clearAll(this);
 

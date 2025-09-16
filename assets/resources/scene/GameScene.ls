@@ -64,54 +64,15 @@
       "height": 1905,
       "_$child": [
         {
-          "_$id": "v8yruf6j",
-          "_$type": "Sprite",
+          "_$id": "zfk8oi3r",
+          "_$prefab": "a375d387-c81f-46ea-8b81-e71a9d23f831",
           "name": "Rock",
-          "x": 89,
-          "y": 1642,
-          "width": 720,
-          "height": 480,
-          "scaleX": 0.5,
-          "scaleY": 0.5,
-          "_$comp": [
-            {
-              "_$type": "114ac8da-c5ae-460e-935e-db96a976f67e",
-              "scriptPath": "resources/scripts/RockAnimationManager.ts",
-              "spriteAnimation": {
-                "_$ref": "j1n5wb5h"
-              }
-            },
-            {
-              "_$type": "87e7ea3b-989b-4d5e-b92d-44cc944561cc",
-              "scriptPath": "resources/scripts/RockMonster.ts",
-              "isPlayerCamp": 0,
-              "rockLevel": 1
-            }
-          ],
-          "_$child": [
-            {
-              "_$id": "j1n5wb5h",
-              "_$type": "Animation",
-              "name": "rockAnimation",
-              "width": 720,
-              "height": 480,
-              "source": "res://5456a39b-48aa-45d6-9894-3d2f197e742a",
-              "index": 0,
-              "interval": 50
-            },
-            {
-              "_$id": "ljz8vrhb",
-              "_$type": "ProgressBar",
-              "name": "healthbar",
-              "x": 226,
-              "y": 50,
-              "width": 268,
-              "height": 26,
-              "centerX": 0,
-              "skin": "res://ae3de75e-ee9f-478d-9f8b-ede75a4fc296",
-              "value": 1
-            }
-          ]
+          "active": true,
+          "x": 269,
+          "y": 1762,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "visible": true
         }
       ]
     },
@@ -130,7 +91,9 @@
         {
           "_$type": "4b33acaa-eefb-4de4-ade6-7267208fe4e9",
           "scriptPath": "resources/scripts/CardManager.ts",
-          "text": ""
+          "text": "",
+          "playerMana": 10,
+          "maxMana": 10
         }
       ],
       "_$child": [
@@ -144,46 +107,18 @@
           "texture": {
             "_$uuid": "34ca4cf9-7cca-4110-a26f-5b4b2a268bbe",
             "_$type": "Texture"
-          }
-        },
-        {
-          "_$id": "yy7ycx2w",
-          "_$type": "Sprite",
-          "name": "card_1",
-          "x": 257,
-          "y": 28,
-          "width": 206,
-          "height": 206,
-          "texture": {
-            "_$uuid": "34ca4cf9-7cca-4110-a26f-5b4b2a268bbe",
-            "_$type": "Texture"
-          }
-        },
-        {
-          "_$id": "dixuq7zu",
-          "_$type": "Sprite",
-          "name": "card_2",
-          "x": 514,
-          "y": 28,
-          "width": 206,
-          "height": 206,
-          "texture": {
-            "_$uuid": "34ca4cf9-7cca-4110-a26f-5b4b2a268bbe",
-            "_$type": "Texture"
-          }
-        },
-        {
-          "_$id": "ddkf3gfk",
-          "_$type": "Sprite",
-          "name": "card_3",
-          "x": 771,
-          "y": 28,
-          "width": 206,
-          "height": 206,
-          "texture": {
-            "_$uuid": "34ca4cf9-7cca-4110-a26f-5b4b2a268bbe",
-            "_$type": "Texture"
-          }
+          },
+          "_$comp": [
+            {
+              "_$type": "18f27c7e-6f83-462c-899e-665d4b7b155f",
+              "scriptPath": "resources/scripts/RockCard.ts",
+              "cardName": "Rock卡片",
+              "manaCost": 3,
+              "rockLevel": 1,
+              "isPlayerCard": true,
+              "rockPrefabPath": "prefabs/Rock.lh"
+            }
+          ]
         }
       ]
     },
@@ -191,10 +126,12 @@
       "_$id": "956g9jgg",
       "_$type": "Sprite",
       "name": "spawnArea",
-      "x": 63,
-      "y": 1749,
+      "x": 598,
+      "y": 1787,
       "width": 1069,
-      "height": 190,
+      "height": 313,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
       "_gcmds": [
         {
           "_$type": "DrawRectCmd",
