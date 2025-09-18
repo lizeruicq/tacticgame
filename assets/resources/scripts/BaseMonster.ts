@@ -1,4 +1,6 @@
 const { regClass, property } = Laya;
+import { MonsterManager } from "./MonsterManager";
+import { Castle } from "./Castle";
 
 /**
  * 怪物基础属性接口
@@ -44,10 +46,10 @@ export abstract class BaseMonster extends Laya.Script {
     };
     
     // ========== 运行时属性 ==========
-    
+
     protected currentHealth: number = 100;        // 当前血量
     protected currentState: MonsterState = MonsterState.IDLE;  // 当前状态
-    protected currentTarget: BaseMonster | null = null;       // 当前攻击目标
+    protected currentTarget: BaseMonster | Castle | null = null;       // 当前攻击目标
     
     // ========== 内部状态 ==========
     
@@ -61,19 +63,22 @@ export abstract class BaseMonster extends Laya.Script {
     
     onAwake(): void {
         console.log(`=== ${this.constructor.name} 初始化 ===`);
-        
+
         // 初始化怪物属性
         this.initializeMonster();
-        
+
         // 设置初始血量
         this.currentHealth = this.monsterStats.maxHealth;
-        
+
         // 获取动画管理器组件
         this.setupAnimationManager();
-        
+
+        // 注册到MonsterManager
+        this.registerToManager();
+
         // 标记为已初始化
         this.isInitialized = true;
-        
+
         console.log(`${this.constructor.name} 初始化完成:`, {
             阵营: this.isPlayerCamp ? "玩家" : "敌方",
             血量: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
@@ -119,6 +124,27 @@ export abstract class BaseMonster extends Laya.Script {
             console.log(`${this.constructor.name} 动画管理器设置完成`);
         } else {
             console.warn(`${this.constructor.name} 未找到动画管理器组件`);
+        }
+    }
+
+    /**
+     * 注册到MonsterManager
+     */
+    protected registerToManager(): void {
+        const monsterManager = MonsterManager.getInstance();
+        if (monsterManager) {
+            monsterManager.registerMonster(this);
+            console.log(`${this.constructor.name} 已注册到MonsterManager`);
+        } else {
+            console.warn(`${this.constructor.name} 无法获取MonsterManager实例，延迟注册`);
+            // 延迟注册，等待MonsterManager初始化
+            Laya.timer.once(100, this, () => {
+                const manager = MonsterManager.getInstance();
+                if (manager) {
+                    manager.registerMonster(this);
+                    console.log(`${this.constructor.name} 延迟注册到MonsterManager成功`);
+                }
+            });
         }
     }
     
@@ -232,12 +258,12 @@ export abstract class BaseMonster extends Laya.Script {
      * 更新移动行为
      */
     protected updateMovingBehavior(): void {
-        if (!this.currentTarget || this.currentTarget.isDead) {
+        if (!this.currentTarget || this.isTargetDead(this.currentTarget)) {
             this.currentTarget = null;
             this.changeState(MonsterState.IDLE);
             return;
         }
-        
+
         const distance = this.getDistanceToTarget();
         if (distance <= this.monsterStats.attackRange) {
             // 进入攻击范围
@@ -252,19 +278,19 @@ export abstract class BaseMonster extends Laya.Script {
      * 更新攻击行为
      */
     protected updateAttackingBehavior(): void {
-        if (!this.currentTarget || this.currentTarget.isDead) {
+        if (!this.currentTarget || this.isTargetDead(this.currentTarget)) {
             this.currentTarget = null;
             this.changeState(MonsterState.IDLE);
             return;
         }
-        
+
         const distance = this.getDistanceToTarget();
         if (distance > this.monsterStats.attackRange) {
             // 目标超出攻击范围，继续移动
             this.changeState(MonsterState.MOVING);
             return;
         }
-        
+
         // 检查攻击冷却
         const currentTime = Laya.timer.currTimer;
         if (currentTime - this.lastAttackTime >= this.monsterStats.attackSpeed) {
@@ -285,13 +311,23 @@ export abstract class BaseMonster extends Laya.Script {
     /**
      * 设置攻击目标
      */
-    public setTarget(target: BaseMonster): void {
-        if (target === this) return; // 不能攻击自己
-        if (target.isDead) return;   // 不能攻击已死亡的目标
-        if (target.isPlayerCamp === this.isPlayerCamp) return; // 不能攻击同阵营
+    public setTarget(target: BaseMonster | Castle): void {
+        if (target === this) {
+            console.error(`${this.constructor.name} 尝试攻击自己，已阻止！`);
+            return; // 不能攻击自己
+        }
+        if (this.isTargetDead(target)) {
+            console.log(`${this.constructor.name} 目标已死亡，跳过设置`);
+            return;   // 不能攻击已死亡的目标
+        }
+        if (this.isTargetSameCamp(target)) {
+            console.log(`${this.constructor.name} 目标是同阵营，跳过设置`);
+            return; // 不能攻击同阵营
+        }
 
         this.currentTarget = target;
-        console.log(`${this.constructor.name} 设置攻击目标: ${target.constructor.name}`);
+        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
+        console.log(`${this.constructor.name} 设置攻击目标: ${targetName}`);
     }
 
     /**
@@ -320,6 +356,9 @@ export abstract class BaseMonster extends Laya.Script {
 
         // 触发受伤事件
         this.onDamageTaken(damage, attacker);
+
+        // 更新血条显示
+        this.updateHealthBar();
 
         // 检查是否死亡
         if (this.currentHealth <= 0) {
@@ -350,6 +389,10 @@ export abstract class BaseMonster extends Laya.Script {
 
         console.log(`${this.constructor.name} 死亡`);
         this.isDead = true;
+        
+        // 隐藏血条
+        this.hideHealthBar();
+        
         // 触发死亡事件
         this.onDeath();
     }
@@ -394,6 +437,25 @@ export abstract class BaseMonster extends Laya.Script {
     // ========== 工具方法 ==========
 
     /**
+     * 检查目标是否死亡
+     */
+    protected isTargetDead(target: BaseMonster | Castle): boolean {
+        if (target instanceof BaseMonster) {
+            return target.isDead;
+        } else if (target instanceof Castle) {
+            return target.getIsDestroyed();
+        }
+        return true;
+    }
+
+    /**
+     * 检查目标是否同阵营
+     */
+    protected isTargetSameCamp(target: BaseMonster | Castle): boolean {
+        return target.isPlayerCamp === this.isPlayerCamp;
+    }
+
+    /**
      * 获取到目标的距离
      */
     protected getDistanceToTarget(): number {
@@ -421,11 +483,38 @@ export abstract class BaseMonster extends Laya.Script {
     /**
      * 寻找攻击目标
      */
-    protected findTarget(): BaseMonster | null {
-        // 这里应该实现目标搜索逻辑
-        // 可以通过场景管理器或其他方式获取敌方单位
-        // 暂时返回null，由子类或外部系统设置目标
-        return null;
+    protected findTarget(): BaseMonster | Castle | null {
+        // 使用MonsterManager来寻找最近的敌方目标
+        const monsterManager = MonsterManager.getInstance();
+        if (!monsterManager) {
+            console.warn(`${this.constructor.name} 无法获取MonsterManager实例`);
+            return null;
+        }
+
+        return monsterManager.findNearestEnemyTarget(this);
+    }
+
+    // ========== 血条管理方法 ==========
+
+    /**
+     * 更新血条显示
+     */
+    protected updateHealthBar(): void {
+        // TODO: 实现血条更新逻辑
+    }
+    
+    /**
+     * 隐藏血条
+     */
+    protected hideHealthBar(): void {
+        // TODO: 实现隐藏血条逻辑
+    }
+    
+    /**
+     * 显示血条
+     */
+    protected showHealthBar(): void {
+        // TODO: 实现显示血条逻辑
     }
 
     // ========== 公共接口 ==========
@@ -461,7 +550,7 @@ export abstract class BaseMonster extends Laya.Script {
     /**
      * 获取当前目标
      */
-    public getCurrentTarget(): BaseMonster | null {
+    public getCurrentTarget(): BaseMonster | Castle | null {
         return this.currentTarget;
     }
 
@@ -494,6 +583,9 @@ export abstract class BaseMonster extends Laya.Script {
         if (actualHeal > 0) {
             console.log(`${this.constructor.name} 恢复 ${actualHeal} 点血量, 当前血量: ${this.currentHealth}/${this.monsterStats.maxHealth}`);
             this.onHealed(actualHeal);
+            
+            // 更新血条显示
+            this.updateHealthBar();
         }
     }
 
@@ -510,7 +602,8 @@ export abstract class BaseMonster extends Laya.Script {
     /**
      * 攻击执行完成事件
      */
-    protected onAttackPerformed(target: BaseMonster): void {
+    protected onAttackPerformed(target: BaseMonster | Castle): void {
+        this.changeState(MonsterState.IDLE);
         // 子类可以重写此方法来处理攻击完成后的逻辑
         this.owner.event("MONSTER_ATTACK_PERFORMED", { attacker: this, target: target });
     }

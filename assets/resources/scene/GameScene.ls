@@ -44,15 +44,27 @@
       ]
     },
     {
-      "_$id": "oxlzdr1r",
-      "_$type": "Image",
-      "name": "CardsContainer",
-      "x": 13,
-      "y": 1809,
-      "width": 1175,
-      "height": 744,
-      "skin": "res://d6102fdb-2492-4ea7-ab6f-eca1f65a1acc",
-      "color": "#ffffff"
+      "_$id": "rq40rlmn",
+      "_$type": "Sprite",
+      "name": "castle-enemy",
+      "x": 592,
+      "y": 16,
+      "width": 380,
+      "height": 380,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "texture": {
+        "_$uuid": "b24b4793-dad0-4049-8efa-cf8a5c0a3204",
+        "_$type": "Texture"
+      },
+      "_$comp": [
+        {
+          "_$type": "14cf51ce-1943-4f1c-964e-1be9313f5b18",
+          "scriptPath": "resources/scripts/Castle.ts",
+          "isPlayerCamp": false,
+          "castleLevel": 1
+        }
+      ]
     },
     {
       "_$id": "dan9jgev",
@@ -61,27 +73,80 @@
       "x": 42,
       "y": 38,
       "width": 1102,
-      "height": 1905,
+      "height": 2037,
       "_$child": [
         {
-          "_$id": "zfk8oi3r",
-          "_$prefab": "a375d387-c81f-46ea-8b81-e71a9d23f831",
-          "name": "Rock",
-          "active": true,
-          "x": 269,
-          "y": 1762,
+          "_$id": "956g9jgg",
+          "_$type": "Sprite",
+          "name": "spawnArea",
+          "x": 556,
+          "y": 1885,
+          "width": 1069,
+          "height": 313,
           "anchorX": 0.5,
           "anchorY": 0.5,
-          "visible": true
+          "_gcmds": [
+            {
+              "_$type": "DrawRectCmd",
+              "fillColor": "rgba(10,10,62,0.3333333333333333)"
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "zfk8oi3r",
+              "_$prefab": "a375d387-c81f-46ea-8b81-e71a9d23f831",
+              "name": "Rock",
+              "active": false,
+              "x": 194,
+              "y": 70,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "visible": false
+            }
+          ]
         }
       ]
+    },
+    {
+      "_$id": "7kurtrav",
+      "_$type": "Sprite",
+      "name": "castle-self",
+      "x": 596,
+      "y": 2052,
+      "width": 380,
+      "height": 380,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "texture": {
+        "_$uuid": "fc601f28-fb14-4df1-bb0a-f52328de9818",
+        "_$type": "Texture"
+      },
+      "_$comp": [
+        {
+          "_$type": "14cf51ce-1943-4f1c-964e-1be9313f5b18",
+          "scriptPath": "resources/scripts/Castle.ts",
+          "isPlayerCamp": true,
+          "castleLevel": 1
+        }
+      ]
+    },
+    {
+      "_$id": "oxlzdr1r",
+      "_$type": "Image",
+      "name": "CardsContainer",
+      "x": 13,
+      "y": 1971,
+      "width": 1175,
+      "height": 582,
+      "skin": "res://d6102fdb-2492-4ea7-ab6f-eca1f65a1acc",
+      "color": "#ffffff"
     },
     {
       "_$id": "th76pqq2",
       "_$type": "HBox",
       "name": "CardBox",
       "x": 100,
-      "y": 2029,
+      "y": 2113,
       "width": 980,
       "height": 262,
       "centerX": 0,
@@ -119,23 +184,6 @@
               "rockPrefabPath": "prefabs/Rock.lh"
             }
           ]
-        }
-      ]
-    },
-    {
-      "_$id": "956g9jgg",
-      "_$type": "Sprite",
-      "name": "spawnArea",
-      "x": 598,
-      "y": 1787,
-      "width": 1069,
-      "height": 313,
-      "anchorX": 0.5,
-      "anchorY": 0.5,
-      "_gcmds": [
-        {
-          "_$type": "DrawRectCmd",
-          "fillColor": "rgba(10,10,62,0.3333333333333333)"
         }
       ]
     }

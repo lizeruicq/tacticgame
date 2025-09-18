@@ -1,6 +1,7 @@
 const { regClass, property } = Laya;
 import { BaseMonster, IMonsterStats, MonsterState } from "./BaseMonster";
 import { RockAnimationManager } from "./RockAnimationManager";
+import { Castle } from "./Castle";
 
 /**
  * Rock怪物类
@@ -88,11 +89,12 @@ export class RockMonster extends BaseMonster {
     /**
      * 重写攻击执行完成事件
      */
-    protected onAttackPerformed(target: BaseMonster): void {
+    protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
-        
-        console.log(`Rock攻击完成，对 ${target.constructor.name} 造成 ${this.monsterStats.attackPower} 点伤害`);
-        
+
+        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
+        console.log(`Rock攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
+
         // Rock攻击后有短暂的硬直时间
         this.addAttackCooldown();
     }
