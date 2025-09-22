@@ -1,7 +1,7 @@
 const { regClass, property } = Laya;
-import { RockMonster } from "./RockMonster";
 import { CardManager } from "./CardManager";
 import { GameMainManager } from "./GameMainManager";
+import { MonsterManager } from "./MonsterManager";
 
 /**
  * Rock卡片脚本
@@ -177,43 +177,16 @@ export class RockCard extends Laya.Script {
     private loadAndCreateRockPrefab(position: {x: number, y: number}): void {
         console.log(`加载Rock预制体: ${this.rockPrefabPath}`);
 
-        // 使用LayaAir的预制体加载方法
-        Laya.loader.load(this.rockPrefabPath).then(() => {
-            // 创建预制体实例
-            const rockPrefab = Laya.loader.getRes(this.rockPrefabPath);
-            if (!rockPrefab) {
-                console.error(`无法加载Rock预制体: ${this.rockPrefabPath}`);
-                return;
-            }
+        // 使用MonsterManager创建怪物
+        const monsterManager = MonsterManager.getInstance();
+        const gameManager = GameMainManager.getInstance();
+        const battleField = gameManager.getBattleField();
 
-            // 实例化预制体
-            const rockSprite = Laya.Pool.getItemByCreateFun("Rock", rockPrefab.create, rockPrefab) as Laya.Sprite;
-
-            // 设置位置和名称
-            rockSprite.name = `Rock_${Date.now()}`;
-            rockSprite.pos(position.x, position.y);
-
-            // 获取RockMonster组件并设置属性
-            const rockMonster = rockSprite.getComponent(RockMonster);
-            if (rockMonster) {
-                rockMonster.isPlayerCamp = this.isPlayerCard;
-                rockMonster.setRockLevel(this.rockLevel);
-                console.log(`设置Rock属性: 阵营=${this.isPlayerCard ? '玩家' : '敌方'}, 等级=${this.rockLevel}`);
-            } else {
-                console.error("Rock预制体中未找到RockMonster组件！");
-            }
-
-            // 通过GameMainManager获取BattleField并添加
-            const gameManager = GameMainManager.getInstance();
-            const battleField = gameManager.getBattleField();
-            battleField.addChild(rockSprite);
-
-            console.log(`Rock预制体生成成功: ${rockSprite.name}, 位置: (${position.x}, ${position.y})`);
-            console.log(`已添加到BattleField节点下，当前BattleField子节点数: ${battleField.numChildren}`);
-
-        }).catch((error) => {
-            console.error(`加载Rock预制体失败: ${error}`);
-        });
+        monsterManager.createMonster("Rock", this.isPlayerCard, position, this.rockLevel)
+            .then((rockSprite) => {
+                battleField.addChild(rockSprite);
+                console.log(`Rock怪物创建成功: ${rockSprite.name}`);
+            });
     }
     
     /**

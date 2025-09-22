@@ -200,8 +200,14 @@ export class GameMainManager extends Laya.Script {
     private createEnemyRockForTesting(): void {
         console.log("创建敌方Rock怪物用于测试...");
 
-        // 使用类似RockCard中的方法加载并创建Rock预制体
-        this.loadAndCreateRockPrefab({x: 600, y: 240});
+        const monsterManager = MonsterManager.getInstance();
+        const battleField = this.getBattleField();
+
+        monsterManager.createMonster("Rock", false, { x: 600, y: 240 }, 1)
+            .then((rockSprite) => {
+                battleField.addChild(rockSprite);
+                console.log(`敌方Rock怪物创建成功: ${rockSprite.name}`);
+            });
     }
 
     /**

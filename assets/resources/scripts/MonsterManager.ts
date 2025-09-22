@@ -376,4 +376,58 @@ export class MonsterManager extends Laya.Script {
             maxSearchDistance: this.maxSearchDistance
         };
     }
+
+    // ========== 怪物创建方法 ==========
+
+    /**
+     * 创建怪物
+     * @param monsterType 怪物类型（"Rock"）
+     * @param isPlayerCamp 是否玩家阵营
+     * @param position 生成位置
+     * @param level 怪物等级，默认1
+     */
+    public createMonster(
+        monsterType: string,
+        isPlayerCamp: boolean,
+        position: { x: number; y: number },
+        level: number = 1
+    ): Promise<Laya.Sprite> {
+        const prefabPath = this.getPrefabPath(monsterType);
+
+        return Laya.loader.load(prefabPath).then(() => {
+            const prefab = Laya.loader.getRes(prefabPath);
+            const monsterSprite = Laya.Pool.getItemByCreateFun(monsterType, prefab.create, prefab) as Laya.Sprite;
+
+            monsterSprite.name = `${monsterType}_${isPlayerCamp ? 'Player' : 'Enemy'}_${Date.now()}`;
+            monsterSprite.pos(position.x, position.y);
+
+            this.configureMonster(monsterSprite, monsterType, isPlayerCamp, level);
+
+            return monsterSprite;
+        });
+    }
+
+    /**
+     * 获取预制体路径
+     */
+    private getPrefabPath(monsterType: string): string {
+        const paths: { [key: string]: string } = { "Rock": "prefabs/Rock.lh" };
+        return paths[monsterType];
+    }
+
+    /**
+     * 配置怪物属性
+     */
+    private configureMonster(sprite: Laya.Sprite, type: string, isPlayerCamp: boolean, level: number): void {
+        if (type === "Rock") {
+            const components = (sprite as any)._components || [];
+            for (const component of components) {
+                if (component.constructor.name === "RockMonster") {
+                    component.isPlayerCamp = isPlayerCamp;
+                    component.setRockLevel(level);
+                    break;
+                }
+            }
+        }
+    }
 }

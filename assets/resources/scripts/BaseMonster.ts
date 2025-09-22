@@ -264,6 +264,9 @@ export abstract class BaseMonster extends Laya.Script {
             return;
         }
 
+        // 在移动过程中寻找更近的目标
+        this.updateTargetWhileMoving();
+
         const distance = this.getDistanceToTarget();
         if (distance <= this.monsterStats.attackRange) {
             // 进入攻击范围
@@ -492,6 +495,34 @@ export abstract class BaseMonster extends Laya.Script {
         }
 
         return monsterManager.findNearestEnemyTarget(this);
+    }
+
+    /**
+     * 移动时更新目标（寻找更近的敌人）
+     */
+    protected updateTargetWhileMoving(): void {
+        // 寻找最近的敌方目标
+        const newTarget = this.findTarget();
+        if (!newTarget) return;
+
+        // 如果找到了新目标，比较距离
+        const currentDistance = this.getDistanceToTarget();
+        const newDistance = this.getDistanceToPosition(
+            (newTarget.owner as Laya.Sprite).x,
+            (newTarget.owner as Laya.Sprite).y
+        );
+
+        // 如果新目标更近，切换目标
+        if (newDistance < currentDistance) {
+            const oldTargetName = this.currentTarget instanceof BaseMonster ?
+                this.currentTarget.constructor.name : 'Castle';
+            const newTargetName = newTarget instanceof BaseMonster ?
+                newTarget.constructor.name : 'Castle';
+
+            console.log(`${this.constructor.name} 移动中发现更近目标: ${oldTargetName} -> ${newTargetName}, 距离: ${currentDistance.toFixed(1)} -> ${newDistance.toFixed(1)}`);
+
+            this.setTarget(newTarget);
+        }
     }
 
     // ========== 血条管理方法 ==========
