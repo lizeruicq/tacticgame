@@ -45,7 +45,7 @@ export class MonsterManager extends Laya.Script {
     public maxSearchDistance: number = 2000;       // 最大搜索距离
     
     @property({ type: Boolean })
-    public enableDebugLog: boolean = true;         // 是否启用调试日志
+    public enableDebugLog: boolean = false;         // 是否启用调试日志
     
     onAwake(): void {
         console.log("=== MonsterManager 初始化 ===");
@@ -411,7 +411,7 @@ export class MonsterManager extends Laya.Script {
      * 获取预制体路径
      */
     private getPrefabPath(monsterType: string): string {
-        const paths: { [key: string]: string } = { "Rock": "prefabs/Rock.lh" };
+        const paths: { [key: string]: string } = { "Rock": "prefabs/monster/Rock.lh" };
         return paths[monsterType];
     }
 

@@ -31,6 +31,19 @@ export class GameMainManager extends Laya.Script {
 
     // 游戏状态
     private gameStarted: boolean = false;
+    private gameEnded: boolean = false;
+    private winner: string = ""; // "player" 或 "enemy"
+
+    // 玩家属性
+    @property(Number)
+    public playerMaxMana: number = 10;          // 玩家最大魔法值
+    @property(Number)
+    public playerMana: number = 5;              // 玩家当前魔法值
+    @property(Number)
+    public manaRegenRate: number = 1;           // 魔法值恢复速度（每秒）
+    @property(Number)
+    public manaRegenInterval: number = 2000;    // 魔法值恢复间隔（毫秒）
+
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
@@ -47,6 +60,9 @@ export class GameMainManager extends Laya.Script {
 
         // 初始化城堡系统
         this.initializeCastles();
+
+        // 初始化游戏系统
+        this.initializeGameSystems();
 
         this.initializeGame();
     }
@@ -120,16 +136,212 @@ export class GameMainManager extends Laya.Script {
     }
 
     /**
+     * 初始化游戏系统
+     */
+    private initializeGameSystems(): void {
+        console.log("初始化游戏系统...");
+
+        // 初始化玩家属性
+        this.initializePlayerAttributes();
+
+        // 启动魔法值恢复系统
+        this.startManaRegeneration();
+
+        console.log("游戏系统初始化完成");
+    }
+
+    /**
+     * 初始化玩家属性
+     */
+    private initializePlayerAttributes(): void {
+        // 设置初始魔法值
+        this.playerMana = Math.min(this.playerMana, this.playerMaxMana);
+
+        console.log(`玩家属性初始化完成:`);
+        console.log(`- 魔法值: ${this.playerMana}/${this.playerMaxMana}`);
+        console.log(`- 魔法值恢复: ${this.manaRegenRate}/秒，间隔${this.manaRegenInterval}ms`);
+    }
+
+    /**
+     * 启动魔法值恢复系统
+     */
+    private startManaRegeneration(): void {
+        console.log("启动魔法值恢复系统");
+
+        // 使用定时器定期恢复魔法值
+        Laya.timer.loop(this.manaRegenInterval, this, this.regenerateMana);
+    }
+
+    /**
+     * 魔法值恢复
+     */
+    private regenerateMana(): void {
+        if (this.gameEnded) {
+            return; // 游戏结束后停止恢复
+        }
+
+        const oldMana = this.playerMana;
+        this.playerMana = Math.min(this.playerMana + this.manaRegenRate, this.playerMaxMana);
+
+        if (this.playerMana > oldMana) {
+            console.log(`魔法值恢复: ${oldMana} -> ${this.playerMana}/${this.playerMaxMana}`);
+        }
+    }
+
+    /**
      * 初始化城堡系统
      */
     private initializeCastles(): void {
         console.log("初始化城堡系统...");
 
-        // 暂时跳过城堡初始化，等待场景中手动配置Castle组件
-        console.log("城堡系统需要在场景中手动配置Castle组件");
-        console.log("请为 'castle-self' 和 'castle-enemy' 节点添加Castle脚本组件");
+        const gameScene = this.owner.scene;
+
+        // 查找玩家城堡
+        const playerCastleNode = gameScene.getChildByName("castle-self");
+        if (playerCastleNode) {
+            this.playerCastle = playerCastleNode.getComponent(Castle);
+            if (this.playerCastle) {
+                // 设置城堡为玩家阵营
+                this.playerCastle.isPlayerCamp = true;
+
+                console.log(`玩家城堡初始化完成，生命值: ${this.playerCastle.getCurrentHealth()}/${this.playerCastle.getMaxHealth()}`);
+            } else {
+                console.log("玩家城堡节点未找到Castle组件，请手动添加");
+            }
+        } else {
+            console.log("未找到castle-self节点");
+        }
+
+        // 查找敌方城堡
+        const enemyCastleNode = gameScene.getChildByName("castle-enemy");
+        if (enemyCastleNode) {
+            this.enemyCastle = enemyCastleNode.getComponent(Castle);
+            if (this.enemyCastle) {
+                // 设置城堡为敌方阵营
+                this.enemyCastle.isPlayerCamp = false;
+
+                console.log(`敌方城堡初始化完成，生命值: ${this.enemyCastle.getCurrentHealth()}/${this.enemyCastle.getMaxHealth()}`);
+            } else {
+                console.log("敌方城堡节点未找到Castle组件，请手动添加");
+            }
+        } else {
+            console.log("未找到castle-enemy节点");
+        }
 
         console.log("城堡系统初始化完成");
+    }
+
+    // ========== 游戏流程管理 ==========
+
+    /**
+     * 城堡被摧毁时的处理
+     */
+    private onCastleDestroyed(castleType: string): void {
+        if (this.gameEnded) return;
+
+        this.gameEnded = true;
+
+        if (castleType === "player") {
+            this.winner = "enemy";
+            console.log("=== 游戏结束 ===");
+            console.log("玩家城堡被摧毁，敌方获胜！");
+        } else {
+            this.winner = "player";
+            console.log("=== 游戏结束 ===");
+            console.log("敌方城堡被摧毁，玩家获胜！");
+        }
+
+        // 停止所有游戏系统
+        this.stopGameSystems();
+
+        // 触发游戏结束事件
+        this.onGameEnd();
+    }
+
+    /**
+     * 停止游戏系统
+     */
+    private stopGameSystems(): void {
+        // 停止魔法值恢复
+        Laya.timer.clear(this, this.regenerateMana);
+
+        console.log("游戏系统已停止");
+    }
+
+    /**
+     * 游戏结束处理
+     */
+    private onGameEnd(): void {
+        console.log(`游戏结束，获胜方: ${this.winner}`);
+
+        // 这里可以添加游戏结束的UI显示
+        // 比如显示胜利/失败界面，统计数据等
+    }
+
+    /**
+     * 消耗玩家魔法值
+     */
+    public consumeMana(amount: number): boolean {
+        if (this.gameEnded) {
+            console.log("游戏已结束，无法消耗魔法值");
+            return false;
+        }
+
+        if (this.playerMana >= amount) {
+            this.playerMana -= amount;
+            console.log(`消耗魔法值 ${amount}，剩余: ${this.playerMana}/${this.playerMaxMana}`);
+            return true;
+        } else {
+            console.log(`魔法值不足！需要: ${amount}，当前: ${this.playerMana}`);
+            return false;
+        }
+    }
+
+    /**
+     * 获取玩家当前魔法值
+     */
+    public getPlayerMana(): number {
+        return this.playerMana;
+    }
+
+    /**
+     * 获取玩家最大魔法值
+     */
+    public getPlayerMaxMana(): number {
+        return this.playerMaxMana;
+    }
+
+    /**
+     * 检查游戏是否结束
+     */
+    public isGameEnded(): boolean {
+        return this.gameEnded;
+    }
+
+    /**
+     * 获取获胜方
+     */
+    public getWinner(): string {
+        return this.winner;
+    }
+
+    /**
+     * 检查城堡状态并处理游戏结束
+     */
+    private checkCastleStatus(): void {
+        if (this.gameEnded) return;
+
+        // 检查玩家城堡
+        if (this.playerCastle && this.playerCastle.getIsDestroyed()) {
+            this.onCastleDestroyed("player");
+            return;
+        }
+
+        // 检查敌方城堡
+        if (this.enemyCastle && this.enemyCastle.getIsDestroyed()) {
+            this.onCastleDestroyed("enemy");
+            return;
+        }
     }
 
     /**
@@ -168,7 +380,7 @@ export class GameMainManager extends Laya.Script {
         // this.rockMonster.isPlayerCamp = true;
 
         // 为了测试AI，创建一个敌方Rock怪物
-        this.createEnemyRockForTesting();
+        // this.createEnemyRockForTesting();
 
         // 监听怪物事件
         // this.setupMonsterEvents();
@@ -213,49 +425,49 @@ export class GameMainManager extends Laya.Script {
     /**
      * 加载并创建Rock预制体（参考RockCard中的实现）
      */
-    private loadAndCreateRockPrefab(position: {x: number, y: number}): void {
-        const rockPrefabPath = "prefabs/Rock.lh";
-        console.log(`加载Rock预制体: ${rockPrefabPath}`);
+    // private loadAndCreateRockPrefab(position: {x: number, y: number}): void {
+    //     const rockPrefabPath = "prefabs/monster/Rock.lh";
+    //     console.log(`加载Rock预制体: ${rockPrefabPath}`);
 
-        // 使用LayaAir的预制体加载方法
-        Laya.loader.load(rockPrefabPath).then(() => {
-            // 创建预制体实例
-            const rockPrefab = Laya.loader.getRes(rockPrefabPath);
+    //     // 使用LayaAir的预制体加载方法
+    //     Laya.loader.load(rockPrefabPath).then(() => {
+    //         // 创建预制体实例
+    //         const rockPrefab = Laya.loader.getRes(rockPrefabPath);
             
 
-            // 实例化预制体
-            const rockSprite = Laya.Pool.getItemByCreateFun("Rock", rockPrefab.create, rockPrefab) as Laya.Sprite;
+    //         // 实例化预制体
+    //         const rockSprite = Laya.Pool.getItemByCreateFun("Rock", rockPrefab.create, rockPrefab) as Laya.Sprite;
 
-            // 设置位置和名称
-            rockSprite.name = `EnemyRock_${Date.now()}`;
-            rockSprite.pos(position.x, position.y);
+    //         // 设置位置和名称
+    //         rockSprite.name = `EnemyRock_${Date.now()}`;
+    //         rockSprite.pos(position.x, position.y);
 
-            // 获取RockMonster组件并设置属性
-            const rockMonster = rockSprite.getComponent(RockMonster);
-            if (rockMonster) {
-                rockMonster.isPlayerCamp = false; // 设置为敌方阵营
-                rockMonster.setRockLevel(1);
-                console.log(`设置Rock属性: 阵营=敌方, 等级=1`);
-            } else {
-                console.error("Rock预制体中未找到RockMonster组件！");
-                // 降级到原来的创建方法
-                return;
-            }
+    //         // 获取RockMonster组件并设置属性
+    //         const rockMonster = rockSprite.getComponent(RockMonster);
+    //         if (rockMonster) {
+    //             rockMonster.isPlayerCamp = false; // 设置为敌方阵营
+    //             rockMonster.setRockLevel(1);
+    //             console.log(`设置Rock属性: 阵营=敌方, 等级=1`);
+    //         } else {
+    //             console.error("Rock预制体中未找到RockMonster组件！");
+    //             // 降级到原来的创建方法
+    //             return;
+    //         }
 
-            // 添加到战场
-            const battleField = this.getBattleField();
-            if (battleField) {
-                battleField.addChild(rockSprite);
-                console.log(`敌方Rock预制体生成成功: ${rockSprite.name}, 位置: (${position.x}, ${position.y})`);
-            } else {
-                console.error("无法获取BattleField节点");
-            }
+    //         // 添加到战场
+    //         const battleField = this.getBattleField();
+    //         if (battleField) {
+    //             battleField.addChild(rockSprite);
+    //             console.log(`敌方Rock预制体生成成功: ${rockSprite.name}, 位置: (${position.x}, ${position.y})`);
+    //         } else {
+    //             console.error("无法获取BattleField节点");
+    //         }
 
-        }).catch((error) => {
-            console.error(`加载Rock预制体失败: ${error}`);
-            return;
-        });
-    }
+    //     }).catch((error) => {
+    //         console.error(`加载Rock预制体失败: ${error}`);
+    //         return;
+    //     });
+    // }
 
    
 
@@ -266,6 +478,9 @@ export class GameMainManager extends Laya.Script {
         this.gameStarted = true;
         console.log("游戏开始运行");
 
+        // 启动游戏状态检查循环
+        this.startGameStatusCheck();
+
         // 模拟游戏事件（实际项目中这些应该由具体的游戏逻辑触发）
         // this.simulateGameEvents();
 
@@ -274,6 +489,15 @@ export class GameMainManager extends Laya.Script {
 
         // // 测试怪物AI系统
         // this.testMonsterAI();
+    }
+
+    /**
+     * 启动游戏状态检查
+     */
+    private startGameStatusCheck(): void {
+        // 每秒检查一次游戏状态
+        Laya.timer.loop(1000, this, this.checkCastleStatus);
+        console.log("游戏状态检查已启动");
     }
 
     /**

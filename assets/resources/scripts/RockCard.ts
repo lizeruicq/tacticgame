@@ -1,5 +1,4 @@
 const { regClass, property } = Laya;
-import { CardManager } from "./CardManager";
 import { GameMainManager } from "./GameMainManager";
 import { MonsterManager } from "./MonsterManager";
 
@@ -23,14 +22,13 @@ export class RockCard extends Laya.Script {
     public isPlayerCard: boolean = true; // 是否为玩家卡片
 
     @property(String)
-    public rockPrefabPath: string = "prefabs/Rock.lh"; // Rock预制体路径
+    public rockPrefabPath: string = "prefabs/monster/Rock.lh"; // Rock预制体路径
 
-    // 引用相关组件
-    private cardManager: CardManager = null;
+    // 卡牌状态
+    private isEnabled: boolean = true;
 
-    // 卡片状态
-    private isUsable: boolean = true;
-    private cooldownTime: number = 0;
+    // 回调函数
+    public onCardUsedCallback: ((card: RockCard) => void) | null = null;
     
     onAwake(): void {
         console.log(`${this.cardName} 卡片初始化`);
@@ -53,10 +51,6 @@ export class RockCard extends Laya.Script {
      * 初始化卡片
      */
     private initializeCard(): void {
-        // 查找CardManager
-        const cardBox = this.owner.parent;
-        this.cardManager = cardBox.getComponent(CardManager);
-
         console.log(`${this.cardName} 初始化完成`);
 
         // 验证GameMainManager是否可用
@@ -84,13 +78,19 @@ export class RockCard extends Laya.Script {
      */
     private onCardClick(): void {
         console.log(`点击了 ${this.cardName}`);
-        
+
+        // 检查卡牌是否启用
+        if (!this.isEnabled) {
+            console.log("卡牌当前被禁用（冷却中）");
+            return;
+        }
+
         // 检查是否可以使用
         if (!this.canUseCard()) {
             console.log("卡片当前不可使用");
             return;
         }
-        
+
         // 生成Rock预制体
         this.spawnRockSprite();
 
@@ -102,14 +102,15 @@ export class RockCard extends Laya.Script {
      * 检查卡片是否可以使用
      */
     private canUseCard(): boolean {
-        if (!this.isUsable) {
-            console.log("卡片正在冷却中");
-            return false;
-        }
-
         const gameManager = GameMainManager.getInstance();
         if (!gameManager) {
             console.log("GameMainManager不可用");
+            return false;
+        }
+
+        // 检查游戏是否结束
+        if (gameManager.isGameEnded()) {
+            console.log("游戏已结束，无法使用卡牌");
             return false;
         }
 
@@ -121,8 +122,12 @@ export class RockCard extends Laya.Script {
             return false;
         }
 
-        // 这里可以添加法力值检查等逻辑
-        // if (playerMana < this.manaCost) return false;
+        // 检查魔法值是否足够
+        const currentMana = gameManager.getPlayerMana();
+        if (currentMana < this.manaCost) {
+            console.log(`魔法值不足！需要: ${this.manaCost}，当前: ${currentMana}`);
+            return false;
+        }
 
         return true;
     }
@@ -193,49 +198,36 @@ export class RockCard extends Laya.Script {
      * 卡片使用后的处理
      */
     private onCardUsed(): void {
-        console.log(`${this.cardName} 使用完成`);
         
-        // 开始冷却
-        this.startCooldown();
-        
-        // 通知CardManager
-        if (this.cardManager && this.cardManager.onCardUsed) {
-            this.cardManager.onCardUsed(this);
+
+        // 调用回调函数
+        if (this.onCardUsedCallback) {
+            console.log(`${this.cardName} 使用完成`);
+            this.onCardUsedCallback(this);
         }
-        
+
         // 这里可以添加卡片使用特效
         this.playCardUseEffect();
     }
-    
+
     /**
-     * 开始冷却
+     * 设置卡牌启用状态
      */
-    private startCooldown(): void {
-        this.isUsable = false;
-        this.cooldownTime = 3000; // 3秒冷却
-        
-        // 设置卡片视觉效果（变灰等）
-        this.setCardVisualState(false);
-        
-        // 冷却计时器
-        Laya.timer.once(this.cooldownTime, this, () => {
-            this.isUsable = true;
-            this.setCardVisualState(true);
-            console.log(`${this.cardName} 冷却完成`);
-        });
-    }
-    
-    /**
-     * 设置卡片视觉状态
-     */
-    private setCardVisualState(usable: boolean): void {
+    public setEnabled(enabled: boolean): void {
+        this.isEnabled = enabled;
+
+        // 可以在这里添加视觉效果，比如变灰等
         const sprite = this.owner as Laya.Sprite;
-        if (usable) {
-            sprite.alpha = 1.0;
-        } else {
-            sprite.alpha = 0.6; // 冷却中变暗
+        if (sprite) {
+            sprite.alpha = enabled ? 1.0 : 0.5; // 禁用时变半透明
         }
+
+        console.log(`${this.cardName} ${enabled ? '启用' : '禁用'}`);
     }
+    
+
+    
+
     
     /**
      * 播放卡片使用特效
@@ -262,8 +254,7 @@ export class RockCard extends Laya.Script {
             manaCost: this.manaCost,
             rockLevel: this.rockLevel,
             isPlayerCard: this.isPlayerCard,
-            isUsable: this.isUsable,
-            cooldownTime: this.cooldownTime
+            isEnabled: this.isEnabled
         };
     }
     

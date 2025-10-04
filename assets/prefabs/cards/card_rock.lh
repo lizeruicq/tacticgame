@@ -1,0 +1,24 @@
+{
+  "_$ver": 1,
+  "_$id": "1kk1wzt0",
+  "_$type": "Sprite",
+  "name": "card",
+  "y": 28,
+  "width": 206,
+  "height": 206,
+  "texture": {
+    "_$uuid": "34ca4cf9-7cca-4110-a26f-5b4b2a268bbe",
+    "_$type": "Texture"
+  },
+  "_$comp": [
+    {
+      "_$type": "18f27c7e-6f83-462c-899e-665d4b7b155f",
+      "scriptPath": "resources/scripts/RockCard.ts",
+      "cardName": "Rock卡片",
+      "manaCost": 3,
+      "rockLevel": 1,
+      "isPlayerCard": true,
+      "rockPrefabPath": "prefabs/monster/Rock.lh"
+    }
+  ]
+}

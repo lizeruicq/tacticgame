@@ -13,7 +13,7 @@
     {
       "_$id": "svc6tumn",
       "_$type": "Label",
-      "name": "MoneyText",
+      "name": "monaText",
       "x": 81,
       "y": 1622,
       "width": 174,
@@ -39,7 +39,13 @@
         {
           "_$type": "e04b952a-7429-4b86-b289-20d358baf726",
           "scriptPath": "resources/scripts/GameMainManager.ts",
-          "text": ""
+          "text": "",
+          "playerMaxMana": 10,
+          "playerMana": 5,
+          "manaRegenRate": 1,
+          "manaRegenInterval": 2000,
+          "playerCastleMaxHP": 100,
+          "enemyCastleMaxHP": 100
         }
       ]
     },
@@ -158,32 +164,8 @@
           "scriptPath": "resources/scripts/CardManager.ts",
           "text": "",
           "playerMana": 10,
-          "maxMana": 10
-        }
-      ],
-      "_$child": [
-        {
-          "_$id": "1kk1wzt0",
-          "_$type": "Sprite",
-          "name": "card",
-          "y": 28,
-          "width": 206,
-          "height": 206,
-          "texture": {
-            "_$uuid": "34ca4cf9-7cca-4110-a26f-5b4b2a268bbe",
-            "_$type": "Texture"
-          },
-          "_$comp": [
-            {
-              "_$type": "18f27c7e-6f83-462c-899e-665d4b7b155f",
-              "scriptPath": "resources/scripts/RockCard.ts",
-              "cardName": "Rock卡片",
-              "manaCost": 3,
-              "rockLevel": 1,
-              "isPlayerCard": true,
-              "rockPrefabPath": "prefabs/Rock.lh"
-            }
-          ]
+          "maxMana": 10,
+          "cardCooldown": 2000
         }
       ]
     }
