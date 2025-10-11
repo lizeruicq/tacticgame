@@ -1,0 +1,415 @@
+{
+  "frames": {
+    "0_Fallen_Angels_Walking_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1171,
+        "w": 439,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 240,
+        "y": 176
+      }
+    },
+    "0_Fallen_Angels_Walking_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1753,
+        "w": 440,
+        "h": 579
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 240,
+        "y": 175
+      }
+    },
+    "0_Fallen_Angels_Walking_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 441,
+        "y": 1170,
+        "w": 439,
+        "h": 581
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 240,
+        "y": 173
+      }
+    },
+    "0_Fallen_Angels_Walking_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1321,
+        "y": 0,
+        "w": 438,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 236,
+        "y": 171
+      }
+    },
+    "0_Fallen_Angels_Walking_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 442,
+        "y": 1753,
+        "w": 437,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 170
+      }
+    },
+    "0_Fallen_Angels_Walking_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2198,
+        "y": 0,
+        "w": 435,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 229,
+        "y": 168
+      }
+    },
+    "0_Fallen_Angels_Walking_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1759,
+        "y": 1753,
+        "w": 436,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 223,
+        "y": 167
+      }
+    },
+    "0_Fallen_Angels_Walking_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 882,
+        "y": 586,
+        "w": 437,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 168
+      }
+    },
+    "0_Fallen_Angels_Walking_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 881,
+        "y": 1756,
+        "w": 437,
+        "h": 581
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 170
+      }
+    },
+    "0_Fallen_Angels_Walking_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2197,
+        "y": 1753,
+        "w": 436,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 229,
+        "y": 171
+      }
+    },
+    "0_Fallen_Angels_Walking_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1760,
+        "y": 1168,
+        "w": 436,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 234,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Walking_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1321,
+        "y": 1168,
+        "w": 437,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 238,
+        "y": 174
+      }
+    },
+    "0_Fallen_Angels_Walking_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 441,
+        "y": 0,
+        "w": 439,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 176
+      }
+    },
+    "0_Fallen_Angels_Walking_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 441,
+        "y": 585,
+        "w": 439,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 175
+      }
+    },
+    "0_Fallen_Angels_Walking_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 439,
+        "h": 584
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 173
+      }
+    },
+    "0_Fallen_Angels_Walking_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 586,
+        "w": 439,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 237,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Walking_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 882,
+        "y": 0,
+        "w": 437,
+        "h": 584
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 233,
+        "y": 170
+      }
+    },
+    "0_Fallen_Angels_Walking_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1761,
+        "y": 0,
+        "w": 435,
+        "h": 584
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 230,
+        "y": 169
+      }
+    },
+    "0_Fallen_Angels_Walking_018.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1321,
+        "y": 1753,
+        "w": 436,
+        "h": 584
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 168
+      }
+    },
+    "0_Fallen_Angels_Walking_019.png": {
+      "frame": {
+        "idx": 0,
+        "x": 882,
+        "y": 1171,
+        "w": 437,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 169
+      }
+    },
+    "0_Fallen_Angels_Walking_020.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1321,
+        "y": 584,
+        "w": 438,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 220,
+        "y": 170
+      }
+    },
+    "0_Fallen_Angels_Walking_021.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2200,
+        "y": 585,
+        "w": 435,
+        "h": 581
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Walking_022.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2198,
+        "y": 1168,
+        "w": 436,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 173
+      }
+    },
+    "0_Fallen_Angels_Walking_023.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1761,
+        "y": 586,
+        "w": 437,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 236,
+        "y": 174
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

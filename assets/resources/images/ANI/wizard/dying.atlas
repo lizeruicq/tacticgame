@@ -1,0 +1,262 @@
+{
+  "frames": {
+    "0_Fallen_Angels_Dying_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1164,
+        "y": 1603,
+        "w": 436,
+        "h": 574
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 177
+      }
+    },
+    "0_Fallen_Angels_Dying_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1749,
+        "y": 1455,
+        "w": 439,
+        "h": 575
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 245,
+        "y": 154
+      }
+    },
+    "0_Fallen_Angels_Dying_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1749,
+        "y": 878,
+        "w": 443,
+        "h": 575
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 266,
+        "y": 134
+      }
+    },
+    "0_Fallen_Angels_Dying_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1163,
+        "y": 589,
+        "w": 447,
+        "h": 573
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 288,
+        "y": 116
+      }
+    },
+    "0_Fallen_Angels_Dying_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1065,
+        "y": 0,
+        "w": 437,
+        "h": 587
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 233,
+        "y": 87
+      }
+    },
+    "0_Fallen_Angels_Dying_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 562,
+        "y": 520,
+        "w": 460,
+        "h": 576
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 153,
+        "y": 85
+      }
+    },
+    "0_Fallen_Angels_Dying_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 521,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 99,
+        "y": 113
+      }
+    },
+    "0_Fallen_Angels_Dying_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 523,
+        "y": 0,
+        "w": 540,
+        "h": 518
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 73,
+        "y": 185
+      }
+    },
+    "0_Fallen_Angels_Dying_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 540,
+        "w": 560,
+        "h": 488
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 54,
+        "y": 266
+      }
+    },
+    "0_Fallen_Angels_Dying_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1098,
+        "w": 577,
+        "h": 450
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 43,
+        "y": 351
+      }
+    },
+    "0_Fallen_Angels_Dying_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 579,
+        "y": 1098,
+        "w": 582,
+        "h": 443
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 387
+      }
+    },
+    "0_Fallen_Angels_Dying_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 579,
+        "y": 1543,
+        "w": 583,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 404
+      }
+    },
+    "0_Fallen_Angels_Dying_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1504,
+        "y": 0,
+        "w": 583,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 404
+      }
+    },
+    "0_Fallen_Angels_Dying_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1164,
+        "y": 1164,
+        "w": 583,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 404
+      }
+    },
+    "0_Fallen_Angels_Dying_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1612,
+        "y": 439,
+        "w": 583,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 404
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

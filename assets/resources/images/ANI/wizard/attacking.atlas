@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "0_Fallen_Angels_Slashing_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1765,
+        "y": 1139,
+        "w": 443,
+        "h": 583
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 194,
+        "y": 168
+      }
+    },
+    "0_Fallen_Angels_Slashing_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1765,
+        "y": 1724,
+        "w": 443,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 169
+      }
+    },
+    "0_Fallen_Angels_Slashing_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 623,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 240,
+        "y": 170
+      }
+    },
+    "0_Fallen_Angels_Slashing_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 625,
+        "y": 0,
+        "w": 583,
+        "h": 574
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 178
+      }
+    },
+    "0_Fallen_Angels_Slashing_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1210,
+        "y": 0,
+        "w": 577,
+        "h": 562
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 286,
+        "y": 190
+      }
+    },
+    "0_Fallen_Angels_Slashing_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1737,
+        "w": 578,
+        "h": 561
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 285,
+        "y": 190
+      }
+    },
+    "0_Fallen_Angels_Slashing_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1184,
+        "y": 1165,
+        "w": 579,
+        "h": 561
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 284,
+        "y": 190
+      }
+    },
+    "0_Fallen_Angels_Slashing_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1199,
+        "y": 576,
+        "w": 579,
+        "h": 561
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 284,
+        "y": 190
+      }
+    },
+    "0_Fallen_Angels_Slashing_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1170,
+        "w": 575,
+        "h": 565
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 284,
+        "y": 186
+      }
+    },
+    "0_Fallen_Angels_Slashing_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 606,
+        "y": 1165,
+        "w": 576,
+        "h": 573
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 178
+      }
+    },
+    "0_Fallen_Angels_Slashing_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 606,
+        "y": 584,
+        "w": 591,
+        "h": 579
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 252,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Slashing_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 584,
+        "w": 604,
+        "h": 584
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 230,
+        "y": 168
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

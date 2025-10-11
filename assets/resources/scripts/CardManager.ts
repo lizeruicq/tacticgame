@@ -1,5 +1,5 @@
 const { regClass, property } = Laya;
-import { RockCard } from "./RockCard";
+import { BaseMonsterCard } from "./BaseMonsterCard";
 import { CardConfig } from "./CardConfig";
 import { GameMainManager } from "./GameMainManager";
 
@@ -146,47 +146,24 @@ export class CardManager extends Laya.Script {
             cardSprite.name = `${cardType}_Card_${Date.now()}`;
             console.log(`${cardType} 精灵创建成功，名称: ${cardSprite.name}`);
 
-            // 查找或添加对应的卡牌组件
-            let cardComponent = null;
-            if (cardConfig.componentClass === "RockCard") {
-                // 首先检查预制体中是否已经有RockCard组件
-                cardComponent = cardSprite.getComponent(RockCard);
-                // if (cardComponent) {
-                //     console.log(`${cardType} 预制体中已包含组件，使用现有组件`);
-                // } else {
-                //     // 如果没有，尝试添加组件
-                //     try {
-                //         cardComponent = cardSprite.addComponent(RockCard);
-                //         console.log(`${cardType} 组件动态添加成功`);
-                //     } catch (error) {
-                //         console.error(`${cardType} 组件添加失败:`, error);
-                //         console.log("尝试查找子节点中的组件...");
-
-                //         // 尝试在子节点中查找组件
-                //         for (let i = 0; i < cardSprite.numChildren; i++) {
-                //             const child = cardSprite.getChildAt(i);
-                //             const childComponent = child.getComponent(RockCard);
-                //             if (childComponent) {
-                //                 cardComponent = childComponent;
-                //                 console.log(`在子节点中找到 ${cardType} 组件`);
-                //                 break;
-                //             }
-                //         }
-
-                //         if (!cardComponent) {
-                //             console.error(`无法获取 ${cardType} 组件`);
-                //             return;
-                //         }
-                //     }
-                // }
-
-                if (cardComponent) {
-                    cardComponent.cardName = `${cardType}卡片`;
-                    cardComponent.rockLevel = cardConfig.level;
-                    cardComponent.isPlayerCard = true;
-                    cardComponent.manaCost = cardConfig.manaCost;
-                    console.log(`${cardType} 组件属性设置完成`);
+            // 获取卡牌组件（预制体已挂载脚本）
+            // 遍历所有组件，找到继承自BaseMonsterCard的组件
+            let cardComponent: BaseMonsterCard | null = null;
+            const components = cardSprite.components;
+            for (let i = 0; i < components.length; i++) {
+                if (components[i] instanceof BaseMonsterCard) {
+                    cardComponent = components[i] as BaseMonsterCard;
+                    break;
                 }
+            }
+
+            if (cardComponent) {
+                // 设置基础属性
+                cardComponent.cardName = `${cardType}卡片`;
+                cardComponent.isPlayerCard = true;
+                cardComponent.manaCost = cardConfig.manaCost;
+                cardComponent.monsterLevel = cardConfig.level;
+                console.log(`${cardType} 组件属性设置完成`);
             }
 
             if (cardComponent) {

@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "Wraith_01_Idle_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 577,
+        "w": 193,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 151,
+        "y": 41
+      }
+    },
+    "Wraith_01_Idle_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 288,
+        "w": 194,
+        "h": 287
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 152,
+        "y": 40
+      }
+    },
+    "Wraith_01_Idle_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 196,
+        "y": 573,
+        "w": 194,
+        "h": 287
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 152,
+        "y": 39
+      }
+    },
+    "Wraith_01_Idle_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 392,
+        "y": 574,
+        "w": 194,
+        "h": 287
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 151,
+        "y": 38
+      }
+    },
+    "Wraith_01_Idle_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 786,
+        "y": 573,
+        "w": 194,
+        "h": 286
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 149,
+        "y": 38
+      }
+    },
+    "Wraith_01_Idle_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 396,
+        "y": 286,
+        "w": 195,
+        "h": 286
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 147,
+        "y": 37
+      }
+    },
+    "Wraith_01_Idle_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 196,
+        "h": 286
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 145,
+        "y": 36
+      }
+    },
+    "Wraith_01_Idle_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 588,
+        "y": 574,
+        "w": 196,
+        "h": 284
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 143,
+        "y": 37
+      }
+    },
+    "Wraith_01_Idle_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 198,
+        "y": 0,
+        "w": 197,
+        "h": 284
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 142,
+        "y": 38
+      }
+    },
+    "Wraith_01_Idle_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 397,
+        "y": 0,
+        "w": 196,
+        "h": 284
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 144,
+        "y": 39
+      }
+    },
+    "Wraith_01_Idle_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 198,
+        "y": 286,
+        "w": 196,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 146,
+        "y": 39
+      }
+    },
+    "Wraith_01_Idle_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 593,
+        "y": 286,
+        "w": 195,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 148,
+        "y": 40
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

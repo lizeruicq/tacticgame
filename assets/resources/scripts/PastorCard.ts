@@ -2,21 +2,21 @@ const { regClass, property } = Laya;
 import { BaseMonsterCard } from "./BaseMonsterCard";
 
 /**
- * Rock卡片脚本
- * 继承自BaseMonsterCard，实现Rock特有的属性和行为
+ * Pastor卡片脚本
+ * 继承自BaseMonsterCard，实现Pastor特有的属性和行为
  */
 @regClass()
-export class RockCard extends BaseMonsterCard {
+export class PastorCard extends BaseMonsterCard {
 
     @property(Number)
-    public rockLevel: number = 1; // Rock等级
+    public pastorLevel: number = 1; // Pastor等级
 
     constructor() {
         super();
-        // 设置Rock卡片的默认属性
-        this.cardName = "Rock卡片";
-        this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Rock.lh";
+        // 设置Pastor卡片的默认属性
+        this.cardName = "Pastor卡片";
+        this.manaCost = 2; // 治疗型单位，法力消耗较低
+        this.monsterPrefabPath = "prefabs/monster/Pastor.lh";
     }
 
     // ========== 实现抽象方法 ==========
@@ -38,34 +38,34 @@ export class RockCard extends BaseMonsterCard {
      * 获取怪物类型名称（实现父类抽象方法）
      */
     protected getMonsterType(): string {
-        return "Rock";
+        return "Pastor";
     }
 
-    // ========== Rock特有方法 ==========
+    // ========== Pastor特有方法 ==========
 
     /**
-     * 设置Rock等级
+     * 设置Pastor等级
      */
-    public setRockLevel(level: number): void {
-        this.rockLevel = level;
+    public setPastorLevel(level: number): void {
+        this.pastorLevel = level;
         this.monsterLevel = level; // 同步到父类属性
     }
 
     /**
-     * 获取Rock等级
+     * 获取Pastor等级
      */
-    public getRockLevel(): number {
-        return this.rockLevel;
+    public getPastorLevel(): number {
+        return this.pastorLevel;
     }
 
     /**
-     * 重写获取卡片信息，添加Rock特有信息
+     * 重写获取卡片信息，添加Pastor特有信息
      */
     public getCardInfo(): any {
         const baseInfo = super.getCardInfo();
         return {
             ...baseInfo,
-            rockLevel: this.rockLevel
+            pastorLevel: this.pastorLevel
         };
     }
 

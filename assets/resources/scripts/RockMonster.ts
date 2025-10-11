@@ -114,20 +114,13 @@ export class RockMonster extends BaseMonster {
     // }
     
     /**
-     * 重写死亡事件
+     * 重写怪物特有的死亡处理
      */
-    protected onDeath(): void {
-        super.onDeath();
-        
+    protected onMonsterSpecificDeath(): void {
         console.log("Rock死亡，可能掉落石头资源");
-        
+
         // Rock死亡时的特殊效果
         this.createDeathEffect();
-        
-        // 监听死亡动画完成
-        if (this.rockAnimationManager) {
-            this.owner.once("ROCK_DEATH_COMPLETE", this, this.onDeathAnimationComplete);
-        }
     }
     
     // ========== Rock特有行为 ==========
@@ -168,34 +161,7 @@ export class RockMonster extends BaseMonster {
         // });
     }
     
-    /**
-     * 死亡动画完成处理
-     */
-    private onDeathAnimationComplete(): void {
-        console.log("Rock死亡动画播放完成");
-        
-        // 设置为完全死亡状态
-        this.changeState(MonsterState.DEAD);
-        
-        // 可以在这里处理尸体移除、资源掉落等
-        Laya.timer.once(1000, this, () => {
-            this.removeCorpse();
-        });
-    }
-    
-    /**
-     * 移除尸体
-     */
-    private removeCorpse(): void {
-        console.log("Rock尸体消失");
-        
-        // 触发尸体移除事件
-        this.owner.event("ROCK_CORPSE_REMOVED", { monster: this });
-        
-        // 可以选择销毁节点或隐藏
-        this.owner.removeSelf();
-        // (this.owner as Laya.Sprite).visible = false;
-    }
+
     
     // ========== 公共接口 ==========
     
@@ -224,6 +190,13 @@ export class RockMonster extends BaseMonster {
      */
     public getRockLevel(): number {
         return this.rockLevel;
+    }
+
+    /**
+     * 重写基类的setLevel方法
+     */
+    public setLevel(level: number): void {
+        this.setRockLevel(level);
     }
     
     /**

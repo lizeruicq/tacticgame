@@ -1,0 +1,313 @@
+{
+  "frames": {
+    "0_Fallen_Angels_Idle_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1768,
+        "y": 580,
+        "w": 436,
+        "h": 574
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 177
+      }
+    },
+    "0_Fallen_Angels_Idle_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1770,
+        "y": 0,
+        "w": 435,
+        "h": 575
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 225,
+        "y": 176
+      }
+    },
+    "0_Fallen_Angels_Idle_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1315,
+        "y": 1742,
+        "w": 435,
+        "h": 576
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 226,
+        "y": 175
+      }
+    },
+    "0_Fallen_Angels_Idle_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 438,
+        "y": 1741,
+        "w": 436,
+        "h": 577
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 226,
+        "y": 174
+      }
+    },
+    "0_Fallen_Angels_Idle_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1743,
+        "w": 435,
+        "h": 577
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 174
+      }
+    },
+    "0_Fallen_Angels_Idle_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1163,
+        "w": 436,
+        "h": 578
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 221,
+        "y": 173
+      }
+    },
+    "0_Fallen_Angels_Idle_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1330,
+        "y": 0,
+        "w": 438,
+        "h": 578
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 217,
+        "y": 173
+      }
+    },
+    "0_Fallen_Angels_Idle_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1328,
+        "y": 582,
+        "w": 438,
+        "h": 579
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 214,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Idle_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 887,
+        "y": 582,
+        "w": 439,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 171
+      }
+    },
+    "0_Fallen_Angels_Idle_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 441,
+        "h": 581
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 207,
+        "y": 170
+      }
+    },
+    "0_Fallen_Angels_Idle_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 887,
+        "y": 0,
+        "w": 441,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 207,
+        "y": 171
+      }
+    },
+    "0_Fallen_Angels_Idle_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 443,
+        "y": 0,
+        "w": 442,
+        "h": 579
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Idle_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 443,
+        "y": 581,
+        "w": 442,
+        "h": 579
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 172
+      }
+    },
+    "0_Fallen_Angels_Idle_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 583,
+        "w": 441,
+        "h": 578
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 173
+      }
+    },
+    "0_Fallen_Angels_Idle_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 443,
+        "y": 1162,
+        "w": 440,
+        "h": 577
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 174
+      }
+    },
+    "0_Fallen_Angels_Idle_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1328,
+        "y": 1163,
+        "w": 439,
+        "h": 577
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 214,
+        "y": 174
+      }
+    },
+    "0_Fallen_Angels_Idle_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 885,
+        "y": 1164,
+        "w": 438,
+        "h": 576
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 217,
+        "y": 175
+      }
+    },
+    "0_Fallen_Angels_Idle_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 876,
+        "y": 1742,
+        "w": 437,
+        "h": 575
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 220,
+        "y": 176
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

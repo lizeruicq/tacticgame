@@ -1,0 +1,26 @@
+{
+  "_$ver": 1,
+  "_$id": "tlv27gtr",
+  "_$type": "Sprite",
+  "name": "card_pastor",
+  "x": 514,
+  "y": 28,
+  "width": 206,
+  "height": 206,
+  "texture": {
+    "_$uuid": "0afc99f8-8492-443e-b2ff-ced98cac35e7",
+    "_$type": "Texture"
+  },
+  "_$comp": [
+    {
+      "_$type": "c3d1ffb8-aecd-45a3-9476-db8d7e258210",
+      "scriptPath": "resources/scripts/PastorCard.ts",
+      "cardName": "Pastor卡片",
+      "manaCost": 2,
+      "monsterLevel": 1,
+      "isPlayerCard": true,
+      "monsterPrefabPath": "prefabs/monster/Pastor.lh",
+      "pastorLevel": 1
+    }
+  ]
+}

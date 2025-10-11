@@ -20,6 +20,7 @@ export enum MonsterState {
     IDLE = "idle",           // 待机
     MOVING = "moving",       // 移动中
     ATTACKING = "attacking", // 攻击中
+    CASTING = "casting",     // 施法中
     DYING = "dying",         // 死亡中
     DEAD = "dead"            // 已死亡
 }
@@ -52,10 +53,11 @@ export abstract class BaseMonster extends Laya.Script {
     protected currentTarget: BaseMonster | Castle | null = null;       // 当前攻击目标
     
     // ========== 内部状态 ==========
-    
+
     protected lastAttackTime: number = 0;         // 上次攻击时间
     protected isDead: boolean = false;            // 是否已死亡
     protected isInitialized: boolean = false;     // 是否已初始化
+    protected corpseRemovalDelay: number = 3000;  // 尸体消失延迟时间（毫秒）
     
     // ========== 组件引用 ==========
     
@@ -147,7 +149,20 @@ export abstract class BaseMonster extends Laya.Script {
             });
         }
     }
-    
+
+    /**
+     * 从MonsterManager中注销
+     */
+    protected unregisterFromManager(): void {
+        const monsterManager = MonsterManager.getInstance();
+        if (monsterManager) {
+            monsterManager.unregisterMonster(this);
+            console.log(`${this.constructor.name} 已从MonsterManager注销`);
+        } else {
+            console.error("MonsterManager实例不存在，无法注销怪物");
+        }
+    }
+
     /**
      * 开始行为逻辑
      */
@@ -230,6 +245,11 @@ export abstract class BaseMonster extends Laya.Script {
             case MonsterState.ATTACKING:
                 if (this.animationManager.startAttack) {
                     this.animationManager.startAttack();
+                }
+                break;
+            case MonsterState.CASTING:
+                if (this.animationManager.startCasting) {
+                    this.animationManager.startCasting();
                 }
                 break;
             case MonsterState.DYING:
@@ -404,8 +424,46 @@ export abstract class BaseMonster extends Laya.Script {
      * 死亡事件
      */
     protected onDeath(): void {
-        // 子类可以重写此方法来处理死亡逻辑
+        // 触发死亡事件
         this.owner.event("MONSTER_DEATH", { monster: this });
+
+        // 子类特有死亡处理
+        this.onMonsterSpecificDeath();
+
+        // 监听死亡动画完成事件
+        this.owner.once("DEATH_ANIMATION_COMPLETE", this, this.onDeathAnimationComplete);
+    }
+
+    /**
+     * 死亡动画完成处理
+     */
+    protected onDeathAnimationComplete(): void {
+        console.log(`${this.constructor.name} 死亡动画播放完成`);
+
+        // 延迟移除尸体
+        Laya.timer.once(this.corpseRemovalDelay, this, this.removeCorpse);
+    }
+
+    /**
+     * 移除尸体
+     */
+    protected removeCorpse(): void {
+        console.log(`${this.constructor.name} 尸体消失`);
+
+        // 触发尸体移除事件
+        this.owner.event("MONSTER_CORPSE_REMOVED", { monster: this });
+
+        // 从MonsterManager中注销并销毁
+        this.unregisterFromManager();
+        Laya.timer.clearAll(this);
+        this.owner.destroy();
+    }
+
+    /**
+     * 怪物特有的死亡处理（子类重写）
+     */
+    protected onMonsterSpecificDeath(): void {
+        // 子类可以重写此方法来处理特殊的死亡逻辑
     }
 
 
@@ -654,6 +712,20 @@ export abstract class BaseMonster extends Laya.Script {
     protected onHealed(amount: number): void {
         // 子类可以重写此方法来处理治疗逻辑
         this.owner.event("MONSTER_HEALED", { monster: this, amount: amount });
+    }
+
+    // ========== 通用接口方法 ==========
+
+    /**
+     * 设置怪物等级（通用方法，子类可以重写）
+     */
+    public setLevel(level: number): void {
+        // 默认实现：限制等级范围
+        if (level < 1) level = 1;
+        if (level > 10) level = 10;
+
+        // 子类应该重写此方法来实现具体的等级设置逻辑
+        console.log(`${this.constructor.name} 设置等级: ${level}`);
     }
 
     // ========== 抽象方法（子类必须实现） ==========

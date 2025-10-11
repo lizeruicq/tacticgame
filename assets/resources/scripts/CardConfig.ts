@@ -36,6 +36,22 @@ export class CardConfig {
             componentClass: "RockCard",
             manaCost: 3,
             level: 1
+        },
+
+        "Wizard": {
+            type: "Wizard",
+            prefabPath: "prefabs/cards/card_wizard.lh",
+            componentClass: "WizardCard",
+            manaCost: 4,
+            level: 1
+        },
+
+        "Pastor": {
+            type: "Pastor",
+            prefabPath: "prefabs/cards/card_pastor.lh",
+            componentClass: "PastorCard",
+            manaCost: 2,
+            level: 1
         }
         // 可以在这里添加更多卡牌类型
         // "Warrior": {
@@ -53,15 +69,15 @@ export class CardConfig {
     public static readonly LEVEL_CONFIGS: ILevelCardConfig[] = [
         {
             level: 1,
-            playerCards: ["Rock", "Rock"],  // 第一关：两个Rock卡牌
-            enemyCards: ["Rock", "Rock"],
+            playerCards: ["Rock", "Wizard", "Pastor"],  // 第一关：三种卡牌
+            enemyCards: ["Rock", "Wizard"],
             maxCards: 4,                    // 最大4张卡牌
             cooldownTime: 2000             // 2秒冷却
         },
         {
             level: 2,
-            playerCards: ["Rock", "Rock", "Rock"], // 第二关：三个Rock卡牌
-            enemyCards: ["Rock", "Rock", "Rock"],
+            playerCards: ["Rock", "Wizard", "Pastor"], // 第二关：三种卡牌
+            enemyCards: ["Rock", "Wizard", "Pastor"],
             maxCards: 4,
             cooldownTime: 1800             // 1.8秒冷却
         }

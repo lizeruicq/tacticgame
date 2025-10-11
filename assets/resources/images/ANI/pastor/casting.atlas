@@ -1,0 +1,313 @@
+{
+  "frames": {
+    "Wraith_01_Casting Spells_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 199,
+        "y": 1084,
+        "w": 193,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 151,
+        "y": 41
+      }
+    },
+    "Wraith_01_Casting Spells_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 695,
+        "y": 818,
+        "w": 193,
+        "h": 290
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 153,
+        "y": 42
+      }
+    },
+    "Wraith_01_Casting Spells_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 813,
+        "w": 197,
+        "h": 287
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 143,
+        "y": 45
+      }
+    },
+    "Wraith_01_Casting Spells_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 978,
+        "y": 542,
+        "w": 220,
+        "h": 277
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 121,
+        "y": 51
+      }
+    },
+    "Wraith_01_Casting Spells_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 506,
+        "y": 542,
+        "w": 242,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 101,
+        "y": 54
+      }
+    },
+    "Wraith_01_Casting Spells_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 508,
+        "y": 0,
+        "w": 251,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 91,
+        "y": 53
+      }
+    },
+    "Wraith_01_Casting Spells_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 253,
+        "y": 542,
+        "w": 251,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 91,
+        "y": 53
+      }
+    },
+    "Wraith_01_Casting Spells_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 543,
+        "w": 251,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 90,
+        "y": 53
+      }
+    },
+    "Wraith_01_Casting Spells_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 254,
+        "y": 271,
+        "w": 251,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 90,
+        "y": 52
+      }
+    },
+    "Wraith_01_Casting Spells_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 272,
+        "w": 251,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 90,
+        "y": 52
+      }
+    },
+    "Wraith_01_Casting Spells_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 254,
+        "y": 0,
+        "w": 252,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 52
+      }
+    },
+    "Wraith_01_Casting Spells_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 507,
+        "y": 271,
+        "w": 251,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 52
+      }
+    },
+    "Wraith_01_Casting Spells_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 252,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 51
+      }
+    },
+    "Wraith_01_Casting Spells_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 760,
+        "y": 270,
+        "w": 246,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 96,
+        "y": 52
+      }
+    },
+    "Wraith_01_Casting Spells_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 253,
+        "y": 812,
+        "w": 238,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 105,
+        "y": 53
+      }
+    },
+    "Wraith_01_Casting Spells_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 750,
+        "y": 542,
+        "w": 226,
+        "h": 274
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 116,
+        "y": 50
+      }
+    },
+    "Wraith_01_Casting Spells_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1008,
+        "y": 0,
+        "w": 214,
+        "h": 278
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 47
+      }
+    },
+    "Wraith_01_Casting Spells_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 493,
+        "y": 813,
+        "w": 200,
+        "h": 282
+      },
+      "sourceSize": {
+        "w": 520,
+        "h": 420
+      },
+      "spriteSourceSize": {
+        "x": 137,
+        "y": 44
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

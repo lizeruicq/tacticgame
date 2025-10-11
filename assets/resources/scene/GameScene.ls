@@ -43,9 +43,7 @@
           "playerMaxMana": 10,
           "playerMana": 5,
           "manaRegenRate": 1,
-          "manaRegenInterval": 2000,
-          "playerCastleMaxHP": 100,
-          "enemyCastleMaxHP": 100
+          "manaRegenInterval": 2000
         }
       ]
     },
@@ -95,19 +93,6 @@
             {
               "_$type": "DrawRectCmd",
               "fillColor": "rgba(10,10,62,0.3333333333333333)"
-            }
-          ],
-          "_$child": [
-            {
-              "_$id": "zfk8oi3r",
-              "_$prefab": "a375d387-c81f-46ea-8b81-e71a9d23f831",
-              "name": "Rock",
-              "active": false,
-              "x": 194,
-              "y": 70,
-              "anchorX": 0.5,
-              "anchorY": 0.5,
-              "visible": false
             }
           ]
         }
@@ -166,6 +151,35 @@
           "playerMana": 10,
           "maxMana": 10,
           "cardCooldown": 2000
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "pdl3eejj",
+          "_$prefab": "a6d568df-b152-4b1f-81dd-93c16814182c",
+          "name": "card_wizard",
+          "active": true,
+          "x": 0,
+          "y": 28,
+          "visible": true
+        },
+        {
+          "_$id": "xa1c50kw",
+          "_$prefab": "bfce3c49-3edb-492e-aab3-cd0198586a90",
+          "name": "card_rock",
+          "active": true,
+          "x": 257,
+          "y": 28,
+          "visible": true
+        },
+        {
+          "_$id": "9fzobz9v",
+          "_$prefab": "21486761-43d5-4111-8daa-dd9666eafb6a",
+          "name": "card_pastor",
+          "active": true,
+          "x": 514,
+          "y": 28,
+          "visible": true
         }
       ]
     }

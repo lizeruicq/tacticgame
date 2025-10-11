@@ -1,0 +1,26 @@
+{
+  "_$ver": 1,
+  "_$id": "decgh11n",
+  "_$type": "Sprite",
+  "name": "card_wizard",
+  "x": 257,
+  "y": 28,
+  "width": 206,
+  "height": 206,
+  "texture": {
+    "_$uuid": "e3345a6f-9289-42f9-bd86-46036252b7f6",
+    "_$type": "Texture"
+  },
+  "_$comp": [
+    {
+      "_$type": "fc5b77e4-2e96-43cd-a866-e3238821eb16",
+      "scriptPath": "resources/scripts/WizardCard.ts",
+      "cardName": "Wizard卡片",
+      "manaCost": 4,
+      "monsterLevel": 1,
+      "isPlayerCard": true,
+      "monsterPrefabPath": "prefabs/monster/Wizard.lh",
+      "wizardLevel": 1
+    }
+  ]
+}

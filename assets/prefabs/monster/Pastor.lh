@@ -1,0 +1,56 @@
+{
+  "_$ver": 1,
+  "_$id": "lqch6bi3",
+  "_$type": "Sprite",
+  "name": "Pastor",
+  "x": 270,
+  "y": 1563,
+  "width": 500,
+  "height": 500,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "792702cd-90c8-4363-b03f-6ee560e433ec",
+      "scriptPath": "resources/scripts/PastorMonster.ts",
+      "isPlayerCamp": 1,
+      "pastorLevel": 1
+    },
+    {
+      "_$type": "54c96b87-bc88-45ee-a202-2cb1633783d9",
+      "scriptPath": "resources/scripts/PastorAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "ktidwf5r"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "ktidwf5r",
+      "_$type": "Animation",
+      "name": "wizardAnimation",
+      "y": 22,
+      "width": 481,
+      "height": 389,
+      "scaleX": 1.2,
+      "scaleY": 1.2,
+      "source": "res://bd589c06-cf2c-4d74-9548-7b8cb79efa62",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "0pzntf9v",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 100,
+      "y": 10,
+      "width": 268,
+      "height": 26,
+      "centerX": -16,
+      "skin": "res://ae3de75e-ee9f-478d-9f8b-ede75a4fc296",
+      "value": 1
+    }
+  ]
+}

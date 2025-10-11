@@ -411,22 +411,28 @@ export class MonsterManager extends Laya.Script {
      * 获取预制体路径
      */
     private getPrefabPath(monsterType: string): string {
-        const paths: { [key: string]: string } = { "Rock": "prefabs/monster/Rock.lh" };
+        const paths: { [key: string]: string } = {
+            "Rock": "prefabs/monster/Rock.lh",
+            "Wizard": "prefabs/monster/Wizard.lh",
+            "Pastor": "prefabs/monster/Pastor.lh"
+            // 未来可以在这里添加更多怪物类型
+        };
         return paths[monsterType];
     }
 
     /**
-     * 配置怪物属性
+     * 配置怪物属性（通用方法，适用于所有怪物类型）
      */
     private configureMonster(sprite: Laya.Sprite, type: string, isPlayerCamp: boolean, level: number): void {
-        if (type === "Rock") {
-            const components = (sprite as any)._components || [];
-            for (const component of components) {
-                if (component.constructor.name === "RockMonster") {
-                    component.isPlayerCamp = isPlayerCamp;
-                    component.setRockLevel(level);
-                    break;
-                }
+        // 遍历所有组件，找到BaseMonster类型的组件
+        const components = (sprite as any)._components || [];
+        for (const component of components) {
+            // 检查是否是BaseMonster的实例（包括所有子类）
+            if (component && typeof component.setLevel === 'function' && typeof component.isPlayerCamp !== 'undefined') {
+                component.isPlayerCamp = isPlayerCamp;
+                component.setLevel(level);
+                console.log(`配置${type}怪物: 阵营=${isPlayerCamp ? '玩家' : '敌方'}, 等级=${level}`);
+                break;
             }
         }
     }

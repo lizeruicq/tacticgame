@@ -41,13 +41,26 @@ export abstract class BaseAnimationManager extends Laya.Script {
     
     // 默认状态名称
     protected defaultState: string = "idle";
-    
+
     // 死亡状态名称
     protected deathState: string = "dying";
+
+    // 施法状态名称
+    protected castingState: string = "casting";
+
+    // 是否正在施法
+    protected isCasting: boolean = false;
     
     // 图集原始尺寸（子类需要设置）
     protected atlasOriginalWidth: number = 720;
     protected atlasOriginalHeight: number = 480;
+
+    // 统一目标显示尺寸（所有怪物都会缩放到这个尺寸）
+    protected static readonly UNIFIED_DISPLAY_WIDTH: number = 500;
+    protected static readonly UNIFIED_DISPLAY_HEIGHT: number = 500;
+
+    // 是否启用统一尺寸模式（可以通过这个开关控制）
+    protected static readonly ENABLE_UNIFIED_SIZE: boolean = true;
     
     onAwake(): void {
         console.log(`=== ${this.constructor.name} 初始化 ===`);
@@ -97,20 +110,32 @@ export abstract class BaseAnimationManager extends Laya.Script {
      * 智能适配图集尺寸
      */
     protected setupAtlasAdaptation(): void {
-        const sprite = this.owner as Laya.Sprite;
-        const targetWidth = sprite.width;
-        const targetHeight = sprite.height;
-        
+        let targetWidth: number;
+        let targetHeight: number;
+
+        if (BaseAnimationManager.ENABLE_UNIFIED_SIZE) {
+            // 统一尺寸模式：所有怪物都缩放到相同大小
+            targetWidth = BaseAnimationManager.UNIFIED_DISPLAY_WIDTH;
+            targetHeight = BaseAnimationManager.UNIFIED_DISPLAY_HEIGHT;
+            console.log(`使用统一尺寸模式: ${targetWidth}x${targetHeight}`);
+        } else {
+            // 原始模式：根据精灵容器尺寸适配
+            const sprite = this.owner as Laya.Sprite;
+            targetWidth = sprite.width;
+            targetHeight = sprite.height;
+            console.log(`使用容器适配模式: ${targetWidth}x${targetHeight}`);
+        }
+
         // 计算合适的缩放比例
         const scaleX = targetWidth / this.atlasOriginalWidth;
         const scaleY = targetHeight / this.atlasOriginalHeight;
-        
+
         // 取较小的缩放值以保持比例
         const baseScale = Math.min(scaleX, scaleY);
-        
+
         // 存储基础缩放值
         this.baseScale = baseScale;
-        
+
         console.log(`图集适配: 原始尺寸(${this.atlasOriginalWidth}x${this.atlasOriginalHeight}) → 目标尺寸(${targetWidth}x${targetHeight})`);
         console.log(`计算缩放: scaleX=${scaleX.toFixed(3)}, scaleY=${scaleY.toFixed(3)}, 基础缩放=${baseScale.toFixed(3)}`);
     }
@@ -149,6 +174,9 @@ export abstract class BaseAnimationManager extends Laya.Script {
         
         // 设置死亡标记
         this.isDying = (newState === this.deathState);
+
+        // 设置施法标记
+        this.isCasting = (newState === this.castingState);
     }
     
     /**
@@ -230,6 +258,13 @@ export abstract class BaseAnimationManager extends Laya.Script {
     public getIsDying(): boolean {
         return this.isDying;
     }
+
+    /**
+     * 检查是否正在施法
+     */
+    public getIsCasting(): boolean {
+        return this.isCasting;
+    }
     
     /**
      * 重置动画变换
@@ -237,6 +272,25 @@ export abstract class BaseAnimationManager extends Laya.Script {
     public resetAnimationTransform(): void {
         this.setupAnimationTransform();
         console.log("重置动画变换");
+    }
+
+    /**
+     * 设置统一显示尺寸（静态方法，影响所有怪物）
+     */
+    public static setUnifiedDisplaySize(width: number, height: number): void {
+        // 注意：这需要修改为可配置的，这里只是示例
+        console.log(`设置统一显示尺寸: ${width}x${height}`);
+        console.log("注意：需要重新创建怪物才能生效");
+    }
+
+    /**
+     * 获取当前统一显示尺寸
+     */
+    public static getUnifiedDisplaySize(): { width: number, height: number } {
+        return {
+            width: BaseAnimationManager.UNIFIED_DISPLAY_WIDTH,
+            height: BaseAnimationManager.UNIFIED_DISPLAY_HEIGHT
+        };
     }
     
     onDestroy(): void {

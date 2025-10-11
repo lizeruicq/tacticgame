@@ -1,0 +1,55 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Wizard",
+  "x": 629,
+  "y": -1,
+  "width": 500,
+  "height": 500,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "f3aef8ce-5620-4e22-905b-cf609d2db2c4",
+      "scriptPath": "resources/scripts/WizardMonster.ts",
+      "isPlayerCamp": 1,
+      "wizardLevel": 1
+    },
+    {
+      "_$type": "318f778a-666d-456a-ab19-fd6ce477cef6",
+      "scriptPath": "resources/scripts/WizardAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "wizardAnimation",
+      "width": 896,
+      "height": 864,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "source": "res://c7e08837-1595-4df9-a01a-8c3bedfa8434",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 100,
+      "y": 10,
+      "width": 268,
+      "height": 26,
+      "centerX": -16,
+      "skin": "res://ae3de75e-ee9f-478d-9f8b-ede75a4fc296",
+      "value": 1
+    }
+  ]
+}
