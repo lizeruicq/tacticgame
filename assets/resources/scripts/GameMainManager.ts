@@ -2,6 +2,8 @@ const { regClass, property } = Laya;
 import { RockMonster } from "./RockMonster";
 import { MonsterManager } from "./MonsterManager";
 import { Castle } from "./Castle";
+import { EnemyAIManager } from "./EnemyAIManager";
+import { PlayerManager } from "./PlayerManager";
 
 @regClass()
 export class GameMainManager extends Laya.Script {
@@ -19,30 +21,19 @@ export class GameMainManager extends Laya.Script {
     private battleField: Laya.Box = null;
     private spawnArea: Laya.Sprite = null;
 
-    // // Rock怪物引用
-    // private rockMonster: RockMonster;
-
     // 城堡引用
     private playerCastle: Castle = null;
     private enemyCastle: Castle = null;
 
     // 管理器引用
     private monsterManager: MonsterManager = null;
+    private playerManager: PlayerManager = null;
+    private enemyAIManager: EnemyAIManager = null;
 
     // 游戏状态
     private gameStarted: boolean = false;
     private gameEnded: boolean = false;
     private winner: string = ""; // "player" 或 "enemy"
-
-    // 玩家属性
-    @property(Number)
-    public playerMaxMana: number = 10;          // 玩家最大魔法值
-    @property(Number)
-    public playerMana: number = 5;              // 玩家当前魔法值
-    @property(Number)
-    public manaRegenRate: number = 1;           // 魔法值恢复速度（每秒）
-    @property(Number)
-    public manaRegenInterval: number = 2000;    // 魔法值恢复间隔（毫秒）
 
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
@@ -57,6 +48,10 @@ export class GameMainManager extends Laya.Script {
 
         // 初始化MonsterManager
         this.initializeMonsterManager();
+        
+        // 获取已挂载的PlayerManager和EnemyAIManager组件
+        this.playerManager = this.owner.getComponent(PlayerManager);
+        this.enemyAIManager = this.owner.getComponent(EnemyAIManager);
 
         // 初始化城堡系统
         this.initializeCastles();
@@ -139,52 +134,31 @@ export class GameMainManager extends Laya.Script {
      * 初始化游戏系统
      */
     private initializeGameSystems(): void {
-        console.log("初始化游戏系统...");
+        console.log("开始初始化游戏系统...");
 
-        // 初始化玩家属性
-        this.initializePlayerAttributes();
-
-        // 启动魔法值恢复系统
-        this.startManaRegeneration();
-
-        console.log("游戏系统初始化完成");
-    }
-
-    /**
-     * 初始化玩家属性
-     */
-    private initializePlayerAttributes(): void {
-        // 设置初始魔法值
-        this.playerMana = Math.min(this.playerMana, this.playerMaxMana);
-
-        console.log(`玩家属性初始化完成:`);
-        console.log(`- 魔法值: ${this.playerMana}/${this.playerMaxMana}`);
-        console.log(`- 魔法值恢复: ${this.manaRegenRate}/秒，间隔${this.manaRegenInterval}ms`);
-    }
-
-    /**
-     * 启动魔法值恢复系统
-     */
-    private startManaRegeneration(): void {
-        console.log("启动魔法值恢复系统");
-
-        // 使用定时器定期恢复魔法值
-        Laya.timer.loop(this.manaRegenInterval, this, this.regenerateMana);
-    }
-
-    /**
-     * 魔法值恢复
-     */
-    private regenerateMana(): void {
-        if (this.gameEnded) {
-            return; // 游戏结束后停止恢复
+        // 初始化敌人AI
+        try {
+            this.initializeEnemyAI();
+            console.log("✅ 敌人AI系统初始化成功");
+        } catch (error) {
+            console.error("❌ 敌人AI系统初始化失败:", error);
         }
 
-        const oldMana = this.playerMana;
-        this.playerMana = Math.min(this.playerMana + this.manaRegenRate, this.playerMaxMana);
+        console.log("🎉 游戏系统初始化全部完成");
+    }
 
-        if (this.playerMana > oldMana) {
-            console.log(`魔法值恢复: ${oldMana} -> ${this.playerMana}/${this.playerMaxMana}`);
+    /**
+     * 初始化敌人AI
+     */
+    private initializeEnemyAI(): void {
+        console.log("初始化敌人AI...");
+
+        if (this.enemyAIManager) {
+            // 设置关卡
+            this.enemyAIManager.setLevel(this.selectedLevel);
+            console.log("敌人AI初始化完成");
+        } else {
+            console.warn("未找到EnemyAIManager组件，请确保已挂载到节点上");
         }
     }
 
@@ -262,8 +236,10 @@ export class GameMainManager extends Laya.Script {
      * 停止游戏系统
      */
     private stopGameSystems(): void {
-        // 停止魔法值恢复
-        Laya.timer.clear(this, this.regenerateMana);
+        // 通知PlayerManager游戏结束
+        if (this.playerManager) {
+            this.playerManager.setGameEnded(true);
+        }
 
         console.log("游戏系统已停止");
     }
@@ -278,43 +254,14 @@ export class GameMainManager extends Laya.Script {
         // 比如显示胜利/失败界面，统计数据等
     }
 
-    /**
-     * 消耗玩家魔法值
-     */
-    public consumeMana(amount: number): boolean {
-        if (this.gameEnded) {
-            console.log("游戏已结束，无法消耗魔法值");
-            return false;
-        }
-
-        if (this.playerMana >= amount) {
-            this.playerMana -= amount;
-            console.log(`消耗魔法值 ${amount}，剩余: ${this.playerMana}/${this.playerMaxMana}`);
-            return true;
-        } else {
-            console.log(`魔法值不足！需要: ${amount}，当前: ${this.playerMana}`);
-            return false;
-        }
-    }
-
-    /**
-     * 获取玩家当前魔法值
-     */
-    public getPlayerMana(): number {
-        return this.playerMana;
-    }
-
-    /**
-     * 获取玩家最大魔法值
-     */
-    public getPlayerMaxMana(): number {
-        return this.playerMaxMana;
-    }
 
     /**
      * 检查游戏是否结束
      */
     public isGameEnded(): boolean {
+        if (this.playerManager) {
+            return this.playerManager.isGameEnded();
+        }
         return this.gameEnded;
     }
 
@@ -498,6 +445,21 @@ export class GameMainManager extends Laya.Script {
         // 每秒检查一次游戏状态
         Laya.timer.loop(1000, this, this.checkCastleStatus);
         console.log("游戏状态检查已启动");
+    }
+
+    /**
+     * 启动魔法值恢复系统
+     */
+    private startManaRegeneration(): void {
+        console.log("魔法值恢复系统已移至PlayerManager管理");
+    }
+
+    /**
+     * 魔法值恢复
+     */
+    private regenerateMana(): void {
+        // 魔法值恢复已移至PlayerManager管理
+        console.log("魔法值恢复已移至PlayerManager管理");
     }
 
     /**
@@ -718,6 +680,36 @@ export class GameMainManager extends Laya.Script {
 
     //     console.log("怪物AI测试定时器已设置完成");
     // }
+
+    /**
+     * 获取玩家当前魔法值
+     */
+    public getPlayerMana(): number {
+        if (this.playerManager) {
+            return this.playerManager.getPlayerMana();
+        }
+        return 0;
+    }
+
+    /**
+     * 获取玩家最大魔法值
+     */
+    public getPlayerMaxMana(): number {
+        if (this.playerManager) {
+            return this.playerManager.getPlayerMaxMana();
+        }
+        return 0;
+    }
+
+    /**
+     * 消耗玩家魔法值
+     */
+    public consumeMana(amount: number): boolean {
+        if (this.playerManager) {
+            return this.playerManager.consumeMana(amount);
+        }
+        return false;
+    }
 
     //手动调用节点销毁时执行
     onDestroy(): void {

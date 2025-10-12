@@ -453,10 +453,15 @@ export abstract class BaseMonster extends Laya.Script {
         // 触发尸体移除事件
         this.owner.event("MONSTER_CORPSE_REMOVED", { monster: this });
 
-        // 从MonsterManager中注销并销毁
+        // 从MonsterManager中注销
         this.unregisterFromManager();
+
+        // 清理所有定时器
         Laya.timer.clearAll(this);
-        this.owner.destroy();
+        
+        // 从父节点移除并回收到对象池
+        this.owner.removeSelf();
+        Laya.Pool.recover(this.owner.name, this.owner);
     }
 
     /**

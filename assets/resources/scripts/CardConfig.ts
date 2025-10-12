@@ -18,6 +18,7 @@ export interface ILevelCardConfig {
     enemyCards: string[];   // 敌方可选卡牌类型
     maxCards: number;       // 最大卡牌数量
     cooldownTime: number;   // 冷却时间（毫秒）
+    enemyWeights?: { [key: string]: number }; // 敌方怪物召唤权重
 }
 
 /**
@@ -72,14 +73,23 @@ export class CardConfig {
             playerCards: ["Rock", "Wizard", "Pastor"],  // 第一关：三种卡牌
             enemyCards: ["Rock", "Wizard"],
             maxCards: 4,                    // 最大4张卡牌
-            cooldownTime: 2000             // 2秒冷却
+            cooldownTime: 2000,             // 2秒冷却
+            enemyWeights: {
+                "Rock": 0.6,
+                "Wizard": 0.4
+            }
         },
         {
             level: 2,
             playerCards: ["Rock", "Wizard", "Pastor"], // 第二关：三种卡牌
             enemyCards: ["Rock", "Wizard", "Pastor"],
             maxCards: 4,
-            cooldownTime: 1800             // 1.8秒冷却
+            cooldownTime: 1800,             // 1.8秒冷却
+            enemyWeights: {
+                "Rock": 0.4,
+                "Wizard": 0.4,
+                "Pastor": 0.2
+            }
         }
         // 可以继续添加更多关卡
     ];
