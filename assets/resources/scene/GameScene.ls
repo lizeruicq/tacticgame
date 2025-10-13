@@ -39,11 +39,15 @@
         {
           "_$type": "e04b952a-7429-4b86-b289-20d358baf726",
           "scriptPath": "resources/scripts/GameMainManager.ts",
-          "text": "",
-          "playerMaxMana": 10,
-          "playerMana": 5,
-          "manaRegenRate": 1,
-          "manaRegenInterval": 2000
+          "text": ""
+        },
+        {
+          "_$type": "754b97de-0a5a-4b15-bd15-fcd134f1bbb4",
+          "scriptPath": "resources/scripts/PlayerManager.ts"
+        },
+        {
+          "_$type": "83ab941c-e3af-41a9-b62d-d2ff890d030d",
+          "scriptPath": "resources/scripts/EnemyAIManager.ts"
         }
       ]
     },

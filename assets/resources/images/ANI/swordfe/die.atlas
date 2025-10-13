@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Warrior_01__DIE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1862,
+        "w": 714,
+        "h": 967
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 660,
+        "y": 143
+      }
+    },
+    "Warrior_01__DIE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1703,
+        "y": 0,
+        "w": 813,
+        "h": 940
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 603,
+        "y": 181
+      }
+    },
+    "Warrior_01__DIE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 910,
+        "h": 897
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 549,
+        "y": 233
+      }
+    },
+    "Warrior_01__DIE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 899,
+        "w": 822,
+        "h": 961
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 668,
+        "y": 176
+      }
+    },
+    "Warrior_01__DIE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 912,
+        "y": 0,
+        "w": 789,
+        "h": 988
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 717,
+        "y": 152
+      }
+    },
+    "Warrior_01__DIE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1703,
+        "y": 942,
+        "w": 746,
+        "h": 982
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 762,
+        "y": 182
+      }
+    },
+    "Warrior_01__DIE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 824,
+        "y": 990,
+        "w": 783,
+        "h": 913
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 777,
+        "y": 268
+      }
+    },
+    "Warrior_01__DIE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 716,
+        "y": 1905,
+        "w": 894,
+        "h": 760
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 774,
+        "y": 411
+      }
+    },
+    "Warrior_01__DIE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1612,
+        "y": 1926,
+        "w": 992,
+        "h": 605
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 780,
+        "y": 582
+      }
+    },
+    "Warrior_01__DIE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2451,
+        "y": 942,
+        "w": 1013,
+        "h": 588
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 781,
+        "y": 596
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

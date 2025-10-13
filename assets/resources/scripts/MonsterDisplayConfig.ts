@@ -40,6 +40,11 @@ export class MonsterDisplayConfig {
             originalWidth: 520,   // 来自pastor/idle.atlas的sourceSize
             originalHeight: 420,
             displayName: "牧师"
+        },
+        "SwordFe": {
+            originalWidth: 1650,   // 来自SwordFe/idle.atlas的sourceSize
+            originalHeight: 1000,
+            displayName: "剑士"
         }
         // 可以继续添加更多怪物类型
     };

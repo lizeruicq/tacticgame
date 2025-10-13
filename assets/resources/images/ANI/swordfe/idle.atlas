@@ -1,0 +1,160 @@
+{
+  "frames": {
+    "Warrior_01__IDLE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 776,
+        "h": 965
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 656,
+        "y": 145
+      }
+    },
+    "Warrior_01__IDLE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 774,
+        "y": 967,
+        "w": 771,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 653,
+        "y": 148
+      }
+    },
+    "Warrior_01__IDLE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1547,
+        "y": 967,
+        "w": 767,
+        "h": 959
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 650,
+        "y": 151
+      }
+    },
+    "Warrior_01__IDLE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1547,
+        "y": 1928,
+        "w": 762,
+        "h": 956
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 647,
+        "y": 154
+      }
+    },
+    "Warrior_01__IDLE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 764,
+        "y": 1931,
+        "w": 759,
+        "h": 953
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 644,
+        "y": 157
+      }
+    },
+    "Warrior_01__IDLE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1931,
+        "w": 762,
+        "h": 956
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 647,
+        "y": 154
+      }
+    },
+    "Warrior_01__IDLE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1556,
+        "y": 0,
+        "w": 767,
+        "h": 959
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 650,
+        "y": 151
+      }
+    },
+    "Warrior_01__IDLE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 967,
+        "w": 772,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 653,
+        "y": 148
+      }
+    },
+    "Warrior_01__IDLE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 778,
+        "y": 0,
+        "w": 776,
+        "h": 965
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 656,
+        "y": 145
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

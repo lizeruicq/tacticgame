@@ -53,7 +53,15 @@ export class CardConfig {
             componentClass: "PastorCard",
             manaCost: 2,
             level: 1
+        },
+        "SwordFe": {
+            type: "SwordFe",
+            prefabPath: "prefabs/monster/card_SwordFe.lh",
+            componentClass: "SwordFeCard",
+            manaCost: 5,
+            level: 1
         }
+
         // 可以在这里添加更多卡牌类型
         // "Warrior": {
         //     type: "Warrior",
@@ -71,7 +79,7 @@ export class CardConfig {
         {
             level: 1,
             playerCards: ["Rock", "Wizard", "Pastor"],  // 第一关：三种卡牌
-            enemyCards: ["Rock", "Wizard"],
+            enemyCards: ["SwordFe"],
             maxCards: 4,                    // 最大4张卡牌
             cooldownTime: 2000,             // 2秒冷却
             enemyWeights: {

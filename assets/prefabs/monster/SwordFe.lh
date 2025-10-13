@@ -1,0 +1,55 @@
+{
+  "_$ver": 1,
+  "_$id": "y7daqyhi",
+  "_$type": "Sprite",
+  "name": "SwordFe",
+  "x": 271,
+  "y": 1506,
+  "width": 720,
+  "height": 480,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "0ff8683a-4c6f-42aa-9554-364962483894",
+      "scriptPath": "resources/scripts/monsters/HumanSwordFe.ts",
+      "isPlayerCamp": 0,
+      "SwordFeLevel": 1
+    },
+    {
+      "_$type": "36846e5b-8490-44e5-b69c-6a8bd6dbaf59",
+      "scriptPath": "resources/scripts/monsters/SwordFeAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "5vp3e3te"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "5vp3e3te",
+      "_$type": "Animation",
+      "name": "swordFeAnimation",
+      "width": 1838,
+      "height": 1171,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "source": "res://b9fd2262-e97a-4d3b-9508-86627a78a125",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "w0abmntn",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 228,
+      "y": 71,
+      "width": 268,
+      "height": 26,
+      "centerX": 2,
+      "skin": "res://ae3de75e-ee9f-478d-9f8b-ede75a4fc296",
+      "value": 1
+    }
+  ]
+}

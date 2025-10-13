@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Warrior_01__WALK_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2386,
+        "y": 0,
+        "w": 746,
+        "h": 975
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 646,
+        "y": 143
+      }
+    },
+    "Warrior_01__WALK_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2386,
+        "y": 977,
+        "w": 748,
+        "h": 971
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 657,
+        "y": 144
+      }
+    },
+    "Warrior_01__WALK_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1928,
+        "w": 770,
+        "h": 966
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 655,
+        "y": 146
+      }
+    },
+    "Warrior_01__WALK_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 806,
+        "y": 964,
+        "w": 788,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 653,
+        "y": 148
+      }
+    },
+    "Warrior_01__WALK_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 818,
+        "y": 0,
+        "w": 804,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 650,
+        "y": 150
+      }
+    },
+    "Warrior_01__WALK_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 816,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 648,
+        "y": 152
+      }
+    },
+    "Warrior_01__WALK_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 964,
+        "w": 804,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 650,
+        "y": 150
+      }
+    },
+    "Warrior_01__WALK_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1596,
+        "y": 964,
+        "w": 788,
+        "h": 962
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 653,
+        "y": 148
+      }
+    },
+    "Warrior_01__WALK_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 772,
+        "y": 1928,
+        "w": 770,
+        "h": 966
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 655,
+        "y": 146
+      }
+    },
+    "Warrior_01__WALK_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1544,
+        "y": 1928,
+        "w": 748,
+        "h": 971
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1200
+      },
+      "spriteSourceSize": {
+        "x": 657,
+        "y": 144
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

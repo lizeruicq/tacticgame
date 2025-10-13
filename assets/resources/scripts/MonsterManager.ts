@@ -414,7 +414,8 @@ export class MonsterManager extends Laya.Script {
         const paths: { [key: string]: string } = {
             "Rock": "prefabs/monster/Rock.lh",
             "Wizard": "prefabs/monster/Wizard.lh",
-            "Pastor": "prefabs/monster/Pastor.lh"
+            "Pastor": "prefabs/monster/Pastor.lh",
+            "SwordFe": "prefabs/monster/SwordFe.lh"
             // 未来可以在这里添加更多怪物类型
         };
         return paths[monsterType];
