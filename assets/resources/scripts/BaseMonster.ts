@@ -33,10 +33,10 @@ export enum MonsterState {
 export abstract class BaseMonster extends Laya.Script {
     
     // ========== 基础属性 ==========
-    
+
     @property({ type: Number })
     public isPlayerCamp: boolean = false;  // 是否玩家阵营
-    
+
     // 怪物基础属性（由子类设置）
     protected monsterStats: IMonsterStats = {
         speed: 100,
@@ -99,9 +99,12 @@ export abstract class BaseMonster extends Laya.Script {
     
     onUpdate(): void {
         if (this.isDead || !this.isInitialized) return;
-        
+
         // 更新怪物行为
         this.updateBehavior();
+
+        // 更新怪物层级（基于Y坐标）
+        this.updateZOrder();
     }
     
     onDisable(): void {
@@ -497,6 +500,46 @@ export abstract class BaseMonster extends Laya.Script {
             // 更新位置
             currentSprite.x += dirX * moveDistance;
             currentSprite.y += dirY * moveDistance;
+
+            // 更新朝向：根据水平移动方向调整scaleX
+            this.updateFacingDirection(dx);
+        }
+    }
+
+    /**
+     * 更新怪物朝向
+     * @param dx 水平移动方向（正数向右，负数向左）
+     */
+    protected updateFacingDirection(dx: number): void {
+        const sprite = this.owner as Laya.Sprite;
+        if (!sprite) return;
+
+        // 获取原始scaleX的绝对值
+        const absScaleX = Math.abs(sprite.scaleX);
+
+        // 向左移动（dx < 0）时，scaleX为负值
+        // 向右移动（dx > 0）时，scaleX为正值
+        if (dx < 0) {
+            sprite.scaleX = -absScaleX;
+        } else if (dx > 0) {
+            sprite.scaleX = absScaleX;
+        }
+        // dx === 0 时保持当前朝向不变
+    }
+
+    /**
+     * 更新怪物层级（基于Y坐标）
+     */
+    protected updateZOrder(): void {
+        const sprite = this.owner as Laya.Sprite;
+        if (!sprite) return;
+
+        // 玩家怪物：Y越小，层级越小（在后面）
+        // 敌方怪物：Y越大，层级越小（在后面）
+        if (this.isPlayerCamp) {
+            sprite.zOrder = Math.floor(sprite.y);
+        } else {
+            sprite.zOrder = Math.floor(1000 - sprite.y);
         }
     }
 

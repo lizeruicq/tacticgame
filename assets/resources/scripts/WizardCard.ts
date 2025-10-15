@@ -37,7 +37,7 @@ export class WizardCard extends BaseMonsterCard {
     /**
      * 获取怪物类型名称（实现父类抽象方法）
      */
-    protected getMonsterType(): string {
+    public getMonsterType(): string {
         return "Wizard";
     }
 

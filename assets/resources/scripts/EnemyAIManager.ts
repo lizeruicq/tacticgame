@@ -2,7 +2,6 @@ const { regClass } = Laya;
 import { MonsterManager } from "./MonsterManager";
 import { GameMainManager } from "./GameMainManager";
 import { CardConfig } from "./CardConfig";
-import { BaseMonster } from "./BaseMonster";
 
 @regClass()
 export class EnemyAIManager extends Laya.Script {
@@ -60,16 +59,22 @@ export class EnemyAIManager extends Laya.Script {
     }
     
     private makeDecision(): void {
+        // 检查游戏是否结束
+        if (this.gameManager && this.gameManager.isGameEnded()) {
+            console.log("游戏已结束，敌人AI停止决策");
+            return;
+        }
+
         // 检查是否有正在等待执行的决策
         if (this.pendingDecision) {
             const monsterType = this.pendingDecision;
             const monsterConfig = CardConfig.getCardConfig(monsterType);
-            
+
             if (monsterConfig && this.enemyMana >= monsterConfig.manaCost) {
                 // 魔法值足够，执行等待中的决策
                 this.executePendingDecision(monsterType, monsterConfig);
                 this.pendingDecision = null; // 清空等待中的决策
-                
+
                 // 不再做新的决策，等待下次决策周期
                 return;
             } else if (!monsterConfig) {
@@ -82,7 +87,7 @@ export class EnemyAIManager extends Laya.Script {
             console.log(`仍在等待魔法值足够召唤${monsterType}（需要${monsterConfig.manaCost}点魔法值，当前${this.enemyMana}）`);
             return;
         }
-        
+
         // 检查是否有足够的魔法值
         if (this.enemyMana <= 0) {
             console.log("敌人魔法值不足，跳过本次决策");
@@ -149,7 +154,8 @@ export class EnemyAIManager extends Laya.Script {
         // 简单的权重选择实现
         // 可以根据战场情况调整权重
         if (availableCards.length === 0) return null;
-        
+
+        // 敌方AI不受数量限制，可以任意召唤
         // 获取当前关卡配置
         const levelConfig = CardConfig.getLevelConfig(this.currentLevel);
         if (!levelConfig || !levelConfig.enemyWeights) {
@@ -157,11 +163,11 @@ export class EnemyAIManager extends Laya.Script {
             const randomIndex = Math.floor(Math.random() * availableCards.length);
             return availableCards[randomIndex];
         }
-        
+
         // 构建权重数组
         const weights = [];
         let totalWeight = 0;
-        
+
         for (const cardType of availableCards) {
             const config = CardConfig.getCardConfig(cardType);
             if (config) {
@@ -171,13 +177,13 @@ export class EnemyAIManager extends Laya.Script {
                 totalWeight += weight;
             }
         }
-        
+
         if (totalWeight <= 0) {
             // 如果总权重为0，则随机选择
             const randomIndex = Math.floor(Math.random() * availableCards.length);
             return availableCards[randomIndex];
         }
-        
+
         // 随机选择
         let random = Math.random() * totalWeight;
         for (const item of weights) {
@@ -186,7 +192,7 @@ export class EnemyAIManager extends Laya.Script {
                 return item.type;
             }
         }
-        
+
         return weights.length > 0 ? weights[0].type : null;
     }
     
@@ -195,19 +201,34 @@ export class EnemyAIManager extends Laya.Script {
             console.error("无法获取MonsterManager或GameMainManager");
             return;
         }
-        
-        // 敌方生成位置（可以根据需要调整）
-        const spawnPosition = { x: 600, y: 240 };
-        
-        // 创建敌方怪物
+
+        // 敌方生成位置随机化
+        // BattleField尺寸: 1102x2037, 位置: (42, 38)
+        // 敌方生成在上半部分，Y坐标范围: 100-500
+        const battleField = this.gameManager.getBattleField();
+        if (!battleField) {
+            console.error("无法获取BattleField节点");
+            return;
+        }
+
+        // 随机X坐标，确保在场景内（留出边距）
+        const minX = 100;
+        const maxX = battleField.width - 100;
+        const randomX = minX + Math.random() * (maxX - minX);
+
+        // Y坐标在上半部分
+        const randomY = 100 + Math.random() * 400;
+
+        const spawnPosition = { x: randomX, y: randomY };
+
+        // 创建敌方怪物（敌方不受数量限制）
         this.monsterManager.createMonster(monsterType, false, spawnPosition, 1)
             .then((monsterSprite) => {
-                const battleField = this.gameManager.getBattleField();
-                if (battleField) {
+                if (monsterSprite) {
                     battleField.addChild(monsterSprite);
-                    console.log(`敌人成功召唤${monsterType}怪物`);
+                    console.log(`敌人成功召唤${monsterType}怪物，位置: (${randomX.toFixed(0)}, ${randomY.toFixed(0)})`);
                 } else {
-                    console.error("无法获取BattleField节点");
+                    console.log(`敌人召唤${monsterType}失败`);
                 }
             })
             .catch((error) => {

@@ -173,8 +173,12 @@ export abstract class BaseMonsterCard extends Laya.Script {
 
         monsterManager.createMonster(monsterType, this.isPlayerCard, position, this.monsterLevel)
             .then((monsterSprite) => {
-                battleField.addChild(monsterSprite);
-                console.log(`${monsterType}怪物创建成功: ${monsterSprite.name}`);
+                if (monsterSprite) {
+                    battleField.addChild(monsterSprite);
+                    console.log(`${monsterType}怪物创建成功: ${monsterSprite.name}`);
+                } else {
+                    console.log(`${monsterType}怪物创建失败：已达到数量上限`);
+                }
             });
     }
     
@@ -251,6 +255,7 @@ export abstract class BaseMonsterCard extends Laya.Script {
 
     /**
      * 获取怪物类型名称（由子类实现）
+     * 公开此方法供CardManager使用
      */
-    protected abstract getMonsterType(): string;
+    public abstract getMonsterType(): string;
 }

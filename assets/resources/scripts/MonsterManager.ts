@@ -31,14 +31,14 @@ export class MonsterManager extends Laya.Script {
     private static _instance: MonsterManager = null;
     
     // ========== 管理的实体列表 ==========
-    
+
     private monsters: BaseMonster[] = [];           // 所有怪物列表
     private castles: Castle[] = [];                 // 所有城堡列表
     private playerMonsters: BaseMonster[] = [];     // 玩家怪物列表
     private enemyMonsters: BaseMonster[] = [];      // 敌方怪物列表
     private playerCastles: Castle[] = [];           // 玩家城堡列表
     private enemyCastles: Castle[] = [];            // 敌方城堡列表
-    
+
     // ========== 配置参数 ==========
     
     @property({ type: Number })
@@ -94,20 +94,23 @@ export class MonsterManager extends Laya.Script {
      */
     public registerMonster(monster: BaseMonster): void {
         if (!monster || this.monsters.indexOf(monster) !== -1) return;
-        
+
         this.monsters.push(monster);
-        
+
         // 根据阵营分类
         if (monster.isPlayerCamp) {
             this.playerMonsters.push(monster);
         } else {
             this.enemyMonsters.push(monster);
         }
-        
+
+        // 更新怪物层级
+        this.updateMonsterZOrder(monster);
+
         if (this.enableDebugLog) {
             console.log(`注册怪物: ${monster.constructor.name}, 阵营: ${monster.isPlayerCamp ? '玩家' : '敌方'}, 总数: ${this.monsters.length}`);
         }
-        
+
         // 监听怪物死亡事件
         monster.owner.on("MONSTER_DEATH", this, this.onMonsterDeath);
     }
@@ -117,16 +120,16 @@ export class MonsterManager extends Laya.Script {
      */
     public unregisterMonster(monster: BaseMonster): void {
         if (!monster) return;
-        
+
         // 从所有列表中移除
         this.removeFromArray(this.monsters, monster);
         this.removeFromArray(this.playerMonsters, monster);
         this.removeFromArray(this.enemyMonsters, monster);
-        
+
         if (this.enableDebugLog) {
             console.log(`注销怪物: ${monster.constructor.name}, 剩余总数: ${this.monsters.length}`);
         }
-        
+
         // 取消事件监听
         monster.owner.off("MONSTER_DEATH", this, this.onMonsterDeath);
     }
@@ -377,6 +380,26 @@ export class MonsterManager extends Laya.Script {
         };
     }
 
+    /**
+     * 更新怪物层级（根据Y坐标）
+     */
+    private updateMonsterZOrder(monster: BaseMonster): void {
+        const sprite = monster.owner as Laya.Sprite;
+        if (!sprite) return;
+
+        // 玩家怪物：Y越小，层级越小（在后面）
+        // 敌方怪物：Y越大，层级越小（在后面）
+        if (monster.isPlayerCamp) {
+            sprite.zOrder = Math.floor(sprite.y);
+        } else {
+            sprite.zOrder = Math.floor(1000 - sprite.y); // 反转层级
+        }
+
+        if (this.enableDebugLog) {
+            console.log(`${monster.constructor.name} 层级设置: Y=${sprite.y}, zOrder=${sprite.zOrder}`);
+        }
+    }
+
     // ========== 怪物创建方法 ==========
 
     /**
@@ -391,7 +414,7 @@ export class MonsterManager extends Laya.Script {
         isPlayerCamp: boolean,
         position: { x: number; y: number },
         level: number = 1
-    ): Promise<Laya.Sprite> {
+    ): Promise<Laya.Sprite | null> {
         const prefabPath = this.getPrefabPath(monsterType);
 
         return Laya.loader.load(prefabPath).then(() => {

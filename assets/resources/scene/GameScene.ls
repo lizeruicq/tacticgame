@@ -11,26 +11,98 @@
   "height": 2556,
   "_$child": [
     {
-      "_$id": "svc6tumn",
-      "_$type": "Label",
-      "name": "monaText",
-      "x": 81,
-      "y": 1622,
-      "width": 174,
-      "height": 86,
-      "zIndex": 3,
-      "text": "200",
-      "fontSize": 76,
-      "color": "#e2ed06",
-      "bold": true,
-      "stroke": 12
+      "_$id": "nkh1ov7l",
+      "_$type": "Sprite",
+      "name": "UIParent",
+      "x": -3,
+      "y": -6,
+      "width": 1178,
+      "height": 2529,
+      "_$comp": [
+        {
+          "_$type": "a9586a3a-1907-48e2-b533-0785628aad2c",
+          "scriptPath": "resources/scripts/UIManager.ts",
+          "playerHpBar": {
+            "_$ref": "gu0v1v9o"
+          },
+          "enemyHpBar": {
+            "_$ref": "slvpqtf4"
+          },
+          "manaText": {
+            "_$ref": "svc6tumn"
+          },
+          "stopButton": {
+            "_$ref": "obxzpln9"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "gu0v1v9o",
+          "_$type": "ProgressBar",
+          "name": "PlayerHpBar",
+          "x": 81,
+          "y": 1994,
+          "width": 507,
+          "height": 37,
+          "rotation": 270.27695878401937,
+          "zIndex": 1,
+          "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+          "value": 0.691
+        },
+        {
+          "_$id": "svc6tumn",
+          "_$type": "Label",
+          "name": "manaText",
+          "x": 69,
+          "y": 2021,
+          "width": 329,
+          "height": 86,
+          "zIndex": 3,
+          "text": "魔法值:200",
+          "fontSize": 60,
+          "color": "#e2ed06",
+          "bold": true,
+          "stroke": 12
+        },
+        {
+          "_$id": "slvpqtf4",
+          "_$type": "ProgressBar",
+          "name": "EnemyHpBar",
+          "x": 1119,
+          "y": 69,
+          "width": 502,
+          "height": 37,
+          "rotation": 90,
+          "zIndex": 1,
+          "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+          "value": 0.565
+        },
+        {
+          "_$id": "obxzpln9",
+          "_$type": "Button",
+          "name": "StopButton",
+          "x": 80,
+          "y": 68,
+          "width": 120,
+          "height": 120,
+          "zIndex": 1,
+          "stateNum": 1,
+          "skin": "res://dd766b95-76b9-4a63-a357-ec4b65ceb23f",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        }
+      ]
     },
     {
       "_$id": "qhk32tg3",
       "_$type": "Sprite",
       "name": "GameMainManager",
+      "y": 2,
       "width": 1179,
-      "height": 2556,
+      "height": 2554,
       "texture": {
         "_$uuid": "d702fd90-699f-4061-a5dd-93e2f92371bc",
         "_$type": "Texture"
@@ -55,8 +127,8 @@
       "_$id": "rq40rlmn",
       "_$type": "Sprite",
       "name": "castle-enemy",
-      "x": 592,
-      "y": 16,
+      "x": 591,
+      "y": 42,
       "width": 380,
       "height": 380,
       "anchorX": 0.5,

@@ -38,7 +38,7 @@ export class Castle extends Laya.Script {
     protected castleStats: ICastleStats = {
         maxHealth: 1000,
         defense: 10,
-        regeneration: 2
+        regeneration: 0  // 城堡不自动回复血量
     };
     
     // ========== 运行时属性 ==========
@@ -136,16 +136,16 @@ export class Castle extends Laya.Script {
         const baseStats: ICastleStats = {
             maxHealth: 1000,     // 基础血量
             defense: 10,         // 基础防御力
-            regeneration: 2      // 基础回血速度
+            regeneration: 0      // 城堡不自动回复血量
         };
-        
+
         // 根据等级调整属性
         const levelMultiplier = 1 + (this.castleLevel - 1) * 0.3; // 每级增加30%
-        
+
         return {
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier),
             defense: Math.floor(baseStats.defense * levelMultiplier),
-            regeneration: Math.floor(baseStats.regeneration * (1 + (this.castleLevel - 1) * 0.2)) // 回血速度小幅增长
+            regeneration: 0  // 城堡不自动回复血量
         };
     }
     

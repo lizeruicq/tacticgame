@@ -109,6 +109,13 @@ export class CardManager extends Laya.Script {
      * 生成随机卡牌
      */
     private generateRandomCard(): void {
+        // 检查游戏是否结束
+        const gameManager = GameMainManager.getInstance();
+        if (gameManager && gameManager.isGameEnded()) {
+            console.log("游戏已结束，停止生成卡牌");
+            return;
+        }
+
         if (this.availablePlayerCards.length === 0) {
             console.error("没有可用的卡牌类型");
             return;
@@ -209,6 +216,12 @@ export class CardManager extends Laya.Script {
         // 通过GameMainManager扣除魔法值
         const gameManager = GameMainManager.getInstance();
         if (gameManager) {
+            // 检查游戏是否结束
+            if (gameManager.isGameEnded()) {
+                console.log("游戏已结束，无法使用卡牌");
+                return;
+            }
+
             const success = gameManager.consumeMana(card.manaCost);
             if (!success) {
                 console.log("魔法值不足，无法使用卡牌");
