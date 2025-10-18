@@ -3,6 +3,7 @@ import { PlayerManager } from "./PlayerManager";
 import { EnemyAIManager } from "./EnemyAIManager";
 import { GameMainManager } from "./GameMainManager";
 import { Castle } from "./Castle";
+import { GameStartPanel } from "./GameStartPanel";
 
 /**
  * UI管理器
@@ -24,10 +25,14 @@ export class UIManager extends Laya.Script {
     @property({ type: Laya.Button })
     public stopButton: Laya.Button = null;
 
+    @property({ type: Laya.Box })
+    public gameStartPanelBox: Laya.Box = null;
+
     // 管理器引用
     private playerManager: PlayerManager = null;
     private enemyAIManager: EnemyAIManager = null;
     private gameMainManager: GameMainManager = null;
+    private gameStartPanel: GameStartPanel = null;
 
     // 城堡引用
     private playerCastle: Castle = null;
@@ -146,12 +151,27 @@ export class UIManager extends Laya.Script {
             this.stopButton.on(Laya.Event.CLICK, this, this.onStopButtonClick);
         }
 
+        // 初始化游戏开始面板
+        this.initializeGameStartPanel();
+
         // 初始化显示（延迟一帧，确保所有组件已初始化）
         Laya.timer.once(100, this, () => {
             this.updatePlayerHealthBar();
             this.updateEnemyHealthBar();
             this.updateManaText();
         });
+    }
+
+    /**
+     * 初始化游戏开始面板
+     */
+    private initializeGameStartPanel(): void {
+        if (this.gameStartPanelBox) {
+            this.gameStartPanel = this.gameStartPanelBox.getComponent(GameStartPanel);
+            if (!this.gameStartPanel) {
+                this.gameStartPanel = this.gameStartPanelBox.addComponent(GameStartPanel);
+            }
+        }
     }
 
     /**
@@ -239,7 +259,7 @@ export class UIManager extends Laya.Script {
 
         const currentMana = this.playerManager.getPlayerMana();
         const maxMana = this.playerManager.getPlayerMaxMana();
-        this.manaText.text = `${currentMana}/${maxMana}`;
+        this.manaText.text = `魔法值：${currentMana}/${maxMana}`;
     }
 
     /**
@@ -305,6 +325,26 @@ export class UIManager extends Laya.Script {
     public getEnemyHealthPercentage(): number {
         if (!this.enemyCastle) return 0;
         return this.enemyCastle.getHealthPercentage();
+    }
+
+    /**
+     * 显示游戏开始面板
+     * @param level 关卡编号
+     * @param onStart 开始按钮回调
+     */
+    public showGameStartPanel(level: number, onStart: () => void): void {
+        if (this.gameStartPanel) {
+            this.gameStartPanel.show(level, onStart);
+        }
+    }
+
+    /**
+     * 隐藏游戏开始面板
+     */
+    public hideGameStartPanel(): void {
+        if (this.gameStartPanel) {
+            this.gameStartPanel.hide();
+        }
     }
 
     onDestroy(): void {

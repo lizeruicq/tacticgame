@@ -14,7 +14,7 @@ export class EnemyAIManager extends Laya.Script {
     private manaRegenInterval: number = 2000;
     
     // AI决策参数
-    private decisionInterval: number = 3000; // 每3秒做一次决策
+    private decisionInterval: number = 1000; // 每3秒做一次决策
     private currentLevel: number = 1;
     
     // AI决策队列
@@ -55,6 +55,7 @@ export class EnemyAIManager extends Laya.Script {
     }
     
     private startAIDecisionMaking(): void {
+        this,this.makeDecision();
         Laya.timer.loop(this.decisionInterval, this, this.makeDecision);
     }
     

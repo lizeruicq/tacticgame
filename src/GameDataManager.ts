@@ -1,5 +1,5 @@
 const { regClass } = Laya;
-import { WeChatManager, WeChatUserInfo, WeChatEventType } from './WeChatManager';
+import { WeChatManager, WeChatUserInfo, WeChatEventType } from './Wechat/WeChatManager';
 
 // 游戏数据接口
 export interface GameData {

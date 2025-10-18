@@ -51,7 +51,7 @@ export class RockMonster extends BaseMonster {
             speed: 80,           // Rock移动较慢
             attackPower: 25,     // Rock攻击力较高
             attackSpeed: 1500,   // Rock攻击速度较慢
-            attackRange: 120,    // Rock攻击范围中等
+            attackRange: 80,    // Rock攻击范围中等
             maxHealth: 150       // Rock血量较高
         };
         

@@ -4,6 +4,7 @@ import { MonsterManager } from "./MonsterManager";
 import { Castle } from "./Castle";
 import { EnemyAIManager } from "./EnemyAIManager";
 import { PlayerManager } from "./PlayerManager";
+import { UIManager } from "./UIManager";
 
 @regClass()
 export class GameMainManager extends Laya.Script {
@@ -15,7 +16,7 @@ export class GameMainManager extends Laya.Script {
     public text: string = "";
 
     // 获取传递的关卡数据
-    private selectedLevel: number = 1;
+    private selectedLevel: number = 0;
 
     // 场景节点引用
     private battleField: Laya.Box = null;
@@ -29,11 +30,13 @@ export class GameMainManager extends Laya.Script {
     private monsterManager: MonsterManager = null;
     private playerManager: PlayerManager = null;
     private enemyAIManager: EnemyAIManager = null;
+    private uiManager: UIManager = null;
 
     // 游戏状态
     private gameStarted: boolean = false;
     private gameEnded: boolean = false;
     private winner: string = ""; // "player" 或 "enemy"
+    private isPaused: boolean = true; // 游戏初始为暂停状态
 
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
@@ -53,13 +56,15 @@ export class GameMainManager extends Laya.Script {
         this.playerManager = this.owner.getComponent(PlayerManager);
         this.enemyAIManager = this.owner.getComponent(EnemyAIManager);
 
+        this.initializeGame();
+
         // 初始化城堡系统
         this.initializeCastles();
 
         // 初始化游戏系统
         this.initializeGameSystems();
 
-        this.initializeGame();
+
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
@@ -297,8 +302,56 @@ export class GameMainManager extends Laya.Script {
     private initializeGame(): void {
         console.log("初始化游戏系统...");
 
-        // 这里可以初始化其他游戏系统
-        // 比如敌人管理器、卡牌系统等
+        // 获取关卡编号
+        const levelStr = Laya.LocalStorage.getItem("selectedLevel");
+        this.selectedLevel = levelStr ? parseInt(levelStr) : 1;
+        console.log(`当前关卡: ${this.selectedLevel}`);
+
+        // 获取UIManager
+        const gameScene = this.owner.scene;
+        const uiManagerNode = gameScene.getChildByName("UIManager");
+        if (uiManagerNode) {
+            this.uiManager = uiManagerNode.getComponent(UIManager);
+        }
+
+        // 初始化游戏开始面板
+        this.initializeGameStartPanel();
+    }
+
+    /**
+     * 初始化游戏开始面板
+     */
+    private initializeGameStartPanel(): void {
+        if (!this.uiManager) {
+            console.warn("UIManager未找到，无法显示游戏开始面板");
+            return;
+        }
+
+        // 暂停游戏
+        this.pauseGame();
+
+        // 显示游戏开始面板
+        this.uiManager.showGameStartPanel(this.selectedLevel, () => {
+            this.resumeGame();
+        });
+    }
+
+    /**
+     * 暂停游戏
+     */
+    private pauseGame(): void {
+        this.isPaused = true;
+        Laya.timer.scale = 0;
+        console.log("游戏已暂停");
+    }
+
+    /**
+     * 继续游戏
+     */
+    private resumeGame(): void {
+        this.isPaused = false;
+        Laya.timer.scale = 1;
+        console.log("游戏已继续");
     }
 
     /**

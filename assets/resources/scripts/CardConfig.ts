@@ -19,6 +19,8 @@ export interface ILevelCardConfig {
     maxCards: number;       // 最大卡牌数量
     cooldownTime: number;   // 冷却时间（毫秒）
     enemyWeights?: { [key: string]: number }; // 敌方怪物召唤权重
+    guide?: string;         // 关卡指引说明
+    monsterTypes?: string[]; // 本关卡出现的怪物类型说明
 }
 
 /**
@@ -78,10 +80,12 @@ export class CardConfig {
     public static readonly LEVEL_CONFIGS: ILevelCardConfig[] = [
         {
             level: 1,
-            playerCards: ["Rock", "Wizard", "Pastor"],  // 第一关：三种卡牌
+            playerCards: ["Rock", "Wizard", "Pastor"],
             enemyCards: ["SwordFe"],
-            maxCards: 4,                    // 最大4张卡牌
-            cooldownTime: 2000,             // 2秒冷却
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第一关：熟悉基础操作\n击败敌方城堡来获得胜利！",
+            monsterTypes: ["Rock - 防御型怪物", "Wizard - 魔法型怪物", "Pastor - 治疗型怪物"],
             enemyWeights: {
                 "Rock": 0.6,
                 "Wizard": 0.4
@@ -89,17 +93,18 @@ export class CardConfig {
         },
         {
             level: 2,
-            playerCards: ["Rock", "Wizard", "Pastor"], // 第二关：三种卡牌
+            playerCards: ["Rock", "Wizard", "Pastor"],
             enemyCards: ["Rock", "Wizard", "Pastor"],
             maxCards: 4,
-            cooldownTime: 1800,             // 1.8秒冷却
+            cooldownTime: 1800,
+            guide: "第二关：难度提升\n敌方拥有更多怪物类型，需要合理搭配卡牌！",
+            monsterTypes: ["Rock - 防御型怪物", "Wizard - 魔法型怪物", "Pastor - 治疗型怪物"],
             enemyWeights: {
                 "Rock": 0.4,
                 "Wizard": 0.4,
                 "Pastor": 0.2
             }
         }
-        // 可以继续添加更多关卡
     ];
 
     /**

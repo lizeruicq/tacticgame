@@ -10,10 +10,9 @@ export class SceneManager {
     
     // 场景路径常量
     public static readonly SCENES = {
-        MAIN_MENU: "assets/resources/scene/MainMenu.ls",
-        // 可以在这里添加更多场景路径
-        // GAME: "assets/resources/scene/Game.ls",
-        // SETTINGS: "assets/resources/scene/Settings.ls",
+        MAIN_MENU: "resources/scene/MainMenu.ls",
+        LEVEL_SELECT: "resources/scene/LevelSelect.ls",
+        GAME: "resources/scene/GameScene.ls",
     };
     
     // 场景资源ID常量（用于更快的加载）
@@ -73,7 +72,21 @@ export class SceneManager {
      * 切换到主菜单场景
      */
     public switchToMainMenu(): Promise<void> {
-        return this.switchToScene(SceneManager.SCENE_IDS.MAIN_MENU);
+        return this.switchToScene(SceneManager.SCENES.MAIN_MENU);
+    }
+    
+    /**
+     * 切换到关卡选择场景
+     */
+    public switchToLevelSelect(): Promise<void> {
+        return this.switchToScene(SceneManager.SCENES.LEVEL_SELECT);
+    }
+
+    /**
+     * 切换到游戏场景
+     */
+    public switchToGameScene(): Promise<void> {
+        return this.switchToScene(SceneManager.SCENES.GAME);
     }
     
     /**

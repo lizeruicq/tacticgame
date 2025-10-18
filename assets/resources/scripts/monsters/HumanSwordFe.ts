@@ -51,7 +51,7 @@ export class HumanSwordFe extends BaseMonster {
             speed: 80,           // SwordFe移动较慢
             attackPower: 25,     // SwordFe攻击力较高
             attackSpeed: 1500,   // SwordFe攻击速度较慢
-            attackRange: 120,    // SwordFe攻击范围中等
+            attackRange: 80,    // SwordFe攻击范围中等
             maxHealth: 150       // SwordFe血量较高
         };
         

@@ -1,5 +1,6 @@
 const { regClass } = Laya;
 import { LevelSelectRTBase } from "./LevelSelectRT.generated";
+import { SceneManager } from "./SceneManager";
 
 @regClass()
 export class LevelSelectRT extends LevelSelectRTBase {
@@ -98,7 +99,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         if (!cell) return;
 
         const levelNum = index + 1;
-        console.log("渲染关卡:", levelNum);
+        // console.log("渲染关卡:", levelNum);
 
         // 查找Number标签
         const numberLabel = cell.getChildByName("Number") as Laya.Label;
@@ -143,8 +144,13 @@ export class LevelSelectRT extends LevelSelectRTBase {
         // 保存关卡编号
         Laya.LocalStorage.setItem("selectedLevel", this.selectedLevel.toString());
 
-        // 这里可以切换到游戏场景
-        console.log("准备进入游戏场景...");
+        // 切换到游戏场景
+        const sceneManager = SceneManager.getInstance();
+        sceneManager.switchToGameScene().then(() => {
+            console.log("成功切换到游戏场景");
+        }).catch((error) => {
+            console.error("切换到游戏场景失败:", error);
+        });
     }
 
     /**
