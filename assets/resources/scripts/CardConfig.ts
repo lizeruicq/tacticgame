@@ -37,7 +37,7 @@ export class CardConfig {
             type: "Rock",
             prefabPath: "prefabs/cards/card_rock.lh",
             componentClass: "RockCard",
-            manaCost: 3,
+            manaCost: 1,
             level: 1
         },
 
@@ -80,11 +80,11 @@ export class CardConfig {
     public static readonly LEVEL_CONFIGS: ILevelCardConfig[] = [
         {
             level: 1,
-            playerCards: ["Rock", "Wizard", "Pastor"],
+            playerCards: ["Rock","Wizard"],
             enemyCards: ["SwordFe"],
             maxCards: 4,
-            cooldownTime: 2000,
-            guide: "第一关：熟悉基础操作\n击败敌方城堡来获得胜利！",
+            cooldownTime: 1000,
+            guide: "第一关",
             monsterTypes: ["Rock - 防御型怪物", "Wizard - 魔法型怪物", "Pastor - 治疗型怪物"],
             enemyWeights: {
                 "Rock": 0.6,

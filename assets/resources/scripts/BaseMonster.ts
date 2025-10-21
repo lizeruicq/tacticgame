@@ -51,6 +51,8 @@ export abstract class BaseMonster extends Laya.Script {
     protected currentHealth: number = 100;        // 当前血量
     protected currentState: MonsterState = MonsterState.IDLE;  // 当前状态
     protected currentTarget: BaseMonster | Castle | null = null;       // 当前攻击目标
+    protected targetOffsetX: number = 0;           // 目标位置X轴偏移
+    protected targetOffsetY: number = 0;           // 目标位置Y轴偏移
     
     // ========== 内部状态 ==========
 
@@ -352,6 +354,24 @@ export abstract class BaseMonster extends Laya.Script {
         }
 
         this.currentTarget = target;
+        
+        // 为城堡目标设置随机偏移，避免怪物重叠
+        if (target instanceof Castle) {
+            this.targetOffsetX = Math.random() * 140 - 70;  // ±100像素随机偏移
+        } else {
+            // 对于怪物目标，检查附近是否有友方怪物来决定偏移量
+            const nearbyAllies = this.getNearbyAllies(200);
+            if (nearbyAllies.length > 0) {
+                // 如果附近有友方怪物，则添加小幅度偏移
+                this.targetOffsetX = Math.random() * 140 - 70;  // ±50像素随机偏移
+                this.targetOffsetY = Math.random() * 40 - 20;  // ±20像素随机偏移
+            } else {
+                // 如果附近没有友方怪物，则不添加偏移
+                this.targetOffsetX = 0;
+                this.targetOffsetY = 0;
+            }
+        }
+        
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
         console.log(`${this.constructor.name} 设置攻击目标: ${targetName}`);
     }
@@ -483,10 +503,14 @@ export abstract class BaseMonster extends Laya.Script {
 
         const targetSprite = this.currentTarget.owner as Laya.Sprite;
         const currentSprite = this.owner as Laya.Sprite;
-
+        
+        // 获取目标位置并应用偏移
+        let targetX = targetSprite.x + this.targetOffsetX;
+        let targetY = targetSprite.y + this.targetOffsetY;
+        
         // 计算方向向量
-        const dx = targetSprite.x - currentSprite.x;
-        const dy = targetSprite.y - currentSprite.y;
+        const dx = targetX - currentSprite.x;
+        const dy = targetY - currentSprite.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance > 0) {
@@ -534,13 +558,15 @@ export abstract class BaseMonster extends Laya.Script {
         const sprite = this.owner as Laya.Sprite;
         if (!sprite) return;
 
+        sprite.zOrder = Math.floor(sprite.y);
+
         // 玩家怪物：Y越小，层级越小（在后面）
         // 敌方怪物：Y越大，层级越小（在后面）
-        if (this.isPlayerCamp) {
-            sprite.zOrder = Math.floor(sprite.y);
-        } else {
-            sprite.zOrder = Math.floor(1000 - sprite.y);
-        }
+        // if (this.isPlayerCamp) {
+        //     sprite.zOrder = Math.floor(sprite.y);
+        // } else {
+        //     sprite.zOrder = Math.floor(1000 - sprite.y);
+        // }
     }
 
     // ========== 工具方法 ==========
@@ -629,6 +655,40 @@ export abstract class BaseMonster extends Laya.Script {
 
             this.setTarget(newTarget);
         }
+    }
+
+    /**
+     * 获取附近的友方怪物
+     * @param range 搜索范围
+     * @returns 在指定范围内的友方怪物数组
+     */
+    private getNearbyAllies(range: number): BaseMonster[] {
+        const manager = MonsterManager.getInstance();
+        if (!manager) return [];
+        
+        // 根据阵营获取友方怪物列表
+        const allies = this.isPlayerCamp ? manager.getPlayerMonsters() : manager.getEnemyMonsters();
+        const currentSprite = this.owner as Laya.Sprite;
+        const nearbyAllies: BaseMonster[] = [];
+        
+        // 遍历所有友方怪物
+        for (const ally of allies) {
+            // 排除自己
+            if (ally === this) continue;
+            
+            const allySprite = ally.owner as Laya.Sprite;
+            // 计算与友方怪物的距离
+            const dx = allySprite.x - currentSprite.x;
+            const dy = allySprite.y - currentSprite.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // 如果在指定范围内且不是死亡状态，则加入结果数组
+            if (distance <= range && !ally.getIsDead()) {
+                nearbyAllies.push(ally);
+            }
+        }
+        
+        return nearbyAllies;
     }
 
     // ========== 血条管理方法 ==========

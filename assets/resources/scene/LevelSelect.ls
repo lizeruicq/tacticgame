@@ -152,7 +152,7 @@
       "x": 138,
       "y": 512,
       "width": 904,
-      "height": 1441,
+      "height": 1238,
       "selectedIndex": 0,
       "_$child": [
         {
@@ -191,7 +191,6 @@
               "elasticEnabled": true,
               "spaceX": 28,
               "spaceY": 5,
-              "scrollType": 2,
               "selectEnable": true,
               "_$child": [
                 {

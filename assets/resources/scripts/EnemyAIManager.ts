@@ -55,7 +55,7 @@ export class EnemyAIManager extends Laya.Script {
     }
     
     private startAIDecisionMaking(): void {
-        this,this.makeDecision();
+        // this,this.makeDecision();
         Laya.timer.loop(this.decisionInterval, this, this.makeDecision);
     }
     

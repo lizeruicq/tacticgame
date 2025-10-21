@@ -309,7 +309,7 @@ export class GameMainManager extends Laya.Script {
 
         // 获取UIManager
         const gameScene = this.owner.scene;
-        const uiManagerNode = gameScene.getChildByName("UIManager");
+        const uiManagerNode = gameScene.getChildByName("UIParent");
         if (uiManagerNode) {
             this.uiManager = uiManagerNode.getComponent(UIManager);
         }
@@ -327,28 +327,42 @@ export class GameMainManager extends Laya.Script {
             return;
         }
 
-        // 暂停游戏
-        this.pauseGame();
+        // 轮询检查UIManager是否已完成初始化
+        const checkInitialization = () => {
+            if (UIManager.isInitialized) {
+                // UIManager已完成初始化，可以安全地暂停游戏
+                this.pauseGame();
+            } else {
+                // 继续等待，下一帧再检查
+                Laya.timer.frameOnce(1, this, checkInitialization);
+            }
+        };
 
-        // 显示游戏开始面板
-        this.uiManager.showGameStartPanel(this.selectedLevel, () => {
-            this.resumeGame();
-        });
+        // 开始轮询检查
+        checkInitialization();
     }
 
     /**
      * 暂停游戏
      */
-    private pauseGame(): void {
+    public pauseGame(): void {
         this.isPaused = true;
         Laya.timer.scale = 0;
-        console.log("游戏已暂停");
+        
+        // 显示游戏开始面板
+        if (this.uiManager) {
+            this.uiManager.showGameStartPanel(this.selectedLevel);
+             console.log("游戏已暂停");
+        }
+        
+       
     }
 
     /**
      * 继续游戏
      */
-    private resumeGame(): void {
+    public resumeGame(): void {
+        this.uiManager.hideGameStartPanel();
         this.isPaused = false;
         Laya.timer.scale = 1;
         console.log("游戏已继续");

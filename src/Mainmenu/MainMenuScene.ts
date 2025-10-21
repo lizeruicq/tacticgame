@@ -2,6 +2,7 @@ const { regClass, property } = Laya;
 import { WeChatManager, WeChatUserInfo, WeChatEventType } from '../Wechat/WeChatManager';
 import { GameDataManager } from '../GameDataManager';
 import { SceneManager } from '../SceneManager';
+import { ButtonAnimationUtils } from '../utils/ButtonAnimationUtils';
 
 @regClass()
 export class MainMenuScene extends Laya.Script {
@@ -51,6 +52,8 @@ export class MainMenuScene extends Laya.Script {
         // 绑定开始游戏按钮点击事件
         if (this.startButton) {
             this.startButton.on(Laya.Event.CLICK, this, this.onStartButtonClick);
+            // 添加按钮点击动画效果
+            ButtonAnimationUtils.addButtonClickEffect(this.startButton);
         }
     }
     
@@ -316,6 +319,8 @@ export class MainMenuScene extends Laya.Script {
         // 清理事件监听
         if (this.startButton) {
             this.startButton.off(Laya.Event.CLICK, this, this.onStartButtonClick);
+            // 移除按钮点击动画效果
+            ButtonAnimationUtils.removeButtonClickEffect(this.startButton);
         }
     }
 }

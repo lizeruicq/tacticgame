@@ -34,6 +34,9 @@ export class UIManager extends Laya.Script {
     private gameMainManager: GameMainManager = null;
     private gameStartPanel: GameStartPanel = null;
 
+    // 标志位表示UIManager是否已完成初始化
+    public static isInitialized: boolean = false;
+
     // 城堡引用
     private playerCastle: Castle = null;
     private enemyCastle: Castle = null;
@@ -50,6 +53,9 @@ export class UIManager extends Laya.Script {
             this.initializeCastles();
             this.initializeUI();
             this.setupEventListeners();
+            
+            // 标记UIManager已完成初始化
+            UIManager.isInitialized = true;
         });
     }
 
@@ -150,6 +156,7 @@ export class UIManager extends Laya.Script {
         if (this.stopButton) {
             this.stopButton.on(Laya.Event.CLICK, this, this.onStopButtonClick);
         }
+        // this.gameStartPanel = this.gameStartPanelBox.getComponent(GameStartPanel);
 
         // 初始化游戏开始面板
         this.initializeGameStartPanel();
@@ -171,6 +178,9 @@ export class UIManager extends Laya.Script {
             if (!this.gameStartPanel) {
                 this.gameStartPanel = this.gameStartPanelBox.addComponent(GameStartPanel);
             }
+        }
+        else {
+            console.error("UIManager: 未找到游戏开始面板");
         }
     }
 
@@ -303,12 +313,12 @@ export class UIManager extends Laya.Script {
         // 1. 暂停游戏时间
         // 2. 显示暂停菜单UI
         // 3. 提供继续、重新开始、退出等选项
-        
-        console.log("显示暂停菜单（待实现）");
+        this.gameMainManager.pauseGame()
+        console.log("显示暂停菜单面板");
         
         // 临时实现：暂停游戏时间
-        Laya.timer.scale = Laya.timer.scale === 0 ? 1 : 0;
-        console.log(`游戏时间缩放: ${Laya.timer.scale === 0 ? "暂停" : "继续"}`);
+        // Laya.timer.scale = Laya.timer.scale === 0 ? 1 : 0;
+        // console.log(`游戏时间缩放: ${Laya.timer.scale === 0 ? "暂停" : "继续"}`);
     }
 
     /**
@@ -330,11 +340,12 @@ export class UIManager extends Laya.Script {
     /**
      * 显示游戏开始面板
      * @param level 关卡编号
-     * @param onStart 开始按钮回调
      */
-    public showGameStartPanel(level: number, onStart: () => void): void {
+    public showGameStartPanel(level: number): void {
         if (this.gameStartPanel) {
-            this.gameStartPanel.show(level, onStart);
+            this.gameStartPanel.show(level);
+        } else {
+            console.warn("GameStartPanel 组件未初始化");
         }
     }
 

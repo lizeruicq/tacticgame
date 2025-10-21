@@ -1,5 +1,7 @@
 const { regClass, property } = Laya;
 import { CardConfig } from "./CardConfig";
+import { GameMainManager } from "./GameMainManager";
+import { PanelAnimationUtils } from "../../../src/utils/PanelAnimationUtils";
 
 /**
  * 游戏开始说明面板
@@ -17,14 +19,8 @@ export class GameStartPanel extends Laya.Script {
     @property(Laya.Button)
     public startButton: Laya.Button = null;
 
-    @property(Laya.Box)
-    public panelBox: Laya.Box = null;
-
     // 当前关卡
     private currentLevel: number = 1;
-
-    // 回调函数
-    private onStartCallback: () => void = null;
 
     onAwake(): void {
         console.log("GameStartPanel 初始化");
@@ -40,20 +36,19 @@ export class GameStartPanel extends Laya.Script {
             this.startButton.on(Laya.Event.CLICK, this, this.onStartButtonClick);
         }
 
-        // 初始化面板为隐藏状态
-        if (this.panelBox) {
-            this.panelBox.visible = false;
-        }
+        // 初始化面板为隐藏状态（缩放为0，不可见）
+        const panelBox = this.owner as Laya.Box;
+        panelBox.visible = false;
+        panelBox.scaleX = 0;
+        panelBox.scaleY = 0;
     }
 
     /**
      * 显示面板
      * @param level 关卡编号
-     * @param onStart 开始按钮回调
      */
-    public show(level: number, onStart: () => void): void {
+    public show(level: number): void {
         this.currentLevel = level;
-        this.onStartCallback = onStart;
 
         // 获取关卡配置
         const levelConfig = CardConfig.getLevelConfig(level);
@@ -69,28 +64,23 @@ export class GameStartPanel extends Laya.Script {
 
         // 更新怪物类型文本
         if (this.monsterTypesLabel) {
-            const monsterText = levelConfig.monsterTypes 
+            const monsterText = levelConfig.monsterTypes
                 ? levelConfig.monsterTypes.join("\n")
                 : "Rock\nWizard\nPastor";
             this.monsterTypesLabel.text = monsterText;
         }
 
-        // 显示面板
-        if (this.panelBox) {
-            this.panelBox.visible = true;
-        }
-
-        console.log(`显示关卡 ${level} 的游戏说明面板`);
+        // 播放打开动画
+        const panelBox = this.owner as Laya.Box;
+        PanelAnimationUtils.playOpenAnimation(panelBox);
     }
 
     /**
      * 隐藏面板
      */
     public hide(): void {
-        if (this.panelBox) {
-            this.panelBox.visible = false;
-        }
-        console.log("隐藏游戏说明面板");
+        const panelBox = this.owner as Laya.Box;
+        PanelAnimationUtils.playCloseAnimation(panelBox);
     }
 
     /**
@@ -100,9 +90,16 @@ export class GameStartPanel extends Laya.Script {
         console.log("开始游戏按钮被点击");
         this.hide();
 
-        // 调用回调函数
-        if (this.onStartCallback) {
-            this.onStartCallback();
+        // 直接调用GameMainManager的resumeGame方法继续游戏
+        try {
+            const gameMainManager = GameMainManager.getInstance();
+            if (gameMainManager) {
+                gameMainManager.resumeGame();
+            } else {
+                console.error("无法获取GameMainManager实例");
+            }
+        } catch (error) {
+            console.error("调用GameMainManager.resumeGame时出错:", error);
         }
     }
 
@@ -111,7 +108,6 @@ export class GameStartPanel extends Laya.Script {
         if (this.startButton) {
             this.startButton.off(Laya.Event.CLICK, this, this.onStartButtonClick);
         }
-        this.onStartCallback = null;
     }
 }
 

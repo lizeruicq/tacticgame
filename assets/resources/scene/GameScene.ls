@@ -33,6 +33,9 @@
           },
           "stopButton": {
             "_$ref": "obxzpln9"
+          },
+          "gameStartPanelBox": {
+            "_$ref": "tmi3s46b"
           }
         }
       ],
@@ -90,9 +93,136 @@
           "stateNum": 1,
           "skin": "res://dd766b95-76b9-4a63-a357-ec4b65ceb23f",
           "label": "",
-          "labelSize": 20,
           "labelAlign": "center",
           "labelVAlign": "middle"
+        },
+        {
+          "_$id": "tmi3s46b",
+          "_$type": "Box",
+          "name": "StartPanel",
+          "x": 584,
+          "y": 932,
+          "width": 985,
+          "height": 985,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "zIndex": 1,
+          "_$comp": [
+            {
+              "_$type": "c29b4a86-98f3-47eb-872d-fd62f0553cbf",
+              "scriptPath": "resources/scripts/GameStartPanel.ts",
+              "guideLabel": {
+                "_$ref": "0glgq3t5"
+              },
+              "monsterTypesLabel": {
+                "_$ref": "fxbyovnr"
+              },
+              "startButton": {
+                "_$ref": "0wn13wel"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "kl3u6rjy",
+              "_$type": "Image",
+              "name": "panel",
+              "x": 493,
+              "y": 493,
+              "width": 985,
+              "height": 771,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "centerX": 0,
+              "centerY": 0,
+              "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "0wn13wel",
+              "_$type": "Button",
+              "name": "StartButton",
+              "x": 492,
+              "y": 962,
+              "width": 180,
+              "height": 180,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "stateNum": 1,
+              "skin": "res://f463d7c7-bd11-48f4-b2f5-b7f6f0c0968e",
+              "label": "",
+              "labelAlign": "center",
+              "labelVAlign": "middle"
+            },
+            {
+              "_$id": "3z2jqqp6",
+              "_$type": "Button",
+              "name": "MenuButton",
+              "x": 256,
+              "y": 959,
+              "width": 180,
+              "height": 180,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "stateNum": 1,
+              "skin": "res://d0c1dfc5-074a-4af1-b545-7cdee8e610c1",
+              "label": "",
+              "labelAlign": "center",
+              "labelVAlign": "middle"
+            },
+            {
+              "_$id": "ie3y82r2",
+              "_$type": "Button",
+              "name": "RestartButton",
+              "x": 720,
+              "y": 967,
+              "width": 180,
+              "height": 180,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "stateNum": 1,
+              "skin": "res://945c8959-5f2a-4fd4-836d-11904e2fd227",
+              "label": "",
+              "labelAlign": "center",
+              "labelVAlign": "middle"
+            },
+            {
+              "_$id": "0glgq3t5",
+              "_$type": "Label",
+              "name": "guideLabel",
+              "x": 482,
+              "y": 220,
+              "width": 331,
+              "height": 163,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "text": "第一关",
+              "font": "YuppySC-Regular",
+              "fontSize": 100,
+              "color": "#4d895a",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "stroke": 5,
+              "strokeColor": "#63955a"
+            },
+            {
+              "_$id": "fxbyovnr",
+              "_$type": "Label",
+              "name": "monsterTypesLabel",
+              "x": 505,
+              "y": 507,
+              "width": 669,
+              "height": 401,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "text": "关卡信息说明",
+              "font": "YuppySC-Regular",
+              "fontSize": 75,
+              "bold": true,
+              "strokeColor": "#63955a"
+            }
+          ]
         }
       ]
     },

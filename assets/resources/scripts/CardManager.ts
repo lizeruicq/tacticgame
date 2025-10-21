@@ -20,7 +20,7 @@ export class CardManager extends Laya.Script {
     public maxMana: number = 10; // 最大法力值
 
     @property(Number)
-    public cardCooldown: number = 2000; // 卡牌冷却时间（毫秒）
+    public cardCooldown: number = 1000; // 卡牌冷却时间（毫秒）
 
     // 卡片相关
     private activeCards: any[] = [];                    // 当前激活的卡片
