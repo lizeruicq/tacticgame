@@ -32,11 +32,26 @@ export class SceneManager {
     }
     
     /**
-     * 切换到指定场景
+     * 切换到指定场景（带动画过渡）
      * @param scenePath 场景路径或资源ID
      * @param closeOther 是否关闭其他场景
      */
     public switchToScene(scenePath: string, closeOther: boolean = true): Promise<void> {
+        // 默认使用500ms的过渡时间
+        return this.switchToSceneWithTransition(scenePath, 500, closeOther);
+    }
+    
+    /**
+     * 带过渡效果的场景切换
+     * @param scenePath 场景路径或资源ID
+     * @param transitionDuration 过渡持续时间（毫秒）
+     * @param closeOther 是否关闭其他场景
+     */
+    public switchToSceneWithTransition(
+        scenePath: string, 
+        transitionDuration: number = 500,
+        closeOther: boolean = true
+    ): Promise<void> {
         return new Promise((resolve, reject) => {
             if (this.isLoading) {
                 console.warn("场景正在加载中，请稍后再试");
@@ -51,62 +66,52 @@ export class SceneManager {
             }
             
             this.isLoading = true;
-            console.log(`开始切换到场景: ${scenePath}`);
             
-            // 使用Laya的场景管理器打开场景
-            Laya.Scene.open(scenePath, closeOther, null, Laya.Handler.create(this, (scene: any) => {
-                this.isLoading = false;
-                if (scene) {
-                    this.currentScene = scenePath;
-                    console.log(`场景切换成功: ${scenePath}`);
-                    resolve();
-                } else {
-                    console.error(`场景切换失败: ${scenePath}`);
-                    reject(new Error(`场景切换失败: ${scenePath}`));
-                }
+            // 创建过渡遮罩
+            const transitionMask = new Laya.Sprite();
+            transitionMask.graphics.drawRect(0, 0, Laya.stage.width, Laya.stage.height, "#000000");
+            transitionMask.alpha = 0;
+            Laya.stage.addChild(transitionMask);
+            
+            // 淡出当前场景
+            Laya.Tween.to(transitionMask, { alpha: 1 }, transitionDuration, Laya.Ease.linearIn, Laya.Handler.create(this, () => {
+                // 淡出完成后加载新场景
+                Laya.Scene.open(scenePath, closeOther, null, Laya.Handler.create(this, (scene: any) => {
+                    if (scene) {
+                        this.currentScene = scenePath;
+                        
+                        // 淡入新场景
+                        Laya.Tween.to(transitionMask, { alpha: 0 }, transitionDuration, Laya.Ease.linearIn, Laya.Handler.create(this, () => {
+                            // 清理过渡遮罩
+                            transitionMask.destroy();
+                            this.isLoading = false;
+                            console.log(`场景切换成功: ${scenePath}`);
+                            resolve();
+                        }));
+                    } else {
+                        // 如果加载失败，也需要清理
+                        transitionMask.destroy();
+                        this.isLoading = false;
+                        console.error(`场景切换失败: ${scenePath}`);
+                        reject(new Error(`场景切换失败: ${scenePath}`));
+                    }
+                }));
             }));
         });
     }
     
     /**
-     * 切换到主菜单场景
-     */
-    public switchToMainMenu(): Promise<void> {
-        return this.switchToScene(SceneManager.SCENES.MAIN_MENU);
-    }
-    
-    /**
-     * 切换到关卡选择场景
+     * 切换到关卡选择场景（带动画过渡）
      */
     public switchToLevelSelect(): Promise<void> {
-        return this.switchToScene(SceneManager.SCENES.LEVEL_SELECT);
+        return this.switchToSceneWithTransition(SceneManager.SCENES.LEVEL_SELECT, 500);
     }
 
     /**
-     * 切换到游戏场景
+     * 切换到游戏场景（带动画过渡）
      */
     public switchToGameScene(): Promise<void> {
-        return this.switchToScene(SceneManager.SCENES.GAME);
-    }
-    
-    /**
-     * 预加载场景
-     * @param scenePath 场景路径
-     */
-    public preloadScene(scenePath: string): Promise<void> {
-        return new Promise((resolve, reject) => {
-            console.log(`开始预加载场景: ${scenePath}`);
-            
-            Laya.loader.load(scenePath, Laya.Handler.create(this, (success: any) => {
-                if (success) {
-                    console.log(`场景预加载成功: ${scenePath}`);
-                    resolve();
-                } else {
-                    console.error(`场景预加载失败: ${scenePath}`);
-                    reject(new Error(`场景预加载失败: ${scenePath}`));
-                }
-            }));
-        });
+        return this.switchToSceneWithTransition(SceneManager.SCENES.GAME, 500);
     }
     
     /**
@@ -121,26 +126,5 @@ export class SceneManager {
      */
     public getIsLoading(): boolean {
         return this.isLoading;
-    }
-    
-    /**
-     * 关闭指定场景
-     * @param scenePath 场景路径
-     */
-    public closeScene(scenePath: string): void {
-        Laya.Scene.close(scenePath);
-        if (this.currentScene === scenePath) {
-            this.currentScene = "";
-        }
-        console.log(`场景已关闭: ${scenePath}`);
-    }
-    
-    /**
-     * 关闭所有场景
-     */
-    public closeAllScenes(): void {
-        Laya.Scene.closeAll();
-        this.currentScene = "";
-        console.log("所有场景已关闭");
     }
 }

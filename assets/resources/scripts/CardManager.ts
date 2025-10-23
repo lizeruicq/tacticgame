@@ -5,7 +5,7 @@ import { GameMainManager } from "./GameMainManager";
 
 /**
  * 卡片管理器
- * 负责管理所有卡片的生成、使用和状态
+ * 负责管理所有卡片的生成、使用和状态，以及卡牌合成功能
  */
 @regClass()
 export class CardManager extends Laya.Script {
@@ -28,6 +28,13 @@ export class CardManager extends Laya.Script {
     private currentLevel: number = 1;                   // 当前关卡
     private isCardCooldown: boolean = false;           // 是否在冷却中
     private availablePlayerCards: string[] = [];       // 当前关卡可用的玩家卡牌类型
+
+    // 卡牌拖拽相关
+    private draggedCard: any = null;                   // 当前被拖拽的卡牌
+    private dragStartX: number = 0;                    // 拖拽开始的X坐标
+    private dragStartTime: number = 0;                 // 拖拽开始的时间
+    private isDragging: boolean = false;               // 是否正在拖拽
+    private longPressDelay: number = 300;              // 长按延迟（毫秒）
 
 
 
@@ -180,15 +187,9 @@ export class CardManager extends Laya.Script {
                 // 确保卡牌可点击
                 cardSprite.mouseEnabled = true;
                 cardComponent.onCardUsedCallback = (card: any) => this.onCardUsed(card);
-                // // 延迟设置回调，确保组件完全初始化
-                // Laya.timer.once(100, this, () => {
-                //     if (cardComponent && cardComponent.owner) {
-                //         cardComponent.onCardUsedCallback = (card: any) => this.onCardUsed(card);
-                //         console.log(`${cardType} 回调函数延迟设置成功`);
-                //     } else {
-                //         console.error(`${cardType} 组件或owner不存在，无法设置回调`);
-                //     }
-                // });
+
+                // 添加拖拽事件
+                cardSprite.on(Laya.Event.MOUSE_DOWN, this, this.onCardMouseDown, [cardComponent]);
 
                 console.log(`${cardType} 卡牌创建成功，激活卡牌总数: ${this.activeCards.length}`);
             } else {
@@ -203,8 +204,165 @@ export class CardManager extends Laya.Script {
      * 设置卡片事件
      */
     private setupCardEvents(): void {
-        // 这里可以设置全局卡片事件监听
+        // 卡片事件在createCard中设置
         console.log("卡片事件设置完成");
+    }
+
+    /**
+     * 卡牌鼠标按下事件
+     */
+    private onCardMouseDown(card: any): void {
+        this.draggedCard = card;
+        this.dragStartX = (card.owner as Laya.Sprite).x;
+        this.dragStartTime = Date.now();
+
+        // 添加鼠标移动和释放事件
+        Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onCardMouseMove);
+        Laya.stage.on(Laya.Event.MOUSE_UP, this, this.onCardMouseUp);
+    }
+
+    /**
+     * 卡牌鼠标移动事件
+     */
+    private onCardMouseMove(): void {
+        if (!this.draggedCard) return;
+
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - this.dragStartTime;
+
+        // 检查是否满足长按条件
+        if (elapsedTime >= this.longPressDelay && !this.isDragging) {
+            this.isDragging = true;
+            console.log("开始拖拽卡牌");
+        }
+
+        // 如果正在拖拽，更新卡牌位置（只允许左右移动）
+        if (this.isDragging) {
+            const cardSprite = this.draggedCard.owner as Laya.Sprite;
+            const deltaX = Laya.stage.mouseX - this.dragStartX;
+            cardSprite.x = this.dragStartX + deltaX;
+            cardSprite.zOrder = 99;
+        }
+    }
+
+    /**
+     * 卡牌鼠标释放事件
+     */
+    private onCardMouseUp(): void {
+        if (!this.draggedCard) return;
+
+        // 移除事件监听
+        Laya.stage.off(Laya.Event.MOUSE_MOVE, this, this.onCardMouseMove);
+        Laya.stage.off(Laya.Event.MOUSE_UP, this, this.onCardMouseUp);
+
+        // 如果正在拖拽，检查是否可以合成
+        if (this.isDragging) {
+            this.checkAndMergeCard(this.draggedCard);
+        }
+
+        // 重置拖拽状态
+        this.isDragging = false;
+        this.draggedCard = null;
+    }
+
+    /**
+     * 检查并合成卡牌
+     */
+    private checkAndMergeCard(draggedCard: any): void {
+        // 查找与被拖拽卡牌重合的其他卡牌
+        const mergeTargetCard = this.findOverlapCard(draggedCard);
+
+        if (!mergeTargetCard) {
+            // 没有找到重合的卡牌，恢复原位
+            console.log("没有找到重合的卡牌，恢复原位");
+            this.resetCardPosition(draggedCard);
+            return;
+        }
+
+        // 检查两张卡牌是否相同且都是1级
+        if (!this.canMergeCards(draggedCard, mergeTargetCard)) {
+            console.log("卡牌无法合成，恢复原位");
+            this.resetCardPosition(draggedCard);
+            return;
+        }
+
+        // 执行合成
+        console.log(`合成卡牌: ${draggedCard.cardName} + ${mergeTargetCard.cardName}`);
+        this.mergeCards(draggedCard, mergeTargetCard);
+    }
+
+    /**
+     * 查找与被拖拽卡牌重合的其他卡牌
+     */
+    private findOverlapCard(draggedCard: any): any {
+        const draggedSprite = draggedCard.owner as Laya.Sprite;
+        const draggedBounds = draggedSprite.getBounds();
+
+        for (const card of this.activeCards) {
+            if (card === draggedCard || !card.owner) continue;
+
+            const cardSprite = card.owner as Laya.Sprite;
+            const cardBounds = cardSprite.getBounds();
+
+            // 检查是否重合
+            if (this.checkBoundsOverlap(draggedBounds, cardBounds)) {
+                return card;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 检查两个矩形是否重合
+     */
+    private checkBoundsOverlap(bounds1: any, bounds2: any): boolean {
+        return !(bounds1.x + bounds1.width < bounds2.x ||
+                 bounds2.x + bounds2.width < bounds1.x ||
+                 bounds1.y + bounds1.height < bounds2.y ||
+                 bounds2.y + bounds2.height < bounds1.y);
+    }
+
+    /**
+     * 检查两张卡牌是否可以合成
+     * 条件：相同类型且都是1级
+     */
+    private canMergeCards(card1: any, card2: any): boolean {
+        // 检查卡牌类型是否相同
+        if (card1.cardName !== card2.cardName) {
+            console.log(`卡牌类型不同: ${card1.cardName} vs ${card2.cardName}`);
+            return false;
+        }
+
+        // 检查两张卡牌是否都是1级
+        if (card1.monsterLevel !== 1 || card2.monsterLevel !== 1) {
+            console.log(`卡牌等级不符: ${card1.monsterLevel} vs ${card2.monsterLevel}`);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * 合成两张卡牌
+     * 被覆盖的卡牌升级为2级，被拖拽的卡牌移除
+     */
+    private mergeCards(draggedCard: any, targetCard: any): void {
+        // 升级目标卡牌为2级
+        targetCard.monsterLevel = 2;
+        console.log(`${targetCard.cardName} 升级为2级`);
+
+        // 销毁被拖拽的卡牌
+        this.destroyCard(draggedCard);
+    }
+
+    /**
+     * 恢复卡牌原位
+     */
+    private resetCardPosition(card: any): void {
+        const cardSprite = card.owner as Laya.Sprite;
+        // 使用Tween动画恢复到原位
+        Laya.Tween.to(cardSprite, { x: this.dragStartX }, 200, Laya.Ease.quadOut);
     }
 
     /**

@@ -29,12 +29,12 @@ export abstract class BaseMonsterCard extends Laya.Script {
 
     // 回调函数
     public onCardUsedCallback: ((card: BaseMonsterCard) => void) | null = null;
-    
+
     onAwake(): void {
         console.log(`${this.cardName} 卡片初始化`);
         this.initializeCard();
     }
-    
+
     onEnable(): void {
         // 设置点击事件
         this.owner.on(Laya.Event.CLICK, this, this.onCardClick);
@@ -75,6 +75,7 @@ export abstract class BaseMonsterCard extends Laya.Script {
     
     /**
      * 卡片点击事件
+     * 只在非拖拽情况下生成怪物
      */
     private onCardClick(): void {
         console.log(`点击了 ${this.cardName}`);
