@@ -1,6 +1,7 @@
 const { regClass } = Laya;
 import { LevelSelectRTBase } from "./LevelSelectRT.generated";
 import { SceneManager } from "./SceneManager";
+import { GameDataManager } from "./GameDataManager";
 
 @regClass()
 export class LevelSelectRT extends LevelSelectRTBase {
@@ -99,7 +100,8 @@ export class LevelSelectRT extends LevelSelectRTBase {
         if (!cell) return;
 
         const levelNum = index + 1;
-        // console.log("渲染关卡:", levelNum);
+        const gameDataManager = GameDataManager.getInstance();
+        const isUnlocked = gameDataManager.isLevelUnlocked(levelNum);
 
         // 查找Number标签
         const numberLabel = cell.getChildByName("Number") as Laya.Label;
@@ -110,15 +112,34 @@ export class LevelSelectRT extends LevelSelectRTBase {
         // 查找背景
         const bg = cell.getChildByName("listItemBG") as Laya.Image;
         if (bg) {
-            bg.color = levelNum === this.selectedLevel ? "#ffff00" : "#ffffff";
+            if (!isUnlocked) {
+                // 未解锁：灰色
+                bg.color = "#cccccc";
+            } else if (levelNum === this.selectedLevel) {
+                // 已解锁且被选中：黄色
+                bg.color = "#ffff00";
+            } else {
+                // 已解锁但未选中：白色
+                bg.color = "#ffffff";
+            }
         }
 
-        // 绑定点击
+        // 绑定点击事件（只有已解锁的关卡才能点击）
         cell.off(Laya.Event.CLICK, this, this.onLevelClick);
-        cell.on(Laya.Event.CLICK, this, this.onLevelClick, [levelNum]);
+        if (isUnlocked) {
+            cell.on(Laya.Event.CLICK, this, this.onLevelClick, [levelNum]);
+        }
     }
 
     private onLevelClick(levelNum: number): void {
+        const gameDataManager = GameDataManager.getInstance();
+
+        // 检查关卡是否已解锁
+        if (!gameDataManager.isLevelUnlocked(levelNum)) {
+            console.log("关卡未解锁:", levelNum);
+            return;
+        }
+
         console.log("点击关卡:", levelNum);
         this.selectedLevel = levelNum;
         if (this.LevelList) {
@@ -139,6 +160,14 @@ export class LevelSelectRT extends LevelSelectRTBase {
     }
 
     private onStartClick(): void {
+        const gameDataManager = GameDataManager.getInstance();
+
+        // 检查关卡是否已解锁
+        if (!gameDataManager.isLevelUnlocked(this.selectedLevel)) {
+            console.log("关卡未解锁，无法开始游戏:", this.selectedLevel);
+            return;
+        }
+
         console.log("开始游戏，关卡:", this.selectedLevel);
 
         // 保存关卡编号

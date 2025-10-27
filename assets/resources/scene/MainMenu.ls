@@ -174,7 +174,105 @@
           "labelVAlign": "middle",
           "labelPadding": "-18,0,0,0",
           "labelStroke": 10,
-          "labelStrokeColor": "#f4c5c5"
+          "labelStrokeColor": "#f4c5c5",
+          "_$comp": [
+            {
+              "_$type": "95d03e02-a61b-4989-a9f9-cc2bdb01f59a",
+              "scriptPath": "../src/Mainmenu/SoundButton.ts",
+              "soundOnImage": "resources/images/UI/sound.png",
+              "soundOffImage": "resources/images/UI/sound_off.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "882xdw7u",
+      "_$type": "Box",
+      "name": "SettingPanel",
+      "x": 590,
+      "y": 1058,
+      "width": 1019,
+      "height": 1019,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "visible": false,
+      "centerX": 0,
+      "_$child": [
+        {
+          "_$id": "vzfq7ph1",
+          "_$type": "Image",
+          "name": "panel",
+          "x": 510,
+          "y": 510,
+          "width": 1220,
+          "height": 955,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "centerX": 0,
+          "centerY": 0,
+          "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "_$id": "tnc5r6gp",
+      "_$type": "Box",
+      "name": "HelpPanel",
+      "x": 593,
+      "y": 1056,
+      "width": 1019,
+      "height": 1019,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "visible": false,
+      "centerX": 3,
+      "_$child": [
+        {
+          "_$id": "f3vos987",
+          "_$type": "Image",
+          "name": "panel",
+          "x": 510,
+          "y": 510,
+          "width": 1220,
+          "height": 955,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "centerX": 0,
+          "centerY": 0,
+          "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "_$id": "58j4cfzu",
+      "_$type": "Sprite",
+      "name": "SoundManager",
+      "x": 564,
+      "y": 1103,
+      "width": 100,
+      "height": 100,
+      "_$comp": [
+        {
+          "_$type": "14c7a2ca-929f-42bf-a6e5-48267379264b",
+          "scriptPath": "../src/utils/SoundManager.ts",
+          "bgMusicNode": {
+            "_$ref": "071sgxch"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "071sgxch",
+          "_$type": "SoundNode",
+          "name": "BackgroundMusic",
+          "width": 100,
+          "height": 100,
+          "source": "res://54227507-58fb-4940-a664-ec2f11274439",
+          "isMusic": true,
+          "autoPlay": true
         }
       ]
     }

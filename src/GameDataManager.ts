@@ -7,6 +7,7 @@ export interface GameData {
     playerExp: number;
     coins: number;
     achievements: string[];
+    unlockedLevels: number[];  // 已解锁的关卡列表
     settings: {
         soundEnabled: boolean;
         musicEnabled: boolean;
@@ -67,6 +68,7 @@ export class GameDataManager {
                 playerExp: 0,
                 coins: 100,
                 achievements: [],
+                unlockedLevels: [1,2],  // 初始只解锁第1关
                 settings: {
                     soundEnabled: true,
                     musicEnabled: true,
@@ -220,6 +222,52 @@ export class GameDataManager {
         };
     }
     
+    /**
+     * 检查关卡是否已解锁
+     */
+    public isLevelUnlocked(levelNum: number): boolean {
+        return this.playerData.gameData.unlockedLevels.indexOf(levelNum) !== -1;
+    }
+
+    /**
+     * 解锁关卡
+     */
+    public unlockLevel(levelNum: number): void {
+        if (!this.isLevelUnlocked(levelNum)) {
+            this.playerData.gameData.unlockedLevels.push(levelNum);
+            this.playerData.gameData.unlockedLevels.sort((a, b) => a - b);
+            this.saveGameData();
+            console.log(`关卡 ${levelNum} 已解锁`);
+        }
+    }
+
+    /**
+     * 获取已解锁的最高关卡
+     */
+    public getMaxUnlockedLevel(): number {
+        const unlockedLevels = this.playerData.gameData.unlockedLevels;
+        return unlockedLevels.length > 0 ? Math.max(...unlockedLevels) : 1;
+    }
+
+    /**
+     * 获取所有已解锁的关卡
+     */
+    public getUnlockedLevels(): number[] {
+        return [...this.playerData.gameData.unlockedLevels];
+    }
+
+    /**
+     * 游戏胜利，解锁下一关
+     */
+    public onLevelComplete(levelNum: number): void {
+        // 解锁下一关
+        this.unlockLevel(levelNum + 1);
+        // 更新玩家等级为已解锁的最高关卡
+        this.playerData.gameData.playerLevel = this.getMaxUnlockedLevel();
+        this.saveGameData();
+        console.log(`关卡 ${levelNum} 完成，玩家等级更新为 ${this.playerData.gameData.playerLevel}`);
+    }
+
     /**
      * 重置游戏数据
      */

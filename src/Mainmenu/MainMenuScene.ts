@@ -3,6 +3,7 @@ import { WeChatManager, WeChatUserInfo, WeChatEventType } from '../Wechat/WeChat
 import { GameDataManager } from '../GameDataManager';
 import { SceneManager } from '../SceneManager';
 import { ButtonAnimationUtils } from '../utils/ButtonAnimationUtils';
+import { SoundManager } from '../utils/SoundManager';
 
 @regClass()
 export class MainMenuScene extends Laya.Script {
@@ -22,20 +23,20 @@ export class MainMenuScene extends Laya.Script {
     
     onStart() {
         console.log("MainMenuScene started");
-        
+
         // 获取管理器实例
         this.weChatManager = WeChatManager.getInstance();
         this.gameDataManager = GameDataManager.getInstance();
-        
+
         // 初始化UI
         this.initUI();
-        
+
         // 绑定事件
         this.bindEvents();
-        
+
         // 设置微信事件监听
         this.setupWeChatEventListeners();
-        
+
         // 初始化用户数据
         this.initializeUserData();
     }
@@ -54,6 +55,10 @@ export class MainMenuScene extends Laya.Script {
             this.startButton.on(Laya.Event.CLICK, this, this.onStartButtonClick);
             // 添加按钮点击动画效果
             ButtonAnimationUtils.addButtonClickEffect(this.startButton);
+            // 播放按钮点击音效
+            // this.startButton.on(Laya.Event.CLICK, this, () => {
+            //     SoundManager.getInstance().playButtonClickSound();
+            // });
         }
     }
     
