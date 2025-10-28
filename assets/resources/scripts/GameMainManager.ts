@@ -5,6 +5,7 @@ import { Castle } from "./Castle";
 import { EnemyAIManager } from "./EnemyAIManager";
 import { PlayerManager } from "./PlayerManager";
 import { UIManager } from "./UIManager";
+import { GameEndPanel } from "./GameEndPanel";
 
 @regClass()
 export class GameMainManager extends Laya.Script {
@@ -31,6 +32,9 @@ export class GameMainManager extends Laya.Script {
     private playerManager: PlayerManager = null;
     private enemyAIManager: EnemyAIManager = null;
     private uiManager: UIManager = null;
+    
+    // 游戏结束面板引用
+    private gameEndPanel: GameEndPanel = null;
 
     // 游戏状态
     private gameStarted: boolean = false;
@@ -139,17 +143,51 @@ export class GameMainManager extends Laya.Script {
      * 初始化游戏系统
      */
     private initializeGameSystems(): void {
-        console.log("开始初始化游戏系统...");
+        // 初始化UI管理器
+        this.initializeUIManager();
 
-        // 初始化敌人AI
-        try {
-            this.initializeEnemyAI();
-            console.log("✅ 敌人AI系统初始化成功");
-        } catch (error) {
-            console.error("❌ 敌人AI系统初始化失败:", error);
+        // 初始化关卡
+        this._initialize();
+
+        console.log("游戏系统初始化完成");
+    }
+
+    /**
+     * 初始化UI管理器
+     */
+    private initializeUIManager(): void {
+        const gameScene = this.owner.scene;
+        const uiManagerNode = gameScene.getChildByName("UIManager");
+        
+        if (uiManagerNode) {
+            this.uiManager = uiManagerNode.getComponent(UIManager);
+            if (!this.uiManager) {
+                console.error("未找到UIManager组件");
+            }
+        } else {
+            console.error("未找到UIManager节点");
         }
-
-        console.log("🎉 游戏系统初始化全部完成");
+        
+        // 初始化游戏结束面板
+        this.initializeGameEndPanel();
+    }
+    
+    /**
+     * 初始化游戏结束面板
+     */
+    private initializeGameEndPanel(): void {
+        const gameScene = this.owner.scene;
+        const endPanelNode = gameScene.getChildByName("EndPanel");
+        
+        if (endPanelNode) {
+            this.gameEndPanel = endPanelNode.getComponent(GameEndPanel);
+            if (!this.gameEndPanel) {
+                this.gameEndPanel = endPanelNode.addComponent(GameEndPanel);
+            }
+            console.log("游戏结束面板初始化完成");
+        } else {
+            console.warn("未找到EndPanel节点");
+        }
     }
 
     /**
@@ -254,11 +292,22 @@ export class GameMainManager extends Laya.Script {
      */
     private onGameEnd(): void {
         console.log(`游戏结束，获胜方: ${this.winner}`);
-
-        // 这里可以添加游戏结束的UI显示
-        // 比如显示胜利/失败界面，统计数据等
+        
+        // 通过UIManager显示游戏结束面板
+        this.showGameEndPanel();
     }
-
+    
+    /**
+     * 显示游戏结束面板
+     */
+    private showGameEndPanel(): void {
+        if (this.uiManager) {
+            const isPlayerWin = this.winner === "player";
+            this.uiManager.showGameEndPanel(isPlayerWin);
+        } else {
+            console.warn("UIManager未初始化，无法显示游戏结束面板");
+        }
+    }
 
     /**
      * 检查游戏是否结束

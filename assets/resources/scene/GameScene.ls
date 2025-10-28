@@ -36,6 +36,9 @@
           },
           "gameStartPanelBox": {
             "_$ref": "tmi3s46b"
+          },
+          "gameEndPanelBox": {
+            "_$ref": "1kdul3cr"
           }
         }
       ],
@@ -221,6 +224,116 @@
               "fontSize": 75,
               "bold": true,
               "strokeColor": "#63955a"
+            }
+          ]
+        },
+        {
+          "_$id": "1kdul3cr",
+          "_$type": "Box",
+          "name": "EndPanel",
+          "x": 587,
+          "y": 931,
+          "width": 985,
+          "height": 985,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "visible": false,
+          "zIndex": 1,
+          "_$comp": [
+            {
+              "_$type": "7db5312b-be54-4d65-bba1-92ec3ad3cfdd",
+              "scriptPath": "resources/scripts/GameEndPanel.ts",
+              "resultImage": {
+                "_$ref": "206ch5rg"
+              },
+              "textLabel": {
+                "_$ref": "3k71u47v"
+              },
+              "menuButton": {
+                "_$ref": "jx265mnw"
+              },
+              "restartButton": {
+                "_$ref": "s4d4msvy"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "becpy9sm",
+              "_$type": "Image",
+              "name": "panel",
+              "x": 493,
+              "y": 493,
+              "width": 985,
+              "height": 771,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "centerX": 0,
+              "centerY": 0,
+              "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "jx265mnw",
+              "_$type": "Button",
+              "name": "MenuButton",
+              "x": 605,
+              "y": 959,
+              "width": 180,
+              "height": 180,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "stateNum": 1,
+              "skin": "res://4cd32db6-8b1a-4c43-a4c8-38a17fdb0217",
+              "label": "",
+              "labelAlign": "center",
+              "labelVAlign": "middle"
+            },
+            {
+              "_$id": "s4d4msvy",
+              "_$type": "Button",
+              "name": "RestartButton",
+              "x": 358,
+              "y": 957,
+              "width": 180,
+              "height": 180,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "stateNum": 1,
+              "skin": "res://945c8959-5f2a-4fd4-836d-11904e2fd227",
+              "label": "",
+              "labelAlign": "center",
+              "labelVAlign": "middle"
+            },
+            {
+              "_$id": "3k71u47v",
+              "_$type": "Label",
+              "name": "TextLabel",
+              "x": 505,
+              "y": 507,
+              "width": 669,
+              "height": 401,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "text": "关卡结束说明",
+              "font": "YuppySC-Regular",
+              "fontSize": 75,
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "strokeColor": "#63955a"
+            },
+            {
+              "_$id": "206ch5rg",
+              "_$type": "Image",
+              "name": "result",
+              "x": 177,
+              "y": 54,
+              "width": 631,
+              "height": 248,
+              "centerX": 0,
+              "skin": "res://e6fe7b3a-2e83-4fd2-becf-8759dd40669f",
+              "color": "#ffffff"
             }
           ]
         }

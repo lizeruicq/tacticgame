@@ -35,8 +35,7 @@ export class CardManager extends Laya.Script {
     private dragStartTime: number = 0;                 // 拖拽开始的时间
     private isDragging: boolean = false;               // 是否正在拖拽
     private longPressDelay: number = 300;              // 长按延迟（毫秒）
-
-
+    private originalZIndex: number = 0;                // 卡片原始zIndex
 
     onAwake(): void {
         console.log("=== CardManager 初始化 ===");
@@ -234,6 +233,11 @@ export class CardManager extends Laya.Script {
         if (elapsedTime >= this.longPressDelay && !this.isDragging) {
             this.isDragging = true;
             console.log("开始拖拽卡牌");
+            
+            // 提升卡片的zIndex至最高
+            const cardSprite = this.draggedCard.owner as Laya.Sprite;
+            this.originalZIndex = cardSprite.zOrder;
+            cardSprite.zOrder = 99;
         }
 
         // 如果正在拖拽，更新卡牌位置（只允许左右移动）
@@ -241,7 +245,6 @@ export class CardManager extends Laya.Script {
             const cardSprite = this.draggedCard.owner as Laya.Sprite;
             const deltaX = Laya.stage.mouseX - this.dragStartX;
             cardSprite.x = this.dragStartX + deltaX;
-            cardSprite.zOrder = 99;
         }
     }
 
@@ -258,11 +261,24 @@ export class CardManager extends Laya.Script {
         // 如果正在拖拽，检查是否可以合成
         if (this.isDragging) {
             this.checkAndMergeCard(this.draggedCard);
+        } else {
+            // 恢复卡片的zIndex（即使没有拖拽，也要确保zIndex恢复）
+            this.restoreCardZIndex(this.draggedCard);
         }
 
         // 重置拖拽状态
         this.isDragging = false;
         this.draggedCard = null;
+    }
+
+    /**
+     * 恢复卡片的原始zIndex
+     */
+    private restoreCardZIndex(card: any): void {
+        if (card && card.owner) {
+            const cardSprite = card.owner as Laya.Sprite;
+            cardSprite.zOrder = this.originalZIndex;
+        }
     }
 
     /**
@@ -276,6 +292,7 @@ export class CardManager extends Laya.Script {
             // 没有找到重合的卡牌，恢复原位
             console.log("没有找到重合的卡牌，恢复原位");
             this.resetCardPosition(draggedCard);
+            this.restoreCardZIndex(draggedCard);
             return;
         }
 
@@ -283,12 +300,16 @@ export class CardManager extends Laya.Script {
         if (!this.canMergeCards(draggedCard, mergeTargetCard)) {
             console.log("卡牌无法合成，恢复原位");
             this.resetCardPosition(draggedCard);
+            this.restoreCardZIndex(draggedCard);
             return;
         }
 
         // 执行合成
         console.log(`合成卡牌: ${draggedCard.cardName} + ${mergeTargetCard.cardName}`);
         this.mergeCards(draggedCard, mergeTargetCard);
+        
+        // 生成新卡牌
+        this.generateRandomCard();
     }
 
     /**

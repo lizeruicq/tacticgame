@@ -4,6 +4,7 @@ import { EnemyAIManager } from "./EnemyAIManager";
 import { GameMainManager } from "./GameMainManager";
 import { Castle } from "./Castle";
 import { GameStartPanel } from "./GameStartPanel";
+import { GameEndPanel } from "./GameEndPanel";
 
 /**
  * UI管理器
@@ -28,11 +29,16 @@ export class UIManager extends Laya.Script {
     @property({ type: Laya.Box })
     public gameStartPanelBox: Laya.Box = null;
 
+    // 游戏结束面板引用
+    @property({ type: Laya.Box })
+    public gameEndPanelBox: Laya.Box = null;
+
     // 管理器引用
     private playerManager: PlayerManager = null;
     private enemyAIManager: EnemyAIManager = null;
     private gameMainManager: GameMainManager = null;
     private gameStartPanel: GameStartPanel = null;
+    private gameEndPanel: GameEndPanel = null;
 
     // 标志位表示UIManager是否已完成初始化
     public static isInitialized: boolean = false;
@@ -160,6 +166,9 @@ export class UIManager extends Laya.Script {
 
         // 初始化游戏开始面板
         this.initializeGameStartPanel();
+        
+        // 初始化游戏结束面板
+        this.initializeGameEndPanel();
 
         // 初始化显示（延迟一帧，确保所有组件已初始化）
         Laya.timer.once(100, this, () => {
@@ -181,6 +190,21 @@ export class UIManager extends Laya.Script {
         }
         else {
             console.error("UIManager: 未找到游戏开始面板");
+        }
+    }
+    
+    /**
+     * 初始化游戏结束面板
+     */
+    private initializeGameEndPanel(): void {
+        if (this.gameEndPanelBox) {
+            this.gameEndPanel = this.gameEndPanelBox.getComponent(GameEndPanel);
+            if (!this.gameEndPanel) {
+                this.gameEndPanel = this.gameEndPanelBox.addComponent(GameEndPanel);
+            }
+            console.log("UIManager: 游戏结束面板初始化完成");
+        } else {
+            console.warn("UIManager: 未找到游戏结束面板节点");
         }
     }
 
@@ -355,6 +379,27 @@ export class UIManager extends Laya.Script {
     public hideGameStartPanel(): void {
         if (this.gameStartPanel) {
             this.gameStartPanel.hide();
+        }
+    }
+    
+    /**
+     * 显示游戏结束面板
+     * @param win 是否胜利
+     */
+    public showGameEndPanel(win: boolean): void {
+        if (this.gameEndPanel) {
+            this.gameEndPanel.show(win);
+        } else {
+            console.warn("GameEndPanel 组件未初始化");
+        }
+    }
+    
+    /**
+     * 隐藏游戏结束面板
+     */
+    public hideGameEndPanel(): void {
+        if (this.gameEndPanel) {
+            this.gameEndPanel.hide();
         }
     }
 

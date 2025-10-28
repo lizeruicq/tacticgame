@@ -2,7 +2,7 @@ const { regClass } = Laya;
 import { LevelSelectRTBase } from "./LevelSelectRT.generated";
 import { SceneManager } from "./SceneManager";
 import { GameDataManager } from "./GameDataManager";
-
+import { ButtonAnimationUtils } from './utils/ButtonAnimationUtils';
 @regClass()
 export class LevelSelectRT extends LevelSelectRTBase {
     private selectedLevel: number = 1;
@@ -105,22 +105,35 @@ export class LevelSelectRT extends LevelSelectRTBase {
 
         // 查找Number标签
         const numberLabel = cell.getChildByName("Number") as Laya.Label;
-        if (numberLabel) {
-            numberLabel.text = levelNum.toString();
-        }
-
         // 查找背景
         const bg = cell.getChildByName("listItemBG") as Laya.Image;
-        if (bg) {
-            if (!isUnlocked) {
-                // 未解锁：灰色
-                bg.color = "#cccccc";
-            } else if (levelNum === this.selectedLevel) {
-                // 已解锁且被选中：黄色
-                bg.color = "#ffff00";
-            } else {
-                // 已解锁但未选中：白色
-                bg.color = "#ffffff";
+
+        if (!isUnlocked) {
+            // 未解锁关卡：隐藏Number节点并替换背景图片
+            if (numberLabel) {
+                numberLabel.visible = false;
+            }
+            
+            if (bg) {
+                // 替换为锁图标
+                bg.skin = "resources/images/UI/lock.png";
+                bg.color = "#ffffff"; // 重置颜色
+            }
+        } else {
+            // 已解锁关卡：显示Number节点并使用原有逻辑
+            if (numberLabel) {
+                numberLabel.visible = true;
+                numberLabel.text = levelNum.toString();
+            }
+            
+            if (bg) {
+                if (levelNum === this.selectedLevel) {
+                    // 已解锁且被选中：黄色
+                    bg.color = "#ffff00";
+                } else {
+                    // 已解锁但未选中：白色
+                    bg.color = "#ffffff";
+                }
             }
         }
 
@@ -153,6 +166,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         const startBtn = this.getChildByName("Start") as Laya.Button;
         if (startBtn) {
             startBtn.on(Laya.Event.CLICK, this, this.onStartClick);
+            ButtonAnimationUtils.addButtonClickEffect(startBtn);
             console.log("Start按钮设置完成");
         } else {
             console.error("未找到Start按钮");
