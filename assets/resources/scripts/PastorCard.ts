@@ -8,9 +8,6 @@ import { BaseMonsterCard } from "./BaseMonsterCard";
 @regClass()
 export class PastorCard extends BaseMonsterCard {
 
-    @property(Number)
-    public pastorLevel: number = 1; // Pastor等级
-
     constructor() {
         super();
         // 设置Pastor卡片的默认属性
@@ -46,16 +43,15 @@ export class PastorCard extends BaseMonsterCard {
     /**
      * 设置Pastor等级
      */
-    public setPastorLevel(level: number): void {
-        this.pastorLevel = level;
-        this.monsterLevel = level; // 同步到父类属性
+    public setLevel(level: number): void {
+        this.monsterLevel = level;
     }
 
     /**
      * 获取Pastor等级
      */
-    public getPastorLevel(): number {
-        return this.pastorLevel;
+    public getLevel(): number {
+        return this.monsterLevel;
     }
 
     /**
@@ -65,7 +61,7 @@ export class PastorCard extends BaseMonsterCard {
         const baseInfo = super.getCardInfo();
         return {
             ...baseInfo,
-            pastorLevel: this.pastorLevel
+            pastorLevel: this.monsterLevel
         };
     }
 

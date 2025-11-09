@@ -37,6 +37,9 @@ export abstract class BaseMonster extends Laya.Script {
     @property({ type: Number })
     public isPlayerCamp: boolean = false;  // 是否玩家阵营
 
+    @property({ type: Number })
+    public monsterLevel: number = 1;  // 怪物等级
+
     // 怪物基础属性（由子类设置）
     protected monsterStats: IMonsterStats = {
         speed: 100,

@@ -12,9 +12,6 @@ export class HumanSwordFe extends BaseMonster {
     
     // ========== SwordFe特有属性 ==========
     
-    @property({ type: Number })
-    public SwordFeLevel: number = 1;  // SwordFe等级，影响属性
-    
     // @property({ type: Boolean })
     // public canCounterAttack: boolean = true;  // 是否可以反击
     
@@ -30,7 +27,7 @@ export class HumanSwordFe extends BaseMonster {
         // 根据等级设置SwordFe的基础属性
         this.monsterStats = this.calculateSwordFeStats();
         
-        console.log(`SwordFe初始化 - 等级: ${this.SwordFeLevel}`, this.monsterStats);
+        console.log(`SwordFe初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -56,13 +53,13 @@ export class HumanSwordFe extends BaseMonster {
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.SwordFeLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
             speed: Math.floor(baseStats.speed * levelMultiplier),
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
             attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
-            attackRange: Math.floor(baseStats.attackRange * (1 + (this.SwordFeLevel - 1) * 0.1)), // 攻击范围小幅增长
+            attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };
     }
@@ -141,13 +138,13 @@ export class HumanSwordFe extends BaseMonster {
     // ========== 公共接口 ==========
     
     /**
-     * 设置SwordFe等级
+     * 重写基类的setLevel方法
      */
-    public setSwordFeLevel(level: number): void {
+    public setLevel(level: number): void {
         if (level < 1) level = 1;
         if (level > 10) level = 10; // 最大等级限制
         
-        this.SwordFeLevel = level;
+        this.monsterLevel = level;
         
         // 重新计算属性
         const oldMaxHealth = this.monsterStats.maxHealth;
@@ -161,24 +158,17 @@ export class HumanSwordFe extends BaseMonster {
     }
     
     /**
-     * 获取SwordFe等级
+     * 重写基类的getLevel方法
      */
-    public getSwordFeLevel(): number {
-        return this.SwordFeLevel;
-    }
-
-    /**
-     * 重写基类的setLevel方法
-     */
-    public setLevel(level: number): void {
-        this.setSwordFeLevel(level);
+    public getLevel(): number {
+        return this.monsterLevel;
     }
     
   
     public getSwordFeInfo(): any {
         return {
             name: "SwordFe",
-            level: this.SwordFeLevel,
+            level: this.monsterLevel,
             camp: this.isPlayerCamp ? "Player" : "Enemy",
             health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
             state: this.currentState,

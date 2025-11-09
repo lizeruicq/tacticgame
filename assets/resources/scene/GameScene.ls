@@ -48,7 +48,7 @@
           "_$type": "ProgressBar",
           "name": "PlayerHpBar",
           "x": 81,
-          "y": 1994,
+          "y": 1693,
           "width": 507,
           "height": 37,
           "rotation": 270.27695878401937,
@@ -61,7 +61,7 @@
           "_$type": "Label",
           "name": "manaText",
           "x": 69,
-          "y": 2021,
+          "y": 1753,
           "width": 329,
           "height": 86,
           "zIndex": 3,
@@ -353,8 +353,7 @@
       "_$comp": [
         {
           "_$type": "e04b952a-7429-4b86-b289-20d358baf726",
-          "scriptPath": "resources/scripts/GameMainManager.ts",
-          "text": ""
+          "scriptPath": "resources/scripts/GameMainManager.ts"
         },
         {
           "_$type": "754b97de-0a5a-4b15-bd15-fcd134f1bbb4",
@@ -396,14 +395,14 @@
       "x": 42,
       "y": 38,
       "width": 1102,
-      "height": 2037,
+      "height": 1913,
       "_$child": [
         {
           "_$id": "956g9jgg",
           "_$type": "Sprite",
           "name": "spawnArea",
           "x": 556,
-          "y": 1885,
+          "y": 1652,
           "width": 1069,
           "height": 313,
           "anchorX": 0.5,
@@ -422,7 +421,7 @@
       "_$type": "Sprite",
       "name": "castle-self",
       "x": 596,
-      "y": 2052,
+      "y": 1815,
       "width": 380,
       "height": 380,
       "anchorX": 0.5,
@@ -445,9 +444,9 @@
       "_$type": "Image",
       "name": "CardsContainer",
       "x": 13,
-      "y": 1971,
+      "y": 1688,
       "width": 1175,
-      "height": 582,
+      "height": 865,
       "skin": "res://d6102fdb-2492-4ea7-ab6f-eca1f65a1acc",
       "color": "#ffffff"
     },
@@ -455,10 +454,10 @@
       "_$id": "th76pqq2",
       "_$type": "HBox",
       "name": "CardBox",
-      "x": 100,
-      "y": 2113,
-      "width": 980,
-      "height": 262,
+      "x": 90,
+      "y": 1909,
+      "width": 999,
+      "height": 370,
       "centerX": 0,
       "space": 51,
       "align": "middle",
@@ -479,7 +478,9 @@
           "name": "card_wizard",
           "active": true,
           "x": 0,
-          "y": 28,
+          "y": 82,
+          "width": 206,
+          "height": 206,
           "visible": true
         },
         {
@@ -488,7 +489,9 @@
           "name": "card_rock",
           "active": true,
           "x": 257,
-          "y": 28,
+          "y": 82,
+          "width": 206,
+          "height": 206,
           "visible": true
         },
         {
@@ -497,7 +500,7 @@
           "name": "card_pastor",
           "active": true,
           "x": 514,
-          "y": 28,
+          "y": 82,
           "visible": true
         }
       ]

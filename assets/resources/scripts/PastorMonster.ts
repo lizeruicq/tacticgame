@@ -11,9 +11,6 @@ import { Castle } from "./Castle";
 @regClass()
 export class PastorMonster extends BaseMonster {
 
-    @property(Number)
-    public pastorLevel: number = 1;
-
     // Pastor动画管理器引用
     private pastorAnimationManager: PastorAnimationManager = null;
 
@@ -32,7 +29,7 @@ export class PastorMonster extends BaseMonster {
     protected initializeMonster(): void {
         this.monsterStats = this.calculatePastorStats();
 
-        console.log(`Pastor初始化完成 - 等级: ${this.pastorLevel}`, this.monsterStats);
+        console.log(`Pastor初始化完成 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
 
     private calculatePastorStats(): IMonsterStats {
@@ -45,7 +42,7 @@ export class PastorMonster extends BaseMonster {
         };
 
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.pastorLevel - 1) * 0.2;
+        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2;
         return {
             speed: Math.floor(baseStats.speed * levelMultiplier),
             attackPower: 0,  // 始终为0
@@ -242,11 +239,11 @@ export class PastorMonster extends BaseMonster {
 
     // ========== 公共接口 ==========
 
-    public setPastorLevel(level: number): void {
+    public setLevel(level: number): void {
         if (level < 1) level = 1;
         if (level > 10) level = 10;
 
-        this.pastorLevel = level;
+        this.monsterLevel = level;
 
         // 重新计算属性
         const oldMaxHealth = this.monsterStats.maxHealth;
@@ -256,15 +253,11 @@ export class PastorMonster extends BaseMonster {
         const healthRatio = this.currentHealth / oldMaxHealth;
         this.currentHealth = Math.floor(this.monsterStats.maxHealth * healthRatio);
 
-        console.log(`Pastor等级设置为: ${this.pastorLevel}`, this.monsterStats);
+        console.log(`Pastor等级设置为: ${this.monsterLevel}`, this.monsterStats);
     }
 
-    public getPastorLevel(): number {
-        return this.pastorLevel;
-    }
-
-    public setLevel(level: number): void {
-        this.setPastorLevel(level);
+    public getLevel(): number {
+        return this.monsterLevel;
     }
 
     protected getAnimationManagerComponent(): any {
@@ -275,7 +268,7 @@ export class PastorMonster extends BaseMonster {
     public getPastorInfo(): any {
         return {
             name: "Pastor",
-            level: this.pastorLevel,
+            level: this.monsterLevel,
             camp: this.isPlayerCamp ? "Player" : "Enemy",
             health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
             healAmount: this.healAmount,

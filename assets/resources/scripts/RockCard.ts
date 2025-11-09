@@ -8,9 +8,6 @@ import { BaseMonsterCard } from "./BaseMonsterCard";
 @regClass()
 export class RockCard extends BaseMonsterCard {
 
-    @property(Number)
-    public rockLevel: number = 1; // Rock等级
-
     constructor() {
         super();
         // 设置Rock卡片的默认属性
@@ -44,18 +41,17 @@ export class RockCard extends BaseMonsterCard {
     // ========== Rock特有方法 ==========
 
     /**
-     * 设置Rock等级
+     * 设置等级
      */
-    public setRockLevel(level: number): void {
-        this.rockLevel = level;
-        this.monsterLevel = level; // 同步到父类属性
+    public setLevel(level: number): void {
+        this.monsterLevel = level;
     }
 
     /**
-     * 获取Rock等级
+     * 获取等级
      */
-    public getRockLevel(): number {
-        return this.rockLevel;
+    public getLevel(): number {
+        return this.monsterLevel;
     }
 
     /**
@@ -65,7 +61,7 @@ export class RockCard extends BaseMonsterCard {
         const baseInfo = super.getCardInfo();
         return {
             ...baseInfo,
-            rockLevel: this.rockLevel
+            rockLevel: this.monsterLevel
         };
     }
 

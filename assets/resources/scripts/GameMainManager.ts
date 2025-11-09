@@ -13,8 +13,8 @@ export class GameMainManager extends Laya.Script {
     // 单例实例
     private static _instance: GameMainManager = null;
 
-    @property(String)
-    public text: string = "";
+    // @property(String)
+    // public text: string = "";
 
     // 获取传递的关卡数据
     private selectedLevel: number = 0;

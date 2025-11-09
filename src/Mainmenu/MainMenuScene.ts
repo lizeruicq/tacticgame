@@ -4,12 +4,16 @@ import { GameDataManager } from '../GameDataManager';
 import { SceneManager } from '../SceneManager';
 import { ButtonAnimationUtils } from '../utils/ButtonAnimationUtils';
 import { SoundManager } from '../utils/SoundManager';
+import { SettingPanel } from './SettingPanel';
 
 @regClass()
 export class MainMenuScene extends Laya.Script {
 
     @property(Laya.Button)
     startButton: Laya.Button;
+
+    @property(Laya.Button)
+    settingButton: Laya.Button;
 
     @property(Laya.Image)
     playerAvatar: Laya.Image;
@@ -20,6 +24,8 @@ export class MainMenuScene extends Laya.Script {
     // 管理器实例
     private weChatManager: WeChatManager;
     private gameDataManager: GameDataManager;
+    private sceneManager : SceneManager;
+    private settingPanel: SettingPanel;
     
     onStart() {
         console.log("MainMenuScene started");
@@ -27,6 +33,7 @@ export class MainMenuScene extends Laya.Script {
         // 获取管理器实例
         this.weChatManager = WeChatManager.getInstance();
         this.gameDataManager = GameDataManager.getInstance();
+        this.sceneManager = SceneManager.getInstance();
 
         // 初始化UI
         this.initUI();
@@ -59,6 +66,12 @@ export class MainMenuScene extends Laya.Script {
             // this.startButton.on(Laya.Event.CLICK, this, () => {
             //     SoundManager.getInstance().playButtonClickSound();
             // });
+        }
+
+        // 绑定设置按钮点击事件
+        if (this.settingButton) {
+            this.settingButton.on(Laya.Event.CLICK, this, this.onSettingButtonClick);
+            ButtonAnimationUtils.addButtonClickEffect(this.settingButton);
         }
     }
     
@@ -102,6 +115,30 @@ export class MainMenuScene extends Laya.Script {
 
         // 执行登录流程（完全按照参考代码）
         this.doLogin();
+    }
+    
+    /**
+     * 设置按钮点击事件
+     */
+    private onSettingButtonClick(): void {
+        console.log("设置按钮被点击了！");
+        
+        // 如果还没有获取设置面板实例，则先获取
+        if (!this.settingPanel) {
+            // 假设设置面板已经作为场景的一部分存在于舞台上
+            // 通常可以通过名字查找或者通过组件获取
+            const panelNode = this.owner.getChildByName("SettingPanel");
+            if (panelNode) {
+                this.settingPanel = panelNode.getComponent(SettingPanel);
+            }
+        }
+        
+        // 显示设置面板
+        if (this.settingPanel) {
+            this.settingPanel.show();
+        } else {
+            console.warn("设置面板未找到！");
+        }
     }
     
     /**
@@ -312,8 +349,9 @@ export class MainMenuScene extends Laya.Script {
         });
         
         // 切换到关卡选择场景
-        const sceneManager = SceneManager.getInstance();
-        sceneManager.switchToLevelSelect().then(() => {
+        
+        
+        this.sceneManager.switchToLevelSelect().then(() => {
             console.log("成功切换到关卡选择场景");
         }).catch((error) => {
             console.error("切换场景失败:", error);
@@ -326,6 +364,12 @@ export class MainMenuScene extends Laya.Script {
             this.startButton.off(Laya.Event.CLICK, this, this.onStartButtonClick);
             // 移除按钮点击动画效果
             ButtonAnimationUtils.removeButtonClickEffect(this.startButton);
+        }
+
+        // 清理设置按钮事件监听
+        if (this.settingButton) {
+            this.settingButton.off(Laya.Event.CLICK, this, this.onSettingButtonClick);
+            ButtonAnimationUtils.removeButtonClickEffect(this.settingButton);
         }
     }
 }

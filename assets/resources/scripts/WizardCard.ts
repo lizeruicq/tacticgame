@@ -8,9 +8,6 @@ import { BaseMonsterCard } from "./BaseMonsterCard";
 @regClass()
 export class WizardCard extends BaseMonsterCard {
 
-    @property(Number)
-    public wizardLevel: number = 1; // Wizard等级
-
     constructor() {
         super();
         // 设置Wizard卡片的默认属性
@@ -46,16 +43,15 @@ export class WizardCard extends BaseMonsterCard {
     /**
      * 设置Wizard等级
      */
-    public setWizardLevel(level: number): void {
-        this.wizardLevel = level;
-        this.monsterLevel = level; // 同步到父类属性
+    public setLevel(level: number): void {
+        this.monsterLevel = level;
     }
 
     /**
      * 获取Wizard等级
      */
-    public getWizardLevel(): number {
-        return this.wizardLevel;
+    public getLevel(): number {
+        return this.monsterLevel;
     }
 
     /**
@@ -65,7 +61,7 @@ export class WizardCard extends BaseMonsterCard {
         const baseInfo = super.getCardInfo();
         return {
             ...baseInfo,
-            wizardLevel: this.wizardLevel
+            wizardLevel: this.monsterLevel
         };
     }
 

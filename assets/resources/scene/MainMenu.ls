@@ -16,6 +16,9 @@
       "startButton": {
         "_$ref": "zqijhwkd"
       },
+      "settingButton": {
+        "_$ref": "4jgpmxfz"
+      },
       "playerAvatar": {
         "_$ref": "81p7wsjr"
       },
@@ -198,11 +201,32 @@
       "anchorY": 0.5,
       "visible": false,
       "centerX": 0,
+      "_$comp": [
+        {
+          "_$type": "f20859ea-6236-42f4-9c25-219f32ccfd4d",
+          "scriptPath": "../src/Mainmenu/SettingPanel.ts",
+          "closeButton": {
+            "_$ref": "bczh45cx"
+          },
+          "resetButton": {
+            "_$ref": "p42yplra"
+          },
+          "confirmPanel": {
+            "_$ref": "l6qtf0iv"
+          },
+          "yesButton": {
+            "_$ref": "807k02ij"
+          },
+          "noButton": {
+            "_$ref": "9aaue1mi"
+          }
+        }
+      ],
       "_$child": [
         {
           "_$id": "vzfq7ph1",
           "_$type": "Image",
-          "name": "panel",
+          "name": "panel1",
           "x": 510,
           "y": 510,
           "width": 1220,
@@ -212,7 +236,161 @@
           "centerX": 0,
           "centerY": 0,
           "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
-          "color": "#ffffff"
+          "color": "#ffffff",
+          "_$child": [
+            {
+              "_$id": "bn2ckyzz",
+              "_$type": "Image",
+              "name": "settingtitle",
+              "x": 286,
+              "y": -38,
+              "width": 648,
+              "height": 255,
+              "centerX": 0,
+              "skin": "res://827b1802-8365-40d7-96d0-523467abb0e3",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "p42yplra",
+              "_$type": "Button",
+              "name": "ResetButton",
+              "x": 633,
+              "y": 405,
+              "width": 409,
+              "height": 121,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "stateNum": 1,
+              "skin": "res://76886bc4-81ef-43e7-9a9d-1c6cf40d119b",
+              "label": "重置关卡",
+              "labelFont": "YuppyTC-Regular",
+              "labelSize": 48,
+              "labelBold": true,
+              "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+              "labelAlign": "center",
+              "labelVAlign": "middle",
+              "labelPadding": "18,0,0,0",
+              "labelStroke": 33,
+              "labelStrokeColor": "#073030"
+            },
+            {
+              "_$id": "bczh45cx",
+              "_$type": "Button",
+              "name": "closeButton",
+              "x": 1106,
+              "y": 93,
+              "width": 98,
+              "height": 98,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "rotation": 12.523365473183917,
+              "stateNum": 1,
+              "skin": "res://cd4d6bb6-a7a3-4008-990e-d0abbc50916d",
+              "label": "",
+              "labelFont": "YuppyTC-Regular",
+              "labelSize": 82,
+              "labelBold": true,
+              "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+              "labelAlign": "center",
+              "labelVAlign": "middle",
+              "labelPadding": "18,0,0,0",
+              "labelStroke": 33,
+              "labelStrokeColor": "#073030"
+            }
+          ]
+        },
+        {
+          "_$id": "l6qtf0iv",
+          "_$type": "Image",
+          "name": "ConfirmPanel",
+          "x": 538,
+          "y": 637,
+          "width": 926,
+          "height": 746,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "visible": false,
+          "centerX": 28,
+          "centerY": 127,
+          "skin": "res://216f22ab-98b8-4ac1-9ce9-3ede87632b61",
+          "color": "#ffffff",
+          "_$child": [
+            {
+              "_$id": "5afowmpd",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 129,
+              "y": 210,
+              "width": 653,
+              "height": 85,
+              "text": "确认重置游戏数据吗",
+              "font": "YuppyTC-Regular",
+              "fontSize": 74,
+              "color": "#f7f7f7",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "borderColor": "#939898",
+              "underlineColor": "#39e5e5",
+              "stroke": 19
+            },
+            {
+              "_$id": "807k02ij",
+              "_$type": "Button",
+              "name": "yes",
+              "x": 316,
+              "y": 530,
+              "width": 112,
+              "height": 112,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "rotation": 12.523365473183917,
+              "stateNum": 1,
+              "skin": "res://2c753585-318e-4479-bf7f-ea9e97971fc6",
+              "label": "",
+              "labelFont": "YuppyTC-Regular",
+              "labelSize": 82,
+              "labelBold": true,
+              "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+              "labelAlign": "center",
+              "labelVAlign": "middle",
+              "labelPadding": "18,0,0,0",
+              "labelStroke": 33,
+              "labelStrokeColor": "#073030"
+            },
+            {
+              "_$id": "9aaue1mi",
+              "_$type": "Button",
+              "name": "no",
+              "x": 570,
+              "y": 532,
+              "width": 110,
+              "height": 110,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "rotation": 340.4818913177572,
+              "stateNum": 1,
+              "skin": "res://03d7623a-1ee3-4ae6-803c-4c25292a438c",
+              "label": "",
+              "labelFont": "YuppyTC-Regular",
+              "labelSize": 82,
+              "labelBold": true,
+              "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+              "labelAlign": "center",
+              "labelVAlign": "middle",
+              "labelPadding": "18,0,0,0",
+              "labelStroke": 33,
+              "labelStrokeColor": "#073030"
+            }
+          ]
         }
       ]
     },

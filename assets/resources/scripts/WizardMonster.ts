@@ -12,9 +12,6 @@ export class WizardMonster extends BaseMonster {
     
     // ========== Wizard特有属性 ==========
     
-    @property({ type: Number })
-    public wizardLevel: number = 1;  // Wizard等级，影响属性
-    
     // Wizard的动画管理器引用
     private wizardAnimationManager: WizardAnimationManager | null = null;
     
@@ -27,7 +24,7 @@ export class WizardMonster extends BaseMonster {
         // 根据等级设置Wizard的基础属性
         this.monsterStats = this.calculateWizardStats();
         
-        console.log(`Wizard怪物初始化 - 等级: ${this.wizardLevel}`, this.monsterStats);
+        console.log(`Wizard怪物初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -53,13 +50,13 @@ export class WizardMonster extends BaseMonster {
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.wizardLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
             speed: Math.floor(baseStats.speed * levelMultiplier),
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
             attackSpeed: Math.max(600, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
-            attackRange: Math.floor(baseStats.attackRange * (1 + (this.wizardLevel - 1) * 0.15)), // 攻击范围较大幅增长
+            attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.15)), // 攻击范围较大幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };
     }
@@ -93,33 +90,26 @@ export class WizardMonster extends BaseMonster {
     // ========== 公共接口 ==========
     
     /**
-     * 设置Wizard等级
+     * 设置等级（重写基类方法）
      */
-    public setWizardLevel(level: number): void {
+    public setLevel(level: number): void {
         if (level < 1) level = 1;
         if (level > 10) level = 10; // 最大等级限制
         
-        this.wizardLevel = level;
+        this.monsterLevel = level;
         
         // 重新计算属性
         this.monsterStats = this.calculateWizardStats();
         this.currentHealth = this.monsterStats.maxHealth; // 重置血量
         
-        console.log(`Wizard等级设置为: ${this.wizardLevel}`, this.monsterStats);
+        console.log(`Wizard等级设置为: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
-     * 获取Wizard等级
+     * 获取等级
      */
-    public getWizardLevel(): number {
-        return this.wizardLevel;
-    }
-
-    /**
-     * 重写基类的setLevel方法
-     */
-    public setLevel(level: number): void {
-        this.setWizardLevel(level);
+    public getLevel(): number {
+        return this.monsterLevel;
     }
     
     /**
@@ -128,7 +118,7 @@ export class WizardMonster extends BaseMonster {
     public getWizardInfo(): any {
         return {
             name: "Wizard",
-            level: this.wizardLevel,
+            level: this.monsterLevel,
             camp: this.isPlayerCamp ? "Player" : "Enemy",
             health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
             attackPower: this.monsterStats.attackPower,
@@ -158,7 +148,7 @@ export class WizardMonster extends BaseMonster {
      */
     public debugWizardStatus(): void {
         console.log("=== Wizard状态信息 ===");
-        console.log(`等级: ${this.wizardLevel}`);
+        console.log(`等级: ${this.monsterLevel}`);
         console.log(`生命值: ${this.currentHealth}/${this.monsterStats.maxHealth}`);
         console.log(`攻击力: ${this.monsterStats.attackPower}`);
         console.log(`攻击范围: ${this.monsterStats.attackRange}`);

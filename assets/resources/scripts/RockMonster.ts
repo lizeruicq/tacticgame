@@ -12,9 +12,6 @@ export class RockMonster extends BaseMonster {
     
     // ========== Rock特有属性 ==========
     
-    @property({ type: Number })
-    public rockLevel: number = 1;  // Rock等级，影响属性
-    
     // @property({ type: Boolean })
     // public canCounterAttack: boolean = true;  // 是否可以反击
     
@@ -30,7 +27,7 @@ export class RockMonster extends BaseMonster {
         // 根据等级设置Rock的基础属性
         this.monsterStats = this.calculateRockStats();
         
-        console.log(`Rock怪物初始化 - 等级: ${this.rockLevel}`, this.monsterStats);
+        console.log(`Rock怪物初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -56,13 +53,13 @@ export class RockMonster extends BaseMonster {
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.rockLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
             speed: Math.floor(baseStats.speed * levelMultiplier),
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
             attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
-            attackRange: Math.floor(baseStats.attackRange * (1 + (this.rockLevel - 1) * 0.1)), // 攻击范围小幅增长
+            attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };
     }
@@ -168,11 +165,11 @@ export class RockMonster extends BaseMonster {
     /**
      * 设置Rock等级
      */
-    public setRockLevel(level: number): void {
+    public setLevel(level: number): void {
         if (level < 1) level = 1;
         if (level > 10) level = 10; // 最大等级限制
         
-        this.rockLevel = level;
+        this.monsterLevel = level;
         
         // 重新计算属性
         const oldMaxHealth = this.monsterStats.maxHealth;
@@ -188,15 +185,8 @@ export class RockMonster extends BaseMonster {
     /**
      * 获取Rock等级
      */
-    public getRockLevel(): number {
-        return this.rockLevel;
-    }
-
-    /**
-     * 重写基类的setLevel方法
-     */
-    public setLevel(level: number): void {
-        this.setRockLevel(level);
+    public getLevel(): number {
+        return this.monsterLevel;
     }
     
     /**
@@ -231,7 +221,7 @@ export class RockMonster extends BaseMonster {
     public getRockInfo(): any {
         return {
             name: "Rock",
-            level: this.rockLevel,
+            level: this.monsterLevel,
             camp: this.isPlayerCamp ? "Player" : "Enemy",
             health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
             state: this.currentState,
