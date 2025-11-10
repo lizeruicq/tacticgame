@@ -33,6 +33,10 @@ export class UIManager extends Laya.Script {
     @property({ type: Laya.Box })
     public gameEndPanelBox: Laya.Box = null;
 
+    // 提示标签
+    @property({ type: Laya.Label })
+    public hintLabel: Laya.Label = null;
+
     // 管理器引用
     private playerManager: PlayerManager = null;
     private enemyAIManager: EnemyAIManager = null;
@@ -51,6 +55,10 @@ export class UIManager extends Laya.Script {
     private readonly COLOR_GREEN: string = "#00ff00ff";   // 绿色 (71%-100%)
     private readonly COLOR_YELLOW: string = "#ffff00";  // 黄色 (31%-70%)
     private readonly COLOR_RED: string = "#ff0000";     // 红色 (0%-30%)
+
+    // 提示标签配置
+    private hintDisplayTime: number = 2000;  // 显示时间（毫秒）
+    private hintFadeDuration: number = 300;  // 渐显/渐隐时间（毫秒）
 
     onAwake(): void {
         // 延迟一帧执行初始化，确保所有管理器已完成初始化
@@ -400,6 +408,35 @@ export class UIManager extends Laya.Script {
     public hideGameEndPanel(): void {
         if (this.gameEndPanel) {
             this.gameEndPanel.hide();
+        }
+    }
+
+    /**
+     * 显示提示文本（渐显再渐隐）
+     */
+    public showHint(text: string): void {
+        if (!this.hintLabel) return;
+
+        // 清除之前的定时器
+        Laya.timer.clear(this, this.hideHint);
+
+        // 设置文本
+        this.hintLabel.text = text;
+
+        // 渐显
+        this.hintLabel.alpha = 0;
+        Laya.Tween.to(this.hintLabel, { alpha: 1 }, this.hintFadeDuration);
+
+        // 设置显示时间后渐隐
+        Laya.timer.once(this.hintDisplayTime, this, this.hideHint);
+    }
+
+    /**
+     * 隐藏提示文本
+     */
+    private hideHint(): void {
+        if (this.hintLabel) {
+            Laya.Tween.to(this.hintLabel, { alpha: 0 }, this.hintFadeDuration);
         }
     }
 

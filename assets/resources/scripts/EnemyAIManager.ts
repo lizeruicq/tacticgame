@@ -214,11 +214,11 @@ export class EnemyAIManager extends Laya.Script {
 
         // 随机X坐标，确保在场景内（留出边距）
         const minX = 100;
-        const maxX = battleField.width - 100;
+        const maxX = battleField.width - 400;
         const randomX = minX + Math.random() * (maxX - minX);
 
         // Y坐标在上半部分
-        const randomY = 100 + Math.random() * 400;
+        const randomY = 100 + Math.random() * 100;
 
         const spawnPosition = { x: randomX, y: randomY };
 

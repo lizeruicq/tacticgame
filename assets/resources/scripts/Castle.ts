@@ -33,20 +33,30 @@ export class Castle extends Laya.Script {
     
     @property({ type: Number })
     public castleLevel: number = 1;  // 城堡等级，影响属性
-    
+
+    @property({ type: String })
+    public textureHealthy: string = "";  // 血量 > 70% 时的纹理路径
+
+    @property({ type: String })
+    public textureDamaged: string = "";  // 血量 30%-70% 时的纹理路径
+
+    @property({ type: String })
+    public textureCritical: string = "";  // 血量 < 30% 时的纹理路径
+
     // 城堡基础属性
     protected castleStats: ICastleStats = {
         maxHealth: 1000,
         defense: 10,
         regeneration: 0  // 城堡不自动回复血量
     };
-    
+
     // ========== 运行时属性 ==========
-    
+
     protected currentHealth: number = 1000;        // 当前血量
     protected currentState: CastleState = CastleState.NORMAL;  // 当前状态
     protected isDestroyed: boolean = false;        // 是否已摧毁
     protected isInitialized: boolean = false;      // 是否已初始化
+    protected castleSprite: Laya.Sprite = null;    // 城堡精灵
     
     // ========== 内部状态 ==========
     
@@ -55,19 +65,25 @@ export class Castle extends Laya.Script {
     
     onAwake(): void {
         console.log(`=== 城堡初始化 ===`);
-        
+
         // 初始化城堡属性
         this.initializeCastle();
 
+        // 获取城堡精灵
+        this.castleSprite = this.owner as Laya.Sprite;
+
         // 注册到MonsterManager
         this.registerToManager();
-        
+
         // 设置初始血量
         this.currentHealth = this.castleStats.maxHealth;
-        
+
+        // 更新纹理
+        this.updateCastleTexture();
+
         // 标记为已初始化
         this.isInitialized = true;
-        
+
         console.log(`城堡初始化完成:`, {
             阵营: this.isPlayerCamp ? "玩家" : "敌方",
             等级: this.castleLevel,
@@ -262,9 +278,9 @@ export class Castle extends Laya.Script {
      */
     protected updateStateByHealth(): void {
         if (this.isDestroyed) return;
-        
+
         const healthPercentage = this.currentHealth / this.castleStats.maxHealth;
-        
+
         if (healthPercentage <= 0) {
             this.changeState(CastleState.DESTROYED);
         } else if (healthPercentage <= 0.3) {
@@ -273,6 +289,36 @@ export class Castle extends Laya.Script {
             this.changeState(CastleState.DAMAGED);
         } else {
             this.changeState(CastleState.NORMAL);
+        }
+
+        // 更新纹理
+        this.updateCastleTexture();
+    }
+
+    /**
+     * 根据血量百分比更新城堡纹理
+     */
+    private updateCastleTexture(): void {
+        if (!this.castleSprite) return;
+
+        const healthPercentage = this.currentHealth / this.castleStats.maxHealth;
+        let texturePath = "";
+
+        if (healthPercentage > 0.5) {
+            texturePath = this.textureHealthy;
+        } else if (healthPercentage > 0.1) {
+            texturePath = this.textureDamaged;
+        } else {
+            texturePath = this.textureCritical;
+        }
+
+        if (texturePath) {
+            Laya.loader.load(texturePath).then(() => {
+                const texture = Laya.loader.getRes(texturePath);
+                if (texture && this.castleSprite) {
+                    this.castleSprite.texture = texture;
+                }
+            });
         }
     }
     

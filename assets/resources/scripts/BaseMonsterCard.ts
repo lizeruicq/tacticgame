@@ -24,6 +24,15 @@ export abstract class BaseMonsterCard extends Laya.Script {
     @property(String)
     public monsterPrefabPath: string = ""; // 怪物预制体路径
 
+    @property(Laya.Label)
+    public levelLabel: Laya.Label = null; // 等级标签
+
+    @property(Laya.Label)
+    public costLabel: Laya.Label = null; // 消耗标签
+
+    @property(Laya.Box)
+    public lv2Node: Laya.Box = null; // LV2属性展示节点
+
     // 卡牌状态
     private isEnabled: boolean = true;
 
@@ -33,6 +42,8 @@ export abstract class BaseMonsterCard extends Laya.Script {
     onAwake(): void {
         console.log(`${this.cardName} 卡片初始化`);
         this.initializeCard();
+        this.updateCardLabels();
+        this.updateLv2Visibility();
     }
 
     onEnable(): void {
@@ -71,6 +82,27 @@ export abstract class BaseMonsterCard extends Laya.Script {
         console.log(`通过GameManager获取节点成功:`);
         console.log(`- spawnArea: ${spawnArea.width}x${spawnArea.height}`);
         console.log(`- battleField: ${battleField.width}x${battleField.height}`);
+    }
+
+    /**
+     * 更新卡片标签（等级和消耗）
+     */
+    public updateCardLabels(): void {
+        if (this.levelLabel) {
+            this.levelLabel.text = "LV" + this.monsterLevel.toString();
+        }
+        if (this.costLabel) {
+            this.costLabel.text = this.manaCost.toString();
+        }
+    }
+
+    /**
+     * 更新LV2节点的可见性
+     */
+    public updateLv2Visibility(): void {
+        if (this.lv2Node) {
+            this.lv2Node.visible = this.monsterLevel >= 2;
+        }
     }
     
     /**

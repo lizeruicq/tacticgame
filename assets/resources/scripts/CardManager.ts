@@ -22,6 +22,7 @@ export class CardManager extends Laya.Script {
     @property(Number)
     public cardCooldown: number = 1000; // 卡牌冷却时间（毫秒）
 
+
     // 卡片相关
     private activeCards: any[] = [];                    // 当前激活的卡片
     private cardBox: Laya.HBox = null;                 // 卡牌容器
@@ -37,6 +38,7 @@ export class CardManager extends Laya.Script {
     private longPressDelay: number = 300;              // 长按延迟（毫秒）
     private originalZIndex: number = 0;                // 卡片原始zIndex
 
+    private gameManager: GameMainManager = null;
     onAwake(): void {
         console.log("=== CardManager 初始化 ===");
         this.cardBox = this.owner as Laya.HBox;
@@ -53,6 +55,7 @@ export class CardManager extends Laya.Script {
      */
     private initializeLevel(level: number): void {
         console.log(`初始化关卡 ${level}`);
+        this.gameManager = GameMainManager.getInstance();
 
         // 获取关卡配置
         const levelConfig = CardConfig.getLevelConfig(level);
@@ -116,8 +119,8 @@ export class CardManager extends Laya.Script {
      */
     private generateRandomCard(): void {
         // 检查游戏是否结束
-        const gameManager = GameMainManager.getInstance();
-        if (gameManager && gameManager.isGameEnded()) {
+        
+        if (this.gameManager && this.gameManager.isGameEnded()) {
             console.log("游戏已结束，停止生成卡牌");
             return;
         }
@@ -215,6 +218,9 @@ export class CardManager extends Laya.Script {
         this.dragStartX = (card.owner as Laya.Sprite).x;
         this.dragStartTime = Date.now();
 
+        
+       
+
         // 添加鼠标移动和释放事件
         Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onCardMouseMove);
         Laya.stage.on(Laya.Event.MOUSE_UP, this, this.onCardMouseUp);
@@ -228,23 +234,26 @@ export class CardManager extends Laya.Script {
 
         const currentTime = Date.now();
         const elapsedTime = currentTime - this.dragStartTime;
-
+        
         // 检查是否满足长按条件
         if (elapsedTime >= this.longPressDelay && !this.isDragging) {
-            this.isDragging = true;
-            console.log("开始拖拽卡牌");
+            this.gameManager.showHint("拖拽并合成高级卡牌");
+        
             
             // 提升卡片的zIndex至最高
             const cardSprite = this.draggedCard.owner as Laya.Sprite;
+            cardSprite.y = -30;
             this.originalZIndex = cardSprite.zOrder;
             cardSprite.zOrder = 99;
+            this.isDragging = true;
         }
 
         // 如果正在拖拽，更新卡牌位置（只允许左右移动）
         if (this.isDragging) {
             const cardSprite = this.draggedCard.owner as Laya.Sprite;
             const deltaX = Laya.stage.mouseX - this.dragStartX;
-            cardSprite.x = this.dragStartX + deltaX;
+            cardSprite.x = this.dragStartX + deltaX - cardSprite.width ;
+           
         }
     }
 
@@ -373,6 +382,16 @@ export class CardManager extends Laya.Script {
         targetCard.monsterLevel = 2;
         console.log(`${targetCard.cardName} 升级为2级`);
 
+        // 更新卡片标签
+        if (targetCard.updateCardLabels) {
+            targetCard.updateCardLabels();
+        }
+
+        // 更新LV2节点可见性
+        if (targetCard.updateLv2Visibility) {
+            targetCard.updateLv2Visibility();
+        }
+
         // 销毁被拖拽的卡牌
         this.destroyCard(draggedCard);
     }
@@ -384,6 +403,7 @@ export class CardManager extends Laya.Script {
         const cardSprite = card.owner as Laya.Sprite;
         // 使用Tween动画恢复到原位
         Laya.Tween.to(cardSprite, { x: this.dragStartX }, 200, Laya.Ease.quadOut);
+        cardSprite.y = 0;
     }
 
     /**
@@ -393,15 +413,15 @@ export class CardManager extends Laya.Script {
         console.log(`CardManager: ${card.cardName} 被使用`);
 
         // 通过GameMainManager扣除魔法值
-        const gameManager = GameMainManager.getInstance();
-        if (gameManager) {
+        // const gameManager = GameMainManager.getInstance();
+        if (this.gameManager) {
             // 检查游戏是否结束
-            if (gameManager.isGameEnded()) {
+            if (this.gameManager.isGameEnded()) {
                 console.log("游戏已结束，无法使用卡牌");
                 return;
             }
 
-            const success = gameManager.consumeMana(card.manaCost);
+            const success = this.gameManager.consumeMana(card.manaCost);
             if (!success) {
                 console.log("魔法值不足，无法使用卡牌");
                 return; // 魔法值不足，不执行后续操作

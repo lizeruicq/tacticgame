@@ -39,6 +39,9 @@
           },
           "gameEndPanelBox": {
             "_$ref": "1kdul3cr"
+          },
+          "hintLabel": {
+            "_$ref": "nbbwpvzd"
           }
         }
       ],
@@ -48,7 +51,7 @@
           "_$type": "ProgressBar",
           "name": "PlayerHpBar",
           "x": 81,
-          "y": 1693,
+          "y": 1726,
           "width": 507,
           "height": 37,
           "rotation": 270.27695878401937,
@@ -75,8 +78,8 @@
           "_$id": "slvpqtf4",
           "_$type": "ProgressBar",
           "name": "EnemyHpBar",
-          "x": 1119,
-          "y": 69,
+          "x": 1104,
+          "y": 168,
           "width": 502,
           "height": 37,
           "rotation": 90,
@@ -88,8 +91,8 @@
           "_$id": "obxzpln9",
           "_$type": "Button",
           "name": "StopButton",
-          "x": 80,
-          "y": 68,
+          "x": 1007,
+          "y": 48,
           "width": 120,
           "height": 120,
           "zIndex": 1,
@@ -336,6 +339,26 @@
               "color": "#ffffff"
             }
           ]
+        },
+        {
+          "_$id": "nbbwpvzd",
+          "_$type": "Label",
+          "name": "HintLable",
+          "x": 185,
+          "y": 108,
+          "width": 808,
+          "height": 145,
+          "zIndex": 10,
+          "centerX": 0,
+          "text": "",
+          "font": "YuppySC-Regular",
+          "fontSize": 75,
+          "color": "#ebeb62",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "stroke": 26
         }
       ]
     },
@@ -369,14 +392,15 @@
       "_$id": "rq40rlmn",
       "_$type": "Sprite",
       "name": "castle-enemy",
-      "x": 591,
-      "y": 42,
-      "width": 380,
-      "height": 380,
-      "anchorX": 0.5,
-      "anchorY": 0.5,
+      "x": 204,
+      "y": 228,
+      "width": 474,
+      "height": 446,
+      "anchorX": 0.2468354430379747,
+      "anchorY": 0.6345291479820628,
+      "scaleX": -1,
       "texture": {
-        "_$uuid": "b24b4793-dad0-4049-8efa-cf8a5c0a3204",
+        "_$uuid": "f707a125-c60f-4dd3-afaf-7da933c678da",
         "_$type": "Texture"
       },
       "_$comp": [
@@ -384,7 +408,10 @@
           "_$type": "14cf51ce-1943-4f1c-964e-1be9313f5b18",
           "scriptPath": "resources/scripts/Castle.ts",
           "isPlayerCamp": false,
-          "castleLevel": 1
+          "castleLevel": 1,
+          "textureHealthy": "resources/images/sprite/castke/Asset 27.png",
+          "textureDamaged": "resources/images/sprite/castke/Asset 28.png",
+          "textureCritical": "resources/images/sprite/castke/Asset 29.png"
         }
       ]
     },
@@ -420,14 +447,14 @@
       "_$id": "7kurtrav",
       "_$type": "Sprite",
       "name": "castle-self",
-      "x": 596,
-      "y": 1815,
-      "width": 380,
-      "height": 380,
-      "anchorX": 0.5,
-      "anchorY": 0.5,
+      "x": 933,
+      "y": 1544,
+      "width": 500,
+      "height": 444,
+      "anchorX": 0.182,
+      "anchorY": 0.240990990990991,
       "texture": {
-        "_$uuid": "fc601f28-fb14-4df1-bb0a-f52328de9818",
+        "_$uuid": "03cf940d-a14d-452d-937c-8335d63dd25a",
         "_$type": "Texture"
       },
       "_$comp": [
@@ -435,7 +462,10 @@
           "_$type": "14cf51ce-1943-4f1c-964e-1be9313f5b18",
           "scriptPath": "resources/scripts/Castle.ts",
           "isPlayerCamp": true,
-          "castleLevel": 1
+          "castleLevel": 1,
+          "textureHealthy": "resources/images/sprite/castke/Asset 21.png",
+          "textureDamaged": "resources/images/sprite/castke/Asset 22.png",
+          "textureCritical": "resources/images/sprite/castke/Asset 23.png"
         }
       ]
     },
@@ -454,13 +484,13 @@
       "_$id": "th76pqq2",
       "_$type": "HBox",
       "name": "CardBox",
-      "x": 90,
+      "x": 78,
       "y": 1909,
-      "width": 999,
-      "height": 370,
-      "centerX": 0,
-      "space": 51,
+      "width": 1025,
+      "height": 343,
+      "space": 43,
       "align": "middle",
+      "autoSizeMode": "both",
       "_$comp": [
         {
           "_$type": "4b33acaa-eefb-4de4-ade6-7267208fe4e9",
@@ -473,34 +503,41 @@
       ],
       "_$child": [
         {
-          "_$id": "pdl3eejj",
-          "_$prefab": "a6d568df-b152-4b1f-81dd-93c16814182c",
-          "name": "card_wizard",
-          "active": true,
-          "x": 0,
-          "y": 82,
-          "width": 206,
-          "height": 206,
-          "visible": true
-        },
-        {
-          "_$id": "xa1c50kw",
+          "_$id": "n72oc73a",
           "_$prefab": "bfce3c49-3edb-492e-aab3-cd0198586a90",
           "name": "card_rock",
           "active": true,
-          "x": 257,
-          "y": 82,
-          "width": 206,
-          "height": 206,
+          "x": 0,
+          "y": 0,
+          "anchorX": 0,
+          "anchorY": 0,
           "visible": true
         },
         {
-          "_$id": "9fzobz9v",
-          "_$prefab": "21486761-43d5-4111-8daa-dd9666eafb6a",
-          "name": "card_pastor",
+          "_$id": "zmqwu4qp",
+          "_$prefab": "bfce3c49-3edb-492e-aab3-cd0198586a90",
+          "name": "card_rock_1",
           "active": true,
-          "x": 514,
-          "y": 82,
+          "x": 267,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "ya0cmcp4",
+          "_$prefab": "bfce3c49-3edb-492e-aab3-cd0198586a90",
+          "name": "card_rock_2",
+          "active": true,
+          "x": 534,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "ru18o8eo",
+          "_$prefab": "bfce3c49-3edb-492e-aab3-cd0198586a90",
+          "name": "card_rock_3",
+          "active": true,
+          "x": 801,
+          "y": 0,
           "visible": true
         }
       ]

@@ -112,6 +112,12 @@ export class GameMainManager extends Laya.Script {
             console.log(`spawnArea节点初始化成功: 中心(${this.spawnArea.x}, ${this.spawnArea.y}), 尺寸${this.spawnArea.width}x${this.spawnArea.height}`);
         }
     }
+    
+    public showHint(text: string): void {
+        if (this.uiManager) {
+            this.uiManager.showHint(text);
+        }
+    }
 
     /**
      * 获取BattleField节点

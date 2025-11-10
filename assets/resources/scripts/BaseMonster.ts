@@ -80,6 +80,9 @@ export abstract class BaseMonster extends Laya.Script {
         // 获取动画管理器组件
         this.setupAnimationManager();
 
+        // 根据等级调整尺寸
+        this.adjustScaleByLevel();
+
         // 注册到MonsterManager
         this.registerToManager();
 
@@ -88,6 +91,7 @@ export abstract class BaseMonster extends Laya.Script {
 
         console.log(`${this.constructor.name} 初始化完成:`, {
             阵营: this.isPlayerCamp ? "玩家" : "敌方",
+            等级: this.monsterLevel,
             血量: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
             攻击力: this.monsterStats.attackPower,
             攻击速度: this.monsterStats.attackSpeed + "ms",
@@ -135,6 +139,20 @@ export abstract class BaseMonster extends Laya.Script {
         } else {
             console.warn(`${this.constructor.name} 未找到动画管理器组件`);
         }
+    }
+
+    /**
+     * 根据等级调整怪物尺寸
+     */
+    protected adjustScaleByLevel(): void {
+        const sprite = this.owner as Laya.Sprite;
+        if (!sprite) return;
+
+        // LV2 时尺寸为原来的 1.5 倍
+        const scaleMultiplier = 1 + (this.monsterLevel - 1) * 0.3;
+        sprite.scaleX = scaleMultiplier * 0.5;
+        sprite.scaleY = scaleMultiplier * 0.5;
+
     }
 
     /**
