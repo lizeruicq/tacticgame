@@ -104,7 +104,7 @@ export class WeChatManager {
                     resolve(isAuthorized);
                 },
                 fail: (error: any) => {
-                    console.error('检查授权状态失败:', error);
+                    // console.error('检查授权状态失败:', error);
                     this.userData.isAuthorized = false;
                     resolve(false);
                 }
@@ -140,7 +140,7 @@ export class WeChatManager {
                     resolve(userInfo);
                 },
                 fail: (error: any) => {
-                    console.error('获取用户信息失败:', error);
+                    // console.error('获取用户信息失败:', error);
                     reject(error);
                 }
             });
@@ -160,7 +160,7 @@ export class WeChatManager {
         onFail?: (error: any) => void;
     }): any {
         if (!this.isWeChatMiniGame()) {
-            console.log('非微信环境，无法创建授权按钮');
+            // console.log('非微信环境，无法创建授权按钮');
             return null;
         }
         
@@ -192,7 +192,7 @@ export class WeChatManager {
                     options.onSuccess(userInfo);
                 }
             } catch (error) {
-                console.error('授权按钮回调失败:', error);
+                // console.error('授权按钮回调失败:', error);
                 if (options.onFail) {
                     options.onFail(error);
                 }
@@ -253,7 +253,7 @@ export class WeChatManager {
     }): void {
         if (!this.isWeChatMiniGame()) {
             // 开发环境使用console输出
-            console.log(`Toast: ${options.title}`);
+            // console.log(`Toast: ${options.title}`);
             return;
         }
         
@@ -277,14 +277,14 @@ export class WeChatManager {
                 const now = Date.now();
                 if (now - parsedData.lastUpdateTime < WeChatManager.CACHE_DURATION) {
                     this.userData = parsedData;
-                    console.log('从本地存储加载用户数据成功');
+                    // console.log('从本地存储加载用户数据成功');
                 } else {
-                    console.log('本地存储的用户数据已过期，将重新获取');
+                    // console.log('本地存储的用户数据已过期，将重新获取');
                     this.clearUserDataFromStorage();
                 }
             }
         } catch (error) {
-            console.error('加载本地存储数据失败:', error);
+            // console.error('加载本地存储数据失败:', error);
             this.clearUserDataFromStorage();
         }
     }
@@ -296,9 +296,9 @@ export class WeChatManager {
         try {
             const dataToStore = JSON.stringify(this.userData);
             Laya.LocalStorage.setItem(WeChatManager.STORAGE_KEY, dataToStore);
-            console.log('用户数据已保存到本地存储');
+            // console.log('用户数据已保存到本地存储');
         } catch (error) {
-            console.error('保存用户数据到本地存储失败:', error);
+            // console.error('保存用户数据到本地存储失败:', error);
         }
     }
 
@@ -313,9 +313,9 @@ export class WeChatManager {
                 isAuthorized: false,
                 lastUpdateTime: 0
             };
-            console.log('已清除本地存储的用户数据');
+            // console.log('已清除本地存储的用户数据');
         } catch (error) {
-            console.error('清除本地存储数据失败:', error);
+            // console.error('清除本地存储数据失败:', error);
         }
     }
 
@@ -352,7 +352,7 @@ export class WeChatManager {
                 try {
                     callback(data);
                 } catch (error) {
-                    console.error(`事件回调执行失败 [${eventType}]:`, error);
+                    // console.error(`事件回调执行失败 [${eventType}]:`, error);
                 }
             });
         }
@@ -384,7 +384,7 @@ export class WeChatManager {
         try {
             return await this.getUserInfo();
         } catch (error) {
-            console.error('获取用户信息失败:', error);
+            // console.error('获取用户信息失败:', error);
             return null;
         }
     }
@@ -410,9 +410,9 @@ export class WeChatManager {
                 await this.getUserInfo();
             }
 
-            console.log('用户数据刷新完成');
+            // console.log('用户数据刷新完成');
         } catch (error) {
-            console.error('刷新用户数据失败:', error);
+            // console.error('刷新用户数据失败:', error);
             throw error;
         }
     }

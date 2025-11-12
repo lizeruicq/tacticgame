@@ -16,7 +16,7 @@ export class ButtonAnimationUtils {
      */
     public static addButtonClickEffect(button: Laya.Button): void {
         if (!button) {
-            console.warn("按钮对象为空，无法添加点击动画效果");
+            // console.warn("按钮对象为空，无法添加点击动画效果");
             return;
         }
         
@@ -32,7 +32,7 @@ export class ButtonAnimationUtils {
      */
     public static removeButtonClickEffect(button: Laya.Button): void {
         if (!button) {
-            console.warn("按钮对象为空，无法移除点击动画效果");
+            // console.warn("按钮对象为空，无法移除点击动画效果");
             return;
         }
         
@@ -83,7 +83,7 @@ export class ButtonAnimationUtils {
      */
     public static setButtonAnimationParams(button: Laya.Button, scale: number, duration: number): void {
         if (!button) {
-            console.warn("按钮对象为空，无法设置动画参数");
+            // console.warn("按钮对象为空，无法设置动画参数");
             return;
         }
         

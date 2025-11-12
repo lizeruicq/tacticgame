@@ -30,14 +30,14 @@ export class PlayerManager extends Laya.Script {
         // 初始化玩家魔法值
         this.playerMana = 5;
         this.playerMaxMana = 10;
-        console.log(`玩家初始魔法值: ${this.playerMana}/${this.playerMaxMana}`);
+        // console.log(`玩家初始魔法值: ${this.playerMana}/${this.playerMaxMana}`);
     }
     
     /**
      * 启动魔法值恢复系统
      */
     private startManaRegeneration(): void {
-        console.log("启动玩家魔法值恢复系统");
+        // console.log("启动玩家魔法值恢复系统");
         
         // 使用定时器定期恢复魔法值
         Laya.timer.loop(this.manaRegenInterval, this, this.regenerateMana);
@@ -55,7 +55,7 @@ export class PlayerManager extends Laya.Script {
         this.playerMana = Math.min(this.playerMana + this.manaRegenRate, this.playerMaxMana);
         
         if (this.playerMana > oldMana) {
-            console.log(`玩家魔法值恢复: ${oldMana} -> ${this.playerMana}/${this.playerMaxMana}`);
+            // console.log(`玩家魔法值恢复: ${oldMana} -> ${this.playerMana}/${this.playerMaxMana}`);
         }
     }
     
@@ -64,16 +64,16 @@ export class PlayerManager extends Laya.Script {
      */
     public consumeMana(amount: number): boolean {
         if (this.gameEnded) {
-            console.log("游戏已结束，无法消耗魔法值");
+            // console.log("游戏已结束，无法消耗魔法值");
             return false;
         }
         
         if (this.playerMana >= amount) {
             this.playerMana -= amount;
-            console.log(`消耗魔法值 ${amount}，剩余: ${this.playerMana}/${this.playerMaxMana}`);
+            // console.log(`消耗魔法值 ${amount}，剩余: ${this.playerMana}/${this.playerMaxMana}`);
             return true;
         } else {
-            console.log(`魔法值不足！需要: ${amount}，当前: ${this.playerMana}`);
+            // console.log(`魔法值不足！需要: ${amount}，当前: ${this.playerMana}`);
             return false;
         }
     }

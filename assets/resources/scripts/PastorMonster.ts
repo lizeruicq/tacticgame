@@ -23,13 +23,13 @@ export class PastorMonster extends BaseMonster {
 
     onAwake(): void {
         super.onAwake();
-        console.log("Pastor怪物初始化");
+        // console.log("Pastor怪物初始化");
     }
 
     protected initializeMonster(): void {
         this.monsterStats = this.calculatePastorStats();
 
-        console.log(`Pastor初始化完成 - 等级: ${this.monsterLevel}`, this.monsterStats);
+        // console.log(`Pastor初始化完成 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
 
     private calculatePastorStats(): IMonsterStats {
@@ -184,7 +184,7 @@ export class PastorMonster extends BaseMonster {
         const healAmount = Math.min(this.healAmount, target.getMaxHealth() - target.getCurrentHealth());
         target.heal(healAmount);
         
-        console.log(`Pastor治疗了 ${target.constructor.name}，恢复 ${healAmount} 血量`);
+        // console.log(`Pastor治疗了 ${target.constructor.name}，恢复 ${healAmount} 血量`);
         
         // 这里可以添加治疗特效
         this.playHealEffect(target);
@@ -192,7 +192,7 @@ export class PastorMonster extends BaseMonster {
 
     private playHealEffect(target: BaseMonster): void {
         // 简单的治疗特效（可以后续扩展）
-        console.log(`播放治疗特效给 ${target.constructor.name}`);
+        // console.log(`播放治疗特效给 ${target.constructor.name}`);
     }
 
     private calculateDistanceToAlly(ally: BaseMonster): number {
@@ -221,7 +221,7 @@ export class PastorMonster extends BaseMonster {
      * 重写怪物特有的死亡处理
      */
     protected onMonsterSpecificDeath(): void {
-        console.log("Pastor牧师安息了...");
+        // console.log("Pastor牧师安息了...");
 
         // Pastor死亡时的特殊效果
         this.createDeathEffect();
@@ -231,7 +231,7 @@ export class PastorMonster extends BaseMonster {
      * 创建死亡特效
      */
     private createDeathEffect(): void {
-        console.log("✨ Pastor死亡时散发神圣光芒");
+        // console.log("✨ Pastor死亡时散发神圣光芒");
 
         // 可以添加死亡时的神圣效果
         // 例如：光芒消散、治疗能量释放等
@@ -253,7 +253,7 @@ export class PastorMonster extends BaseMonster {
         const healthRatio = this.currentHealth / oldMaxHealth;
         this.currentHealth = Math.floor(this.monsterStats.maxHealth * healthRatio);
 
-        console.log(`Pastor等级设置为: ${this.monsterLevel}`, this.monsterStats);
+        // console.log(`Pastor等级设置为: ${this.monsterLevel}`, this.monsterStats);
     }
 
     public getLevel(): number {

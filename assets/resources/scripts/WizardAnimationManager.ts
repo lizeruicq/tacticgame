@@ -133,7 +133,7 @@ export class WizardAnimationManager extends BaseAnimationManager {
      * 死亡动画完成处理
      */
     private onDeathComplete(): void {
-        console.log("Wizard死亡动画完成");
+        // console.log("Wizard死亡动画完成");
 
         // 发送统一的死亡动画完成事件
         this.owner.event("DEATH_ANIMATION_COMPLETE");

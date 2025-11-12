@@ -16,7 +16,8 @@
       "_$type": "f3aef8ce-5620-4e22-905b-cf609d2db2c4",
       "scriptPath": "resources/scripts/WizardMonster.ts",
       "isPlayerCamp": 1,
-      "wizardLevel": 1
+      "monsterLevel": 1,
+      "atkEffectPath": "resources/images/sprite/attack/wizard.png"
     },
     {
       "_$type": "318f778a-666d-456a-ab19-fd6ce477cef6",

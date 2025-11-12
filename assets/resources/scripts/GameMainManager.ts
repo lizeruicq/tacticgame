@@ -37,10 +37,10 @@ export class GameMainManager extends Laya.Script {
     private gameEndPanel: GameEndPanel = null;
 
     // 游戏状态
-    private gameStarted: boolean = false;
+    // private gameStarted: boolean = false;
     private gameEnded: boolean = false;
     private winner: string = ""; // "player" 或 "enemy"
-    private isPaused: boolean = true; // 游戏初始为暂停状态
+    // private isPaused: boolean = true; // 游戏初始为暂停状态
 
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
@@ -361,7 +361,7 @@ export class GameMainManager extends Laya.Script {
         const levelStr = Laya.LocalStorage.getItem("selectedLevel");
         this.selectedLevel = levelStr ? parseInt(levelStr) : 1;
         console.log(`当前关卡: ${this.selectedLevel}`);
-
+        this.initializeEnemyAI();
         // 获取UIManager
         const gameScene = this.owner.scene;
         const uiManagerNode = gameScene.getChildByName("UIParent");
@@ -401,7 +401,7 @@ export class GameMainManager extends Laya.Script {
      * 暂停游戏
      */
     public pauseGame(): void {
-        this.isPaused = true;
+        // this.isPaused = true;
         Laya.timer.scale = 0;
         
         // 显示游戏开始面板
@@ -418,7 +418,7 @@ export class GameMainManager extends Laya.Script {
      */
     public resumeGame(): void {
         this.uiManager.hideGameStartPanel();
-        this.isPaused = false;
+        // this.isPaused = false;
         Laya.timer.scale = 1;
         console.log("游戏已继续");
     }
@@ -544,7 +544,7 @@ export class GameMainManager extends Laya.Script {
      * 开始游戏循环
      */
     private startGameLoop(): void {
-        this.gameStarted = true;
+        // this.gameStarted = true;
         console.log("游戏开始运行");
 
         // 启动游戏状态检查循环

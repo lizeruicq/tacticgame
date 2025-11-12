@@ -40,6 +40,9 @@ export abstract class BaseMonster extends Laya.Script {
     @property({ type: Number })
     public monsterLevel: number = 1;  // 怪物等级
 
+    @property({ type: String })
+    public atkEffectPath: string = "";  // 攻击特效图片路径
+
     // 怪物基础属性（由子类设置）
     protected monsterStats: IMonsterStats = {
         speed: 100,
@@ -405,11 +408,78 @@ export abstract class BaseMonster extends Laya.Script {
 
         console.log(`${this.constructor.name} 攻击 ${this.currentTarget.constructor.name}, 伤害: ${this.monsterStats.attackPower}`);
 
+        // 生成攻击特效
+        this.createAttackEffect();
+
         // 造成伤害
         this.currentTarget.takeDamage(this.monsterStats.attackPower, this);
 
         // 触发攻击事件
         this.onAttackPerformed(this.currentTarget);
+    }
+
+    /**
+     * 创建攻击特效
+     */
+    private createAttackEffect(): void {
+        if (!this.atkEffectPath || !this.currentTarget) return;
+
+        const monsterSprite = this.owner as Laya.Sprite;
+        const targetSprite = this.currentTarget.owner as Laya.Sprite;
+
+        // 加载攻击特效图片
+        Laya.loader.load(this.atkEffectPath).then(() => {
+            const texture = Laya.loader.getRes(this.atkEffectPath);
+            if (!texture) return;
+
+            // 创建攻击特效图片对象
+            const effectImage = new Laya.Image();
+            effectImage.texture = texture;
+
+            // 设置起始位置为怪物位置
+            effectImage.x = monsterSprite.x;
+            effectImage.y = monsterSprite.y;
+
+            // 设置朝向与怪物一致
+            effectImage.scaleX = monsterSprite.scaleX;
+
+            // 计算特效高度为怪物高度的1/2
+            const monsterHeight = monsterSprite.height * Math.abs(monsterSprite.scaleY);
+            const effectHeight = monsterHeight / 3;
+            const scale = effectHeight / texture.height;
+            effectImage.scaleY = scale;
+            effectImage.scaleX = scale * Math.sign(monsterSprite.scaleX);
+            effectImage.pivot(texture.width / 2, texture.height / 2);
+            effectImage.zOrder = monsterSprite.zOrder - 1;
+
+            // 添加到场景
+            monsterSprite.parent.addChild(effectImage);
+
+            // 计算目标位置和移动距离
+            const targetX = targetSprite.x + this.targetOffsetX;
+            const targetY = targetSprite.y + this.targetOffsetY;
+            const dx = targetX - monsterSprite.x;
+            const dy = targetY - monsterSprite.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // 限制移动距离为攻击范围
+            const moveDistance = Math.min(distance * 0.8, this.monsterStats.attackRange);
+            const dirX = distance > 0 ? dx / distance : 1;
+            const dirY = distance > 0 ? dy / distance : 0;
+
+            // 计算移动时间（速度：800像素/秒）
+            const moveSpeed = 800;
+            const moveDuration = (moveDistance / moveSpeed) * 1000;
+
+            // 动画移动特效
+            Laya.Tween.to(effectImage, {
+                x: monsterSprite.x + dirX * moveDistance,
+                y: monsterSprite.y + dirY * moveDistance
+            }, moveDuration, Laya.Ease.linear, new Laya.Handler(this, () => {
+                // 移动完成后销毁特效
+                effectImage.removeSelf();
+            }));
+        });
     }
 
     /**

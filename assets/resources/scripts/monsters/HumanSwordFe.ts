@@ -27,7 +27,7 @@ export class HumanSwordFe extends BaseMonster {
         // 根据等级设置SwordFe的基础属性
         this.monsterStats = this.calculateSwordFeStats();
         
-        console.log(`SwordFe初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
+        // console.log(`SwordFe初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -75,10 +75,10 @@ export class HumanSwordFe extends BaseMonster {
         // SwordFe特有的状态切换逻辑
         switch (newState) {
             case MonsterState.ATTACKING:
-                console.log(`SwordFe开始攻击，目标: ${this.currentTarget?.constructor.name}`);
+                // console.log(`SwordFe开始攻击，目标: ${this.currentTarget?.constructor.name}`);
                 break;
             case MonsterState.DYING:
-                console.log("SwordFe开始死亡动画");
+                // console.log("SwordFe开始死亡动画");
                 break;
         }
     }
@@ -90,7 +90,7 @@ export class HumanSwordFe extends BaseMonster {
         super.onAttackPerformed(target);
 
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
-        console.log(`SwordFe攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
+        // console.log(`SwordFe攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
 
         // SwordFe攻击后有短暂的硬直时间
         this.addAttackCooldown();
@@ -101,7 +101,7 @@ export class HumanSwordFe extends BaseMonster {
      * 重写怪物特有的死亡处理
      */
     protected onMonsterSpecificDeath(): void {
-        console.log("SwordFe死亡，可能掉落石头资源");
+        // console.log("SwordFe死亡，可能掉落石头资源");
 
         // SwordFe死亡时的特殊效果
         this.createDeathEffect();
@@ -123,7 +123,7 @@ export class HumanSwordFe extends BaseMonster {
     private createDeathEffect(): void {
         // 这里可以添加SwordFe死亡时的特效
         // 比如石头碎裂效果、掉落物品等
-        console.log("SwordFe死亡");
+        // console.log("SwordFe死亡");
         
         // 触发掉落事件
         // this.owner.event("SwordFe_DROP_RESOURCES", { 
@@ -154,7 +154,7 @@ export class HumanSwordFe extends BaseMonster {
         const healthRatio = this.currentHealth / oldMaxHealth;
         this.currentHealth = Math.floor(this.monsterStats.maxHealth * healthRatio);
         
-        console.log(`SwordFe等级设置为 ${level}，属性已更新`);
+        // console.log(`SwordFe等级设置为 ${level}，属性已更新`);
     }
     
     /**

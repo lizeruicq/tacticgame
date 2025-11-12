@@ -23,7 +23,8 @@
       "_$type": "87e7ea3b-989b-4d5e-b92d-44cc944561cc",
       "scriptPath": "resources/scripts/RockMonster.ts",
       "isPlayerCamp": 0,
-      "rockLevel": 1
+      "monsterLevel": 1,
+      "atkEffectPath": ""
     }
   ],
   "_$child": [

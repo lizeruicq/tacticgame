@@ -24,7 +24,7 @@ export class WizardMonster extends BaseMonster {
         // 根据等级设置Wizard的基础属性
         this.monsterStats = this.calculateWizardStats();
         
-        console.log(`Wizard怪物初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
+        // console.log(`Wizard怪物初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -67,7 +67,7 @@ export class WizardMonster extends BaseMonster {
      * 重写怪物特有的死亡处理
      */
     protected onMonsterSpecificDeath(): void {
-        console.log("Wizard法师倒下了...");
+        // console.log("Wizard法师倒下了...");
 
         // Wizard死亡时的特殊效果
         this.createDeathEffect();
@@ -79,7 +79,7 @@ export class WizardMonster extends BaseMonster {
      * 创建死亡特效
      */
     private createDeathEffect(): void {
-        console.log("💫 Wizard死亡魔法特效播放");
+        // console.log("💫 Wizard死亡魔法特效播放");
 
         // 可以添加死亡时的魔法消散效果
         // 例如：魔法能量散发、光芒消失等
@@ -102,7 +102,7 @@ export class WizardMonster extends BaseMonster {
         this.monsterStats = this.calculateWizardStats();
         this.currentHealth = this.monsterStats.maxHealth; // 重置血量
         
-        console.log(`Wizard等级设置为: ${this.monsterLevel}`, this.monsterStats);
+        // console.log(`Wizard等级设置为: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -147,19 +147,19 @@ export class WizardMonster extends BaseMonster {
      * 输出Wizard状态信息（调试用）
      */
     public debugWizardStatus(): void {
-        console.log("=== Wizard状态信息 ===");
-        console.log(`等级: ${this.monsterLevel}`);
-        console.log(`生命值: ${this.currentHealth}/${this.monsterStats.maxHealth}`);
-        console.log(`攻击力: ${this.monsterStats.attackPower}`);
-        console.log(`攻击范围: ${this.monsterStats.attackRange}`);
-        console.log(`移动速度: ${this.monsterStats.speed}`);
-        console.log(`当前状态: ${this.currentState}`);
-        console.log(`阵营: ${this.isPlayerCamp ? "玩家" : "敌方"}`);
+        // console.log("=== Wizard状态信息 ===");
+        // console.log(`等级: ${this.monsterLevel}`);
+        // console.log(`生命值: ${this.currentHealth}/${this.monsterStats.maxHealth}`);
+        // console.log(`攻击力: ${this.monsterStats.attackPower}`);
+        // console.log(`攻击范围: ${this.monsterStats.attackRange}`);
+        // console.log(`移动速度: ${this.monsterStats.speed}`);
+        // console.log(`当前状态: ${this.currentState}`);
+        // console.log(`阵营: ${this.isPlayerCamp ? "玩家" : "敌方"}`);
         
         if (this.currentTarget) {
             const targetSprite = this.currentTarget.owner as Laya.Sprite;
             const distance = this.getDistanceToPosition(targetSprite.x, targetSprite.y);
-            console.log(`目标距离: ${distance.toFixed(1)}`);
+            // console.log(`目标距离: ${distance.toFixed(1)}`);
         }
     }
 }

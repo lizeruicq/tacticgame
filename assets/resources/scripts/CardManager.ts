@@ -37,6 +37,7 @@ export class CardManager extends Laya.Script {
     private isDragging: boolean = false;               // 是否正在拖拽
     private longPressDelay: number = 300;              // 长按延迟（毫秒）
     private originalZIndex: number = 0;                // 卡片原始zIndex
+    private onLongPressCallback: () => void = null;    // 长按回调函数
 
     private gameManager: GameMainManager = null;
     onAwake(): void {
@@ -214,12 +215,27 @@ export class CardManager extends Laya.Script {
      * 卡牌鼠标按下事件
      */
     private onCardMouseDown(card: any): void {
+        // 检查卡牌是否在冷却中，如果在冷却中则不处理
+        if (this.isCardCooldown) {
+            console.log("卡牌在冷却中，无法拖拽");
+            return;
+        }
+
         this.draggedCard = card;
         this.dragStartX = (card.owner as Laya.Sprite).x;
         this.dragStartTime = Date.now();
 
-        
-       
+        // 定义长按回调函数
+        this.onLongPressCallback = () => {
+            if (this.draggedCard && !this.isDragging) {
+                this.gameManager.showHint("拖拽并合成高级卡牌");
+                const cardSprite = this.draggedCard.owner as Laya.Sprite;
+                cardSprite.y = -30;
+            }
+        };
+
+        // 在longPressDelay时间后显示提示
+        Laya.timer.once(this.longPressDelay, this, this.onLongPressCallback);
 
         // 添加鼠标移动和释放事件
         Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onCardMouseMove);
@@ -234,15 +250,11 @@ export class CardManager extends Laya.Script {
 
         const currentTime = Date.now();
         const elapsedTime = currentTime - this.dragStartTime;
-        
+
         // 检查是否满足长按条件
         if (elapsedTime >= this.longPressDelay && !this.isDragging) {
-            this.gameManager.showHint("拖拽并合成高级卡牌");
-        
-            
             // 提升卡片的zIndex至最高
             const cardSprite = this.draggedCard.owner as Laya.Sprite;
-            cardSprite.y = -30;
             this.originalZIndex = cardSprite.zOrder;
             cardSprite.zOrder = 99;
             this.isDragging = true;
@@ -253,7 +265,6 @@ export class CardManager extends Laya.Script {
             const cardSprite = this.draggedCard.owner as Laya.Sprite;
             const deltaX = Laya.stage.mouseX - this.dragStartX;
             cardSprite.x = this.dragStartX + deltaX - cardSprite.width ;
-           
         }
     }
 
@@ -266,6 +277,12 @@ export class CardManager extends Laya.Script {
         // 移除事件监听
         Laya.stage.off(Laya.Event.MOUSE_MOVE, this, this.onCardMouseMove);
         Laya.stage.off(Laya.Event.MOUSE_UP, this, this.onCardMouseUp);
+
+        // 清除长按定时器（只清除长按回调，不清除冷却定时器）
+        if (this.onLongPressCallback) {
+            Laya.timer.clear(this, this.onLongPressCallback);
+            this.onLongPressCallback = null;
+        }
 
         // 如果正在拖拽，检查是否可以合成
         if (this.isDragging) {

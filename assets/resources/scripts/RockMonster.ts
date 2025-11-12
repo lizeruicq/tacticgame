@@ -27,7 +27,7 @@ export class RockMonster extends BaseMonster {
         // 根据等级设置Rock的基础属性
         this.monsterStats = this.calculateRockStats();
         
-        console.log(`Rock怪物初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
+        // console.log(`Rock怪物初始化 - 等级: ${this.monsterLevel}`, this.monsterStats);
     }
     
     /**
@@ -75,10 +75,10 @@ export class RockMonster extends BaseMonster {
         // Rock特有的状态切换逻辑
         switch (newState) {
             case MonsterState.ATTACKING:
-                console.log(`Rock开始攻击，目标: ${this.currentTarget?.constructor.name}`);
+                // console.log(`Rock开始攻击，目标: ${this.currentTarget?.constructor.name}`);
                 break;
             case MonsterState.DYING:
-                console.log("Rock开始死亡动画");
+                // console.log("Rock开始死亡动画");
                 break;
         }
     }
@@ -90,7 +90,7 @@ export class RockMonster extends BaseMonster {
         super.onAttackPerformed(target);
 
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
-        console.log(`Rock攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
+        // console.log(`Rock攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
 
         // Rock攻击后有短暂的硬直时间
         this.addAttackCooldown();
@@ -102,7 +102,7 @@ export class RockMonster extends BaseMonster {
     // protected onDamageTaken(damage: number, attacker: BaseMonster): void {
     //     super.onDamageTaken(damage, attacker);
         
-    //     console.log(`Rock受到攻击，来自: ${attacker.constructor.name}`);
+    // console.log(`Rock受到攻击，来自: ${attacker.constructor.name}`);
         
     //     // Rock的反击机制
     //     if (this.canCounterAttack && !this.isDead && this.currentState !== MonsterState.ATTACKING) {
@@ -114,7 +114,7 @@ export class RockMonster extends BaseMonster {
      * 重写怪物特有的死亡处理
      */
     protected onMonsterSpecificDeath(): void {
-        console.log("Rock死亡，可能掉落石头资源");
+        // console.log("Rock死亡，可能掉落石头资源");
 
         // Rock死亡时的特殊效果
         this.createDeathEffect();
@@ -128,7 +128,7 @@ export class RockMonster extends BaseMonster {
     // private triggerCounterAttack(attacker: BaseMonster): void {
     //     const attackerSprite = attacker.owner as Laya.Sprite;
     //     if (this.getDistanceToPosition(attackerSprite.x, attackerSprite.y) <= this.monsterStats.attackRange) {
-    //         console.log("Rock触发反击！");
+    // console.log("Rock触发反击！");
     //         this.setTarget(attacker);
     //         this.changeState(MonsterState.ATTACKING);
     //     }
@@ -148,7 +148,7 @@ export class RockMonster extends BaseMonster {
     private createDeathEffect(): void {
         // 这里可以添加Rock死亡时的特效
         // 比如石头碎裂效果、掉落物品等
-        console.log("Rock碎裂成石块");
+        // console.log("Rock碎裂成石块");
         
         // 触发掉落事件
         // this.owner.event("ROCK_DROP_RESOURCES", { 
@@ -179,7 +179,7 @@ export class RockMonster extends BaseMonster {
         const healthRatio = this.currentHealth / oldMaxHealth;
         this.currentHealth = Math.floor(this.monsterStats.maxHealth * healthRatio);
         
-        console.log(`Rock等级设置为 ${level}，属性已更新`);
+        // console.log(`Rock等级设置为 ${level}，属性已更新`);
     }
     
     /**
@@ -194,7 +194,7 @@ export class RockMonster extends BaseMonster {
      */
     // public setCounterAttackEnabled(enabled: boolean): void {
     //     this.canCounterAttack = enabled;
-    //     console.log(`Rock反击能力: ${enabled ? "启用" : "禁用"}`);
+    // console.log(`Rock反击能力: ${enabled ? "启用" : "禁用"}`);
     // }
     
     /**
@@ -212,7 +212,7 @@ export class RockMonster extends BaseMonster {
         
     //     this.setTarget(target);
     //     this.changeState(MonsterState.ATTACKING);
-    //     console.log(`Rock强制攻击: ${target.constructor.name}`);
+    // console.log(`Rock强制攻击: ${target.constructor.name}`);
     // }
     
     /**

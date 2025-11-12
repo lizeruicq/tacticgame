@@ -25,7 +25,7 @@ export class GameEndPanel extends Laya.Script {
     private isWin: boolean = false;
 
     onAwake(): void {
-        console.log("GameEndPanel 初始化");
+        // console.log("GameEndPanel 初始化");
         this.setupUI();
     }
 
@@ -87,7 +87,7 @@ export class GameEndPanel extends Laya.Script {
      * 菜单按钮点击事件
      */
     private onMenuButtonClick(): void {
-        console.log("返回菜单按钮被点击");
+        // console.log("返回菜单按钮被点击");
         this.hide();
 
         // 切换到关卡选择场景
@@ -96,10 +96,10 @@ export class GameEndPanel extends Laya.Script {
             if (sceneManager) {
                 sceneManager.switchToLevelSelect();
             } else {
-                console.error("无法获取SceneManager实例");
+                // console.error("无法获取SceneManager实例");
             }
         } catch (error) {
-            console.error("切换到关卡选择场景时出错:", error);
+            // console.error("切换到关卡选择场景时出错:", error);
         }
     }
 
@@ -107,7 +107,7 @@ export class GameEndPanel extends Laya.Script {
      * 重新开始按钮点击事件
      */
     private onRestartButtonClick(): void {
-        console.log("重新开始按钮被点击");
+        // console.log("重新开始按钮被点击");
         this.hide();
 
         // 重新加载当前场景（重新开始关卡）
@@ -117,10 +117,10 @@ export class GameEndPanel extends Laya.Script {
                 // 重新加载游戏场景
                 sceneManager.switchToGameScene();
             } else {
-                console.error("无法获取SceneManager实例");
+                // console.error("无法获取SceneManager实例");
             }
         } catch (error) {
-            console.error("重新开始关卡时出错:", error);
+            // console.error("重新开始关卡时出错:", error);
         }
     }
 

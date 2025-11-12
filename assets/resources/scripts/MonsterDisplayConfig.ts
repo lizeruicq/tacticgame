@@ -68,7 +68,7 @@ export class MonsterDisplayConfig {
      */
     public static addMonsterAtlasConfig(monsterType: string, config: IMonsterAtlasConfig): void {
         this.MONSTER_ATLAS_CONFIGS[monsterType] = config;
-        console.log(`添加怪物图集配置: ${monsterType}`, config);
+        // console.log(`添加怪物图集配置: ${monsterType}`, config);
     }
     
     /**
@@ -77,7 +77,7 @@ export class MonsterDisplayConfig {
     public static calculateMonsterScale(monsterType: string): number {
         const config = this.getMonsterAtlasConfig(monsterType);
         if (!config) {
-            console.warn(`未找到怪物 ${monsterType} 的图集配置，使用默认缩放`);
+            // console.warn(`未找到怪物 ${monsterType} 的图集配置，使用默认缩放`);
             return 1.0;
         }
         
@@ -92,7 +92,7 @@ export class MonsterDisplayConfig {
         // 取较小的缩放值以保持比例
         const scale = Math.min(scaleX, scaleY);
         
-        console.log(`${monsterType} 缩放计算: 原始(${config.originalWidth}x${config.originalHeight}) → 目标(${this.UNIFIED_DISPLAY_WIDTH}x${this.UNIFIED_DISPLAY_HEIGHT}) = ${scale.toFixed(3)}`);
+        // console.log(`${monsterType} 缩放计算: 原始(${config.originalWidth}x${config.originalHeight}) → 目标(${this.UNIFIED_DISPLAY_WIDTH}x${this.UNIFIED_DISPLAY_HEIGHT}) = ${scale.toFixed(3)}`);
         
         return scale;
     }
@@ -127,9 +127,9 @@ export class MonsterDisplayConfig {
      * 分析所有怪物的缩放情况（调试用）
      */
     public static analyzeScaling(): void {
-        console.log("=== 怪物缩放分析 ===");
-        console.log(`统一显示尺寸: ${this.UNIFIED_DISPLAY_WIDTH}x${this.UNIFIED_DISPLAY_HEIGHT}`);
-        console.log("各怪物缩放情况:");
+        // console.log("=== 怪物缩放分析 ===");
+        // console.log(`统一显示尺寸: ${this.UNIFIED_DISPLAY_WIDTH}x${this.UNIFIED_DISPLAY_HEIGHT}`);
+        // console.log("各怪物缩放情况:");
 
         const types = Object.keys(this.MONSTER_ATLAS_CONFIGS);
         for (let i = 0; i < types.length; i++) {
@@ -140,10 +140,10 @@ export class MonsterDisplayConfig {
             const finalScale = Math.min(scaleX, scaleY);
             const aspectRatio = (config.originalWidth / config.originalHeight).toFixed(2);
 
-            console.log(`  ${type}:`);
-            console.log(`    原始尺寸: ${config.originalWidth}x${config.originalHeight} (宽高比${aspectRatio})`);
-            console.log(`    缩放比例: ${finalScale.toFixed(3)} (X:${scaleX.toFixed(3)}, Y:${scaleY.toFixed(3)})`);
-            console.log(`    实际显示: ${Math.round(config.originalWidth * finalScale)}x${Math.round(config.originalHeight * finalScale)}`);
+            // console.log(`  ${type}:`);
+            // console.log(`    原始尺寸: ${config.originalWidth}x${config.originalHeight} (宽高比${aspectRatio})`);
+            // console.log(`    缩放比例: ${finalScale.toFixed(3)} (X:${scaleX.toFixed(3)}, Y:${scaleY.toFixed(3)})`);
+            // console.log(`    实际显示: ${Math.round(config.originalWidth * finalScale)}x${Math.round(config.originalHeight * finalScale)}`);
         }
     }
     

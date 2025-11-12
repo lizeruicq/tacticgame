@@ -22,7 +22,7 @@ export class MonsterHealthBar extends Laya.Script {
         }
 
         if (!this.healthBar) {
-            console.error("MonsterHealthBar: 未找到ProgressBar组件");
+            // console.error("MonsterHealthBar: 未找到ProgressBar组件");
             return;
         }
 

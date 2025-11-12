@@ -5,7 +5,7 @@ const { regClass } = Laya;
 export class Main extends Laya.Script {
 
     onStart() {
-        console.log("Game start");
-        console.log("MainMenu Scene will be loaded automatically");
+        // console.log("Game start");
+        // console.log("MainMenu Scene will be loaded automatically");
     }
 }
