@@ -66,13 +66,13 @@ export class SceneManager {
             }
             
             this.isLoading = true;
-            
+
             // 创建过渡遮罩
             const transitionMask = new Laya.Sprite();
             transitionMask.graphics.drawRect(0, 0, Laya.stage.width, Laya.stage.height, "#000000");
             transitionMask.alpha = 0;
             Laya.stage.addChild(transitionMask);
-            
+
             // 淡出当前场景
             Laya.Tween.to(transitionMask, { alpha: 1 }, transitionDuration, Laya.Ease.linearIn, Laya.Handler.create(this, () => {
                 // 淡出完成后加载新场景
@@ -113,7 +113,60 @@ export class SceneManager {
     public switchToGameScene(): Promise<void> {
         return this.switchToSceneWithTransition(SceneManager.SCENES.GAME, 500);
     }
-    
+
+    /**
+     * 重新开始游戏场景
+     * 退出当前场景，再重新进入，这样会自动重新初始化所有属性
+     */
+    public restartGameScene(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            if (this.isLoading) {
+                console.warn("场景正在加载中，请稍后再试");
+                reject(new Error("场景正在加载中"));
+                return;
+            }
+
+            this.isLoading = true;
+
+            // 创建过渡遮罩
+            const transitionMask = new Laya.Sprite();
+            transitionMask.graphics.drawRect(0, 0, Laya.stage.width, Laya.stage.height, "#000000");
+            transitionMask.alpha = 0;
+            Laya.stage.addChild(transitionMask);
+
+            // 淡出当前场景
+            Laya.Tween.to(transitionMask, { alpha: 1 }, 500, Laya.Ease.linearIn, Laya.Handler.create(this, () => {
+                // 先关闭当前场景
+                Laya.Scene.close(SceneManager.SCENES.GAME);
+
+                // 延迟一帧确保场景完全卸载
+                Laya.timer.frameOnce(1, this, () => {
+                    // 重新加载游戏场景
+                    Laya.Scene.open(SceneManager.SCENES.GAME, true, null, Laya.Handler.create(this, (scene: any) => {
+                        if (scene) {
+                            this.currentScene = SceneManager.SCENES.GAME;
+
+                            // 淡入新场景
+                            Laya.Tween.to(transitionMask, { alpha: 0 }, 500, Laya.Ease.linearIn, Laya.Handler.create(this, () => {
+                                // 清理过渡遮罩
+                                transitionMask.destroy();
+                                this.isLoading = false;
+                                console.log("游戏场景重启成功");
+                                resolve();
+                            }));
+                        } else {
+                            // 如果加载失败，也需要清理
+                            transitionMask.destroy();
+                            this.isLoading = false;
+                            console.error("游戏场景重启失败");
+                            reject(new Error("游戏场景重启失败"));
+                        }
+                    }));
+                });
+            }));
+        });
+    }
+
     /**
      * 获取当前场景
      */

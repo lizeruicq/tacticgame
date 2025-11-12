@@ -51,7 +51,7 @@ export class EnemyAIManager extends Laya.Script {
     
     private regenerateMana(): void {
         this.enemyMana = Math.min(this.enemyMana + this.manaRegenRate, this.enemyMaxMana);
-        console.log(`敌人魔法值恢复: ${this.enemyMana}/${this.enemyMaxMana}`);
+        // console.log(`敌人魔法值恢复: ${this.enemyMana}/${this.enemyMaxMana}`);
     }
     
     private startAIDecisionMaking(): void {
@@ -62,7 +62,7 @@ export class EnemyAIManager extends Laya.Script {
     private makeDecision(): void {
         // 检查游戏是否结束
         if (this.gameManager && this.gameManager.isGameEnded()) {
-            console.log("游戏已结束，敌人AI停止决策");
+            // console.log("游戏已结束，敌人AI停止决策");
             return;
         }
 
@@ -247,5 +247,17 @@ export class EnemyAIManager extends Laya.Script {
     
     public setEnemyMana(mana: number): void {
         this.enemyMana = Math.max(0, Math.min(mana, this.enemyMaxMana));
+    }
+
+    /**
+     * 脚本禁用时执行
+     */
+    onDisable(): void {
+        // // console.log("EnemyAIManager 禁用");
+        // 清理所有定时器
+        Laya.timer.clearAll(this);
+
+        // 清空单例引用
+        EnemyAIManager._instance = null;
     }
 }

@@ -152,9 +152,6 @@ export class GameMainManager extends Laya.Script {
         // 初始化UI管理器
         this.initializeUIManager();
 
-        // 初始化关卡
-        this._initialize();
-
         console.log("游戏系统初始化完成");
     }
 
@@ -833,15 +830,18 @@ export class GameMainManager extends Laya.Script {
         return false;
     }
 
-    //手动调用节点销毁时执行
-    onDestroy(): void {
-        // 清理单例引用
-        GameMainManager._instance = null;
-
+    //脚本禁用时执行
+    onDisable(): void {
+        // // console.log("GameMainManager 禁用");
         // 清理定时器
         Laya.timer.clearAll(this);
 
-        console.log("GameMainManager 销毁");
+        // 重置游戏状态
+        this.gameEnded = false;
+        this.winner = "";
+
+        // 清理单例引用
+        GameMainManager._instance = null;
     }
 
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法

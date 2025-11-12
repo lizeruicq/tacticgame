@@ -107,24 +107,30 @@ export class GameEndPanel extends Laya.Script {
      * 重新开始按钮点击事件
      */
     private onRestartButtonClick(): void {
-        // console.log("重新开始按钮被点击");
+        console.log("重新开始按钮被点击");
         this.hide();
 
-        // 重新加载当前场景（重新开始关卡）
+        // 重新开始游戏场景（先退出再重新加载，确保完全重置）
         try {
             const sceneManager = SceneManager.getInstance();
+            console.log("SceneManager 实例:", sceneManager);
             if (sceneManager) {
-                // 重新加载游戏场景
-                sceneManager.switchToGameScene();
+                // 使用 restartGameScene() 确保场景完全重置
+                console.log("调用 restartGameScene()");
+                sceneManager.restartGameScene().then(() => {
+                    console.log("场景重启完成");
+                }).catch((error) => {
+                    console.error("场景重启失败:", error);
+                });
             } else {
-                // console.error("无法获取SceneManager实例");
+                console.error("无法获取SceneManager实例");
             }
         } catch (error) {
-            // console.error("重新开始关卡时出错:", error);
+            console.error("重新开始关卡时出错:", error);
         }
     }
 
-    onDestroy(): void {
+    onDisable(): void {
         // 清理事件监听
         if (this.menuButton) {
             this.menuButton.off(Laya.Event.CLICK, this, this.onMenuButtonClick);

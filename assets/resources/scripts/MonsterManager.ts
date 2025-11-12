@@ -49,22 +49,22 @@ export class MonsterManager extends Laya.Script {
     
     onAwake(): void {
         console.log("=== MonsterManager 初始化 ===");
-        
+
         // 设置单例
         MonsterManager._instance = this;
-        
+
         // 初始化管理器
         this.initializeManager();
     }
-    
-    onDestroy(): void {
+
+    onDisable(): void {
         // 清理单例引用
         MonsterManager._instance = null;
-        
+
         // 清理所有列表
         this.cleanup();
-        
-        console.log("MonsterManager 销毁");
+
+        console.log("MonsterManager 禁用");
     }
     
     // ========== 单例方法 ==========

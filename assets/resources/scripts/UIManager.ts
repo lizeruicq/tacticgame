@@ -440,7 +440,8 @@ export class UIManager extends Laya.Script {
         }
     }
 
-    onDestroy(): void {
+    onDisable(): void {
+        // // console.log("UIManager 禁用");
         // 清理事件监听
         if (this.stopButton) {
             this.stopButton.off(Laya.Event.CLICK, this, this.onStopButtonClick);
@@ -457,8 +458,11 @@ export class UIManager extends Laya.Script {
             this.enemyCastle.owner.off("CASTLE_HEALED", this, this.onEnemyCastleHealed);
         }
 
-        // 清理定时器
-        Laya.timer.clear(this, this.updateManaText);
+        // 清理所有定时器（包括 loop 和 once）
+        Laya.timer.clearAll(this);
+
+        // 重置初始化标志
+        UIManager.isInitialized = false;
 
         // 清空引用
         this.playerManager = null;

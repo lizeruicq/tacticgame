@@ -185,6 +185,9 @@ export class CardManager extends Laya.Script {
 
             if (cardComponent) {
                 this.activeCards.push(cardComponent);
+
+                // 设置卡牌初始透明度为0，用于渐显动画
+                cardSprite.alpha = 0;
                 this.cardBox.addChild(cardSprite);
 
                 // 确保卡牌可点击
@@ -193,6 +196,9 @@ export class CardManager extends Laya.Script {
 
                 // 添加拖拽事件
                 cardSprite.on(Laya.Event.MOUSE_DOWN, this, this.onCardMouseDown, [cardComponent]);
+
+                // 播放卡牌生成动画（渐显）
+                this.playCardGenerateAnimation(cardSprite);
 
                 console.log(`${cardType} 卡牌创建成功，激活卡牌总数: ${this.activeCards.length}`);
             } else {
@@ -409,6 +415,9 @@ export class CardManager extends Laya.Script {
             targetCard.updateLv2Visibility();
         }
 
+        // 播放合成动画（放大再缩小）
+        this.playCardMergeAnimation(targetCard);
+
         // 销毁被拖拽的卡牌
         this.destroyCard(draggedCard);
     }
@@ -447,8 +456,8 @@ export class CardManager extends Laya.Script {
             console.warn("未找到GameMainManager，跳过魔法值检查");
         }
 
-        // 销毁使用的卡牌
-        this.destroyCard(card);
+        // 播放卡片使用动画（向上移动+渐隐）
+        this.playCardUseAnimation(card);
 
         // 开始冷却
         this.startCardCooldown();
@@ -581,9 +590,68 @@ export class CardManager extends Laya.Script {
         return this.isCardCooldown;
     }
 
-    onDestroy(): void {
-        console.log("CardManager 销毁");
+    /**
+     * 播放卡片生成动画（渐显）
+     */
+    private playCardGenerateAnimation(cardSprite: Laya.Sprite): void {
+        // 从透明度0渐显到1，持续300ms
+        Laya.Tween.to(cardSprite, { alpha: 1 }, 300, Laya.Ease.quadOut);
+    }
+
+    /**
+     * 播放卡片使用动画（向上移动+渐隐）
+     */
+    private playCardUseAnimation(card: any): void {
+        const cardSprite = card.owner as Laya.Sprite;
+        if (!cardSprite) return;
+
+        // 获取卡片当前位置
+        const startY = cardSprite.y;
+
+        // 向上移动100像素，同时渐隐，持续400ms
+        Laya.Tween.to(cardSprite, {
+            y: startY - 100,
+            alpha: 0
+        }, 400, Laya.Ease.quadIn, Laya.Handler.create(this, () => {
+            // 动画完成后销毁卡片
+            this.destroyCard(card);
+        }));
+    }
+
+    /**
+     * 播放卡片合成动画（放大再缩小）
+     */
+    private playCardMergeAnimation(card: any): void {
+        const cardSprite = card.owner as Laya.Sprite;
+        if (!cardSprite) return;
+
+        // 获取卡片当前的缩放值
+        const originalScaleX = cardSprite.scaleX;
+        const originalScaleY = cardSprite.scaleY;
+
+        // 第一阶段：放大到1.3倍，持续200ms
+        Laya.Tween.to(cardSprite, {
+            scaleX: originalScaleX * 1.3,
+            scaleY: originalScaleY * 1.3
+        }, 200, Laya.Ease.backOut, Laya.Handler.create(this, () => {
+            // 第二阶段：缩小回原来的尺寸，持续200ms
+            Laya.Tween.to(cardSprite, {
+                scaleX: originalScaleX,
+                scaleY: originalScaleY
+            }, 200, Laya.Ease.backIn);
+        }));
+    }
+
+    onDisable(): void {
+        // // console.log("CardManager 禁用");
         // 清理所有卡片
         this.clearAllCards();
+
+        // 清理所有定时器
+        Laya.timer.clearAll(this);
+
+        // 移除鼠标事件监听
+        Laya.stage.off(Laya.Event.MOUSE_MOVE, this, this.onCardMouseMove);
+        Laya.stage.off(Laya.Event.MOUSE_UP, this, this.onCardMouseUp);
     }
 }

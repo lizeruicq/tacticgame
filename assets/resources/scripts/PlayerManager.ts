@@ -110,4 +110,16 @@ export class PlayerManager extends Laya.Script {
     public isGameEnded(): boolean {
         return this.gameEnded;
     }
+
+    /**
+     * 脚本禁用时执行
+     */
+    onDisable(): void {
+        // // console.log("PlayerManager 禁用");
+        // 清理所有定时器
+        Laya.timer.clearAll(this);
+
+        // 清空单例引用
+        PlayerManager._instance = null;
+    }
 }

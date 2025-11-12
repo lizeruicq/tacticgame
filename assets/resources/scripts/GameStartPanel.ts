@@ -103,7 +103,7 @@ export class GameStartPanel extends Laya.Script {
         }
     }
 
-    onDestroy(): void {
+    onDisable(): void {
         // 清理事件监听
         if (this.startButton) {
             this.startButton.off(Laya.Event.CLICK, this, this.onStartButtonClick);
