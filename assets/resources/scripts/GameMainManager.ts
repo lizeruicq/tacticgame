@@ -1,5 +1,4 @@
 const { regClass, property } = Laya;
-import { RockMonster } from "./RockMonster";
 import { MonsterManager } from "./MonsterManager";
 import { Castle } from "./Castle";
 import { EnemyAIManager } from "./EnemyAIManager";
@@ -828,6 +827,62 @@ export class GameMainManager extends Laya.Script {
             return this.playerManager.consumeMana(amount);
         }
         return false;
+    }
+
+    /**
+     * 为指定阵营增加能量（Power）
+     * @param isPlayerCamp 是否为玩家阵营（true 玩家，false 敌方）
+     * @param amount 增加的能量值（等于受到的伤害值）
+     */
+    public addPower(isPlayerCamp: boolean, amount: number): void {
+        if (amount <= 0) return;
+
+        if (isPlayerCamp) {
+            if (this.playerManager) {
+                this.playerManager.addPower(amount);
+            }
+        } else {
+            if (this.enemyAIManager) {
+                this.enemyAIManager.addPower(amount);
+            }
+        }
+
+        // 每次能量更新时，同步刷新UI中的能量条
+        if (this.uiManager) {
+            this.uiManager.refreshPowerBars();
+        }
+    }
+
+    /**
+     * 获取玩家当前能量值
+     */
+    public getPlayerPower(): number {
+        if (this.playerManager) {
+            return this.playerManager.getPlayerPower();
+        }
+        return 0;
+    }
+
+    /**
+     * 获取敌方当前能量值
+     */
+    public getEnemyPower(): number {
+        if (this.enemyAIManager) {
+            return this.enemyAIManager.getEnemyPower();
+        }
+        return 0;
+    }
+
+    /**
+     * 合成怪物
+     * @param isPlayerCamp 是否玩家阵营
+     */
+    public async synthesizeMonsters(isPlayerCamp: boolean): Promise<void> {
+        if (this.monsterManager) {
+            await this.monsterManager.synthesizeMonsters(isPlayerCamp);
+        } else {
+            console.error("GameMainManager: 无法获取MonsterManager实例");
+        }
     }
 
     //脚本禁用时执行

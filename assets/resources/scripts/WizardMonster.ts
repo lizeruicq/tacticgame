@@ -11,12 +11,19 @@ import { WizardAnimationManager } from "./WizardAnimationManager";
 export class WizardMonster extends BaseMonster {
     
     // ========== Wizard特有属性 ==========
-    
+
     // Wizard的动画管理器引用
     private wizardAnimationManager: WizardAnimationManager | null = null;
-    
+
     // ========== 实现抽象方法 ==========
-    
+
+    /**
+     * 获取怪物类型
+     */
+    public getMonsterType(): string {
+        return "Wizard";
+    }
+
     /**
      * 初始化Wizard怪物属性
      */
@@ -110,22 +117,6 @@ export class WizardMonster extends BaseMonster {
      */
     public getLevel(): number {
         return this.monsterLevel;
-    }
-    
-    /**
-     * 获取Wizard的详细信息
-     */
-    public getWizardInfo(): any {
-        return {
-            name: "Wizard",
-            level: this.monsterLevel,
-            camp: this.isPlayerCamp ? "Player" : "Enemy",
-            health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
-            attackPower: this.monsterStats.attackPower,
-            attackRange: this.monsterStats.attackRange,
-            speed: this.monsterStats.speed,
-            state: this.currentState
-        };
     }
     
     /**

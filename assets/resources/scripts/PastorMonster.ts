@@ -26,6 +26,13 @@ export class PastorMonster extends BaseMonster {
         // console.log("Pastor怪物初始化");
     }
 
+    /**
+     * 获取怪物类型
+     */
+    public getMonsterType(): string {
+        return "Pastor";
+    }
+
     protected initializeMonster(): void {
         this.monsterStats = this.calculatePastorStats();
 
@@ -265,14 +272,4 @@ export class PastorMonster extends BaseMonster {
         return this.pastorAnimationManager;
     }
 
-    public getPastorInfo(): any {
-        return {
-            name: "Pastor",
-            level: this.monsterLevel,
-            camp: this.isPlayerCamp ? "Player" : "Enemy",
-            health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
-            healAmount: this.healAmount,
-            state: this.currentState
-        };
-    }
 }

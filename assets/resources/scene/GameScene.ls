@@ -28,6 +28,12 @@
           "enemyHpBar": {
             "_$ref": "slvpqtf4"
           },
+          "playerPowerBar": {
+            "_$ref": "p2m303jz"
+          },
+          "enemyPowerBar": {
+            "_$ref": "sxf7h94x"
+          },
           "manaText": {
             "_$ref": "svc6tumn"
           },
@@ -42,6 +48,9 @@
           },
           "hintLabel": {
             "_$ref": "nbbwpvzd"
+          },
+          "mergeButton": {
+            "_$ref": "g64u6gba"
           }
         }
       ],
@@ -58,6 +67,19 @@
           "zIndex": 1,
           "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
           "value": 0.691
+        },
+        {
+          "_$id": "p2m303jz",
+          "_$type": "ProgressBar",
+          "name": "PlayerPowerBar",
+          "x": 167,
+          "y": 1544,
+          "width": 240,
+          "height": 37,
+          "rotation": -90,
+          "zIndex": 1,
+          "skin": "res://54906c96-91d5-4506-aa4b-a2a98160dcaf",
+          "value": 0.565
         },
         {
           "_$id": "svc6tumn",
@@ -88,6 +110,19 @@
           "value": 0.565
         },
         {
+          "_$id": "sxf7h94x",
+          "_$type": "ProgressBar",
+          "name": "EnemyPowerBar",
+          "x": 1052,
+          "y": 171,
+          "width": 240,
+          "height": 37,
+          "rotation": 90,
+          "zIndex": 1,
+          "skin": "res://54906c96-91d5-4506-aa4b-a2a98160dcaf",
+          "value": 0.565
+        },
+        {
           "_$id": "obxzpln9",
           "_$type": "Button",
           "name": "StopButton",
@@ -112,6 +147,7 @@
           "height": 985,
           "anchorX": 0.5,
           "anchorY": 0.5,
+          "visible": false,
           "zIndex": 1,
           "_$comp": [
             {
@@ -359,6 +395,21 @@
           "valign": "middle",
           "wordWrap": true,
           "stroke": 26
+        },
+        {
+          "_$id": "g64u6gba",
+          "_$type": "Button",
+          "name": "Mergebutton",
+          "x": 131,
+          "y": 1561,
+          "width": 120,
+          "height": 118,
+          "zIndex": 1,
+          "stateNum": 1,
+          "skin": "res://7b01170a-bc5a-4e97-a6d1-624b5c7dc3ef",
+          "label": "",
+          "labelAlign": "center",
+          "labelVAlign": "middle"
         }
       ]
     },
@@ -428,9 +479,9 @@
           "_$id": "956g9jgg",
           "_$type": "Sprite",
           "name": "spawnArea",
-          "x": 556,
-          "y": 1652,
-          "width": 1069,
+          "x": 449,
+          "y": 1655,
+          "width": 859,
           "height": 313,
           "anchorX": 0.5,
           "anchorY": 0.5,

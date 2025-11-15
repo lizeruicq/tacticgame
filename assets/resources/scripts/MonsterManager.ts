@@ -1,7 +1,7 @@
 const { regClass, property } = Laya;
 import { BaseMonster } from "./BaseMonster";
 import { Castle } from "./Castle";
-
+import { GameMainManager } from "./GameMainManager";
 /**
  * 目标类型枚举
  */
@@ -38,7 +38,7 @@ export class MonsterManager extends Laya.Script {
     private enemyMonsters: BaseMonster[] = [];      // 敌方怪物列表
     private playerCastles: Castle[] = [];           // 玩家城堡列表
     private enemyCastles: Castle[] = [];            // 敌方城堡列表
-
+    private gameMainManager: GameMainManager = null;
     // ========== 配置参数 ==========
     
     @property({ type: Number })
@@ -52,7 +52,7 @@ export class MonsterManager extends Laya.Script {
 
         // 设置单例
         MonsterManager._instance = this;
-
+        this.gameMainManager = GameMainManager.getInstance();
         // 初始化管理器
         this.initializeManager();
     }
@@ -113,8 +113,10 @@ export class MonsterManager extends Laya.Script {
 
         // 监听怪物死亡事件
         monster.owner.on("MONSTER_DEATH", this, this.onMonsterDeath);
+        // 监听怪物受伤事件，用于累积能量（Power）
+        monster.owner.on("MONSTER_DAMAGE_TAKEN", this, this.onMonsterDamageTaken);
     }
-    
+
     /**
      * 注销怪物
      */
@@ -132,8 +134,9 @@ export class MonsterManager extends Laya.Script {
 
         // 取消事件监听
         monster.owner.off("MONSTER_DEATH", this, this.onMonsterDeath);
+        monster.owner.off("MONSTER_DAMAGE_TAKEN", this, this.onMonsterDamageTaken);
     }
-    
+
     /**
      * 注册城堡
      */
@@ -286,7 +289,30 @@ export class MonsterManager extends Laya.Script {
             this.unregisterMonster(monster);
         }
     }
-    
+
+    /**
+     * 怪物受伤事件处理：用于累积双方的能量（Power）
+     */
+    private onMonsterDamageTaken(data: any): void {
+        if (!data || !data.target || typeof data.damage !== "number") {
+            return;
+        }
+
+        const target: BaseMonster = data.target as BaseMonster;
+        const damage: number = data.damage;
+
+        if (!this.gameMainManager) {
+            this.gameMainManager = GameMainManager.getInstance();
+        }
+
+        if (!this.gameMainManager) {
+            return;
+        }
+
+        // 己方怪物受到攻击时，根据阵营累积对应的能量
+        this.gameMainManager.addPower(target.isPlayerCamp, damage);
+    }
+
     /**
      * 城堡摧毁事件处理
      */
@@ -296,9 +322,9 @@ export class MonsterManager extends Laya.Script {
             this.unregisterCastle(castle);
         }
     }
-    
+
     // ========== 工具方法 ==========
-    
+
     /**
      * 从数组中移除元素
      */
@@ -459,5 +485,97 @@ export class MonsterManager extends Laya.Script {
                 break;
             }
         }
+    }
+
+    // ========== 怪物合成方法 ==========
+
+    /**
+     * 合成怪物（支持玩家和敌方）
+     * @param isPlayerCamp 是否玩家阵营
+     */
+    public async synthesizeMonsters(isPlayerCamp: boolean): Promise<void> {
+        const monsterList: BaseMonster[] = isPlayerCamp ? this.playerMonsters : this.enemyMonsters;
+        const camp: string = isPlayerCamp ? "玩家" : "敌方";
+
+        console.log(`开始合成${camp}怪物，当前数量: ${monsterList.length}`);
+
+        // 递归合成
+        await this.synthesizeRecursive(monsterList, isPlayerCamp);
+
+        console.log(`${camp}怪物合成完成，最终数量: ${monsterList.length}`);
+    }
+
+    /**
+     * 递归合成怪物
+     * @param monsterList 怪物列表
+     * @param isPlayerCamp 是否玩家阵营
+     */
+    private async synthesizeRecursive(monsterList: BaseMonster[], isPlayerCamp: boolean): Promise<void> {
+        // 从后往前遍历，寻找可合成的怪物（1级或2级）
+        for (let i = monsterList.length - 1; i >= 0; i--) {
+            const backMonster: BaseMonster = monsterList[i];
+
+            // 跳过3级怪物（最高等级，不可合成）
+            if (backMonster.monsterLevel === 3) continue;
+
+            // 只处理1级和2级怪物
+            if (backMonster.monsterLevel < 1 || backMonster.monsterLevel > 2) continue;
+
+            // 获取怪物类型
+            const backType: string = backMonster.getMonsterType();
+            const backLevel: number = backMonster.monsterLevel;
+
+            // 在前面的怪物中寻找相同类型和等级的怪物
+            for (let j = i - 1; j >= 0; j--) {
+                const frontMonster: BaseMonster = monsterList[j];
+                if (frontMonster.monsterLevel !== backLevel) continue;
+                if (frontMonster.getMonsterType() !== backType) continue;
+
+                // 找到了两个相同类型和等级的怪物，执行合成
+                await this.performSynthesis(frontMonster, backMonster, isPlayerCamp);
+
+                // 合成完成后，继续递归查找下一对可合成的怪物
+                await this.synthesizeRecursive(monsterList, isPlayerCamp);
+                return;
+            }
+        }
+
+        // 没有找到可合成的怪物对，合成完成
+    }
+
+    /**
+     * 执行单次合成
+     */
+    private performSynthesis(frontMonster: BaseMonster, backMonster: BaseMonster, isPlayerCamp: boolean): Promise<void> {
+        return new Promise((resolve) => {
+            const frontSprite = frontMonster.owner as Laya.Sprite;
+            const backSprite = backMonster.owner as Laya.Sprite;
+            const monsterType = frontMonster.getMonsterType();
+            const currentLevel = frontMonster.monsterLevel;
+            const nextLevel = currentLevel + 1;
+            const battleField = this.gameMainManager.getBattleField();
+
+            // 获取靠前怪物的位置
+            const targetPos = { x: frontSprite.x, y: frontSprite.y };
+
+            // 靠后怪物移动到靠前怪物位置
+            Laya.Tween.to(backSprite, { x: targetPos.x, y: targetPos.y }, 300, Laya.Ease.quadOut, Laya.Handler.create(this, () => {
+                // 移动完成后，移除两个怪物
+                this.unregisterMonster(frontMonster);
+                this.unregisterMonster(backMonster);
+                frontSprite.removeSelf();
+                backSprite.removeSelf();
+
+                // 创建下一级怪物
+                this.createMonster(monsterType, isPlayerCamp, targetPos, nextLevel).then((newMonster) => {
+                    if (newMonster) {
+                        battleField.addChild(newMonster);
+                        console.log(`合成成功: ${monsterType} LV${currentLevel} + LV${currentLevel} -> ${monsterType} LV${nextLevel}`);
+                    }
+                    // 合成完成，resolve Promise
+                    resolve();
+                });
+            }));
+        });
     }
 }

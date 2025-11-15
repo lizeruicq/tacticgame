@@ -19,7 +19,14 @@ export class HumanSwordFe extends BaseMonster {
     private SwordFeAnimationManager: SwordFeAnimationManager | null = null;
     
     // ========== 实现抽象方法 ==========
-    
+
+    /**
+     * 获取怪物类型
+     */
+    public getMonsterType(): string {
+        return "SwordFe";
+    }
+
     /**
      * 初始化SwordFe怪物属性
      */
@@ -162,18 +169,5 @@ export class HumanSwordFe extends BaseMonster {
      */
     public getLevel(): number {
         return this.monsterLevel;
-    }
-    
-  
-    public getSwordFeInfo(): any {
-        return {
-            name: "SwordFe",
-            level: this.monsterLevel,
-            camp: this.isPlayerCamp ? "Player" : "Enemy",
-            health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
-            state: this.currentState,
-            // canCounterAttack: this.canCounterAttack,
-            stats: this.getStats()
-        };
     }
 }

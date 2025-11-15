@@ -20,6 +20,13 @@ export class UIManager extends Laya.Script {
     @property({ type: Laya.ProgressBar })
     public enemyHpBar: Laya.ProgressBar = null;
 
+    // 玩家与敌方能量条（Power）
+    @property({ type: Laya.ProgressBar })
+    public playerPowerBar: Laya.ProgressBar = null;
+
+    @property({ type: Laya.ProgressBar })
+    public enemyPowerBar: Laya.ProgressBar = null;
+
     @property({ type: Laya.Label })
     public manaText: Laya.Label = null;
 
@@ -36,6 +43,10 @@ export class UIManager extends Laya.Script {
     // 提示标签
     @property({ type: Laya.Label })
     public hintLabel: Laya.Label = null;
+
+    // 合成按钮
+    @property({ type: Laya.Button })
+    public mergeButton: Laya.Button = null;
 
     // 管理器引用
     private playerManager: PlayerManager = null;
@@ -67,7 +78,7 @@ export class UIManager extends Laya.Script {
             this.initializeCastles();
             this.initializeUI();
             this.setupEventListeners();
-            
+
             // 标记UIManager已完成初始化
             UIManager.isInitialized = true;
         });
@@ -79,7 +90,7 @@ export class UIManager extends Laya.Script {
     private initializeManagers(): void {
         // 获取GameMainManager节点
         const gameMainManagerNode = this.owner.scene.getChildByName("GameMainManager");
-        
+
         // 从GameMainManager节点获取组件实例
         if (gameMainManagerNode) {
             this.playerManager = gameMainManagerNode.getComponent(PlayerManager);
@@ -97,7 +108,7 @@ export class UIManager extends Laya.Script {
                 console.error("UIManager: 无法通过单例获取PlayerManager实例", e);
             }
         }
-        
+
         if (!this.enemyAIManager) {
             try {
                 this.enemyAIManager = EnemyAIManager.getInstance();
@@ -105,7 +116,7 @@ export class UIManager extends Laya.Script {
                 console.error("UIManager: 无法通过单例获取EnemyAIManager实例", e);
             }
         }
-        
+
         if (!this.gameMainManager) {
             try {
                 this.gameMainManager = GameMainManager.getInstance();
@@ -120,13 +131,13 @@ export class UIManager extends Laya.Script {
         } else {
             console.log("UIManager: 成功获取PlayerManager实例");
         }
-        
+
         if (!this.enemyAIManager) {
             console.error("UIManager: 未找到EnemyAIManager实例");
         } else {
             console.log("UIManager: 成功获取EnemyAIManager实例");
         }
-        
+
         if (!this.gameMainManager) {
             console.error("UIManager: 未找到GameMainManager实例");
         } else {
@@ -170,11 +181,16 @@ export class UIManager extends Laya.Script {
         if (this.stopButton) {
             this.stopButton.on(Laya.Event.CLICK, this, this.onStopButtonClick);
         }
+
+        // 初始化合成按钮
+        if (this.mergeButton) {
+            this.mergeButton.on(Laya.Event.CLICK, this, this.onMergeButtonClick);
+        }
         // this.gameStartPanel = this.gameStartPanelBox.getComponent(GameStartPanel);
 
         // 初始化游戏开始面板
         this.initializeGameStartPanel();
-        
+
         // 初始化游戏结束面板
         this.initializeGameEndPanel();
 
@@ -183,6 +199,7 @@ export class UIManager extends Laya.Script {
             this.updatePlayerHealthBar();
             this.updateEnemyHealthBar();
             this.updateManaText();
+            this.refreshPowerBars();
         });
     }
 
@@ -200,7 +217,7 @@ export class UIManager extends Laya.Script {
             console.error("UIManager: 未找到游戏开始面板");
         }
     }
-    
+
     /**
      * 初始化游戏结束面板
      */
@@ -305,6 +322,30 @@ export class UIManager extends Laya.Script {
     }
 
     /**
+     * 刷新双方能量条（Power）显示
+     * UIManager 通过 GameMainManager 获取能量值
+     */
+    public refreshPowerBars(): void {
+        if (!this.gameMainManager) {
+            return;
+        }
+
+        // 玩家能量
+        if (this.playerPowerBar) {
+            const playerPower = this.gameMainManager.getPlayerPower();
+            const clampedPlayerPower = Math.max(0, Math.min(playerPower, 100));
+            this.playerPowerBar.value = clampedPlayerPower / 100;
+        }
+
+        // 敌方能量
+        if (this.enemyPowerBar) {
+            const enemyPower = this.gameMainManager.getEnemyPower();
+            const clampedEnemyPower = Math.max(0, Math.min(enemyPower, 100));
+            this.enemyPowerBar.value = clampedEnemyPower / 100;
+        }
+    }
+
+    /**
      * 根据血量百分比更新血条颜色
      * @param progressBar 进度条组件
      * @param percentage 血量百分比 (0-1)
@@ -347,10 +388,22 @@ export class UIManager extends Laya.Script {
         // 3. 提供继续、重新开始、退出等选项
         this.gameMainManager.pauseGame()
         console.log("显示暂停菜单面板");
-        
+
         // 临时实现：暂停游戏时间
         // Laya.timer.scale = Laya.timer.scale === 0 ? 1 : 0;
         // console.log(`游戏时间缩放: ${Laya.timer.scale === 0 ? "暂停" : "继续"}`);
+    }
+
+    /**
+     * 合成按钮点击事件
+     */
+    private async onMergeButtonClick(): Promise<void> {
+        console.log("合成按钮被点击");
+        if (this.gameMainManager) {
+            await this.gameMainManager.synthesizeMonsters(true);
+        } else {
+            console.error("UIManager: 无法获取GameMainManager实例");
+        }
     }
 
     /**
@@ -389,7 +442,7 @@ export class UIManager extends Laya.Script {
             this.gameStartPanel.hide();
         }
     }
-    
+
     /**
      * 显示游戏结束面板
      * @param win 是否胜利
@@ -401,7 +454,7 @@ export class UIManager extends Laya.Script {
             console.warn("GameEndPanel 组件未初始化");
         }
     }
-    
+
     /**
      * 隐藏游戏结束面板
      */
@@ -443,8 +496,13 @@ export class UIManager extends Laya.Script {
     onDisable(): void {
         // // console.log("UIManager 禁用");
         // 清理事件监听
+
         if (this.stopButton) {
             this.stopButton.off(Laya.Event.CLICK, this, this.onStopButtonClick);
+        }
+
+        if (this.mergeButton) {
+            this.mergeButton.off(Laya.Event.CLICK, this, this.onMergeButtonClick);
         }
 
         // 清理城堡事件监听

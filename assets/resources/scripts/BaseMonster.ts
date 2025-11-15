@@ -159,6 +159,12 @@ export abstract class BaseMonster extends Laya.Script {
     }
 
     /**
+     * 获取怪物类型
+     * 由子类实现，返回怪物的类型名称
+     */
+    public abstract getMonsterType(): string;
+
+    /**
      * 注册到MonsterManager
      */
     protected registerToManager(): void {

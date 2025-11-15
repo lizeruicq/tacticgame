@@ -6,59 +6,63 @@ import { CardConfig } from "./CardConfig";
 @regClass()
 export class EnemyAIManager extends Laya.Script {
     private static _instance: EnemyAIManager = null;
-    
+
     // 敌人魔法值系统
     private enemyMana: number = 10;
     private enemyMaxMana: number = 10;
     private manaRegenRate: number = 1;
     private manaRegenInterval: number = 2000;
-    
+
+    // 敌人能量（Power）
+    private enemyPower: number = 0;               // 当前能量值（0-100）
+    private readonly maxEnemyPower: number = 100; // 能量最大值
+
     // AI决策参数
     private decisionInterval: number = 1000; // 每3秒做一次决策
     private currentLevel: number = 1;
-    
+
     // AI决策队列
     private pendingDecision: string | null = null; // 等待执行的决策
-    
+
     // 怪物管理器引用
     private monsterManager: MonsterManager = null;
     private gameManager: GameMainManager = null;
-    
+
     onAwake(): void {
         EnemyAIManager._instance = this;
         this.initializeAI();
     }
-    
+
     public static getInstance(): EnemyAIManager {
         return EnemyAIManager._instance;
     }
-    
+
     private initializeAI(): void {
         // 获取管理器实例
         this.monsterManager = MonsterManager.getInstance();
         this.gameManager = GameMainManager.getInstance();
-        
+
         // 启动魔法值恢复系统
         this.startManaRegeneration();
-        
+
         // 启动AI决策系统
         this.startAIDecisionMaking();
     }
-    
+
     private startManaRegeneration(): void {
         Laya.timer.loop(this.manaRegenInterval, this, this.regenerateMana);
     }
-    
+
     private regenerateMana(): void {
         this.enemyMana = Math.min(this.enemyMana + this.manaRegenRate, this.enemyMaxMana);
         // console.log(`敌人魔法值恢复: ${this.enemyMana}/${this.enemyMaxMana}`);
     }
-    
+
     private startAIDecisionMaking(): void {
         // this,this.makeDecision();
         Laya.timer.loop(this.decisionInterval, this, this.makeDecision);
     }
-    
+
     private makeDecision(): void {
         // 检查游戏是否结束
         if (this.gameManager && this.gameManager.isGameEnded()) {
@@ -94,39 +98,39 @@ export class EnemyAIManager extends Laya.Script {
             console.log("敌人魔法值不足，跳过本次决策");
             return;
         }
-        
+
         // 获取当前关卡的敌人配置
         const levelConfig = CardConfig.getLevelConfig(this.currentLevel);
         if (!levelConfig) {
             console.error(`无法获取关卡${this.currentLevel}的配置`);
             return;
         }
-        
+
         // 根据权重选择怪物类型
         const monsterType = this.selectMonsterByWeight(levelConfig.enemyCards);
         if (!monsterType) {
             console.log("未选择到合适的怪物类型");
             return;
         }
-        
+
         // 获取怪物配置
         const monsterConfig = CardConfig.getCardConfig(monsterType);
         if (!monsterConfig) {
             console.error(`无法获取${monsterType}的配置`);
             return;
         }
-        
+
         // 检查魔法值是否足够
         if (this.enemyMana < monsterConfig.manaCost) {
             console.log(`敌人魔法值不足，等待足够魔法值召唤${monsterType}（需要${monsterConfig.manaCost}点魔法值，当前${this.enemyMana}）`);
             this.pendingDecision = monsterType; // 记录等待中的决策
             return;
         }
-        
+
         // 消耗魔法值并召唤怪物
         this.executeDecision(monsterType, monsterConfig);
     }
-    
+
     /**
      * 执行决策（消耗魔法值并召唤怪物）
      */
@@ -134,11 +138,11 @@ export class EnemyAIManager extends Laya.Script {
         // 消耗魔法值
         this.enemyMana -= monsterConfig.manaCost;
         console.log(`敌人消耗${monsterConfig.manaCost}点魔法值召唤${monsterType}，剩余魔法值: ${this.enemyMana}`);
-        
+
         // 召唤怪物
         this.spawnMonster(monsterType);
     }
-    
+
     /**
      * 执行等待中的决策
      */
@@ -146,11 +150,11 @@ export class EnemyAIManager extends Laya.Script {
         // 消耗魔法值
         this.enemyMana -= monsterConfig.manaCost;
         console.log(`敌人消耗${monsterConfig.manaCost}点魔法值召唤等待中的${monsterType}，剩余魔法值: ${this.enemyMana}`);
-        
+
         // 召唤怪物
         this.spawnMonster(monsterType);
     }
-    
+
     private selectMonsterByWeight(availableCards: string[]): string | null {
         // 简单的权重选择实现
         // 可以根据战场情况调整权重
@@ -196,7 +200,7 @@ export class EnemyAIManager extends Laya.Script {
 
         return weights.length > 0 ? weights[0].type : null;
     }
-    
+
     private spawnMonster(monsterType: string): void {
         if (!this.monsterManager || !this.gameManager) {
             console.error("无法获取MonsterManager或GameMainManager");
@@ -236,15 +240,32 @@ export class EnemyAIManager extends Laya.Script {
                 console.error(`创建${monsterType}怪物时发生错误:`, error);
             });
     }
-    
+
     public setLevel(level: number): void {
         this.currentLevel = level;
     }
-    
+
     public getEnemyMana(): number {
         return this.enemyMana;
     }
-    
+
+    /**
+     * 增加敌人能量（Power）
+     * @param amount 增加的能量值（与收到的伤害值相同）
+     */
+    public addPower(amount: number): void {
+        if (amount <= 0) return;
+        this.enemyPower = Math.min(this.enemyPower + amount, this.maxEnemyPower);
+    }
+
+    /**
+     * 获取敌人当前能量值
+     */
+    public getEnemyPower(): number {
+        return this.enemyPower;
+    }
+
+
     public setEnemyMana(mana: number): void {
         this.enemyMana = Math.max(0, Math.min(mana, this.enemyMaxMana));
     }

@@ -19,7 +19,14 @@ export class RockMonster extends BaseMonster {
     private rockAnimationManager: RockAnimationManager | null = null;
     
     // ========== 实现抽象方法 ==========
-    
+
+    /**
+     * 获取怪物类型
+     */
+    public getMonsterType(): string {
+        return "Rock";
+    }
+
     /**
      * 初始化Rock怪物属性
      */
@@ -215,18 +222,4 @@ export class RockMonster extends BaseMonster {
     // console.log(`Rock强制攻击: ${target.constructor.name}`);
     // }
     
-    /**
-     * 获取Rock的详细信息
-     */
-    public getRockInfo(): any {
-        return {
-            name: "Rock",
-            level: this.monsterLevel,
-            camp: this.isPlayerCamp ? "Player" : "Enemy",
-            health: `${this.currentHealth}/${this.monsterStats.maxHealth}`,
-            state: this.currentState,
-            // canCounterAttack: this.canCounterAttack,
-            stats: this.getStats()
-        };
-    }
 }
