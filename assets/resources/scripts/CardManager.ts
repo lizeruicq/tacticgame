@@ -339,9 +339,9 @@ export class CardManager extends Laya.Script {
         // 执行合成
         console.log(`合成卡牌: ${draggedCard.cardName} + ${mergeTargetCard.cardName}`);
         this.mergeCards(draggedCard, mergeTargetCard);
-        
-        // 生成新卡牌
-        this.generateRandomCard();
+
+        // 启动冷却时间（与卡牌使用相同的流程）
+        this.startCardCooldown();
     }
 
     /**
@@ -467,9 +467,12 @@ export class CardManager extends Laya.Script {
     }
 
     /**
-     * 销毁卡牌
+     * 销毁卡牌（带补位动画）
      */
     private destroyCard(card: any): void {
+        // 记录销毁前所有卡牌的位置
+        const positionsBefore = this.recordCardPositions();
+
         // 从激活卡牌列表中移除
         const index = this.activeCards.indexOf(card);
         if (index > -1) {
@@ -480,6 +483,48 @@ export class CardManager extends Laya.Script {
         if (card.owner) {
             card.owner.destroy();
             console.log(`卡牌 ${card.cardName} 已销毁`);
+        }
+
+        // 延迟一帧，让HBox重新排列卡牌
+        Laya.timer.frameOnce(1, this, () => {
+            this.animateCardPositions(positionsBefore);
+        });
+    }
+
+    /**
+     * 记录所有卡牌的当前位置
+     */
+    private recordCardPositions(): Map<any, { x: number; y: number }> {
+        const positions = new Map();
+        for (const card of this.activeCards) {
+            if (card && card.owner) {
+                const sprite = card.owner as Laya.Sprite;
+                positions.set(card, { x: sprite.x, y: sprite.y });
+            }
+        }
+        return positions;
+    }
+
+    /**
+     * 为卡牌添加补位动画
+     */
+    private animateCardPositions(positionsBefore: Map<any, { x: number; y: number }>): void {
+        for (const card of this.activeCards) {
+            if (!card || !card.owner) continue;
+
+            const sprite = card.owner as Laya.Sprite;
+            const oldPos = positionsBefore.get(card);
+            const newPos = { x: sprite.x, y: sprite.y };
+
+            // 如果卡牌位置改变，播放移动动画
+            if (oldPos && (oldPos.x !== newPos.x || oldPos.y !== newPos.y)) {
+                // 先设置到旧位置
+                sprite.x = oldPos.x;
+                sprite.y = oldPos.y;
+
+                // 然后用Tween动画移动到新位置
+                Laya.Tween.to(sprite, { x: newPos.x, y: newPos.y }, 300, Laya.Ease.quadOut);
+            }
         }
     }
 

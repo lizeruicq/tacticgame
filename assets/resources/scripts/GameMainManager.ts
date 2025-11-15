@@ -874,6 +874,22 @@ export class GameMainManager extends Laya.Script {
     }
 
     /**
+     * 清空指定阵营的能量值
+     * @param isPlayerCamp 是否为玩家阵营
+     */
+    public resetPower(isPlayerCamp: boolean): void {
+        if (isPlayerCamp) {
+            if (this.playerManager) {
+                this.playerManager.resetPower();
+            }
+        } else {
+            if (this.enemyAIManager) {
+                this.enemyAIManager.resetPower();
+            }
+        }
+    }
+
+    /**
      * 合成怪物
      * @param isPlayerCamp 是否玩家阵营
      */

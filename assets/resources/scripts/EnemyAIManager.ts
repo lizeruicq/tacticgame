@@ -265,6 +265,12 @@ export class EnemyAIManager extends Laya.Script {
         return this.enemyPower;
     }
 
+    /**
+     * 清空敌人能量值
+     */
+    public resetPower(): void {
+        this.enemyPower = 0;
+    }
 
     public setEnemyMana(mana: number): void {
         this.enemyMana = Math.max(0, Math.min(mana, this.enemyMaxMana));

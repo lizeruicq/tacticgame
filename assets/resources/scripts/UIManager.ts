@@ -252,6 +252,9 @@ export class UIManager extends Laya.Script {
         // 监听魔法值变化（使用定时器，因为PlayerManager没有事件）
         // 每0.5秒检查一次魔法值变化
         Laya.timer.loop(500, this, this.updateManaText);
+
+        // 监听 Power 变化，更新 Merge 按钮状态
+        Laya.timer.loop(100, this, this.updateMergeButtonState);
     }
 
     /**
@@ -398,12 +401,34 @@ export class UIManager extends Laya.Script {
      * 合成按钮点击事件
      */
     private async onMergeButtonClick(): Promise<void> {
-        console.log("合成按钮被点击");
-        if (this.gameMainManager) {
-            await this.gameMainManager.synthesizeMonsters(true);
-        } else {
-            console.error("UIManager: 无法获取GameMainManager实例");
+        // 检查玩家 Power 是否满
+        if (!this.gameMainManager || this.gameMainManager.getPlayerPower() < 100) {
+            return;
         }
+
+        console.log("合成按钮被点击，执行怪物合成");
+
+        // 执行合成
+        await this.gameMainManager.synthesizeMonsters(true);
+
+        // 合成完成后清空玩家 Power
+        this.gameMainManager.resetPower(true);
+
+        // 刷新 Power 条显示
+        this.refreshPowerBars();
+    }
+
+    /**
+     * 更新 Merge 按钮状态（根据玩家 Power 是否满）
+     */
+    private updateMergeButtonState(): void {
+        if (!this.mergeButton || !this.gameMainManager) return;
+
+        const playerPower = this.gameMainManager.getPlayerPower();
+        const isFull = playerPower >= 100;
+
+        // 根据 Power 是否满来设置按钮的可点击状态
+        this.mergeButton.disabled = !isFull;
     }
 
     /**

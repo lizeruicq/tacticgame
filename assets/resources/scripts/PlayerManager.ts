@@ -111,7 +111,12 @@ export class PlayerManager extends Laya.Script {
         return this.playerPower;
     }
 
-
+    /**
+     * 清空玩家能量值
+     */
+    public resetPower(): void {
+        this.playerPower = 0;
+    }
 
     /**
      * 设置游戏结束状态
