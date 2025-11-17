@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "0_Skeleton_Crusader_Running_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1152,
+        "y": 0,
+        "w": 380,
+        "h": 507
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 247,
+        "y": 243
+      }
+    },
+    "0_Skeleton_Crusader_Running_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1033,
+        "w": 380,
+        "h": 511
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 247,
+        "y": 231
+      }
+    },
+    "0_Skeleton_Crusader_Running_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 383,
+        "y": 1030,
+        "w": 379,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 231,
+        "y": 221
+      }
+    },
+    "0_Skeleton_Crusader_Running_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 516,
+        "w": 381,
+        "h": 515
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 211
+      }
+    },
+    "0_Skeleton_Crusader_Running_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 383,
+        "y": 516,
+        "w": 383,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 222
+      }
+    },
+    "0_Skeleton_Crusader_Running_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1151,
+        "y": 518,
+        "w": 378,
+        "h": 510
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 231,
+        "y": 232
+      }
+    },
+    "0_Skeleton_Crusader_Running_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1144,
+        "y": 1032,
+        "w": 380,
+        "h": 508
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 246,
+        "y": 242
+      }
+    },
+    "0_Skeleton_Crusader_Running_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 768,
+        "y": 518,
+        "w": 381,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 247,
+        "y": 232
+      }
+    },
+    "0_Skeleton_Crusader_Running_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 771,
+        "y": 0,
+        "w": 379,
+        "h": 516
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 221
+      }
+    },
+    "0_Skeleton_Crusader_Running_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 384,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 217,
+        "y": 212
+      }
+    },
+    "0_Skeleton_Crusader_Running_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 386,
+        "y": 0,
+        "w": 383,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 215,
+        "y": 221
+      }
+    },
+    "0_Skeleton_Crusader_Running_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 764,
+        "y": 1032,
+        "w": 378,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 230,
+        "y": 231
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

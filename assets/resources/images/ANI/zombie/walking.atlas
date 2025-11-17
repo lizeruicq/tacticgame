@@ -1,0 +1,415 @@
+{
+  "frames": {
+    "0_Zombie_Villager_Walking_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1077,
+        "w": 378,
+        "h": 534
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 259,
+        "y": 222
+      }
+    },
+    "0_Zombie_Villager_Walking_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 380,
+        "y": 1080,
+        "w": 378,
+        "h": 534
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 259,
+        "y": 220
+      }
+    },
+    "0_Zombie_Villager_Walking_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 541,
+        "w": 379,
+        "h": 534
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 258,
+        "y": 219
+      }
+    },
+    "0_Zombie_Villager_Walking_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 760,
+        "y": 1080,
+        "w": 377,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 254,
+        "y": 217
+      }
+    },
+    "0_Zombie_Villager_Walking_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1513,
+        "y": 540,
+        "w": 374,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 250,
+        "y": 216
+      }
+    },
+    "0_Zombie_Villager_Walking_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1516,
+        "y": 1613,
+        "w": 371,
+        "h": 536
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 247,
+        "y": 214
+      }
+    },
+    "0_Zombie_Villager_Walking_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 372,
+        "y": 1616,
+        "w": 369,
+        "h": 537
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 213
+      }
+    },
+    "0_Zombie_Villager_Walking_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1889,
+        "y": 539,
+        "w": 369,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 215
+      }
+    },
+    "0_Zombie_Villager_Walking_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1891,
+        "y": 1076,
+        "w": 368,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 216
+      }
+    },
+    "0_Zombie_Villager_Walking_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1613,
+        "w": 370,
+        "h": 536
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 248,
+        "y": 217
+      }
+    },
+    "0_Zombie_Villager_Walking_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1138,
+        "y": 540,
+        "w": 373,
+        "h": 537
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 252,
+        "y": 218
+      }
+    },
+    "0_Zombie_Villager_Walking_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 761,
+        "y": 0,
+        "w": 375,
+        "h": 537
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 256,
+        "y": 220
+      }
+    },
+    "0_Zombie_Villager_Walking_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 381,
+        "y": 540,
+        "w": 377,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 261,
+        "y": 221
+      }
+    },
+    "0_Zombie_Villager_Walking_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 381,
+        "y": 0,
+        "w": 378,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 261,
+        "y": 220
+      }
+    },
+    "0_Zombie_Villager_Walking_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 379,
+        "h": 539
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 218
+      }
+    },
+    "0_Zombie_Villager_Walking_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 760,
+        "y": 540,
+        "w": 376,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 256,
+        "y": 217
+      }
+    },
+    "0_Zombie_Villager_Walking_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1138,
+        "y": 0,
+        "w": 374,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 252,
+        "y": 216
+      }
+    },
+    "0_Zombie_Villager_Walking_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1514,
+        "y": 0,
+        "w": 372,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 248,
+        "y": 215
+      }
+    },
+    "0_Zombie_Villager_Walking_018.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1139,
+        "y": 1615,
+        "w": 369,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 214
+      }
+    },
+    "0_Zombie_Villager_Walking_019.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1888,
+        "y": 0,
+        "w": 369,
+        "h": 537
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 215
+      }
+    },
+    "0_Zombie_Villager_Walking_020.png": {
+      "frame": {
+        "idx": 0,
+        "x": 743,
+        "y": 1617,
+        "w": 368,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 217
+      }
+    },
+    "0_Zombie_Villager_Walking_021.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1889,
+        "y": 1613,
+        "w": 369,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 247,
+        "y": 218
+      }
+    },
+    "0_Zombie_Villager_Walking_022.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1516,
+        "y": 1077,
+        "w": 373,
+        "h": 534
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 250,
+        "y": 219
+      }
+    },
+    "0_Zombie_Villager_Walking_023.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1139,
+        "y": 1079,
+        "w": 375,
+        "h": 534
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 254,
+        "y": 220
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

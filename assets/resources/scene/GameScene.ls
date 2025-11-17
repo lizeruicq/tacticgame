@@ -384,7 +384,7 @@
           "y": 108,
           "width": 808,
           "height": 145,
-          "zIndex": 10,
+          "zIndex": 99,
           "centerX": 0,
           "text": "",
           "font": "YuppySC-Regular",
@@ -400,10 +400,12 @@
           "_$id": "g64u6gba",
           "_$type": "Button",
           "name": "Mergebutton",
-          "x": 131,
-          "y": 1561,
-          "width": 120,
-          "height": 118,
+          "x": 187,
+          "y": 1606,
+          "width": 97,
+          "height": 95,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
           "zIndex": 1,
           "stateNum": 1,
           "skin": "res://7b01170a-bc5a-4e97-a6d1-624b5c7dc3ef",
@@ -489,6 +491,60 @@
             {
               "_$type": "DrawRectCmd",
               "fillColor": "rgba(10,10,62,0.3333333333333333)"
+            }
+          ]
+        },
+        {
+          "_$id": "fbz75ixp",
+          "_$type": "Sprite",
+          "name": "lightings",
+          "x": -46,
+          "y": -39,
+          "width": 1183,
+          "height": 1856,
+          "visible": false,
+          "zIndex": 98,
+          "_gcmds": [
+            {
+              "_$type": "DrawRectCmd",
+              "fillColor": "rgba(0,0,0,0.44313725490196076)"
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "c552kjp1",
+              "_$type": "Image",
+              "name": "lighting",
+              "x": 158,
+              "y": 460,
+              "width": 571,
+              "height": 999,
+              "skin": "res://c8a3ac59-38fe-4b98-b96f-4602eeb5be8d",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "f1l2mmsa",
+              "_$type": "Image",
+              "name": "lighting",
+              "x": 482,
+              "y": 475,
+              "width": 571,
+              "height": 999,
+              "skin": "res://c8a3ac59-38fe-4b98-b96f-4602eeb5be8d",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "hyg43nhp",
+              "_$type": "Image",
+              "name": "cloud",
+              "x": 358,
+              "y": 142,
+              "width": 475,
+              "height": 475,
+              "skin": "res://5e7cffaf-b360-4626-ab9c-461f9d1c361e",
+              "color": "#ffffff"
             }
           ]
         }

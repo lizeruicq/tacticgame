@@ -497,12 +497,14 @@ export class MonsterManager extends Laya.Script {
         const monsterList: BaseMonster[] = isPlayerCamp ? this.playerMonsters : this.enemyMonsters;
         const camp: string = isPlayerCamp ? "玩家" : "敌方";
 
-        console.log(`开始合成${camp}怪物，当前数量: ${monsterList.length}`);
+        
+        this.gameMainManager.playLightningEffect();
+        this.gameMainManager.showHint(`${camp}中的同类怪物开始合成...`);
 
         // 递归合成
         await this.synthesizeRecursive(monsterList, isPlayerCamp);
 
-        console.log(`${camp}怪物合成完成，最终数量: ${monsterList.length}`);
+        
     }
 
     /**

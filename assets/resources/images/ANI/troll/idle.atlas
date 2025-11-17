@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Troll_01_1_IDLE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 705,
+        "y": 1547,
+        "w": 670,
+        "h": 510
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 555,
+        "y": 364
+      }
+    },
+    "Troll_01_1_IDLE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1430,
+        "y": 0,
+        "w": 681,
+        "h": 511
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 549,
+        "y": 363
+      }
+    },
+    "Troll_01_1_IDLE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 705,
+        "y": 1033,
+        "w": 691,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 362
+      }
+    },
+    "Troll_01_1_IDLE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 725,
+        "y": 0,
+        "w": 703,
+        "h": 513
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 536,
+        "y": 361
+      }
+    },
+    "Troll_01_1_IDLE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 517,
+        "w": 713,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 530,
+        "y": 360
+      }
+    },
+    "Troll_01_1_IDLE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 723,
+        "h": 515
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 524,
+        "y": 359
+      }
+    },
+    "Troll_01_1_IDLE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 715,
+        "y": 517,
+        "w": 713,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 530,
+        "y": 360
+      }
+    },
+    "Troll_01_1_IDLE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1033,
+        "w": 703,
+        "h": 513
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 536,
+        "y": 361
+      }
+    },
+    "Troll_01_1_IDLE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1398,
+        "y": 1033,
+        "w": 691,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 362
+      }
+    },
+    "Troll_01_1_IDLE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1430,
+        "y": 513,
+        "w": 681,
+        "h": 511
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 549,
+        "y": 363
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

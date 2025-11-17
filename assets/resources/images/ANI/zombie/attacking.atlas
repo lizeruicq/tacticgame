@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "0_Zombie_Villager_Slashing_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1565,
+        "y": 1593,
+        "w": 389,
+        "h": 536
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 215
+      }
+    },
+    "0_Zombie_Villager_Slashing_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1698,
+        "y": 1053,
+        "w": 369,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 235,
+        "y": 216
+      }
+    },
+    "0_Zombie_Villager_Slashing_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 604,
+        "h": 536
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 259,
+        "y": 216
+      }
+    },
+    "0_Zombie_Villager_Slashing_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 538,
+        "w": 576,
+        "h": 532
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 287,
+        "y": 220
+      }
+    },
+    "0_Zombie_Villager_Slashing_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 606,
+        "y": 0,
+        "w": 577,
+        "h": 525
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 286,
+        "y": 227
+      }
+    },
+    "0_Zombie_Villager_Slashing_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1159,
+        "y": 527,
+        "w": 578,
+        "h": 524
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 285,
+        "y": 227
+      }
+    },
+    "0_Zombie_Villager_Slashing_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 578,
+        "y": 538,
+        "w": 579,
+        "h": 524
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 284,
+        "y": 227
+      }
+    },
+    "0_Zombie_Villager_Slashing_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 578,
+        "y": 1064,
+        "w": 580,
+        "h": 523
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 283,
+        "y": 228
+      }
+    },
+    "0_Zombie_Villager_Slashing_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 524,
+        "y": 1589,
+        "w": 524,
+        "h": 526
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 284,
+        "y": 225
+      }
+    },
+    "0_Zombie_Villager_Slashing_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1050,
+        "y": 1593,
+        "w": 513,
+        "h": 531
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 288,
+        "y": 220
+      }
+    },
+    "0_Zombie_Villager_Slashing_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1072,
+        "w": 522,
+        "h": 535
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 271,
+        "y": 216
+      }
+    },
+    "0_Zombie_Villager_Slashing_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1160,
+        "y": 1053,
+        "w": 536,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 248,
+        "y": 214
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

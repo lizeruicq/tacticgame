@@ -12,7 +12,7 @@ export class WizardCard extends BaseMonsterCard {
         super();
         // 设置Wizard卡片的默认属性
         this.cardName = "Wizard卡片";
-        this.manaCost = 4; // 比Rock稍高
+        this.manaCost = 2; // 比Rock稍高
         this.monsterPrefabPath = "prefabs/monster/Wizard.lh";
     }
 

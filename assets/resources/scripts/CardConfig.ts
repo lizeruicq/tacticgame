@@ -45,7 +45,7 @@ export class CardConfig {
             type: "Wizard",
             prefabPath: "prefabs/cards/card_wizard.lh",
             componentClass: "WizardCard",
-            manaCost: 4,
+            manaCost: 2,
             level: 1
         },
 
@@ -60,7 +60,7 @@ export class CardConfig {
             type: "SwordFe",
             prefabPath: "prefabs/monster/card_SwordFe.lh",
             componentClass: "SwordFeCard",
-            manaCost: 5,
+            manaCost: 3,
             level: 1
         }
 

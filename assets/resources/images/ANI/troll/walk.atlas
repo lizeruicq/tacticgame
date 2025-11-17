@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Troll_01_1_WALK_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 769,
+        "h": 508
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 503,
+        "y": 364
+      }
+    },
+    "Troll_01_1_WALK_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 510,
+        "w": 739,
+        "h": 509
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 522,
+        "y": 363
+      }
+    },
+    "Troll_01_1_WALK_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1021,
+        "w": 704,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 362
+      }
+    },
+    "Troll_01_1_WALK_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1482,
+        "y": 0,
+        "w": 666,
+        "h": 513
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 564,
+        "y": 362
+      }
+    },
+    "Troll_01_1_WALK_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1412,
+        "y": 1030,
+        "w": 624,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 587,
+        "y": 361
+      }
+    },
+    "Troll_01_1_WALK_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 626,
+        "y": 1535,
+        "w": 580,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 610,
+        "y": 360
+      }
+    },
+    "Troll_01_1_WALK_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1535,
+        "w": 624,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 587,
+        "y": 361
+      }
+    },
+    "Troll_01_1_WALK_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1482,
+        "y": 515,
+        "w": 666,
+        "h": 513
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 564,
+        "y": 362
+      }
+    },
+    "Troll_01_1_WALK_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 706,
+        "y": 1021,
+        "w": 704,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 362
+      }
+    },
+    "Troll_01_1_WALK_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 741,
+        "y": 510,
+        "w": 739,
+        "h": 509
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 522,
+        "y": 363
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

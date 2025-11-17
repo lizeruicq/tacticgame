@@ -21,6 +21,7 @@ export class GameMainManager extends Laya.Script {
     // 场景节点引用
     private battleField: Laya.Box = null;
     private spawnArea: Laya.Sprite = null;
+    private lightings: Laya.Sprite = null;  // 闪电效果节点
 
     // 城堡引用
     private playerCastle: Castle = null;
@@ -109,6 +110,14 @@ export class GameMainManager extends Laya.Script {
             console.error("未找到spawnArea节点！");
         } else {
             console.log(`spawnArea节点初始化成功: 中心(${this.spawnArea.x}, ${this.spawnArea.y}), 尺寸${this.spawnArea.width}x${this.spawnArea.height}`);
+        }
+
+        // 查找lightings节点
+        this.lightings = this.battleField.getChildByName("lightings") as Laya.Sprite;
+        if (!this.lightings) {
+            console.warn("未找到lightings节点！");
+        } else {
+            console.log("lightings节点初始化成功");
         }
     }
     
@@ -899,6 +908,108 @@ export class GameMainManager extends Laya.Script {
         } else {
             console.error("GameMainManager: 无法获取MonsterManager实例");
         }
+    }
+
+    /**
+     * 播放闪电效果动画
+     * 1. lightings 节点显示
+     * 2. cloud 节点渐显
+     * 3. 闪电随机顺序闪烁
+     * 4. 闪烁完成后 cloud 渐隐
+     * 5. lightings 节点隐藏
+     */
+    public playLightningEffect(): void {
+        if (!this.lightings) {
+            console.warn("lightings节点不存在，无法播放闪电效果");
+            return;
+        }
+
+        // 显示 lightings 节点
+        this.lightings.visible = true;
+
+        // 获取 cloud 节点
+        const cloud = this.lightings.getChildByName("cloud") as Laya.Sprite;
+        // 获取所有闪电子节点（排除 cloud）
+        const lightningList: Laya.Sprite[] = [];
+        for (let i = 0; i < this.lightings.numChildren; i++) {
+            const child = this.lightings.getChildAt(i) as Laya.Sprite;
+            if (child && child.name !== "cloud") {
+                child.visible = false;  // 初始隐藏
+                lightningList.push(child);
+            }
+        }
+
+        if (lightningList.length === 0) {
+            console.warn("lightings节点下没有闪电子节点");
+            return;
+        }
+
+        // Cloud 渐显
+        cloud.alpha = 0;
+        Laya.Tween.to(cloud, { alpha: 1 }, 300, Laya.Ease.linearNone);
+
+        // 延迟 300ms 后开始闪电动画
+        Laya.timer.once(300, this, () => {
+            // 随机打乱闪电顺序
+            const shuffledList = this.shuffleArray([...lightningList]);
+
+            // 依次播放每个闪电的闪烁动画
+            let delay = 0;
+            for (const lightning of shuffledList) {
+                Laya.timer.once(delay, this, () => {
+                    this.playLightningFlash(lightning);
+                });
+                delay += 300;  // 每个闪电间隔 300ms
+            }
+
+            // 计算所有闪电完成的时间
+            const totalLightningDuration = delay + 300;  // 最后一个闪电的延迟 + 闪烁时间
+
+            // 闪电完成后，cloud 渐隐
+            Laya.timer.once(totalLightningDuration, this, () => {
+                Laya.Tween.to(cloud, { alpha: 0 }, 300, Laya.Ease.linearNone, Laya.Handler.create(this, () => {
+                    // Cloud 渐隐完成后，隐藏 lightings 节点
+                    this.lightings.visible = false;
+                }));
+            });
+        });
+    }
+
+    /**
+     * 播放单个闪电的闪烁动画
+     * @param lightning 闪电精灵
+     */
+    private playLightningFlash(lightning: Laya.Sprite): void {
+        let flashCount = 0;
+        const maxFlashes = 2;  // 闪烁2次
+        const flashInterval = 200;  // 每次闪烁间隔 500ms
+
+        const flashTimer = () => {
+            if (flashCount >= maxFlashes * 2) {
+                lightning.visible = false;
+                return;
+            }
+
+            // 切换可见性（显示/隐藏）
+            lightning.visible = !lightning.visible;
+            flashCount++;
+
+            // 继续下一次闪烁
+            Laya.timer.once(flashInterval, this, flashTimer);
+        };
+
+        flashTimer();
+    }
+
+    /**
+     * 随机打乱数组
+     */
+    private shuffleArray<T>(array: T[]): T[] {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     }
 
     //脚本禁用时执行

@@ -1,0 +1,313 @@
+{
+  "frames": {
+    "0_Necromancer_of_the_Shadow_Idle_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1200,
+        "y": 0,
+        "w": 396,
+        "h": 553
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 221,
+        "y": 198
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1598,
+        "y": 1671,
+        "w": 397,
+        "h": 554
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 221,
+        "y": 197
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1598,
+        "y": 1114,
+        "w": 397,
+        "h": 555
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 196
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 400,
+        "y": 560,
+        "w": 398,
+        "h": 556
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 195
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 800,
+        "y": 1116,
+        "w": 397,
+        "h": 557
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 220,
+        "y": 194
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 400,
+        "y": 1118,
+        "w": 397,
+        "h": 557
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 218,
+        "y": 194
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1119,
+        "w": 397,
+        "h": 557
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 194
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1199,
+        "y": 1116,
+        "w": 397,
+        "h": 557
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 214,
+        "y": 194
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 398,
+        "h": 558
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 193
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 400,
+        "y": 0,
+        "w": 398,
+        "h": 558
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 193
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 560,
+        "w": 398,
+        "h": 557
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 194
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 800,
+        "y": 0,
+        "w": 398,
+        "h": 556
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 195
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 800,
+        "y": 558,
+        "w": 398,
+        "h": 556
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 195
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1598,
+        "y": 0,
+        "w": 398,
+        "h": 555
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 196
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1600,
+        "y": 557,
+        "w": 397,
+        "h": 555
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 213,
+        "y": 196
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1200,
+        "y": 557,
+        "w": 398,
+        "h": 555
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 214,
+        "y": 196
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 799,
+        "y": 1675,
+        "w": 397,
+        "h": 554
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 197
+      }
+    },
+    "0_Necromancer_of_the_Shadow_Idle_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 399,
+        "y": 1677,
+        "w": 397,
+        "h": 554
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 218,
+        "y": 197
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

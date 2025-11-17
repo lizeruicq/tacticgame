@@ -1,0 +1,262 @@
+{
+  "frames": {
+    "0_Goblin_Dying_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 769,
+        "y": 1634,
+        "w": 380,
+        "h": 524
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 234,
+        "y": 227
+      }
+    },
+    "0_Goblin_Dying_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 381,
+        "y": 1896,
+        "w": 386,
+        "h": 526
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 255,
+        "y": 203
+      }
+    },
+    "0_Goblin_Dying_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 398,
+        "y": 981,
+        "w": 392,
+        "h": 527
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 182
+      }
+    },
+    "0_Goblin_Dying_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 487,
+        "w": 396,
+        "h": 526
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 299,
+        "y": 162
+      }
+    },
+    "0_Goblin_Dying_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1896,
+        "w": 379,
+        "h": 537
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 137
+      }
+    },
+    "0_Goblin_Dying_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 470,
+        "y": 452,
+        "w": 416,
+        "h": 527
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 193,
+        "y": 134
+      }
+    },
+    "0_Goblin_Dying_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 468,
+        "h": 485
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 149,
+        "y": 155
+      }
+    },
+    "0_Goblin_Dying_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 470,
+        "y": 0,
+        "w": 495,
+        "h": 450
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 118,
+        "y": 225
+      }
+    },
+    "0_Goblin_Dying_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 967,
+        "y": 0,
+        "w": 516,
+        "h": 412
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 97,
+        "y": 304
+      }
+    },
+    "0_Goblin_Dying_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 888,
+        "y": 452,
+        "w": 533,
+        "h": 400
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 87,
+        "y": 389
+      }
+    },
+    "0_Goblin_Dying_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 888,
+        "y": 854,
+        "w": 533,
+        "h": 392
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 84,
+        "y": 428
+      }
+    },
+    "0_Goblin_Dying_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 792,
+        "y": 1248,
+        "w": 533,
+        "h": 384
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 85,
+        "y": 449
+      }
+    },
+    "0_Goblin_Dying_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1510,
+        "w": 533,
+        "h": 384
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 85,
+        "y": 449
+      }
+    },
+    "0_Goblin_Dying_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1327,
+        "y": 1248,
+        "w": 533,
+        "h": 384
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 85,
+        "y": 449
+      }
+    },
+    "0_Goblin_Dying_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1423,
+        "y": 414,
+        "w": 533,
+        "h": 384
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 85,
+        "y": 449
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

@@ -71,6 +71,12 @@ export class UIManager extends Laya.Script {
     private hintDisplayTime: number = 2000;  // 显示时间（毫秒）
     private hintFadeDuration: number = 300;  // 渐显/渐隐时间（毫秒）
 
+    // Merge 按钮动画配置
+    private isMergeButtonAnimating: boolean = false;  // 是否正在播放动画
+    private readonly mergeButtonScaleMin: number = 1.0;    // 最小缩放
+    private readonly mergeButtonScaleMax: number = 1.15;   // 最大缩放
+    private readonly mergeButtonAnimDuration: number = 400; // 动画时长（毫秒）
+
     onAwake(): void {
         // 延迟一帧执行初始化，确保所有管理器已完成初始化
         Laya.timer.once(1, this, () => {
@@ -429,6 +435,64 @@ export class UIManager extends Laya.Script {
 
         // 根据 Power 是否满来设置按钮的可点击状态
         this.mergeButton.disabled = !isFull;
+
+        // 如果 Power 满，启动循环动画；否则停止动画
+        if (isFull && !this.isMergeButtonAnimating) {
+            this.startMergeButtonAnimation();
+        } else if (!isFull && this.isMergeButtonAnimating) {
+            this.stopMergeButtonAnimation();
+        }
+    }
+
+    /**
+     * 启动 Merge 按钮的循环放大缩小动画
+     */
+    private startMergeButtonAnimation(): void {
+        if (!this.mergeButton || this.isMergeButtonAnimating) return;
+
+        this.isMergeButtonAnimating = true;
+        this.showHint("点击红色按钮可合成场上相同怪物");
+        this.playMergeButtonScaleAnimation();
+    }
+
+    /**
+     * 播放 Merge 按钮的放大缩小动画
+     */
+    private playMergeButtonScaleAnimation(): void {
+        if (!this.mergeButton || !this.isMergeButtonAnimating) return;
+
+        // 放大动画
+        Laya.Tween.to(this.mergeButton, {
+            scaleX: this.mergeButtonScaleMax,
+            scaleY: this.mergeButtonScaleMax
+        }, this.mergeButtonAnimDuration / 2, Laya.Ease.quadInOut, Laya.Handler.create(this, () => {
+            // 缩小动画
+            Laya.Tween.to(this.mergeButton, {
+                scaleX: this.mergeButtonScaleMin,
+                scaleY: this.mergeButtonScaleMin
+            }, this.mergeButtonAnimDuration / 2, Laya.Ease.quadInOut, Laya.Handler.create(this, () => {
+                // 循环播放
+                if (this.isMergeButtonAnimating) {
+                    this.playMergeButtonScaleAnimation();
+                }
+            }));
+        }));
+    }
+
+    /**
+     * 停止 Merge 按钮的动画
+     */
+    private stopMergeButtonAnimation(): void {
+        if (!this.mergeButton) return;
+
+        this.isMergeButtonAnimating = false;
+
+        // 清除按钮上的所有 Tween 动画
+        Laya.Tween.clearAll(this.mergeButton);
+
+        // 重置按钮缩放为正常大小
+        this.mergeButton.scaleX = this.mergeButtonScaleMin;
+        this.mergeButton.scaleY = this.mergeButtonScaleMin;
     }
 
     /**
