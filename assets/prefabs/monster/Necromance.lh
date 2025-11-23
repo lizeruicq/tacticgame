@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Necromance",
+  "width": 500,
+  "height": 500,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "cd20d56a-fa64-4615-8102-f7d041671d75",
+      "scriptPath": "../src/monsters/rock/NecromanceMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPath": ""
+    },
+    {
+      "_$type": "0742b08a-3d2e-4726-98b2-f3f7afbc5024",
+      "scriptPath": "../src/monsters/rock/NecromanceAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "necromanceAnimation",
+      "x": 233,
+      "y": 236,
+      "width": 871,
+      "height": 982,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "source": "res://37d4380e-71df-4493-bd3f-cec1a665b4d0",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 100,
+      "y": 10,
+      "width": 268,
+      "height": 26,
+      "centerX": -16,
+      "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+      "value": 1,
+      "_$comp": [
+        {
+          "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
+          "healthBar": {
+            "_$ref": "4q50nepj"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Knight_01__DIE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 719,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__DIE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 514,
+        "w": 718,
+        "h": 510
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 698,
+        "y": 182
+      }
+    },
+    "Knight_01__DIE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 720,
+        "y": 514,
+        "w": 708,
+        "h": 497
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 695,
+        "y": 202
+      }
+    },
+    "Knight_01__DIE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 721,
+        "y": 0,
+        "w": 697,
+        "h": 474
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 689,
+        "y": 233
+      }
+    },
+    "Knight_01__DIE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1026,
+        "w": 721,
+        "h": 442
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 644,
+        "y": 272
+      }
+    },
+    "Knight_01__DIE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1420,
+        "y": 0,
+        "w": 766,
+        "h": 413
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 585,
+        "y": 325
+      }
+    },
+    "Knight_01__DIE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 723,
+        "y": 1013,
+        "w": 778,
+        "h": 382
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 555,
+        "y": 381
+      }
+    },
+    "Knight_01__DIE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1430,
+        "y": 415,
+        "w": 766,
+        "h": 357
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 555,
+        "y": 435
+      }
+    },
+    "Knight_01__DIE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 723,
+        "y": 1397,
+        "w": 739,
+        "h": 332
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 571,
+        "y": 480
+      }
+    },
+    "Knight_01__DIE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1731,
+        "w": 738,
+        "h": 332
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 572,
+        "y": 480
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

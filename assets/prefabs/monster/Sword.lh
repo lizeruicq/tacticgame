@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Sword",
+  "x": 629,
+  "y": -1,
+  "width": 720,
+  "height": 480,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "09777233-2bdd-40cc-98d6-6717fc95cf0c",
+      "scriptPath": "../src/monsters/human/SwordMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPath": ""
+    },
+    {
+      "_$type": "1604a063-672d-4ee6-a26e-c4e9b5c474d8",
+      "scriptPath": "../src/monsters/human/SwordAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "swordAnimation",
+      "x": 140,
+      "y": 63,
+      "width": 840,
+      "height": 780,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "source": "res://ea5098c4-7bba-456c-a4e0-2515a9bbc1be",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 226,
+      "y": 50,
+      "width": 268,
+      "height": 26,
+      "centerX": 0,
+      "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+      "value": 1,
+      "_$comp": [
+        {
+          "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
+          "healthBar": {
+            "_$ref": "4q50nepj"
+          }
+        }
+      ]
+    }
+  ]
+}

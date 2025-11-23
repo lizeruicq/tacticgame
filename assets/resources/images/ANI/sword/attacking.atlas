@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "0_Valkyrie_Slashing_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1846,
+        "y": 1133,
+        "w": 446,
+        "h": 571
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 192,
+        "y": 179
+      }
+    },
+    "0_Valkyrie_Slashing_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1863,
+        "y": 0,
+        "w": 439,
+        "h": 572
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 198,
+        "y": 178
+      }
+    },
+    "0_Valkyrie_Slashing_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 639,
+        "h": 568
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 182
+      }
+    },
+    "0_Valkyrie_Slashing_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1253,
+        "y": 0,
+        "w": 608,
+        "h": 564
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 253,
+        "y": 186
+      }
+    },
+    "0_Valkyrie_Slashing_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 615,
+        "y": 1699,
+        "w": 611,
+        "h": 561
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 251,
+        "y": 189
+      }
+    },
+    "0_Valkyrie_Slashing_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 615,
+        "y": 1138,
+        "w": 615,
+        "h": 559
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 246,
+        "y": 191
+      }
+    },
+    "0_Valkyrie_Slashing_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1138,
+        "w": 613,
+        "h": 561
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 248,
+        "y": 189
+      }
+    },
+    "0_Valkyrie_Slashing_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1232,
+        "y": 1138,
+        "w": 612,
+        "h": 561
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 189
+      }
+    },
+    "0_Valkyrie_Slashing_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 641,
+        "y": 0,
+        "w": 610,
+        "h": 564
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 251,
+        "y": 186
+      }
+    },
+    "0_Valkyrie_Slashing_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1250,
+        "y": 566,
+        "w": 607,
+        "h": 565
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 254,
+        "y": 185
+      }
+    },
+    "0_Valkyrie_Slashing_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 633,
+        "y": 570,
+        "w": 615,
+        "h": 566
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 236,
+        "y": 184
+      }
+    },
+    "0_Valkyrie_Slashing_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 570,
+        "w": 631,
+        "h": 566
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 184
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

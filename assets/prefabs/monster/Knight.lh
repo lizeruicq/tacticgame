@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Knight",
+  "x": 629,
+  "y": -1,
+  "width": 720,
+  "height": 480,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "252a1fc6-75af-406e-8f59-d882ebddd05d",
+      "scriptPath": "../src/monsters/human/KnightMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPath": ""
+    },
+    {
+      "_$type": "23faf9d9-86fb-4f0e-9e2f-cce395f0481e",
+      "scriptPath": "../src/monsters/human/KnightAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "knightAnimation",
+      "x": -111,
+      "y": 23,
+      "width": 1852,
+      "height": 838,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "source": "res://65aae27c-04cf-4d86-8f07-0189cbf9a7e0",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 226,
+      "y": 50,
+      "width": 268,
+      "height": 26,
+      "centerX": 0,
+      "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+      "value": 1,
+      "_$comp": [
+        {
+          "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
+          "healthBar": {
+            "_$ref": "4q50nepj"
+          }
+        }
+      ]
+    }
+  ]
+}

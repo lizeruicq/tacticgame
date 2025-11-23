@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Zombie",
+  "width": 500,
+  "height": 500,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "81833a30-0da9-4521-b91e-911af68509d3",
+      "scriptPath": "../src/monsters/rock/ZombieMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPath": ""
+    },
+    {
+      "_$type": "7841e6df-9762-4dce-98ec-526408199b27",
+      "scriptPath": "../src/monsters/rock/ZombieAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "zombieAnimation",
+      "x": 230,
+      "y": 241,
+      "width": 871,
+      "height": 1039,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "source": "res://bc6fa9f2-c80b-446b-ae66-e8a87bba8502",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 100,
+      "y": 10,
+      "width": 268,
+      "height": 26,
+      "centerX": -16,
+      "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+      "value": 1,
+      "_$comp": [
+        {
+          "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
+          "healthBar": {
+            "_$ref": "4q50nepj"
+          }
+        }
+      ]
+    }
+  ]
+}

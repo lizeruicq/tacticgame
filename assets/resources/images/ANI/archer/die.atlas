@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Elf_01__DIE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 446,
+        "h": 515
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 314
+      }
+    },
+    "Elf_01__DIE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 448,
+        "y": 0,
+        "w": 433,
+        "h": 516
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 778,
+        "y": 325
+      }
+    },
+    "Elf_01__DIE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 517,
+        "w": 399,
+        "h": 513
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 765,
+        "y": 334
+      }
+    },
+    "Elf_01__DIE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1345,
+        "y": 370,
+        "w": 357,
+        "h": 519
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 786,
+        "y": 325
+      }
+    },
+    "Elf_01__DIE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 883,
+        "y": 0,
+        "w": 374,
+        "h": 531
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 842,
+        "y": 306
+      }
+    },
+    "Elf_01__DIE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 401,
+        "y": 518,
+        "w": 414,
+        "h": 491
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 867,
+        "y": 335
+      }
+    },
+    "Elf_01__DIE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 401,
+        "y": 1011,
+        "w": 461,
+        "h": 425
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 861,
+        "y": 377
+      }
+    },
+    "Elf_01__DIE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 864,
+        "y": 903,
+        "w": 507,
+        "h": 371
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 864,
+        "y": 412
+      }
+    },
+    "Elf_01__DIE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 817,
+        "y": 533,
+        "w": 526,
+        "h": 368
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 866,
+        "y": 435
+      }
+    },
+    "Elf_01__DIE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1259,
+        "y": 0,
+        "w": 526,
+        "h": 368
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 866,
+        "y": 435
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

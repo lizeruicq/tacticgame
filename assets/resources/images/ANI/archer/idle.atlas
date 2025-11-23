@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Elf_01__IDLE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 902,
+        "y": 1027,
+        "w": 446,
+        "h": 515
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 314
+      }
+    },
+    "Elf_01__IDLE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1362,
+        "y": 513,
+        "w": 448,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 315
+      }
+    },
+    "Elf_01__IDLE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1021,
+        "w": 450,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 317
+      }
+    },
+    "Elf_01__IDLE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 914,
+        "y": 0,
+        "w": 452,
+        "h": 511
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 318
+      }
+    },
+    "Elf_01__IDLE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 458,
+        "y": 0,
+        "w": 454,
+        "h": 509
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 320
+      }
+    },
+    "Elf_01__IDLE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 456,
+        "h": 508
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 321
+      }
+    },
+    "Elf_01__IDLE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 510,
+        "w": 454,
+        "h": 509
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 320
+      }
+    },
+    "Elf_01__IDLE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 456,
+        "y": 511,
+        "w": 452,
+        "h": 511
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 318
+      }
+    },
+    "Elf_01__IDLE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 910,
+        "y": 513,
+        "w": 450,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 317
+      }
+    },
+    "Elf_01__IDLE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 452,
+        "y": 1024,
+        "w": 448,
+        "h": 514
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 1050
+      },
+      "spriteSourceSize": {
+        "x": 791,
+        "y": 315
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

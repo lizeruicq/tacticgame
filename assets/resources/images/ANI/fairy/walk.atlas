@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Fairy_02__FLY_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1554,
+        "y": 436,
+        "w": 465,
+        "h": 464
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 593,
+        "y": 158
+      }
+    },
+    "Fairy_02__FLY_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 518,
+        "y": 1293,
+        "w": 488,
+        "h": 444
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 591,
+        "y": 183
+      }
+    },
+    "Fairy_02__FLY_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1050,
+        "y": 859,
+        "w": 502,
+        "h": 434
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 591,
+        "y": 197
+      }
+    },
+    "Fairy_02__FLY_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 532,
+        "y": 859,
+        "w": 516,
+        "h": 432
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 203
+      }
+    },
+    "Fairy_02__FLY_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 531,
+        "h": 430
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 563,
+        "y": 209
+      }
+    },
+    "Fairy_02__FLY_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 532,
+        "y": 432,
+        "w": 532,
+        "h": 425
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 550,
+        "y": 216
+      }
+    },
+    "Fairy_02__FLY_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 432,
+        "w": 530,
+        "h": 430
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 564,
+        "y": 209
+      }
+    },
+    "Fairy_02__FLY_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 864,
+        "w": 516,
+        "h": 432
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 203
+      }
+    },
+    "Fairy_02__FLY_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1066,
+        "y": 0,
+        "w": 502,
+        "h": 434
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 591,
+        "y": 197
+      }
+    },
+    "Fairy_02__FLY_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1298,
+        "w": 488,
+        "h": 444
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 591,
+        "y": 183
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

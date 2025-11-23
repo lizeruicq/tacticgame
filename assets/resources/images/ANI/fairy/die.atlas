@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Fairy_02__DIE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 430,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 535,
+        "y": 263
+      }
+    },
+    "Fairy_02__DIE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 440,
+        "w": 412,
+        "h": 443
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 580,
+        "y": 261
+      }
+    },
+    "Fairy_02__DIE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 414,
+        "y": 459,
+        "w": 409,
+        "h": 433
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 610,
+        "y": 265
+      }
+    },
+    "Fairy_02__DIE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 432,
+        "y": 0,
+        "w": 408,
+        "h": 457
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 675,
+        "y": 259
+      }
+    },
+    "Fairy_02__DIE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 825,
+        "y": 459,
+        "w": 408,
+        "h": 430
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 711,
+        "y": 302
+      }
+    },
+    "Fairy_02__DIE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 894,
+        "w": 428,
+        "h": 364
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 718,
+        "y": 360
+      }
+    },
+    "Fairy_02__DIE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 430,
+        "y": 894,
+        "w": 436,
+        "h": 319
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 719,
+        "y": 446
+      }
+    },
+    "Fairy_02__DIE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 868,
+        "y": 891,
+        "w": 435,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 720,
+        "y": 480
+      }
+    },
+    "Fairy_02__DIE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 842,
+        "y": 0,
+        "w": 435,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 720,
+        "y": 513
+      }
+    },
+    "Fairy_02__DIE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1235,
+        "y": 268,
+        "w": 435,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 720,
+        "y": 513
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

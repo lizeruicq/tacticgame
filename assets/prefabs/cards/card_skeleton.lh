@@ -1,0 +1,222 @@
+{
+  "_$ver": 1,
+  "_$id": "decgh11n",
+  "_$type": "Sprite",
+  "name": "card_skeleton",
+  "width": 224,
+  "height": 343,
+  "texture": {
+    "_$uuid": "7d1eb54b-5cf8-487d-97e2-e6903a70c5b5",
+    "_$type": "Texture"
+  },
+  "_$comp": [
+    {
+      "_$type": "1de191ce-e84a-4ccc-af16-73f682195836",
+      "scriptPath": "../src/Cards/SkeletonCard.ts",
+      "cardName": "Skeleton卡片",
+      "manaCost": 3,
+      "monsterLevel": 1,
+      "isPlayerCard": true,
+      "monsterPrefabPath": "prefabs/monster/Skeleton.lh",
+      "levelLabel": {
+        "_$ref": "cpbc2vsm"
+      },
+      "costLabel": {
+        "_$ref": "9ma27t7c"
+      },
+      "lv2Node": {
+        "_$ref": "1k06h105"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "9ma27t7c",
+      "_$type": "Label",
+      "name": "cost",
+      "x": 119,
+      "y": 176,
+      "width": 41,
+      "height": 38,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "text": "7",
+      "font": "YuppySC-Regular",
+      "fontSize": 47,
+      "color": "#ffffff",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "stroke": 7
+    },
+    {
+      "_$id": "cpbc2vsm",
+      "_$type": "Label",
+      "name": "level",
+      "x": 68,
+      "y": 39,
+      "width": 69,
+      "height": 38,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "text": "lv2\n",
+      "font": "YuppySC-Regular",
+      "fontSize": 47,
+      "color": "#ffffff",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "stroke": 7
+    },
+    {
+      "_$id": "b7qmebh9",
+      "_$type": "VBox",
+      "name": "VBox",
+      "x": 39,
+      "y": 227,
+      "width": 146,
+      "height": 78,
+      "centerX": 0,
+      "space": 0,
+      "align": "center",
+      "autoSizeMode": "height",
+      "_$child": [
+        {
+          "_$id": "1m5bnnpw",
+          "_$type": "HBox",
+          "name": "HBox1",
+          "x": -3,
+          "width": 153,
+          "height": 26,
+          "space": 5,
+          "align": "middle",
+          "_$child": [
+            {
+              "_$id": "cydppjeq",
+              "_$type": "Image",
+              "name": "health",
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "pgoixjsk",
+              "_$type": "Image",
+              "name": "health_1",
+              "x": 35,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "e1h6cu6w",
+              "_$type": "Image",
+              "name": "health_2",
+              "x": 70,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "4o2zqwfm",
+          "_$type": "HBox",
+          "name": "HBox1_1",
+          "x": -3,
+          "y": 26,
+          "width": 153,
+          "height": 26,
+          "space": 5,
+          "align": "middle",
+          "_$child": [
+            {
+              "_$id": "kjiuk3df",
+              "_$type": "Image",
+              "name": "attack",
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "zi9ppr6e",
+              "_$type": "Image",
+              "name": "attack_1",
+              "x": 35,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "z28fb2ry",
+          "_$type": "HBox",
+          "name": "HBox1_2",
+          "x": -3,
+          "y": 52,
+          "width": 153,
+          "height": 26,
+          "space": 5,
+          "align": "middle",
+          "_$child": [
+            {
+              "_$id": "bosczmre",
+              "_$type": "Image",
+              "name": "speed",
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
+              "color": "#ffffff"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "1k06h105",
+      "_$type": "Box",
+      "name": "lv2",
+      "x": 25,
+      "y": 219,
+      "width": 174,
+      "height": 105,
+      "visible": false,
+      "_$child": [
+        {
+          "_$id": "e9hu3qak",
+          "_$type": "Image",
+          "name": "health",
+          "x": 118,
+          "y": 6,
+          "width": 30,
+          "height": 30,
+          "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "nu66i7jp",
+          "_$type": "Image",
+          "name": "attack_1",
+          "x": 80,
+          "y": 34,
+          "width": 30,
+          "height": 30,
+          "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+          "color": "#ffffff"
+        }
+      ]
+    }
+  ]
+}

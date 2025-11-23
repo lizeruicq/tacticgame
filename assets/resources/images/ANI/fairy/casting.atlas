@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Fairy_02__ATTACK_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1126,
+        "y": 1355,
+        "w": 430,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 535,
+        "y": 263
+      }
+    },
+    "Fairy_02__ATTACK_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1356,
+        "w": 430,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 541,
+        "y": 262
+      }
+    },
+    "Fairy_02__ATTACK_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 692,
+        "y": 1355,
+        "w": 432,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 550,
+        "y": 262
+      }
+    },
+    "Fairy_02__ATTACK_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 968,
+        "y": 0,
+        "w": 437,
+        "h": 436
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 557,
+        "y": 263
+      }
+    },
+    "Fairy_02__ATTACK_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1271,
+        "y": 438,
+        "w": 430,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 553,
+        "y": 262
+      }
+    },
+    "Fairy_02__ATTACK_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 819,
+        "y": 475,
+        "w": 450,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 551,
+        "y": 262
+      }
+    },
+    "Fairy_02__ATTACK_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 692,
+        "y": 916,
+        "w": 614,
+        "h": 437
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 547,
+        "y": 263
+      }
+    },
+    "Fairy_02__ATTACK_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 916,
+        "w": 690,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 262
+      }
+    },
+    "Fairy_02__ATTACK_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 475,
+        "w": 817,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 540,
+        "y": 262
+      }
+    },
+    "Fairy_02__ATTACK_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 966,
+        "h": 473
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 537,
+        "y": 228
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

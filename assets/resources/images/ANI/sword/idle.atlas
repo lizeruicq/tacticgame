@@ -1,0 +1,313 @@
+{
+  "frames": {
+    "0_Valkyrie_Idle_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1761,
+        "y": 571,
+        "w": 436,
+        "h": 565
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 185
+      }
+    },
+    "0_Valkyrie_Idle_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1724,
+        "w": 437,
+        "h": 566
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 184
+      }
+    },
+    "0_Valkyrie_Idle_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1760,
+        "y": 1142,
+        "w": 436,
+        "h": 566
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 210,
+        "y": 184
+      }
+    },
+    "0_Valkyrie_Idle_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 439,
+        "y": 1724,
+        "w": 436,
+        "h": 567
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 183
+      }
+    },
+    "0_Valkyrie_Idle_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1321,
+        "y": 1722,
+        "w": 437,
+        "h": 568
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 182
+      }
+    },
+    "0_Valkyrie_Idle_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1322,
+        "y": 571,
+        "w": 437,
+        "h": 569
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 181
+      }
+    },
+    "0_Valkyrie_Idle_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1321,
+        "y": 1149,
+        "w": 437,
+        "h": 571
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 204,
+        "y": 179
+      }
+    },
+    "0_Valkyrie_Idle_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 881,
+        "y": 1149,
+        "w": 438,
+        "h": 572
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 201,
+        "y": 178
+      }
+    },
+    "0_Valkyrie_Idle_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 882,
+        "y": 0,
+        "w": 438,
+        "h": 573
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 199,
+        "y": 177
+      }
+    },
+    "0_Valkyrie_Idle_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 441,
+        "y": 575,
+        "w": 438,
+        "h": 574
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 197,
+        "y": 176
+      }
+    },
+    "0_Valkyrie_Idle_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 439,
+        "h": 574
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 196,
+        "y": 176
+      }
+    },
+    "0_Valkyrie_Idle_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 576,
+        "w": 438,
+        "h": 574
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 196,
+        "y": 176
+      }
+    },
+    "0_Valkyrie_Idle_012.png": {
+      "frame": {
+        "idx": 0,
+        "x": 441,
+        "y": 0,
+        "w": 439,
+        "h": 573
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 195,
+        "y": 177
+      }
+    },
+    "0_Valkyrie_Idle_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 881,
+        "y": 575,
+        "w": 439,
+        "h": 572
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 197,
+        "y": 178
+      }
+    },
+    "0_Valkyrie_Idle_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 440,
+        "y": 1151,
+        "w": 438,
+        "h": 571
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 199,
+        "y": 179
+      }
+    },
+    "0_Valkyrie_Idle_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1152,
+        "w": 438,
+        "h": 570
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 201,
+        "y": 180
+      }
+    },
+    "0_Valkyrie_Idle_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1322,
+        "y": 0,
+        "w": 438,
+        "h": 569
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 203,
+        "y": 181
+      }
+    },
+    "0_Valkyrie_Idle_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 880,
+        "y": 1723,
+        "w": 437,
+        "h": 567
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 205,
+        "y": 183
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

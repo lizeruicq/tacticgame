@@ -1,0 +1,126 @@
+{
+  "frames": {
+    "2_entity_000_ATTACK_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1835,
+        "y": 1675,
+        "w": 685,
+        "h": 832
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 158,
+        "y": 257
+      }
+    },
+    "2_entity_000_ATTACK_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1677,
+        "w": 796,
+        "h": 832
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 155,
+        "y": 257
+      }
+    },
+    "2_entity_000_ATTACK_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 945,
+        "y": 1675,
+        "w": 888,
+        "h": 833
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 152,
+        "y": 257
+      }
+    },
+    "2_entity_000_ATTACK_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1277,
+        "y": 0,
+        "w": 908,
+        "h": 834
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 149,
+        "y": 257
+      }
+    },
+    "2_entity_000_ATTACK_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 945,
+        "y": 838,
+        "w": 910,
+        "h": 835
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 145,
+        "y": 257
+      }
+    },
+    "2_entity_000_ATTACK_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 838,
+        "w": 943,
+        "h": 837
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 141,
+        "y": 257
+      }
+    },
+    "2_entity_000_ATTACK_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 1275,
+        "h": 836
+      },
+      "sourceSize": {
+        "w": 1421,
+        "h": 1203
+      },
+      "spriteSourceSize": {
+        "x": 146,
+        "y": 256
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

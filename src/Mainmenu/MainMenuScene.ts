@@ -3,8 +3,8 @@ import { WeChatManager, WeChatUserInfo, WeChatEventType } from '../Wechat/WeChat
 import { GameDataManager } from '../GameDataManager';
 import { SceneManager } from '../SceneManager';
 import { ButtonAnimationUtils } from '../utils/ButtonAnimationUtils';
-import { SoundManager } from '../utils/SoundManager';
 import { SettingPanel } from './SettingPanel';
+import { HelpPanel } from './HelpPanel';
 
 @regClass()
 export class MainMenuScene extends Laya.Script {
@@ -15,17 +15,21 @@ export class MainMenuScene extends Laya.Script {
     @property(Laya.Button)
     settingButton: Laya.Button;
 
+    @property(Laya.Button)
+    helpButton: Laya.Button;
+
     @property(Laya.Image)
     playerAvatar: Laya.Image;
 
     @property(Laya.Label)
     playerName: Laya.Label;
-    
+
     // 管理器实例
     private weChatManager: WeChatManager;
     private gameDataManager: GameDataManager;
     private sceneManager : SceneManager;
     private settingPanel: SettingPanel;
+    private helpPanel: HelpPanel;
     
     onStart() {
         console.log("MainMenuScene started");
@@ -72,6 +76,12 @@ export class MainMenuScene extends Laya.Script {
         if (this.settingButton) {
             this.settingButton.on(Laya.Event.CLICK, this, this.onSettingButtonClick);
             ButtonAnimationUtils.addButtonClickEffect(this.settingButton);
+        }
+
+        // 绑定帮助按钮点击事件
+        if (this.helpButton) {
+            this.helpButton.on(Laya.Event.CLICK, this, this.onHelpButtonClick);
+            ButtonAnimationUtils.addButtonClickEffect(this.helpButton);
         }
     }
     
@@ -122,7 +132,7 @@ export class MainMenuScene extends Laya.Script {
      */
     private onSettingButtonClick(): void {
         console.log("设置按钮被点击了！");
-        
+
         // 如果还没有获取设置面板实例，则先获取
         if (!this.settingPanel) {
             // 假设设置面板已经作为场景的一部分存在于舞台上
@@ -132,12 +142,36 @@ export class MainMenuScene extends Laya.Script {
                 this.settingPanel = panelNode.getComponent(SettingPanel);
             }
         }
-        
+
         // 显示设置面板
         if (this.settingPanel) {
             this.settingPanel.show();
         } else {
             console.warn("设置面板未找到！");
+        }
+    }
+
+    /**
+     * 帮助按钮点击事件
+     */
+    private onHelpButtonClick(): void {
+        console.log("帮助按钮被点击了！");
+
+        // 如果还没有获取帮助面板实例，则先获取
+        if (!this.helpPanel) {
+            // 假设帮助面板已经作为场景的一部分存在于舞台上
+            // 通常可以通过名字查找或者通过组件获取
+            const panelNode = this.owner.getChildByName("HelpPanel");
+            if (panelNode) {
+                this.helpPanel = panelNode.getComponent(HelpPanel);
+            }
+        }
+
+        // 显示帮助面板
+        if (this.helpPanel) {
+            this.helpPanel.show();
+        } else {
+            console.warn("帮助面板未找到！");
         }
     }
     
@@ -370,6 +404,12 @@ export class MainMenuScene extends Laya.Script {
         if (this.settingButton) {
             this.settingButton.off(Laya.Event.CLICK, this, this.onSettingButtonClick);
             ButtonAnimationUtils.removeButtonClickEffect(this.settingButton);
+        }
+
+        // 清理帮助按钮事件监听
+        if (this.helpButton) {
+            this.helpButton.off(Laya.Event.CLICK, this, this.onHelpButtonClick);
+            ButtonAnimationUtils.removeButtonClickEffect(this.helpButton);
         }
     }
 }

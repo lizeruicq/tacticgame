@@ -82,7 +82,7 @@
     {
       "_$id": "pbol1jrt",
       "_$type": "Button",
-      "name": "Start_1",
+      "name": "Help",
       "x": 1038,
       "y": 137,
       "width": 106,
@@ -238,6 +238,156 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "_$id": "4fcvk6rd",
+      "_$type": "Box",
+      "name": "HelpPanel",
+      "x": 578,
+      "y": 1165,
+      "width": 1153,
+      "height": 1241,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "visible": false,
+      "centerX": -12,
+      "_$comp": [
+        {
+          "_$type": "6d316299-7602-40e4-8e59-e3f41cc3773f",
+          "scriptPath": "../src/Mainmenu/HelpPanel.ts",
+          "closeButton": {
+            "_$ref": "g8k6eps7"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "08npk86j",
+          "_$type": "Image",
+          "name": "panel",
+          "x": 577,
+          "y": 614,
+          "width": 1142,
+          "height": 1183,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "centerX": 0,
+          "centerY": -7,
+          "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "8tm4rlh4",
+          "_$type": "Panel",
+          "name": "Panel",
+          "x": 131,
+          "y": 144,
+          "width": 883,
+          "height": 939,
+          "scrollType": 2,
+          "elasticEnabled": true,
+          "_$child": [
+            {
+              "_$id": "imrvo14i",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 67,
+              "y": 31,
+              "width": 777,
+              "height": 197,
+              "text": "      人类的大举进攻打破了石头人部落原有的宁静生活，石头人部落的村庄已经四面楚歌。作为石头人长老，你要召集部落中的战士，抵御野蛮的人类侵略者",
+              "font": "YuppySC-Regular",
+              "fontSize": 43,
+              "color": "#040404",
+              "bold": true,
+              "valign": "middle",
+              "wordWrap": true,
+              "strokeColor": "#ffffff"
+            },
+            {
+              "_$id": "mhi8awbz",
+              "_$type": "Image",
+              "name": "intro1",
+              "x": 78,
+              "y": 245,
+              "width": 756,
+              "height": 699,
+              "skin": "res://bd0b5a10-e1b7-4bdf-80ad-fc040decbd5e",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "1ufaxg75",
+              "_$type": "Image",
+              "name": "intro2",
+              "x": 84,
+              "y": 963,
+              "width": 738,
+              "height": 575,
+              "skin": "res://d9a48168-8201-4d50-a938-e095f3f027c2",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "pfs0u32h",
+              "_$type": "Image",
+              "name": "intro3",
+              "x": 79,
+              "y": 1554,
+              "width": 742,
+              "height": 1128,
+              "skin": "res://2596af97-7c37-4145-aaff-ba9b35b0cf2f",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "rb74gloz",
+              "_$type": "Image",
+              "name": "intro4",
+              "x": 76,
+              "y": 2698,
+              "width": 745,
+              "height": 1456,
+              "skin": "res://d26d10ec-7654-4ea3-80d1-c33ff008a3d2",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "4yct4xdc",
+              "_$type": "Image",
+              "name": "intro5",
+              "x": 68,
+              "y": 4011,
+              "width": 767,
+              "height": 634,
+              "skin": "res://b99632bb-465a-4631-8c35-082300bb32b1",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "g8k6eps7",
+          "_$type": "Button",
+          "name": "closeButton",
+          "x": 1039,
+          "y": 129,
+          "width": 98,
+          "height": 98,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "rotation": 12.523365473183917,
+          "stateNum": 1,
+          "skin": "res://cd4d6bb6-a7a3-4008-990e-d0abbc50916d",
+          "label": "",
+          "labelFont": "YuppyTC-Regular",
+          "labelSize": 82,
+          "labelBold": true,
+          "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+          "labelAlign": "center",
+          "labelVAlign": "middle",
+          "labelPadding": "18,0,0,0",
+          "labelStroke": 33,
+          "labelStrokeColor": "#073030"
         }
       ]
     }

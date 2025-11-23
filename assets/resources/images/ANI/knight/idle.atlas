@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Knight_01__IDLE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1542,
+        "w": 719,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1458,
+        "y": 0,
+        "w": 722,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 727,
+        "y": 1028,
+        "w": 724,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 730,
+        "y": 0,
+        "w": 726,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 514,
+        "w": 727,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 728,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 729,
+        "y": 514,
+        "w": 727,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1028,
+        "w": 725,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1453,
+        "y": 1028,
+        "w": 724,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    },
+    "Knight_01__IDLE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1458,
+        "y": 514,
+        "w": 722,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 1800,
+        "h": 1000
+      },
+      "spriteSourceSize": {
+        "x": 706,
+        "y": 172
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

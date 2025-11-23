@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "0_Valkyrie_Running_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1743,
+        "w": 436,
+        "h": 564
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 213,
+        "y": 186
+      }
+    },
+    "0_Valkyrie_Running_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 440,
+        "y": 1166,
+        "w": 435,
+        "h": 567
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 214,
+        "y": 175
+      }
+    },
+    "0_Valkyrie_Running_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 888,
+        "y": 584,
+        "w": 439,
+        "h": 575
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 193,
+        "y": 160
+      }
+    },
+    "0_Valkyrie_Running_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 445,
+        "y": 0,
+        "w": 442,
+        "h": 582
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 173,
+        "y": 145
+      }
+    },
+    "0_Valkyrie_Running_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 583,
+        "w": 443,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 170,
+        "y": 155
+      }
+    },
+    "0_Valkyrie_Running_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 888,
+        "y": 1161,
+        "w": 439,
+        "h": 573
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 169
+      }
+    },
+    "0_Valkyrie_Running_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 440,
+        "y": 1735,
+        "w": 436,
+        "h": 565
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 212,
+        "y": 185
+      }
+    },
+    "0_Valkyrie_Running_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1329,
+        "y": 577,
+        "w": 434,
+        "h": 568
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 176
+      }
+    },
+    "0_Valkyrie_Running_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1165,
+        "w": 438,
+        "h": 576
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 195,
+        "y": 161
+      }
+    },
+    "0_Valkyrie_Running_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 445,
+        "y": 584,
+        "w": 441,
+        "h": 580
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 175,
+        "y": 146
+      }
+    },
+    "0_Valkyrie_Running_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 443,
+        "h": 581
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 169,
+        "y": 154
+      }
+    },
+    "0_Valkyrie_Running_011.png": {
+      "frame": {
+        "idx": 0,
+        "x": 889,
+        "y": 0,
+        "w": 439,
+        "h": 575
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 168
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

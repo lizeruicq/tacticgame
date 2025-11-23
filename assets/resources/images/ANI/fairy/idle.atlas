@@ -1,0 +1,177 @@
+{
+  "frames": {
+    "Fairy_02__IDLE_000.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 456,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 535,
+        "y": 263
+      }
+    },
+    "Fairy_02__IDLE_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 440,
+        "w": 452,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 538,
+        "y": 262
+      }
+    },
+    "Fairy_02__IDLE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 881,
+        "w": 448,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 262
+      }
+    },
+    "Fairy_02__IDLE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 458,
+        "y": 0,
+        "w": 443,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 547,
+        "y": 263
+      }
+    },
+    "Fairy_02__IDLE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 900,
+        "y": 881,
+        "w": 438,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 552,
+        "y": 262
+      }
+    },
+    "Fairy_02__IDLE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 908,
+        "y": 440,
+        "w": 438,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 552,
+        "y": 262
+      }
+    },
+    "Fairy_02__IDLE_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1322,
+        "w": 438,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 552,
+        "y": 262
+      }
+    },
+    "Fairy_02__IDLE_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 903,
+        "y": 0,
+        "w": 443,
+        "h": 438
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 547,
+        "y": 263
+      }
+    },
+    "Fairy_02__IDLE_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 450,
+        "y": 881,
+        "w": 448,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 543,
+        "y": 262
+      }
+    },
+    "Fairy_02__IDLE_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 454,
+        "y": 440,
+        "w": 452,
+        "h": 439
+      },
+      "sourceSize": {
+        "w": 1600,
+        "h": 850
+      },
+      "spriteSourceSize": {
+        "x": 538,
+        "y": 262
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

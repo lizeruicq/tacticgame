@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Fairy",
+  "x": 629,
+  "y": -1,
+  "width": 720,
+  "height": 480,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "ecdaedbe-60ee-4974-b2fd-2483c801e7cf",
+      "scriptPath": "../src/monsters/human/FairyMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPath": ""
+    },
+    {
+      "_$type": "a90b2d2e-91ab-4bd3-a892-a5df3d26f14f",
+      "scriptPath": "../src/monsters/human/FairyAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "fairyAnimation",
+      "x": -40,
+      "y": -10,
+      "width": 1562,
+      "height": 802,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "source": "res://05adb140-67bd-461c-9ab8-286bc330e8ce",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 226,
+      "y": 50,
+      "width": 268,
+      "height": 26,
+      "centerX": 0,
+      "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+      "value": 1,
+      "_$comp": [
+        {
+          "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
+          "healthBar": {
+            "_$ref": "4q50nepj"
+          }
+        }
+      ]
+    }
+  ]
+}

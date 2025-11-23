@@ -21,7 +21,7 @@
       "_$comp": [
         {
           "_$type": "a9586a3a-1907-48e2-b533-0785628aad2c",
-          "scriptPath": "resources/scripts/UIManager.ts",
+          "scriptPath": "../src/Manager/UIManager.ts",
           "playerHpBar": {
             "_$ref": "gu0v1v9o"
           },
@@ -152,7 +152,7 @@
           "_$comp": [
             {
               "_$type": "c29b4a86-98f3-47eb-872d-fd62f0553cbf",
-              "scriptPath": "resources/scripts/GameStartPanel.ts",
+              "scriptPath": "../src/UI/GameStartPanel.ts",
               "guideLabel": {
                 "_$ref": "0glgq3t5"
               },
@@ -281,7 +281,7 @@
           "_$comp": [
             {
               "_$type": "7db5312b-be54-4d65-bba1-92ec3ad3cfdd",
-              "scriptPath": "resources/scripts/GameEndPanel.ts",
+              "scriptPath": "../src/UI/GameEndPanel.ts",
               "resultImage": {
                 "_$ref": "206ch5rg"
               },
@@ -408,7 +408,7 @@
           "anchorY": 0.5,
           "zIndex": 1,
           "stateNum": 1,
-          "skin": "res://7b01170a-bc5a-4e97-a6d1-624b5c7dc3ef",
+          "skin": "res://9152fb08-e3d0-4b33-a834-2fe671de1681",
           "label": "",
           "labelAlign": "center",
           "labelVAlign": "middle"
@@ -429,15 +429,15 @@
       "_$comp": [
         {
           "_$type": "e04b952a-7429-4b86-b289-20d358baf726",
-          "scriptPath": "resources/scripts/GameMainManager.ts"
+          "scriptPath": "../src/Manager/GameMainManager.ts"
         },
         {
           "_$type": "754b97de-0a5a-4b15-bd15-fcd134f1bbb4",
-          "scriptPath": "resources/scripts/PlayerManager.ts"
+          "scriptPath": "../src/Manager/PlayerManager.ts"
         },
         {
           "_$type": "83ab941c-e3af-41a9-b62d-d2ff890d030d",
-          "scriptPath": "resources/scripts/EnemyAIManager.ts"
+          "scriptPath": "../src/Manager/EnemyAIManager.ts"
         }
       ]
     },
@@ -445,10 +445,10 @@
       "_$id": "rq40rlmn",
       "_$type": "Sprite",
       "name": "castle-enemy",
-      "x": 204,
-      "y": 228,
-      "width": 474,
-      "height": 446,
+      "x": 241,
+      "y": 235,
+      "width": 539,
+      "height": 526,
       "anchorX": 0.2468354430379747,
       "anchorY": 0.6345291479820628,
       "scaleX": -1,
@@ -459,7 +459,7 @@
       "_$comp": [
         {
           "_$type": "14cf51ce-1943-4f1c-964e-1be9313f5b18",
-          "scriptPath": "resources/scripts/Castle.ts",
+          "scriptPath": "../src/monsters/Castle.ts",
           "isPlayerCamp": false,
           "castleLevel": 1,
           "textureHealthy": "resources/images/sprite/castke/Asset 27.png",
@@ -554,12 +554,12 @@
       "_$id": "7kurtrav",
       "_$type": "Sprite",
       "name": "castle-self",
-      "x": 933,
-      "y": 1544,
-      "width": 500,
-      "height": 444,
-      "anchorX": 0.182,
-      "anchorY": 0.240990990990991,
+      "x": 768,
+      "y": 1650,
+      "width": 544,
+      "height": 483,
+      "anchorX": -0.0650725685224923,
+      "anchorY": 0.5291543938722237,
       "texture": {
         "_$uuid": "03cf940d-a14d-452d-937c-8335d63dd25a",
         "_$type": "Texture"
@@ -567,7 +567,7 @@
       "_$comp": [
         {
           "_$type": "14cf51ce-1943-4f1c-964e-1be9313f5b18",
-          "scriptPath": "resources/scripts/Castle.ts",
+          "scriptPath": "../src/monsters/Castle.ts",
           "isPlayerCamp": true,
           "castleLevel": 1,
           "textureHealthy": "resources/images/sprite/castke/Asset 21.png",
@@ -601,7 +601,7 @@
       "_$comp": [
         {
           "_$type": "4b33acaa-eefb-4de4-ade6-7267208fe4e9",
-          "scriptPath": "resources/scripts/CardManager.ts",
+          "scriptPath": "../src/Manager/CardManager.ts",
           "text": "",
           "playerMana": 10,
           "maxMana": 10,

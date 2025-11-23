@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "mbqstuia",
+  "_$type": "Sprite",
+  "name": "Troll",
+  "width": 500,
+  "height": 500,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.5,
+  "scaleY": 0.5,
+  "_$comp": [
+    {
+      "_$type": "7d0ac047-cde9-46c5-be01-6f24fc93db2b",
+      "scriptPath": "../src/monsters/rock/TrollMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPath": ""
+    },
+    {
+      "_$type": "193427f9-76a9-4dc4-983f-84b7fc2258ab",
+      "scriptPath": "../src/monsters/rock/TrollAnimationManager.ts",
+      "spriteAnimation": {
+        "_$ref": "p8o8q1sq"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "p8o8q1sq",
+      "_$type": "Animation",
+      "name": "trollAnimation",
+      "x": 246,
+      "y": 256,
+      "width": 1668,
+      "height": 1345,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "source": "res://15777c97-4d86-4809-bc15-bfe3bc45d858",
+      "index": 0,
+      "interval": 50
+    },
+    {
+      "_$id": "4q50nepj",
+      "_$type": "ProgressBar",
+      "name": "healthbar",
+      "x": 100,
+      "y": 10,
+      "width": 268,
+      "height": 26,
+      "centerX": -16,
+      "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
+      "value": 1,
+      "_$comp": [
+        {
+          "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
+          "healthBar": {
+            "_$ref": "4q50nepj"
+          }
+        }
+      ]
+    }
+  ]
+}
