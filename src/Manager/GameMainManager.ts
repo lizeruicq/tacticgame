@@ -5,6 +5,7 @@ import { EnemyAIManager } from "./EnemyAIManager";
 import { PlayerManager } from "./PlayerManager";
 import { UIManager } from "./UIManager";
 import { GameEndPanel } from "../UI/GameEndPanel";
+import { CardConfig } from "../Cards/CardConfig";
 
 @regClass()
 export class GameMainManager extends Laya.Script {
@@ -79,7 +80,7 @@ export class GameMainManager extends Laya.Script {
     //第一次执行update之前执行，只会执行一次
     onStart(): void {
         console.log("GameMainManager 开始");
-        this.setupRockAnimation();
+        this.setupBattlefield();
         this.startGameLoop();
     }
 
@@ -366,6 +367,10 @@ export class GameMainManager extends Laya.Script {
         const levelStr = Laya.LocalStorage.getItem("selectedLevel");
         this.selectedLevel = levelStr ? parseInt(levelStr) : 1;
         console.log(`当前关卡: ${this.selectedLevel}`);
+
+        // 加载关卡背景图片
+        this.loadSceneBackground(this.selectedLevel);
+
         this.initializeEnemyAI();
         // 获取UIManager
         const gameScene = this.owner.scene;
@@ -431,7 +436,7 @@ export class GameMainManager extends Laya.Script {
     /**
      * 设置Rock动画系统
      */
-    private setupRockAnimation(): void {
+    private setupBattlefield(): void {
         // 查找Rock精灵节点
         const battleField = this.owner.parent.getChildByName("BattleField") as Laya.Box;
         if (!battleField) {
@@ -644,6 +649,7 @@ export class GameMainManager extends Laya.Script {
      * 3. 闪电随机顺序闪烁
      * 4. 闪烁完成后 cloud 渐隐
      * 5. lightings 节点隐藏
+     * 6. 对所有敌方怪物造成30点伤害
      */
     public playLightningEffect(): void {
         if (!this.lightings) {
@@ -698,6 +704,11 @@ export class GameMainManager extends Laya.Script {
                     // Cloud 渐隐完成后，隐藏 lightings 节点
                     this.lightings.visible = false;
                 }));
+
+                // 在闪电动画完成时对所有敌方怪物造成伤害
+                if (this.monsterManager) {
+                    this.monsterManager.damageAllEnemyMonsters(30);
+                }
             });
         });
     }
@@ -751,6 +762,110 @@ export class GameMainManager extends Laya.Script {
 
         // 清理单例引用
         GameMainManager._instance = null;
+    }
+
+    /**
+     * 加载关卡背景图片
+     * @param level 关卡编号
+     */
+    private loadSceneBackground(level: number): void {
+        // 获取关卡配置
+        const levelConfig = CardConfig.getLevelConfig(level);
+        if (!levelConfig) {
+            console.warn(`关卡 ${level} 配置不存在，无法加载背景图片`);
+            return;
+        }
+
+        // 检查是否配置了背景图片路径
+        if (!levelConfig.sceneBackgroundImagePath) {
+            console.warn(`关卡 ${level} 未配置背景图片路径`);
+            return;
+        }
+
+        // 获取 GameMainManager 节点（this.owner 就是 GameMainManager Sprite）
+        const gameMainManagerSprite = this.owner as Laya.Sprite;
+        if (!gameMainManagerSprite) {
+            console.error("无法获取 GameMainManager Sprite 节点");
+            return;
+        }
+
+        // 加载背景图片纹理
+        const imagePath = levelConfig.sceneBackgroundImagePath;
+        Laya.loader.load(imagePath).then(() => {
+            const texture = Laya.loader.getRes(imagePath);
+            if (texture && gameMainManagerSprite) {
+                gameMainManagerSprite.texture = texture;
+                console.log(`加载关卡 ${level} 背景图片成功: ${imagePath}`);
+            } else {
+                console.warn(`加载关卡 ${level} 背景图片失败: ${imagePath}`);
+            }
+        }).catch((error) => {
+            console.error(`加载关卡 ${level} 背景图片出错: ${imagePath}`, error);
+        });
+    }
+
+    /**
+     * 播放火焰效果
+     * 在场景中随机生成6个火焰，渐显出现，播放3秒后渐隐消失后销毁
+     * @returns Promise，在火焰效果完成后 resolve
+     */
+    public playFlameEffect(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            if (!this.battleField) {
+                console.warn("BattleField节点不存在，无法播放火焰效果");
+                reject(new Error("BattleField节点不存在"));
+                return;
+            }
+
+            this.showHint("侵略者开始纵火");
+
+            // 加载火焰预制体
+            const flamePrefabPath = "prefabs/effects/Flame.lh";
+            Laya.loader.load(flamePrefabPath).then(() => {
+                const prefab = Laya.loader.getRes(flamePrefabPath);
+                if (!prefab) {
+                    console.error("无法加载火焰预制体");
+                    reject(new Error("无法加载火焰预制体"));
+                    return;
+                }
+                // 随机初始位置（地面上）
+                    const X = 0;
+                    const Y = 0;
+
+                    // 实例化火焰
+                    const flameSprite = Laya.Pool.getItemByCreateFun("Flame", prefab.create, prefab) as Laya.Sprite;
+                    flameSprite.name = `Flame`;
+                    flameSprite.pos(X, Y);
+                    flameSprite.alpha = 0;  // 初始透明
+
+                    // 添加到BattleField
+                    this.battleField.addChild(flameSprite);
+
+
+                    // 渐显动画
+                    Laya.Tween.to(flameSprite, { alpha: 1 }, 300, Laya.Ease.linearNone);
+
+                    // 3秒后渐隐并销毁
+                    Laya.timer.once(3000, this, () => {
+                        Laya.Tween.to(flameSprite, { alpha: 0 }, 300, Laya.Ease.linearNone, Laya.Handler.create(this, () => {
+                            if (flameSprite && flameSprite.parent) {
+                                flameSprite.parent.removeChild(flameSprite);
+                                console.log(`火焰已销毁: ${flameSprite.name}`);
+                            }
+                        }));
+                    });
+
+
+                // 火焰效果总时长：300ms(渐显) + 3000ms(燃烧) + 300ms(渐隐) = 3600ms
+                Laya.timer.once(3600, this, () => {
+                    console.log("火焰效果完成");
+                    resolve();
+                });
+            }).catch((error) => {
+                console.error("加载火焰预制体出错:", error);
+                reject(error);
+            });
+        });
     }
 
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法

@@ -21,6 +21,8 @@ export interface ILevelCardConfig {
     enemyWeights?: { [key: string]: number }; // 敌方怪物召唤权重
     guide?: string;         // 关卡指引说明
     monsterTypes?: string[]; // 本关卡出现的怪物类型说明
+    storyBackgroundImagePath?: string; // 关卡故事背景图片路径（StartPanel中显示）
+    sceneBackgroundImagePath?: string; // 游戏场景背景图片路径（GameMainManager中显示）
 }
 
 /**
@@ -177,6 +179,8 @@ export class CardConfig {
             cooldownTime: 1000,
             guide: "第一关",
             monsterTypes: ["关卡描述"],
+            storyBackgroundImagePath: "resources/images/levels/level_1_story.png",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
             enemyWeights: {
                 // "SwordFe": 0.5,
                 // "Sword": 0.5,
@@ -190,6 +194,8 @@ export class CardConfig {
             cooldownTime: 1800,
             guide: "第二关",
             monsterTypes: ["Rock - 防御型怪物", "Wizard - 魔法型怪物", "Pastor - 治疗型怪物"],
+            storyBackgroundImagePath: "resources/images/levels/level_2_story.png",
+            sceneBackgroundImagePath: "resources/images/levels/level_2_bg.png",
             enemyWeights: {
                 "Rock": 0.4,
                 "Wizard": 0.4,

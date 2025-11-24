@@ -255,7 +255,17 @@ export class EnemyAIManager extends Laya.Script {
      */
     public addPower(amount: number): void {
         if (amount <= 0) return;
+
+        const previousPower = this.enemyPower;
         this.enemyPower = Math.min(this.enemyPower + amount, this.maxEnemyPower);
+
+        console.log(`敌人能量增加: ${previousPower} -> ${this.enemyPower}/${this.maxEnemyPower}`);
+
+        // 检查是否达到最大能量值
+        if (this.enemyPower >= this.maxEnemyPower && previousPower < this.maxEnemyPower) {
+            console.log("敌人能量已满，释放技能！");
+            this.releaseSkill();
+        }
     }
 
     /**
@@ -270,6 +280,38 @@ export class EnemyAIManager extends Laya.Script {
      */
     public resetPower(): void {
         this.enemyPower = 0;
+    }
+
+    /**
+     * 释放敌人技能
+     * 播放火焰动画效果，等待完成后对玩家方所有怪物造成10点伤害
+     */
+    private async releaseSkill(): Promise<void> {
+        console.log("敌人释放技能：火焰");
+
+        if (!this.monsterManager || !this.gameManager) {
+            console.error("无法获取MonsterManager或GameMainManager");
+            return;
+        }
+
+        try {
+            // 播放火焰动画效果，等待完成
+            await this.gameManager.playFlameEffect();
+
+            console.log("火焰效果完成，开始造成伤害");
+
+            // 火焰燃烧完成后，对玩家方所有怪物造成10点伤害
+            this.monsterManager.damageAllPlayerMonsters(10);
+
+            // 重置能量值
+            this.resetPower();
+
+            console.log("敌人技能释放完成");
+        } catch (error) {
+            console.error("敌人技能释放出错:", error);
+            // 即使出错也重置能量值
+            this.resetPower();
+        }
     }
 
     public setEnemyMana(mana: number): void {

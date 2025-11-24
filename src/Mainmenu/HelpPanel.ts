@@ -18,7 +18,6 @@ export class HelpPanel extends Laya.Script {
     }
 
     onStart(): void {
-        this.initVScrollBar();
         this.bindEvents();
     }
 
@@ -34,21 +33,7 @@ export class HelpPanel extends Laya.Script {
     /**
      * 初始化垂直滚动条
      */
-    private initVScrollBar(): void {
-        // 从 HelpPanel 下获取 VscrollBar 组件
-        if (this.owner) {
-            this.vscrollBar = this.owner.getChildByName("VscrollBar") as Laya.VScrollBar;
-
-            if (this.vscrollBar) {
-                // VScrollBar 本身支持触摸和鼠标滚动
-                // 确保组件可交互
-                (this.vscrollBar as any).mouseEnabled = true;
-                console.log("VscrollBar 已初始化，触摸和鼠标滚动已启用");
-            } else {
-                console.warn("未找到 VscrollBar 组件");
-            }
-        }
-    }
+   
 
     /**
      * 绑定事件

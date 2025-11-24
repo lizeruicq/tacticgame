@@ -19,6 +19,9 @@ export class GameStartPanel extends Laya.Script {
     @property(Laya.Button)
     public startButton: Laya.Button = null;
 
+    @property(Laya.Image)
+    public backgroundImage: Laya.Image = null;
+
     // 当前关卡
     private currentLevel: number = 1;
 
@@ -70,6 +73,9 @@ export class GameStartPanel extends Laya.Script {
             this.monsterTypesLabel.text = monsterText;
         }
 
+        // 加载故事背景图片
+        this.loadStoryBackground(levelConfig);
+
         // 播放打开动画
         const panelBox = this.owner as Laya.Box;
         PanelAnimationUtils.playOpenAnimation(panelBox);
@@ -101,6 +107,38 @@ export class GameStartPanel extends Laya.Script {
         } catch (error) {
             console.error("调用GameMainManager.resumeGame时出错:", error);
         }
+    }
+
+    /**
+     * 加载故事背景图片
+     * @param levelConfig 关卡配置
+     */
+    private loadStoryBackground(levelConfig: any): void {
+        // 检查是否配置了故事背景图片路径
+        if (!levelConfig.storyBackgroundImagePath) {
+            console.warn(`关卡 ${this.currentLevel} 未配置故事背景图片路径`);
+            return;
+        }
+
+        // 检查是否有背景图片组件
+        if (!this.backgroundImage) {
+            console.warn("GameStartPanel 未配置 backgroundImage 组件");
+            return;
+        }
+
+        // 加载故事背景图片
+        const imagePath = levelConfig.storyBackgroundImagePath;
+        Laya.loader.load(imagePath).then(() => {
+            const texture = Laya.loader.getRes(imagePath);
+            if (texture && this.backgroundImage) {
+                this.backgroundImage.texture = texture;
+                console.log(`加载关卡 ${this.currentLevel} 故事背景图片成功: ${imagePath}`);
+            } else {
+                console.warn(`加载关卡 ${this.currentLevel} 故事背景图片失败: ${imagePath}`);
+            }
+        }).catch((error) => {
+            console.error(`加载关卡 ${this.currentLevel} 故事背景图片出错: ${imagePath}`, error);
+        });
     }
 
     onDisable(): void {

@@ -161,6 +161,9 @@
               },
               "startButton": {
                 "_$ref": "0wn13wel"
+              },
+              "backgroundImage": {
+                "_$ref": "2u68dzdm"
               }
             }
           ],
@@ -232,15 +235,15 @@
               "_$id": "0glgq3t5",
               "_$type": "Label",
               "name": "guideLabel",
-              "x": 482,
-              "y": 220,
+              "x": 472,
+              "y": 185,
               "width": 331,
-              "height": 163,
+              "height": 61,
               "anchorX": 0.5,
               "anchorY": 0.5,
               "text": "第一关",
               "font": "YuppySC-Regular",
-              "fontSize": 100,
+              "fontSize": 67,
               "color": "#4d895a",
               "bold": true,
               "align": "center",
@@ -249,20 +252,46 @@
               "strokeColor": "#63955a"
             },
             {
-              "_$id": "fxbyovnr",
-              "_$type": "Label",
-              "name": "monsterTypesLabel",
-              "x": 505,
-              "y": 507,
-              "width": 669,
-              "height": 401,
-              "anchorX": 0.5,
-              "anchorY": 0.5,
-              "text": "关卡信息说明",
-              "font": "YuppySC-Regular",
-              "fontSize": 75,
-              "bold": true,
-              "strokeColor": "#63955a"
+              "_$id": "pdass82l",
+              "_$type": "Panel",
+              "name": "Panel",
+              "x": 136,
+              "y": 236,
+              "width": 723,
+              "height": 563,
+              "zIndex": 10,
+              "scrollType": 2,
+              "elasticEnabled": true,
+              "_$child": [
+                {
+                  "_$id": "2u68dzdm",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": -3,
+                  "y": -3,
+                  "width": 731,
+                  "height": 485,
+                  "skin": "res://419545f9-905c-426e-a091-f9337214fa3c",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "fxbyovnr",
+                  "_$type": "Label",
+                  "name": "monsterTypesLabel",
+                  "x": 401,
+                  "y": 696,
+                  "width": 669,
+                  "height": 401,
+                  "anchorX": 0.5,
+                  "anchorY": 0.5,
+                  "text": "关卡信息说明xxxxxxxxxxxxxxxxx",
+                  "font": "YuppySC-Regular",
+                  "fontSize": 69,
+                  "bold": true,
+                  "wordWrap": true,
+                  "strokeColor": "#63955a"
+                }
+              ]
             }
           ]
         },
@@ -423,7 +452,7 @@
       "width": 1179,
       "height": 2554,
       "texture": {
-        "_$uuid": "d702fd90-699f-4061-a5dd-93e2f92371bc",
+        "_$uuid": "fd71a843-58ab-4176-9df6-63ebaf886d51",
         "_$type": "Texture"
       },
       "_$comp": [
@@ -507,7 +536,7 @@
           "_gcmds": [
             {
               "_$type": "DrawRectCmd",
-              "fillColor": "rgba(0,0,0,0.44313725490196076)"
+              "fillColor": "rgba(0,0,0,0.11372549019607843)"
             }
           ],
           "_$child": [

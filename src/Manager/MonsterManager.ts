@@ -511,7 +511,7 @@ export class MonsterManager extends Laya.Script {
 
         
         this.gameMainManager.playLightningEffect();
-        this.gameMainManager.showHint(`${camp}中的同类怪物开始合成...`);
+        this.gameMainManager.showHint(`对敌人产生闪电伤害，${camp}同类怪物开始合成`);
 
         // 递归合成
         await this.synthesizeRecursive(monsterList, isPlayerCamp);
@@ -591,5 +591,51 @@ export class MonsterManager extends Laya.Script {
                 });
             }));
         });
+    }
+
+    /**
+     * 对所有敌方怪物造成伤害（闪电伤害）
+     * @param damage 伤害值
+     */
+    public damageAllEnemyMonsters(damage: number): void {
+        if (this.enemyMonsters.length === 0) {
+            console.log("场景中没有敌方怪物");
+            return;
+        }
+
+        console.log(`闪电对 ${this.enemyMonsters.length} 个敌方怪物造成 ${damage} 点伤害`);
+
+        // 对每个敌方怪物造成伤害
+        for (const monster of this.enemyMonsters) {
+            if (monster && !monster.getIsDead()) {
+                // 使用第一个敌方怪物作为攻击者（闪电效果来自合成）
+                // 如果没有其他敌方怪物，则传入当前怪物本身
+                const attacker = this.enemyMonsters.length > 1 ? this.enemyMonsters[0] : monster;
+                monster.takeDamage(damage, attacker);
+            }
+        }
+    }
+
+    /**
+     * 对所有玩家怪物造成伤害（敌人技能伤害）
+     * @param damage 伤害值
+     */
+    public damageAllPlayerMonsters(damage: number): void {
+        if (this.playerMonsters.length === 0) {
+            console.log("场景中没有玩家怪物");
+            return;
+        }
+
+        console.log(`敌人技能对 ${this.playerMonsters.length} 个玩家怪物造成 ${damage} 点伤害`);
+
+        // 对每个玩家怪物造成伤害
+        for (const monster of this.playerMonsters) {
+            if (monster && !monster.getIsDead()) {
+                // 使用第一个敌方怪物作为攻击者（技能来自敌人）
+                // 如果没有敌方怪物，则传入当前怪物本身
+                const attacker = this.enemyMonsters.length > 0 ? this.enemyMonsters[0] : monster;
+                monster.takeDamage(damage, attacker);
+            }
+        }
     }
 }
