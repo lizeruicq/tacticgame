@@ -14,14 +14,17 @@
   "_$comp": [
     {
       "_$type": "f3aef8ce-5620-4e22-905b-cf609d2db2c4",
-      "scriptPath": "resources/scripts/WizardMonster.ts",
+      "scriptPath": "../src/monsters/rock/WizardMonster.ts",
       "isPlayerCamp": 1,
       "monsterLevel": 1,
-      "atkEffectPath": "resources/images/sprite/attack/wizard.png"
+      "atkEffectPrefab": {
+        "_$uuid": "0d117a61-b124-4ec0-b2a4-5ac0a94313aa",
+        "_$type": "Prefab"
+      }
     },
     {
       "_$type": "318f778a-666d-456a-ab19-fd6ce477cef6",
-      "scriptPath": "resources/scripts/WizardAnimationManager.ts",
+      "scriptPath": "../src/monsters/rock/WizardAnimationManager.ts",
       "spriteAnimation": {
         "_$ref": "p8o8q1sq"
       }
@@ -54,7 +57,7 @@
       "_$comp": [
         {
           "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
-          "scriptPath": "resources/scripts/MonsterHealthBar.ts",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
           "healthBar": {
             "_$ref": "4q50nepj"
           }

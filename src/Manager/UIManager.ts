@@ -215,9 +215,9 @@ export class UIManager extends Laya.Script {
     private initializeGameStartPanel(): void {
         if (this.gameStartPanelBox) {
             this.gameStartPanel = this.gameStartPanelBox.getComponent(GameStartPanel);
-            if (!this.gameStartPanel) {
-                this.gameStartPanel = this.gameStartPanelBox.addComponent(GameStartPanel);
-            }
+            // if (!this.gameStartPanel) {
+            //     this.gameStartPanel = this.gameStartPanelBox.addComponent(GameStartPanel);
+            // }
         }
         else {
             console.error("UIManager: 未找到游戏开始面板");
@@ -342,15 +342,15 @@ export class UIManager extends Laya.Script {
         // 玩家能量
         if (this.playerPowerBar) {
             const playerPower = this.gameMainManager.getPlayerPower();
-            const clampedPlayerPower = Math.max(0, Math.min(playerPower, 100));
-            this.playerPowerBar.value = clampedPlayerPower / 100;
+            const clampedPlayerPower = Math.max(0, Math.min(playerPower, 500));
+            this.playerPowerBar.value = clampedPlayerPower / 500;
         }
 
         // 敌方能量
         if (this.enemyPowerBar) {
             const enemyPower = this.gameMainManager.getEnemyPower();
-            const clampedEnemyPower = Math.max(0, Math.min(enemyPower, 100));
-            this.enemyPowerBar.value = clampedEnemyPower / 100;
+            const clampedEnemyPower = Math.max(0, Math.min(enemyPower, 500));
+            this.enemyPowerBar.value = clampedEnemyPower / 500;
         }
     }
 
@@ -408,7 +408,7 @@ export class UIManager extends Laya.Script {
      */
     private async onMergeButtonClick(): Promise<void> {
         // 检查玩家 Power 是否满
-        if (!this.gameMainManager || this.gameMainManager.getPlayerPower() < 100) {
+        if (!this.gameMainManager || this.gameMainManager.getPlayerPower() < 500) {
             return;
         }
 
@@ -431,7 +431,7 @@ export class UIManager extends Laya.Script {
         if (!this.mergeButton || !this.gameMainManager) return;
 
         const playerPower = this.gameMainManager.getPlayerPower();
-        const isFull = playerPower >= 100;
+        const isFull = playerPower >= 500;
 
         // 根据 Power 是否满来设置按钮的可点击状态
         this.mergeButton.disabled = !isFull;

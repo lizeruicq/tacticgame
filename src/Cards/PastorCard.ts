@@ -12,7 +12,7 @@ export class PastorCard extends BaseMonsterCard {
         super();
         // 设置Pastor卡片的默认属性
         this.cardName = "Pastor卡片";
-        this.manaCost = 2; // 治疗型单位，法力消耗较低
+        this.manaCost = 3; // 治疗型单位，法力消耗较低
         this.monsterPrefabPath = "prefabs/monster/Pastor.lh";
     }
 

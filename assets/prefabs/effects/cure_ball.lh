@@ -1,0 +1,13 @@
+{
+  "_$ver": 1,
+  "_$id": "uoqaic1g",
+  "_$type": "Image",
+  "name": "cure",
+  "x": 564,
+  "y": 1176,
+  "width": 64,
+  "height": 64,
+  "skin": "res://2e01fdbc-0f1d-44a1-a8bc-af608d500273",
+  "useSourceSize": true,
+  "color": "#ffffff"
+}

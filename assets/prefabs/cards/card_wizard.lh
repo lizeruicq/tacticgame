@@ -12,7 +12,7 @@
   "_$comp": [
     {
       "_$type": "fc5b77e4-2e96-43cd-a866-e3238821eb16",
-      "scriptPath": "resources/scripts/WizardCard.ts",
+      "scriptPath": "../src/Cards/WizardCard.ts",
       "cardName": "Wizard卡片",
       "manaCost": 4,
       "monsterLevel": 1,
@@ -100,28 +100,6 @@
               "height": 30,
               "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
               "color": "#ffffff"
-            },
-            {
-              "_$id": "pgoixjsk",
-              "_$type": "Image",
-              "name": "health_1",
-              "x": 35,
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "e1h6cu6w",
-              "_$type": "Image",
-              "name": "health_2",
-              "x": 70,
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
             }
           ]
         },
@@ -140,17 +118,6 @@
               "_$id": "kjiuk3df",
               "_$type": "Image",
               "name": "attack",
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "zi9ppr6e",
-              "_$type": "Image",
-              "name": "attack_1",
-              "x": 35,
               "y": -2,
               "width": 30,
               "height": 30,
@@ -198,7 +165,7 @@
           "_$id": "e9hu3qak",
           "_$type": "Image",
           "name": "health",
-          "x": 118,
+          "x": 46,
           "y": 6,
           "width": 30,
           "height": 30,
@@ -209,8 +176,8 @@
           "_$id": "nu66i7jp",
           "_$type": "Image",
           "name": "attack_1",
-          "x": 80,
-          "y": 34,
+          "x": 44,
+          "y": 32,
           "width": 30,
           "height": 30,
           "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",

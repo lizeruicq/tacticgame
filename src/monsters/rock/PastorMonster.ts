@@ -15,7 +15,7 @@ export class PastorMonster extends BaseMonster {
     private pastorAnimationManager: PastorAnimationManager = null;
 
     // Pastor特有属性
-    private healAmount: number = 10;           // 每次治疗量
+    private healAmount: number = 50;           // 每次治疗量
     private healInterval: number = 2000;       // 治疗间隔（毫秒）
     private maxHealTargets: number = 2;        // 每次最多治疗目标数
     private minDistanceToAlly: number = 500;   // 与友方怪物的最小距离
@@ -41,7 +41,7 @@ export class PastorMonster extends BaseMonster {
 
     private calculatePastorStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 50,               // 移动速度缓慢
+            speed: 100,               // 移动速度缓慢
             attackPower: 0,          // 无攻击力
             attackSpeed: 0,          // 无攻击速度
             attackRange: 0,          // 无攻击范围
@@ -49,9 +49,9 @@ export class PastorMonster extends BaseMonster {
         };
 
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2;
+        const levelMultiplier = 1 + (this.monsterLevel - 1);
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed ,
             attackPower: 0,  // 始终为0
             attackSpeed: 0,  // 始终为0
             attackRange: 0,  // 始终为0
@@ -184,22 +184,63 @@ export class PastorMonster extends BaseMonster {
         });
 
         // 最多治疗指定数量的目标
+        this.maxHealTargets = this.maxHealTargets * this.monsterLevel;
         return targets.slice(0, this.maxHealTargets);
     }
 
     private healTarget(target: BaseMonster): void {
         const healAmount = Math.min(this.healAmount, target.getMaxHealth() - target.getCurrentHealth());
         target.heal(healAmount);
-        
-        // console.log(`Pastor治疗了 ${target.constructor.name}，恢复 ${healAmount} 血量`);
-        
-        // 这里可以添加治疗特效
+
+        console.log(`Pastor治疗了 ${target.constructor.name}，恢复 ${healAmount} 血量`);
+
+        // 播放治疗特效
         this.playHealEffect(target);
     }
 
+    /**
+     * 播放治疗特效
+     * 生成治疗特效预制体，向目标移动，到达后销毁
+     */
     private playHealEffect(target: BaseMonster): void {
-        // 简单的治疗特效（可以后续扩展）
-        // console.log(`播放治疗特效给 ${target.constructor.name}`);
+        if (!this.atkEffectPrefab || !target) return;
+
+        const pastorSprite = this.owner as Laya.Sprite;
+        const targetSprite = target.owner as Laya.Sprite;
+        const effectSprite = this.atkEffectPrefab.create() as Laya.Sprite;
+
+        // 缩放：高度为Pastor高度的1/2，宽度按比例缩放
+        const scale = (pastorSprite.height * Math.abs(pastorSprite.scaleY) / 3) / effectSprite.height;
+        effectSprite.scaleY = scale;
+        effectSprite.scaleX = scale * Math.sign(pastorSprite.scaleX);
+
+        if (effectSprite instanceof Laya.Image) {
+            effectSprite.pivot(effectSprite.width / 2, effectSprite.height / 2);
+        }
+
+        // 设置位置和层级
+        effectSprite.x = pastorSprite.x;
+        effectSprite.y = pastorSprite.y;
+        effectSprite.zOrder = pastorSprite.zOrder - 1;
+        pastorSprite.parent.addChild(effectSprite);
+
+        // 计算移动方向和距离
+        const dx = targetSprite.x - pastorSprite.x;
+        const dy = targetSprite.y - pastorSprite.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const moveDistance =distance; // 
+        const dirX = distance > 0 ? dx / distance : 1;
+        const dirY = distance > 0 ? dy / distance : 0;
+
+        // 播放移动动画
+        Laya.Tween.to(effectSprite, {
+            x: pastorSprite.x + dirX * moveDistance,
+            y: pastorSprite.y + dirY * moveDistance
+        }, (moveDistance / 800) * 500, Laya.Ease.linear, new Laya.Handler(this, () => {
+            effectSprite.removeSelf();
+        }));
+
+        console.log(`Pastor对 ${target.constructor.name} 释放治疗特效`);
     }
 
     private calculateDistanceToAlly(ally: BaseMonster): number {

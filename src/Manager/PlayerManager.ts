@@ -12,7 +12,7 @@ export class PlayerManager extends Laya.Script {
 
     // 玩家能量（Power）
     private playerPower: number = 0;             // 当前能量值（0-100）
-    private readonly maxPlayerPower: number = 100; // 能量最大值
+    private readonly maxPlayerPower: number = 500; // 能量最大值
 
     // 游戏状态
     private gameEnded: boolean = false;

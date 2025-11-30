@@ -68,7 +68,7 @@ export class GameDataManager {
                 playerExp: 0,
                 coins: 100,
                 achievements: [],
-                unlockedLevels: [1,2],  // 初始只解锁第1关
+                unlockedLevels: [1,2,3,4,5,6,7,8,9,10],  // 初始只解锁第1关
                 settings: {
                     soundEnabled: true,
                     musicEnabled: true,

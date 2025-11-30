@@ -14,13 +14,17 @@
   "_$comp": [
     {
       "_$type": "792702cd-90c8-4363-b03f-6ee560e433ec",
-      "scriptPath": "resources/scripts/PastorMonster.ts",
+      "scriptPath": "../src/monsters/rock/PastorMonster.ts",
       "isPlayerCamp": 1,
-      "pastorLevel": 1
+      "monsterLevel": 1,
+      "atkEffectPrefab": {
+        "_$uuid": "c1ad1081-2a3e-4304-b3e8-c56a0a7d0b18",
+        "_$type": "Prefab"
+      }
     },
     {
       "_$type": "54c96b87-bc88-45ee-a202-2cb1633783d9",
-      "scriptPath": "resources/scripts/PastorAnimationManager.ts",
+      "scriptPath": "../src/monsters/rock/PastorAnimationManager.ts",
       "spriteAnimation": {
         "_$ref": "ktidwf5r"
       }
@@ -31,7 +35,8 @@
       "_$id": "ktidwf5r",
       "_$type": "Animation",
       "name": "wizardAnimation",
-      "y": 22,
+      "x": -60,
+      "y": 23,
       "width": 481,
       "height": 389,
       "scaleX": 1.2,
@@ -54,7 +59,7 @@
       "_$comp": [
         {
           "_$type": "47ad69a2-35b8-4d5d-a7bb-3a8599b14b5e",
-          "scriptPath": "resources/scripts/MonsterHealthBar.ts",
+          "scriptPath": "../src/UI/MonsterHealthBar.ts",
           "healthBar": {
             "_$ref": "0pzntf9v"
           }

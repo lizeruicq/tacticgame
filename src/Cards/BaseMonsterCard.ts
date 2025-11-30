@@ -92,6 +92,7 @@ export abstract class BaseMonsterCard extends Laya.Script {
             this.levelLabel.text = "LV" + this.monsterLevel.toString();
         }
         if (this.costLabel) {
+            this.manaCost = this.monsterLevel * this.manaCost;
             this.costLabel.text = this.manaCost.toString();
         }
     }

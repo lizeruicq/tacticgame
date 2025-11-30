@@ -50,20 +50,20 @@ export class WizardMonster extends BaseMonster {
     private calculateWizardStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 60,           // Wizard移动较慢（法师特点）
-            attackPower: 30,     // Wizard攻击力较高（魔法攻击）
-            attackSpeed: 1200,   // Wizard攻击速度中等
-            attackRange: 400,    // Wizard攻击范围很大（远程攻击）
-            maxHealth: 120       // Wizard血量中等（脆皮法师）
+            attackPower: 15,     // Wizard攻击力较高（魔法攻击）
+            attackSpeed: 2000,   // Wizard攻击速度中等
+            attackRange: 300,    // Wizard攻击范围很大（远程攻击）
+            maxHealth: 40       // Wizard血量中等（脆皮法师）
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1); 
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(600, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
-            attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.15)), // 攻击范围较大幅增长
+            attackSpeed: Math.max(600, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
+            attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.5)), // 攻击范围较大幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };
     }

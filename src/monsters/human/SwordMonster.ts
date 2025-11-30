@@ -45,11 +45,11 @@ export class SwordMonster extends BaseMonster {
      */
     private calculateSwordStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // Sword移动较慢
-            attackPower: 25,     // Sword攻击力较高
-            attackSpeed: 1500,   // Sword攻击速度较慢
-            attackRange: 80,     // Sword攻击范围中等
-            maxHealth: 150       // Sword血量较高
+            speed: 80,           
+            attackPower: 30,     
+            attackSpeed: 1500,   
+            attackRange: 80,     
+            maxHealth: 80       
         };
         
         // 根据等级调整属性

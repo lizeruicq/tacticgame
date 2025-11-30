@@ -87,6 +87,63 @@ export class GameStartPanel extends Laya.Script {
     public hide(): void {
         const panelBox = this.owner as Laya.Box;
         PanelAnimationUtils.playCloseAnimation(panelBox);
+
+        // 清理 Panel 事件监听
+        if (this.panel) {
+            this.panel.off(Laya.Event.MOUSE_DOWN, this, this.onPanelMouseDown);
+            this.panel.off(Laya.Event.MOUSE_UP, this, this.onPanelMouseUp);
+            this.panel.off(Laya.Event.MOUSE_MOVE, this, this.onPanelMouseMove);
+            this.panel.off(Laya.Event.MOUSE_WHEEL, this, this.onPanelMouseWheel);
+        }
+    }
+
+    /**
+     * Panel 鼠标按下事件
+     */
+    private onPanelMouseDown(e: Laya.Event): void {
+        this.isMouseDown = true;
+        this.lastMouseY = (e as any).clientY || 0;
+        this.scrollVelocity = 0;
+    }
+
+    /**
+     * Panel 鼠标抬起事件
+     */
+    private onPanelMouseUp(e: Laya.Event): void {
+        this.isMouseDown = false;
+    }
+
+    /**
+     * Panel 鼠标移动事件（触摸滑动）
+     */
+    private onPanelMouseMove(e: Laya.Event): void {
+        if (!this.isMouseDown || !this.panel) return;
+
+        const currentMouseY = (e as any).clientY || 0;
+        const deltaY = currentMouseY - this.lastMouseY;
+
+        // 更新滚动位置
+        const panelAny = this.panel as any;
+        if (panelAny.vScrollBarValue !== undefined) {
+            panelAny.vScrollBarValue -= deltaY / 10;
+        }
+
+        this.scrollVelocity = deltaY;
+        this.lastMouseY = currentMouseY;
+    }
+
+    /**
+     * Panel 鼠标滚轮事件
+     */
+    private onPanelMouseWheel(e: Laya.Event): void {
+        if (!this.panel) return;
+
+        const wheelDelta = (e as any).wheelDelta || 0;
+        const panelAny = this.panel as any;
+
+        if (panelAny.vScrollBarValue !== undefined) {
+            panelAny.vScrollBarValue -= wheelDelta / 10;
+        }
     }
 
     /**

@@ -52,19 +52,19 @@ export class RockMonster extends BaseMonster {
     private calculateRockStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 80,           // Rock移动较慢
-            attackPower: 25,     // Rock攻击力较高
+            attackPower: 30,     // Rock攻击力较高
             attackSpeed: 1500,   // Rock攻击速度较慢
             attackRange: 80,    // Rock攻击范围中等
-            maxHealth: 150       // Rock血量较高
+            maxHealth: 100       // Rock血量较高
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1); // 每级增加20%
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
+            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
             attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };

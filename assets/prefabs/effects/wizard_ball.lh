@@ -1,0 +1,13 @@
+{
+  "_$ver": 1,
+  "_$id": "uoqaic1g",
+  "_$type": "Image",
+  "name": "wizard",
+  "x": 564,
+  "y": 1176,
+  "width": 64,
+  "height": 64,
+  "skin": "res://391d2832-e332-4d90-ab41-f75202074085",
+  "useSourceSize": true,
+  "color": "#ffffff"
+}

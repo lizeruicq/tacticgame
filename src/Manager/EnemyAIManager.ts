@@ -15,7 +15,7 @@ export class EnemyAIManager extends Laya.Script {
 
     // 敌人能量（Power）
     private enemyPower: number = 0;               // 当前能量值（0-100）
-    private readonly maxEnemyPower: number = 100; // 能量最大值
+    private readonly maxEnemyPower: number = 500; // 能量最大值
 
     // AI决策参数
     private decisionInterval: number = 2000; // 每3秒做一次决策
@@ -30,6 +30,7 @@ export class EnemyAIManager extends Laya.Script {
 
     onAwake(): void {
         EnemyAIManager._instance = this;
+        
         this.initializeAI();
     }
 
@@ -41,7 +42,7 @@ export class EnemyAIManager extends Laya.Script {
         // 获取管理器实例
         this.monsterManager = MonsterManager.getInstance();
         this.gameManager = GameMainManager.getInstance();
-
+        this.enemyMana = 5;
         // 启动魔法值恢复系统
         this.startManaRegeneration();
 
@@ -301,7 +302,7 @@ export class EnemyAIManager extends Laya.Script {
             console.log("火焰效果完成，开始造成伤害");
 
             // 火焰燃烧完成后，对玩家方所有怪物造成10点伤害
-            this.monsterManager.damageAllPlayerMonsters(10);
+            this.monsterManager.damageAllPlayerMonsters(20);
 
             // 重置能量值
             this.resetPower();

@@ -188,10 +188,10 @@
                 "_$tmpl": "itemRender"
               },
               "repeatX": 5,
-              "repeatY": 6,
+              "repeatY": 2,
               "elasticEnabled": true,
               "spaceX": 28,
-              "spaceY": 5,
+              "spaceY": 84,
               "selectEnable": true,
               "_$child": [
                 {

@@ -12,7 +12,7 @@
   "_$comp": [
     {
       "_$type": "c3d1ffb8-aecd-45a3-9476-db8d7e258210",
-      "scriptPath": "resources/scripts/PastorCard.ts",
+      "scriptPath": "../src/Cards/PastorCard.ts",
       "cardName": "Pastor卡片",
       "manaCost": 2,
       "monsterLevel": 1,
@@ -40,7 +40,7 @@
       "height": 38,
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "text": "5",
+      "text": "3",
       "font": "YuppySC-Regular",
       "fontSize": 47,
       "color": "#ffffff",
@@ -100,28 +100,6 @@
               "height": 30,
               "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
               "color": "#ffffff"
-            },
-            {
-              "_$id": "lw07lr2x",
-              "_$type": "Image",
-              "name": "health_1",
-              "x": 35,
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "eck5h13c",
-              "_$type": "Image",
-              "name": "health_2",
-              "x": 70,
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
             }
           ]
         },
@@ -137,24 +115,24 @@
           "align": "middle",
           "_$child": [
             {
-              "_$id": "kbv001x8",
+              "_$id": "8txo2hlc",
               "_$type": "Image",
-              "name": "attack",
+              "name": "recover",
               "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "width": 31,
+              "height": 31,
+              "skin": "res://fe49e003-fbe3-4346-bf62-2789cb8310b1",
               "color": "#ffffff"
             },
             {
-              "_$id": "2bymwj2n",
+              "_$id": "oqrn203z",
               "_$type": "Image",
-              "name": "attack_1",
-              "x": 35,
+              "name": "recover_1",
+              "x": 36,
               "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "width": 31,
+              "height": 31,
+              "skin": "res://fe49e003-fbe3-4346-bf62-2789cb8310b1",
               "color": "#ffffff"
             }
           ]
@@ -195,25 +173,25 @@
       "visible": false,
       "_$child": [
         {
-          "_$id": "lto5ncf2",
+          "_$id": "dx4v6a78",
           "_$type": "Image",
-          "name": "health",
-          "x": 118,
-          "y": 6,
+          "name": "health_1",
+          "x": 45,
+          "y": 7,
           "width": 30,
           "height": 30,
           "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
           "color": "#ffffff"
         },
         {
-          "_$id": "akup675l",
+          "_$id": "trvdka0m",
           "_$type": "Image",
-          "name": "attack_1",
-          "x": 80,
-          "y": 34,
-          "width": 30,
-          "height": 30,
-          "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+          "name": "recover",
+          "x": 84,
+          "y": 33,
+          "width": 31,
+          "height": 31,
+          "skin": "res://fe49e003-fbe3-4346-bf62-2789cb8310b1",
           "color": "#ffffff"
         }
       ]

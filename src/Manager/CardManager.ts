@@ -20,13 +20,13 @@ export class CardManager extends Laya.Script {
     public maxMana: number = 10; // 最大法力值
 
     @property(Number)
-    public cardCooldown: number = 1000; // 卡牌冷却时间（毫秒）
+    public cardCooldown: number = 2000; // 卡牌冷却时间（毫秒）
 
 
     // 卡片相关
     private activeCards: any[] = [];                    // 当前激活的卡片
     private cardBox: Laya.HBox = null;                 // 卡牌容器
-    private currentLevel: number = 1;                   // 当前关卡
+    private currentLevel: number = 0;                   // 当前关卡
     private isCardCooldown: boolean = false;           // 是否在冷却中
     private availablePlayerCards: string[] = [];       // 当前关卡可用的玩家卡牌类型
 
@@ -43,6 +43,7 @@ export class CardManager extends Laya.Script {
     onAwake(): void {
         console.log("=== CardManager 初始化 ===");
         this.cardBox = this.owner as Laya.HBox;
+        this.currentLevel = parseInt(Laya.LocalStorage.getItem("selectedLevel"));
         this.initializeLevel(this.currentLevel);
     }
 
@@ -403,7 +404,6 @@ export class CardManager extends Laya.Script {
     private mergeCards(draggedCard: any, targetCard: any): void {
         // 升级目标卡牌为2级
         targetCard.monsterLevel = 2;
-        console.log(`${targetCard.cardName} 升级为2级`);
 
         // 更新卡片标签
         if (targetCard.updateCardLabels) {

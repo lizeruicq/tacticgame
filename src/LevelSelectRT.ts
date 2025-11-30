@@ -82,7 +82,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         try {
             // 创建简单的数据数组
             const data = [];
-            for (let i = 1; i <= 30; i++) {
+            for (let i = 1; i <= 10; i++) {
                 data.push(i); // 直接使用数字，不用对象
             }
 
@@ -90,6 +90,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
 
             // 安全地设置数组
             this.LevelList.array = data;
+
             this.LevelList.renderHandler = new Laya.Handler(this, this.renderLevelItem);
 
             console.log("关卡列表设置完成");

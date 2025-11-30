@@ -39,7 +39,7 @@ export class CardConfig {
             type: "Rock",
             prefabPath: "prefabs/cards/card_rock.lh",
             componentClass: "RockCard",
-            manaCost: 1,
+            manaCost: 2,
             level: 1
         },
 
@@ -47,7 +47,7 @@ export class CardConfig {
             type: "Wizard",
             prefabPath: "prefabs/cards/card_wizard.lh",
             componentClass: "WizardCard",
-            manaCost: 1,
+            manaCost: 2,
             level: 1
         },
 
@@ -55,7 +55,7 @@ export class CardConfig {
             type: "Pastor",
             prefabPath: "prefabs/cards/card_pastor.lh",
             componentClass: "PastorCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -113,7 +113,7 @@ export class CardConfig {
             type: "Archer",
             prefabPath: "prefabs/cards/card_archer.lh",
             componentClass: "ArcherCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -153,7 +153,7 @@ export class CardConfig {
             type: "Sword",
             prefabPath: "prefabs/cards/card_sword.lh",
             componentClass: "SwordCard",
-            manaCost: 1,
+            manaCost: 2,
             level: 1
         }
 
@@ -173,14 +173,14 @@ export class CardConfig {
     public static readonly LEVEL_CONFIGS: ILevelCardConfig[] = [
         {
             level: 1,
-            playerCards: ["Rock","Pastor","Wizard", "Goblin", "Necromance","Zombie","Skeleton","Troll"],
-            enemyCards: ["SwordFe","Sword","Knight"],
+            playerCards: ["Rock","Wizard"],
+            enemyCards: ["Sword"],
             maxCards: 4,
-            cooldownTime: 1000,
+            cooldownTime: 2000,
             guide: "第一关",
-            monsterTypes: ["关卡描述"],
-            storyBackgroundImagePath: "resources/images/levels/level_1_story.png",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
+            monsterTypes: [" 宁静的石头人部落发现入侵者！\n 人类一股使用短剑的战士小队发起了进攻,指挥石头人与巫师阻止他们！\n 可使用单位：石头人与巫师 \n 石头人：近战单位，攻击力和移动速度中等，血量中等 \n 巫师：远程攻击单位，攻击力较低，血量较低，移动速度较低 "],
+            storyBackgroundImagePath: "resources/images/storys/level-1.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             enemyWeights: {
                 // "SwordFe": 0.5,
                 // "Sword": 0.5,
@@ -188,19 +188,155 @@ export class CardConfig {
         },
         {
             level: 2,
-            playerCards: ["Rock", "Wizard", "Pastor"],
-            enemyCards: ["Rock", "Wizard", "Pastor"],
+            playerCards: [ "Rock","Wizard","Pastor"],
+            enemyCards: ["Sword", "Archer"],
             maxCards: 4,
-            cooldownTime: 1800,
+            cooldownTime: 2000,
             guide: "第二关",
-            monsterTypes: ["Rock - 防御型怪物", "Wizard - 魔法型怪物", "Pastor - 治疗型怪物"],
-            storyBackgroundImagePath: "resources/images/levels/level_2_story.png",
-            sceneBackgroundImagePath: "resources/images/levels/level_2_bg.png",
+            monsterTypes: ["可远程攻击弓箭手加入支援人类，他们的弱点是防御力低下。\n 牧师已经赶到，召唤牧师对受伤的石头人施放治疗效果。\n 新可使用单位：牧师\n 牧师：远程治疗单位，无法攻击，但可随机治疗右方场上2名受伤单位。 "],
+            storyBackgroundImagePath: "resources/images/storys/level-2.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             enemyWeights: {
-                "Rock": 0.4,
-                "Wizard": 0.4,
-                "Pastor": 0.2
+                "Sword": 0.5,
+                "Archer": 0.5,
             }
+        },
+        {
+            level: 3,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第三关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。仙女攻击力较低，血量较低，攻击速度中等。但被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，移动速度中等，攻击力较低，血量中等。"],
+            storyBackgroundImagePath: "resources/images/storys/level-3.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
+        },
+        {
+            level: 4,
+            playerCards: [ "Skeleton","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy","Pirate"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第四关",
+            monsterTypes: ["人类阵营新单位海盗已登陆。海盗移动速度慢，血量高、攻击力高，攻击速度慢。\n 我方骷髅加入战斗\n 新可使用单位：骷髅 \n 骷髅：近战单位，移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-4.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+                "Pirate": 1,
+            }
+
+        },
+        {
+            level: 5,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Sailor","Fairy","Pirate"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第五关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-5.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
+        },
+        {
+            level: 6,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第六关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-6.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
+        },
+        {
+            level: 7,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第七关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-7.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
+        },
+        {
+            level: 8,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第八关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-8.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
+        },
+        {
+            level: 9,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第九关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-9.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
+        },
+        {
+            level: 10,
+            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            enemyCards: ["Sword", "Archer","Fairy"],
+            maxCards: 4,
+            cooldownTime: 2000,
+            guide: "第十关",
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            storyBackgroundImagePath: "resources/images/storys/level-10.jpg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            enemyWeights: {
+                "Sword": 0.5,
+                "Archer": 0.5,
+                "Fairy": 0.5,
+            }
+
         }
     ];
 
