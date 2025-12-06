@@ -66,7 +66,24 @@
           "rotation": 270.27695878401937,
           "zIndex": 1,
           "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
-          "value": 0.691
+          "value": 0.691,
+          "_$child": [
+            {
+              "_$id": "duc4ouar",
+              "_$type": "Image",
+              "name": "castle",
+              "x": 560,
+              "y": 20,
+              "width": 100,
+              "height": 100,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "rotation": 90,
+              "skin": "res://7975254e-0ef4-42ea-8fce-f95f70886e18",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            }
+          ]
         },
         {
           "_$id": "p2m303jz",
@@ -124,7 +141,24 @@
           "rotation": 90,
           "zIndex": 1,
           "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
-          "value": 0.565
+          "value": 0.565,
+          "_$child": [
+            {
+              "_$id": "2rlva8h7",
+              "_$type": "Image",
+              "name": "castle2",
+              "x": 551,
+              "y": 21,
+              "width": 100,
+              "height": 100,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "rotation": -90,
+              "skin": "res://b96e65a4-d78e-4fe5-8864-da0c208ec056",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            }
+          ]
         },
         {
           "_$id": "sxf7h94x",
@@ -178,6 +212,12 @@
               },
               "startButton": {
                 "_$ref": "0wn13wel"
+              },
+              "menuButton": {
+                "_$ref": "3z2jqqp6"
+              },
+              "restartButton": {
+                "_$ref": "ie3y82r2"
               },
               "backgroundImage": {
                 "_$ref": "2u68dzdm"

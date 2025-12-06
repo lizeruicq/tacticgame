@@ -1,0 +1,58 @@
+{
+  "frames": {
+    "2_fireboll_1_副本.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 298,
+        "w": 288,
+        "h": 273
+      },
+      "sourceSize": {
+        "w": 290,
+        "h": 275
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1
+      }
+    },
+    "2_fireboll_2_副本.png": {
+      "frame": {
+        "idx": 0,
+        "x": 290,
+        "y": 298,
+        "w": 226,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 228,
+        "h": 219
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1
+      }
+    },
+    "2_fireboll_3_副本.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 307,
+        "h": 296
+      },
+      "sourceSize": {
+        "w": 308,
+        "h": 299
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

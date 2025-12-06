@@ -154,6 +154,7 @@
               "y": -2,
               "width": 30,
               "height": 30,
+              "alpha": 0.5,
               "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
               "color": "#ffffff"
             }
@@ -211,6 +212,17 @@
           "name": "attack_1",
           "x": 80,
           "y": 34,
+          "width": 30,
+          "height": 30,
+          "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "gfw8fm24",
+          "_$type": "Image",
+          "name": "attack_2",
+          "x": 45,
+          "y": 32,
           "width": 30,
           "height": 30,
           "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",

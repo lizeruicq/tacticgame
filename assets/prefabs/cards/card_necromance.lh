@@ -100,28 +100,6 @@
               "height": 30,
               "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
               "color": "#ffffff"
-            },
-            {
-              "_$id": "pgoixjsk",
-              "_$type": "Image",
-              "name": "health_1",
-              "x": 35,
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "e1h6cu6w",
-              "_$type": "Image",
-              "name": "health_2",
-              "x": 70,
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
             }
           ]
         },
@@ -143,18 +121,18 @@
               "y": -2,
               "width": 30,
               "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
               "color": "#ffffff"
             },
             {
-              "_$id": "zi9ppr6e",
+              "_$id": "yf5vpbyd",
               "_$type": "Image",
               "name": "attack_1",
               "x": 35,
               "y": -2,
               "width": 30,
               "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
               "color": "#ffffff"
             }
           ]
@@ -198,7 +176,7 @@
           "_$id": "e9hu3qak",
           "_$type": "Image",
           "name": "health",
-          "x": 118,
+          "x": 47,
           "y": 6,
           "width": 30,
           "height": 30,
@@ -206,14 +184,25 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "nu66i7jp",
+          "_$id": "zi9ppr6e",
           "_$type": "Image",
           "name": "attack_1",
-          "x": 80,
-          "y": 34,
+          "x": 77,
+          "y": 33,
           "width": 30,
           "height": 30,
-          "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+          "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "jirgmnar",
+          "_$type": "Image",
+          "name": "attack_2",
+          "x": 110,
+          "y": 33,
+          "width": 30,
+          "height": 30,
+          "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
           "color": "#ffffff"
         }
       ]

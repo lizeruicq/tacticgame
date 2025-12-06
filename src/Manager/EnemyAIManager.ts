@@ -42,7 +42,7 @@ export class EnemyAIManager extends Laya.Script {
         // 获取管理器实例
         this.monsterManager = MonsterManager.getInstance();
         this.gameManager = GameMainManager.getInstance();
-        this.enemyMana = 5;
+        this.enemyMana = 10;
         // 启动魔法值恢复系统
         this.startManaRegeneration();
 
@@ -302,7 +302,7 @@ export class EnemyAIManager extends Laya.Script {
             console.log("火焰效果完成，开始造成伤害");
 
             // 火焰燃烧完成后，对玩家方所有怪物造成10点伤害
-            this.monsterManager.damageAllPlayerMonsters(20);
+            this.monsterManager.damageAllPlayerMonsters(30);
 
             // 重置能量值
             this.resetPower();

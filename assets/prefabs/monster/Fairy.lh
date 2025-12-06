@@ -17,7 +17,10 @@
       "scriptPath": "../src/monsters/human/FairyMonster.ts",
       "isPlayerCamp": 0,
       "monsterLevel": 1,
-      "atkEffectPath": ""
+      "atkEffectPrefab": {
+        "_$uuid": "cdc21c6c-4226-4dff-a0f5-3f6f54c9458f",
+        "_$type": "Prefab"
+      }
     },
     {
       "_$type": "a90b2d2e-91ab-4bd3-a892-a5df3d26f14f",

@@ -1,0 +1,17 @@
+{
+  "_$ver": 1,
+  "_$id": "qo1nd4g4",
+  "_$type": "Image",
+  "name": "arrow",
+  "x": 408,
+  "y": 1291,
+  "width": 320,
+  "height": 171,
+  "anchorX": 0.5,
+  "anchorY": 0.5,
+  "scaleX": 0.792,
+  "scaleY": 0.278,
+  "skin": "res://30a50629-90f3-40aa-811b-5d8c43243b76",
+  "useSourceSize": true,
+  "color": "#ffffff"
+}

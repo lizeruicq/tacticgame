@@ -72,7 +72,7 @@ export class CardConfig {
             type: "Necromance",
             prefabPath: "prefabs/cards/card_necromance.lh",
             componentClass: "NecromanceCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -80,7 +80,7 @@ export class CardConfig {
             type: "Skeleton",
             prefabPath: "prefabs/cards/card_skeleton.lh",
             componentClass: "SkeletonCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -88,7 +88,7 @@ export class CardConfig {
             type: "Troll",
             prefabPath: "prefabs/cards/card_troll.lh",
             componentClass: "TrollCard",
-            manaCost: 1,
+            manaCost: 4,
             level: 1
         },
 
@@ -96,7 +96,7 @@ export class CardConfig {
             type: "Zombie",
             prefabPath: "prefabs/cards/card_zombie.lh",
             componentClass: "ZombieCard",
-            manaCost: 1,
+            manaCost: 2,
             level: 1
         },
 
@@ -105,7 +105,7 @@ export class CardConfig {
             type: "SwordFe",
             prefabPath: "prefabs/monster/card_SwordFe.lh",
             componentClass: "SwordFeCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -113,7 +113,7 @@ export class CardConfig {
             type: "Archer",
             prefabPath: "prefabs/cards/card_archer.lh",
             componentClass: "ArcherCard",
-            manaCost: 3,
+            manaCost: 2,
             level: 1
         },
 
@@ -121,7 +121,7 @@ export class CardConfig {
             type: "Fairy",
             prefabPath: "prefabs/cards/card_fairy.lh",
             componentClass: "FairyCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -129,7 +129,7 @@ export class CardConfig {
             type: "Knight",
             prefabPath: "prefabs/cards/card_knight.lh",
             componentClass: "KnightCard",
-            manaCost: 1,
+            manaCost: 10,
             level: 1
         },
 
@@ -137,7 +137,7 @@ export class CardConfig {
             type: "Pirate",
             prefabPath: "prefabs/cards/card_pirate.lh",
             componentClass: "PirateCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -145,7 +145,7 @@ export class CardConfig {
             type: "Sailor",
             prefabPath: "prefabs/cards/card_sailor.lh",
             componentClass: "SailorCard",
-            manaCost: 1,
+            manaCost: 3,
             level: 1
         },
 
@@ -197,8 +197,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-2.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
+               
             }
         },
         {
@@ -212,9 +211,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-3.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+               
             }
 
         },
@@ -225,116 +222,105 @@ export class CardConfig {
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第四关",
-            monsterTypes: ["人类阵营新单位海盗已登陆。海盗移动速度慢，血量高、攻击力高，攻击速度慢。\n 我方骷髅加入战斗\n 新可使用单位：骷髅 \n 骷髅：近战单位，移动速度较快，血量较低。"],
+            monsterTypes: ["人类阵营新单位海盗已登陆。海盗移动速度慢，血量高、攻击力高，攻击速度慢。\n 我方骷髅加入战斗\n 新可使用单位：骷髅 \n 骷髅：近战单位，移动速度较快，可以快速输出攻击，但血量较低。"],
             storyBackgroundImagePath: "resources/images/storys/level-4.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
-                "Pirate": 1,
+                
             }
 
         },
         {
             level: 5,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            playerCards: [ "Skeleton","Necromance","Pastor","Goblin"],
             enemyCards: ["Sword", "Sailor","Fairy","Pirate"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第五关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            monsterTypes: ["人类阵营新增远程支援单位：水手。水手是远程单位，攻击力较低，血量较低，但攻击范围极广、移动速度快。\n 我方亡灵加入战线 \n 新可使用单位：亡灵 \n 亡灵：远程控制型单位，攻击力较低、血量偏少，攻击后能让敌人陷入停滞状态 2 秒，可有效打断敌方攻势。"],
             storyBackgroundImagePath: "resources/images/storys/level-5.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+               
             }
 
         },
         {
             level: 6,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
-            enemyCards: ["Sword", "Archer","Fairy"],
+            // ,"Wizard","Pastor","Goblin"
+            playerCards: [ "Zombie","Wizard","Pastor","Goblin"],
+            // "Archer","Fairy","SwordFe"
+            enemyCards: ["Sword","Archer","Fairy","SwordFe"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第六关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            monsterTypes: ["人类阵营派出近战精锐：女武士。\n 女武士是近战单位，攻击力强劲、移动速度快，血量中等，能快速突进我方战线。\n 我方僵尸加入战斗 \n 新可使用单位：僵尸 \n 僵尸：移动速度较慢的近战单位，攻击力中等、血量较高，击杀敌人后，敌人会转生为一只低血量僵尸，加入石头人阵营作战。"],
             storyBackgroundImagePath: "resources/images/storys/level-6.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+                
             }
 
         },
         {
             level: 7,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
-            enemyCards: ["Sword", "Archer","Fairy"],
+            playerCards: [ "Zombie","Skeleton","Troll","Goblin"],
+            enemyCards: ["Knight", "Pirate","Fairy","SwordFe"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第七关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            monsterTypes: ["人类阵营的重装单位：骑士参战。\n 骑士是近战重装单位，攻击力高、血量厚实，综合战力强劲但移动速度偏慢。\n 我方巨魔加入作战\n 新可使用单位：巨魔\n 巨魔：近战重型单位，攻击力高、血量充足，能在前排承担伤害并输出高额攻击，是坚实的战线支柱。"],
             storyBackgroundImagePath: "resources/images/storys/level-7.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+               
             }
 
         },
         {
             level: 8,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
-            enemyCards: ["Sword", "Archer","Fairy"],
+            playerCards: [ "Rock","Skeleton","Pastor","Troll"],
+            enemyCards: ["SwordFe", "Archer","Fairy","Knight"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第八关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            monsterTypes: ["人类阵营派出女武士、弓箭手、仙女与骑士的混合编队，战术灵活性极强。\n 我方可依托石头人的坦度、骷髅的高机动性、牧师的群体治疗，配合巨魔的高额输出，形成攻防兼备的稳定战线。"],
             storyBackgroundImagePath: "resources/images/storys/level-8.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+               
             }
 
         },
         {
             level: 9,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
-            enemyCards: ["Sword", "Archer","Fairy"],
+            playerCards: [ "Goblin","Zombie","Wizard","Necromance"],
+            enemyCards: ["Pirate","Sailor","Sword"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第九关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            monsterTypes: ["人类阵营集结海盗、水手与战士的协同小队：海盗高攻高血负责突进，水手远程支援，战士则作为基础近战补充。\n 我方可利用亡灵的控制技能限制敌方走位、巫师的远程输出消耗，搭配僵尸的增殖能力与哥布林的机动，打乱敌方的远近协同节奏。"],
             storyBackgroundImagePath: "resources/images/storys/level-9.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-snow.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+                
             }
 
         },
         {
             level: 10,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
-            enemyCards: ["Sword", "Archer","Fairy"],
+            // playerCards: [ "Skeleton","Zombie","Wizard","Necromance", "Troll","Rock","Pastor","Goblin"],
+            playerCards: [ "Zombie"],
+            // enemyCards: ["SwordFe", "Archer","Fairy","Knight","Pirate","Sailor","Sword"],
+            enemyCards: ["Knight"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第十关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，攻击速度和移动速度较快，血量较低。"],
+            monsterTypes: ["最终决战开启！人类阵营集结了所有精锐单位，涵盖近战高攻、远程输出、控制辅助等全类型，攻势密集且战术组合多样。\n 我方已解锁全部作战单位，用石头人、哥布林、巨魔担任前排坦度，骷髅、僵尸负责突进与战线增殖，巫师、亡灵提供远程输出与控制，牧师保障队伍续航，构建全面的攻防体系。"],
             storyBackgroundImagePath: "resources/images/storys/level-10.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-road.jpeg",
             enemyWeights: {
-                "Sword": 0.5,
-                "Archer": 0.5,
-                "Fairy": 0.5,
+               
             }
 
         }
@@ -421,8 +407,8 @@ export class CardConfig {
         }
 
         // 检查卡牌数量限制
-        if (config.playerCards.length < 2) {
-            errors.push(`玩家卡牌类型数量不能少于2种`);
+        if (config.playerCards.length < 1) {
+            errors.push(`玩家卡牌类型数量不能少于1种`);
         }
         if (config.playerCards.length > 8) {
             errors.push(`玩家卡牌类型数量不能超过8种`);

@@ -15,10 +15,10 @@ export class PastorMonster extends BaseMonster {
     private pastorAnimationManager: PastorAnimationManager = null;
 
     // Pastor特有属性
-    private healAmount: number = 50;           // 每次治疗量
+    private healAmount: number = 20;           // 每次治疗量
     private healInterval: number = 2000;       // 治疗间隔（毫秒）
     private maxHealTargets: number = 2;        // 每次最多治疗目标数
-    private minDistanceToAlly: number = 500;   // 与友方怪物的最小距离
+    private minDistanceToAlly: number = 400;   // 与友方怪物的最小距离
     private lastHealTime: number = 0;          // 上次治疗时间
 
     onAwake(): void {

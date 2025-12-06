@@ -86,7 +86,6 @@ export class LevelSelectRT extends LevelSelectRTBase {
                 data.push(i); // 直接使用数字，不用对象
             }
 
-            console.log("创建数据:", data.length, "项");
 
             // 安全地设置数组
             this.LevelList.array = data;

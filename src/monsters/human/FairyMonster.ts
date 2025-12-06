@@ -45,20 +45,20 @@ export class FairyMonster extends BaseMonster {
      */
     private calculateFairyStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // Fairy移动较慢
-            attackPower: 25,     // Fairy攻击力较高
-            attackSpeed: 1500,   // Fairy攻击速度较慢
-            attackRange: 400,     // Fairy攻击范围中等
-            maxHealth: 150       // Fairy血量较高
+            speed: 100,           // Fairy移动较慢
+            attackPower: 30,     // Fairy攻击力较高
+            attackSpeed: 2000,   // Fairy攻击速度较慢
+            attackRange: 300,     // Fairy攻击范围中等
+            maxHealth: 30       // Fairy血量较高
         };
         
         // 根据等级调整属性
         const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
+            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
             attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };
@@ -87,7 +87,10 @@ export class FairyMonster extends BaseMonster {
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
 
-        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
+        // 对怪物目标施加冻结效果（使用freeze.lh预制体）
+        if (target instanceof BaseMonster) {
+            target.freeze(2000, BaseMonster.FROZEN_EFFECT_PREFAB_PATH_FREEZE);
+        }
 
         // Fairy攻击后有短暂的硬直时间
         this.addAttackCooldown();

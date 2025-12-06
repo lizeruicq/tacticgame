@@ -52,20 +52,20 @@ export class HumanSwordFe extends BaseMonster {
      */
     private calculateSwordFeStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // SwordFe移动较慢
-            attackPower: 25,     // SwordFe攻击力较高
-            attackSpeed: 1500,   // SwordFe攻击速度较慢
+            speed: 100,           // SwordFe移动较慢
+            attackPower: 50,     // SwordFe攻击力较高
+            attackSpeed: 2500,   // SwordFe攻击速度较慢
             attackRange: 80,    // SwordFe攻击范围中等
-            maxHealth: 150       // SwordFe血量较高
+            maxHealth: 100       // SwordFe血量较高
         };
         
         // 根据等级调整属性
         const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
+            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
             attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };

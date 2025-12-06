@@ -2,6 +2,8 @@ const { regClass, property } = Laya;
 import { BaseMonster, IMonsterStats, MonsterState } from "../BaseMonster";
 import { ZombieAnimationManager } from "./ZombieAnimationManager";
 import { Castle } from "../Castle";
+import { MonsterManager } from "../../Manager/MonsterManager";
+import { GameMainManager } from "../../Manager/GameMainManager";
 
 /**
  * Zombie怪物类
@@ -45,9 +47,9 @@ export class ZombieMonster extends BaseMonster {
      */
     private calculateZombieStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // Zombie移动较慢
-            attackPower: 25,     // Zombie攻击力较高
-            attackSpeed: 1500,   // Zombie攻击速度较慢
+            speed: 40,           // Zombie移动较慢
+            attackPower: 30,     // Zombie攻击力较高
+            attackSpeed: 3000,   // Zombie攻击速度较慢
             attackRange: 80,     // Zombie攻击范围中等
             maxHealth: 150       // Zombie血量较高
         };
@@ -56,9 +58,9 @@ export class ZombieMonster extends BaseMonster {
         const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
+            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
             attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };
@@ -87,10 +89,70 @@ export class ZombieMonster extends BaseMonster {
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
 
-        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
+        // 如果击杀了敌人，监听敌人的尸体移除事件
+        if (target instanceof BaseMonster && target.getIsDead()) {
+            const targetSprite = target.owner as Laya.Sprite;
+            const position = { x: targetSprite.x, y: targetSprite.y };
+
+            // 监听敌人的尸体移除事件，在敌人完全消失后生成新僵尸
+            targetSprite.once("MONSTER_CORPSE_REMOVED", this, () => {
+                this.spawnZombieOnKill(position);
+            });
+        }
 
         // Zombie攻击后有短暂的硬直时间
         this.addAttackCooldown();
+    }
+
+    /**
+     * 击杀敌人后生成新僵尸
+     */
+    private spawnZombieOnKill(position: { x: number; y: number }): void {
+        const monsterManager = MonsterManager.getInstance();
+        const gameManager = GameMainManager.getInstance();
+
+        if (!monsterManager || !gameManager) return;
+
+        const battleField = gameManager.getBattleField();
+
+        // 生成生成特效
+        this.createSpawnEffect(position, battleField);
+
+        // 创建血量为20的新僵尸
+        monsterManager.createMonster("Zombie", this.isPlayerCamp, position, 1).then((newZombie) => {
+            if (newZombie) {
+                battleField.addChild(newZombie);
+
+                // 设置新僵尸的血量为20
+                const zombieComponent = (newZombie as any)._components?.find((c: any) => c instanceof ZombieMonster);
+                if (zombieComponent) {
+                    zombieComponent.currentHealth = 20;
+                    zombieComponent.updateHealthBar();
+                }
+
+                console.log(`Zombie击杀敌人，在${position.x},${position.y}生成新僵尸`);
+            }
+        });
+    }
+
+    /**
+     * 创建生成特效
+     */
+    private createSpawnEffect(position: { x: number; y: number }, parent: Laya.Sprite): void {
+        Laya.loader.load(BaseMonster.SPAWN_EFFECT_PREFAB_PATH).then(() => {
+            const prefab = Laya.loader.getRes(BaseMonster.SPAWN_EFFECT_PREFAB_PATH);
+            const effectSprite = prefab.create() as Laya.Sprite;
+
+            effectSprite.pos(position.x, position.y);
+            parent.addChild(effectSprite);
+
+            // 1秒后销毁特效
+            Laya.timer.once(1000, this, () => {
+                if (effectSprite && !effectSprite.destroyed) {
+                    effectSprite.removeSelf();
+                }
+            });
+        });
     }
     
     /**

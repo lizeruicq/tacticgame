@@ -65,7 +65,7 @@ export class SceneManager {
                 return;
             }
             
-            this.isLoading = true;
+            // this.isLoading = true;
 
             // 创建过渡遮罩
             const transitionMask = new Laya.Sprite();
@@ -126,7 +126,7 @@ export class SceneManager {
                 return;
             }
 
-            this.isLoading = true;
+            // this.isLoading = true;
 
             // 创建过渡遮罩
             const transitionMask = new Laya.Sprite();

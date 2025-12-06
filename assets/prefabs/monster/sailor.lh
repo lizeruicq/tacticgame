@@ -17,7 +17,10 @@
       "scriptPath": "../src/monsters/human/SailorMonster.ts",
       "isPlayerCamp": 0,
       "monsterLevel": 1,
-      "atkEffectPath": ""
+      "atkEffectPrefab": {
+        "_$uuid": "5d2c7d70-ce12-4acc-b875-dfc0f498090b",
+        "_$type": "Prefab"
+      }
     },
     {
       "_$type": "71485963-7908-410b-aa4d-ed8dbfeca0a9",

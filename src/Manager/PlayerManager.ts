@@ -32,7 +32,7 @@ export class PlayerManager extends Laya.Script {
      */
     private initializePlayerAttributes(): void {
         // 初始化玩家魔法值
-        this.playerMana = 5;
+        this.playerMana = 10;
         this.playerMaxMana = 10;
         // console.log(`玩家初始魔法值: ${this.playerMana}/${this.playerMaxMana}`);
     }

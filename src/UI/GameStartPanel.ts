@@ -2,7 +2,7 @@ const { regClass, property } = Laya;
 import { CardConfig } from "../Cards/CardConfig";
 import { GameMainManager } from "../Manager/GameMainManager";
 import { PanelAnimationUtils } from "../../src/utils/PanelAnimationUtils";
-
+import { SceneManager } from "../../src/SceneManager";
 /**
  * 游戏开始说明面板
  * 显示关卡指引和怪物种类，包含开始按钮
@@ -18,6 +18,12 @@ export class GameStartPanel extends Laya.Script {
 
     @property(Laya.Button)
     public startButton: Laya.Button = null;
+
+     @property(Laya.Button)
+    public menuButton: Laya.Button = null;
+
+    @property(Laya.Button)
+    public restartButton: Laya.Button = null;
 
     @property(Laya.Image)
     public backgroundImage: Laya.Image = null;
@@ -37,6 +43,14 @@ export class GameStartPanel extends Laya.Script {
         // 绑定开始按钮事件
         if (this.startButton) {
             this.startButton.on(Laya.Event.CLICK, this, this.onStartButtonClick);
+        }
+
+         if (this.menuButton) {
+            this.menuButton.on(Laya.Event.CLICK, this, this.onMenuButtonClick);
+        }
+
+        if (this.restartButton) {
+            this.restartButton.on(Laya.Event.CLICK, this, this.onRestartButtonClick);
         }
 
         // 初始化面板为隐藏状态（缩放为0，不可见）
@@ -88,65 +102,10 @@ export class GameStartPanel extends Laya.Script {
         const panelBox = this.owner as Laya.Box;
         PanelAnimationUtils.playCloseAnimation(panelBox);
 
-        // 清理 Panel 事件监听
-        if (this.panel) {
-            this.panel.off(Laya.Event.MOUSE_DOWN, this, this.onPanelMouseDown);
-            this.panel.off(Laya.Event.MOUSE_UP, this, this.onPanelMouseUp);
-            this.panel.off(Laya.Event.MOUSE_MOVE, this, this.onPanelMouseMove);
-            this.panel.off(Laya.Event.MOUSE_WHEEL, this, this.onPanelMouseWheel);
-        }
+
     }
 
-    /**
-     * Panel 鼠标按下事件
-     */
-    private onPanelMouseDown(e: Laya.Event): void {
-        this.isMouseDown = true;
-        this.lastMouseY = (e as any).clientY || 0;
-        this.scrollVelocity = 0;
-    }
-
-    /**
-     * Panel 鼠标抬起事件
-     */
-    private onPanelMouseUp(e: Laya.Event): void {
-        this.isMouseDown = false;
-    }
-
-    /**
-     * Panel 鼠标移动事件（触摸滑动）
-     */
-    private onPanelMouseMove(e: Laya.Event): void {
-        if (!this.isMouseDown || !this.panel) return;
-
-        const currentMouseY = (e as any).clientY || 0;
-        const deltaY = currentMouseY - this.lastMouseY;
-
-        // 更新滚动位置
-        const panelAny = this.panel as any;
-        if (panelAny.vScrollBarValue !== undefined) {
-            panelAny.vScrollBarValue -= deltaY / 10;
-        }
-
-        this.scrollVelocity = deltaY;
-        this.lastMouseY = currentMouseY;
-    }
-
-    /**
-     * Panel 鼠标滚轮事件
-     */
-    private onPanelMouseWheel(e: Laya.Event): void {
-        if (!this.panel) return;
-
-        const wheelDelta = (e as any).wheelDelta || 0;
-        const panelAny = this.panel as any;
-
-        if (panelAny.vScrollBarValue !== undefined) {
-            panelAny.vScrollBarValue -= wheelDelta / 10;
-        }
-    }
-
-    /**
+     /**
      * 开始按钮点击事件
      */
     private onStartButtonClick(): void {
@@ -165,6 +124,64 @@ export class GameStartPanel extends Laya.Script {
             console.error("调用GameMainManager.resumeGame时出错:", error);
         }
     }
+
+     /**
+         * 菜单按钮点击事件
+         */
+        private onMenuButtonClick(): void {
+            this.hide();
+            // console.log("返回菜单按钮被点击");   
+            // 切换到关卡选择场景
+            try {
+                 const gameMainManager = GameMainManager.getInstance();
+                if (gameMainManager) {
+                    gameMainManager.resumeGame();
+                } else {
+                console.error("无法获取GameMainManager实例");
+            }
+                const sceneManager = SceneManager.getInstance();
+                if (sceneManager) {
+                    sceneManager.switchToLevelSelect();
+                } else {
+                    // console.error("无法获取SceneManager实例");
+                }
+            } catch (error) {
+                // console.error("切换到关卡选择场景时出错:", error);
+            }
+        }
+    
+        /**
+         * 重新开始按钮点击事件
+         */
+        private onRestartButtonClick(): void {
+            this.hide();
+           
+            // 重新开始游戏场景（先退出再重新加载，确保完全重置）
+            try {   
+                 const gameMainManager = GameMainManager.getInstance();
+                if (gameMainManager) {
+                    gameMainManager.resumeGame();
+                } else {
+                console.error("无法获取GameMainManager实例");
+                }
+
+                const sceneManager = SceneManager.getInstance();
+                console.log("SceneManager 实例:", sceneManager);
+                if (sceneManager) {
+                    // 使用 restartGameScene() 确保场景完全重置
+                    console.log("调用 restartGameScene()");
+                    sceneManager.restartGameScene().then(() => {
+                        console.log("场景重启完成");
+                    }).catch((error) => {
+                        console.error("场景重启失败:", error);
+                    });
+                } else {
+                    console.error("无法获取SceneManager实例");
+                }
+            } catch (error) {
+                console.error("重新开始关卡时出错:", error);
+            }
+        }
 
     /**
      * 加载故事背景图片
@@ -202,6 +219,14 @@ export class GameStartPanel extends Laya.Script {
         // 清理事件监听
         if (this.startButton) {
             this.startButton.off(Laya.Event.CLICK, this, this.onStartButtonClick);
+        }
+         // 清理事件监听
+        if (this.menuButton) {
+            this.menuButton.off(Laya.Event.CLICK, this, this.onMenuButtonClick);
+        }
+
+        if (this.restartButton) {
+            this.restartButton.off(Laya.Event.CLICK, this, this.onRestartButtonClick);
         }
     }
 }

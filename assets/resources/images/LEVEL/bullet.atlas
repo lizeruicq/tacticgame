@@ -1,0 +1,143 @@
+{
+  "frames": {
+    "Fire Arrow_Frame_01小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 256,
+        "y": 342,
+        "w": 174,
+        "h": 106
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 33
+      }
+    },
+    "Fire Arrow_Frame_02小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 256,
+        "y": 229,
+        "w": 189,
+        "h": 111
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 27
+      }
+    },
+    "Fire Arrow_Frame_03小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 221,
+        "y": 0,
+        "w": 206,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 23
+      }
+    },
+    "Fire Arrow_Frame_04小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 219,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 18
+      }
+    },
+    "Fire Arrow_Frame_05小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 229,
+        "w": 239,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 40
+      }
+    },
+    "Fire Arrow_Frame_06小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 339,
+        "w": 254,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 38
+      }
+    },
+    "Fire Arrow_Frame_07小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 130,
+        "w": 267,
+        "h": 97
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 36
+      }
+    },
+    "Fire Arrow_Frame_08小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 269,
+        "y": 122,
+        "w": 196,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 171
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 33
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

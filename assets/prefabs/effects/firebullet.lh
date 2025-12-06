@@ -1,0 +1,29 @@
+{
+  "_$ver": 1,
+  "_$id": "0rn63ix1",
+  "_$type": "Sprite",
+  "name": "arrow",
+  "x": 564,
+  "y": 1176,
+  "width": 100,
+  "height": 100,
+  "_$child": [
+    {
+      "_$id": "r45o3z3b",
+      "_$type": "Animation",
+      "name": "Animation",
+      "x": 48,
+      "y": 48,
+      "width": 189,
+      "height": 181,
+      "anchorX": 0.47619047619047616,
+      "anchorY": 0.4861878453038674,
+      "scaleX": 0.475,
+      "scaleY": 0.329,
+      "source": "res://cfa8d989-cf45-4ecc-a872-b401b0588c6e",
+      "autoPlay": true,
+      "index": 0,
+      "interval": 50
+    }
+  ]
+}

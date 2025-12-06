@@ -62,7 +62,7 @@ export class MonsterDisplayConfig {
             displayName: "骷髅"
         },
         "Troll": {
-            originalWidth: 800,   // 与Rock相同的尺寸
+            originalWidth: 700,   // 与Rock相同的尺寸
             originalHeight: 500,
             displayName: "巨魔"
         },
@@ -82,7 +82,7 @@ export class MonsterDisplayConfig {
             displayName: "精灵"
         },
         "Knight": {
-            originalWidth: 900,   // 与SwordFe相同的尺寸
+            originalWidth: 700,   // 与SwordFe相同的尺寸
             originalHeight: 500,
             displayName: "骑士"
         },

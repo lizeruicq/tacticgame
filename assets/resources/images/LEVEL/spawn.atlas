@@ -1,0 +1,347 @@
+{
+  "frames": {
+    "05小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 391,
+        "y": 267,
+        "w": 102,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 115,
+        "y": 184
+      }
+    },
+    "06小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 342,
+        "y": 56,
+        "w": 102,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 115,
+        "y": 184
+      }
+    },
+    "07小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 346,
+        "w": 119,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 105,
+        "y": 174
+      }
+    },
+    "08小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 369,
+        "y": 328,
+        "w": 119,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 105,
+        "y": 174
+      }
+    },
+    "09小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 308,
+        "y": 218,
+        "w": 119,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 105,
+        "y": 174
+      }
+    },
+    "10小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 199,
+        "y": 84,
+        "w": 141,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 94,
+        "y": 168
+      }
+    },
+    "11小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 216,
+        "y": 0,
+        "w": 141,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 94,
+        "y": 168
+      }
+    },
+    "12小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 263,
+        "y": 278,
+        "w": 126,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 173
+      }
+    },
+    "13小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 126,
+        "y": 278,
+        "w": 135,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 171
+      }
+    },
+    "14小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 182,
+        "y": 161,
+        "w": 163,
+        "h": 55
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 87,
+        "y": 168
+      }
+    },
+    "15小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 161,
+        "w": 180,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 80,
+        "y": 161
+      }
+    },
+    "16小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 84,
+        "w": 197,
+        "h": 75
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 73,
+        "y": 154
+      }
+    },
+    "17小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 214,
+        "h": 82
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 65,
+        "y": 149
+      }
+    },
+    "18小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 252,
+        "y": 332,
+        "w": 115,
+        "h": 55
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 114,
+        "y": 162
+      }
+    },
+    "19小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 126,
+        "y": 332,
+        "w": 124,
+        "h": 55
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 109,
+        "y": 166
+      }
+    },
+    "20小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 288,
+        "w": 124,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 109,
+        "y": 165
+      }
+    },
+    "21小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 182,
+        "y": 218,
+        "w": 124,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 109,
+        "y": 163
+      }
+    },
+    "22小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 228,
+        "w": 124,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 109,
+        "y": 163
+      }
+    },
+    "23小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 359,
+        "y": 0,
+        "w": 73,
+        "h": 42
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 124,
+        "y": 163
+      }
+    },
+    "24小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 434,
+        "y": 0,
+        "w": 73,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 124,
+        "y": 164
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

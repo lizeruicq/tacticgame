@@ -31,7 +31,13 @@ export enum MonsterState {
  */
 @regClass()
 export abstract class BaseMonster extends Laya.Script {
-    
+
+    // ========== 常量 ==========
+
+    protected static readonly FROZEN_EFFECT_PREFAB_PATH: string = "prefabs/effects/water.lh";  // 冻结效果预制体路径（默认）
+    protected static readonly FROZEN_EFFECT_PREFAB_PATH_FREEZE: string = "prefabs/effects/freeze.lh";  // 冻结效果预制体路径（freeze）
+    protected static readonly SPAWN_EFFECT_PREFAB_PATH: string = "prefabs/effects/spawn.lh";  // 生成特效预制体路径
+
     // ========== 基础属性 ==========
 
     @property({ type: Number })
@@ -66,6 +72,9 @@ export abstract class BaseMonster extends Laya.Script {
     protected isDead: boolean = false;            // 是否已死亡
     protected isInitialized: boolean = false;     // 是否已初始化
     protected corpseRemovalDelay: number = 3000;  // 尸体消失延迟时间（毫秒）
+    protected isFrozen: boolean = false;          // 是否被冻结
+    protected frozenStats: IMonsterStats | null = null;  // 冻结前的属性备份
+    protected frozenEffectSprite: Laya.Sprite | null = null;  // 冻结效果精灵
     
     // ========== 组件引用 ==========
     
@@ -390,20 +399,20 @@ export abstract class BaseMonster extends Laya.Script {
             this.targetOffsetX = Math.random() * 140 - 70;  // ±100像素随机偏移
         } else {
             // 对于怪物目标，检查附近是否有友方怪物来决定偏移量
-            const nearbyAllies = this.getNearbyAllies(200);
-            if (nearbyAllies.length > 0) {
-                // 如果附近有友方怪物，则添加小幅度偏移
-                this.targetOffsetX = Math.random() * 140 - 70;  // ±50像素随机偏移
-                this.targetOffsetY = Math.random() * 40 - 20;  // ±20像素随机偏移
-            } else {
-                // 如果附近没有友方怪物，则不添加偏移
-                this.targetOffsetX = 0;
-                this.targetOffsetY = 0;
-            }
-        }
-        
-        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
-        console.log(`${this.constructor.name} 设置攻击目标: ${targetName}`);
+            // const nearbyAllies = this.getNearbyAllies(200);
+            this.targetOffsetX = Math.random() * 140 - 70;  // ±70像素随机偏移
+            this.targetOffsetY = Math.random() * 40 - 20;  // ±20像素随机偏移
+            // } else {
+            // if (nearbyAllies.length > 0) {
+            //     // 如果附近有友方怪物，则添加小幅度偏移
+            //     this.targetOffsetX = Math.random() * 140 - 70;  // ±70像素随机偏移
+            //     this.targetOffsetY = Math.random() * 40 - 20;  // ±20像素随机偏移
+            // } else {
+            //     // 如果附近没有友方怪物，则不添加偏移
+            //     this.targetOffsetX = 0;
+            //     this.targetOffsetY = 0;
+            // }
+        }    
     }
 
     /**
@@ -450,12 +459,16 @@ export abstract class BaseMonster extends Laya.Script {
         monsterSprite.parent.addChild(effectSprite);
 
         // 计算移动方向和距离
-        const dx = targetSprite.x + this.targetOffsetX - monsterSprite.x;
-        const dy = targetSprite.y + this.targetOffsetY - monsterSprite.y;
+        const dx = targetSprite.x  - monsterSprite.x;
+        const dy = targetSprite.y  - monsterSprite.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         const moveDistance = Math.min(distance * 0.8, this.monsterStats.attackRange);
         const dirX = distance > 0 ? dx / distance : 1;
         const dirY = distance > 0 ? dy / distance : 0;
+
+        // 计算旋转角度，使攻击效果面向目标（图片默认向左，需要加180°）
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI + 180;
+        effectSprite.rotation = angle;
 
         // 播放移动动画
         Laya.Tween.to(effectSprite, {
@@ -737,34 +750,34 @@ export abstract class BaseMonster extends Laya.Script {
      * @param range 搜索范围
      * @returns 在指定范围内的友方怪物数组
      */
-    private getNearbyAllies(range: number): BaseMonster[] {
-        const manager = MonsterManager.getInstance();
-        if (!manager) return [];
+    // private getNearbyAllies(range: number): BaseMonster[] {
+    //     const manager = MonsterManager.getInstance();
+    //     if (!manager) return [];
         
-        // 根据阵营获取友方怪物列表
-        const allies = this.isPlayerCamp ? manager.getPlayerMonsters() : manager.getEnemyMonsters();
-        const currentSprite = this.owner as Laya.Sprite;
-        const nearbyAllies: BaseMonster[] = [];
+    //     // 根据阵营获取友方怪物列表
+    //     const allies = this.isPlayerCamp ? manager.getPlayerMonsters() : manager.getEnemyMonsters();
+    //     const currentSprite = this.owner as Laya.Sprite;
+    //     const nearbyAllies: BaseMonster[] = [];
         
-        // 遍历所有友方怪物
-        for (const ally of allies) {
-            // 排除自己
-            if (ally === this) continue;
+    //     // 遍历所有友方怪物
+    //     for (const ally of allies) {
+    //         // 排除自己
+    //         if (ally === this) continue;
             
-            const allySprite = ally.owner as Laya.Sprite;
-            // 计算与友方怪物的距离
-            const dx = allySprite.x - currentSprite.x;
-            const dy = allySprite.y - currentSprite.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+    //         const allySprite = ally.owner as Laya.Sprite;
+    //         // 计算与友方怪物的距离
+    //         const dx = allySprite.x - currentSprite.x;
+    //         const dy = allySprite.y - currentSprite.y;
+    //         const distance = Math.sqrt(dx * dx + dy * dy);
             
-            // 如果在指定范围内且不是死亡状态，则加入结果数组
-            if (distance <= range && !ally.getIsDead()) {
-                nearbyAllies.push(ally);
-            }
-        }
+    //         // 如果在指定范围内且不是死亡状态，则加入结果数组
+    //         if (distance <= range && !ally.getIsDead()) {
+    //             nearbyAllies.push(ally);
+    //         }
+    //     }
         
-        return nearbyAllies;
-    }
+    //     return nearbyAllies;
+    // }
 
     // ========== 血条管理方法 ==========
 
@@ -859,6 +872,63 @@ export abstract class BaseMonster extends Laya.Script {
             // 更新血条显示
             this.updateHealthBar();
         }
+    }
+
+    /**
+     * 获取冻结效果预制体路径（子类可重写以使用不同的预制体）
+     */
+    protected getFrozenEffectPrefabPath(): string {
+        return BaseMonster.FROZEN_EFFECT_PREFAB_PATH;
+    }
+
+    /**
+     * 冻结效果：攻击范围和移动速度变为0，显示冻结视觉效果
+     * @param duration 冻结持续时间（毫秒）
+     * @param prefabPath 冻结效果预制体路径（可选，不指定则使用默认路径）
+     */
+    public freeze(duration: number = 1000, prefabPath?: string): void {
+        if (this.isFrozen || this.isDead) return;
+
+        this.isFrozen = true;
+        this.frozenStats = { ...this.monsterStats };
+        this.monsterStats.attackRange = 0;
+        this.monsterStats.speed = 0;
+
+        // 生成冻结效果预制体
+        const sprite = this.owner as Laya.Sprite;
+        const frozenPrefabPath = prefabPath || this.getFrozenEffectPrefabPath();
+        Laya.loader.load(frozenPrefabPath).then(() => {
+            const prefab = Laya.loader.getRes(frozenPrefabPath);
+            this.frozenEffectSprite = prefab.create() as Laya.Sprite;
+            this.frozenEffectSprite.pos(sprite.x, sprite.y);
+            this.frozenEffectSprite.zOrder = sprite.zOrder + 1;
+            this.frozenEffectSprite.scaleX = 0.5;
+            this.frozenEffectSprite.scaleY = 0.5;
+            sprite.parent.addChild(this.frozenEffectSprite);
+        });
+
+        Laya.timer.once(duration, this, () => {
+            this.unfreeze();
+        });
+    }
+
+    /**
+     * 解冻效果
+     */
+    private unfreeze(): void {
+        if (!this.isFrozen || !this.frozenStats) return;
+
+        this.isFrozen = false;
+        this.monsterStats = this.frozenStats;
+        this.frozenStats = null;
+
+        // 移除冻结效果精灵
+        if (this.frozenEffectSprite && !this.frozenEffectSprite.destroyed) {
+            this.frozenEffectSprite.removeSelf();
+        }
+        this.frozenEffectSprite = null;
+
+        console.log(`${this.constructor.name} 冻结效果解除`);
     }
 
     /**

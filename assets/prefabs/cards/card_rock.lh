@@ -169,6 +169,17 @@
               "height": 30,
               "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
               "color": "#ffffff"
+            },
+            {
+              "_$id": "aniqxuo9",
+              "_$type": "Image",
+              "name": "speed_1",
+              "x": 35,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
+              "color": "#ffffff"
             }
           ]
         }

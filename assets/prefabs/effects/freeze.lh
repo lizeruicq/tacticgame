@@ -1,0 +1,29 @@
+{
+  "_$ver": 1,
+  "_$id": "0rn63ix1",
+  "_$type": "Sprite",
+  "name": "freeze",
+  "x": 564,
+  "y": 1176,
+  "width": 100,
+  "height": 100,
+  "_$child": [
+    {
+      "_$id": "r45o3z3b",
+      "_$type": "Animation",
+      "name": "Animation",
+      "x": 38,
+      "y": 45,
+      "width": 199,
+      "height": 199,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "source": "res://c449c5d4-f15d-4172-901d-f66a2238e5dd",
+      "autoPlay": true,
+      "index": 0,
+      "interval": 50
+    }
+  ]
+}

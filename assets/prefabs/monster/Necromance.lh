@@ -15,7 +15,10 @@
       "scriptPath": "../src/monsters/rock/NecromanceMonster.ts",
       "isPlayerCamp": 0,
       "monsterLevel": 1,
-      "atkEffectPath": ""
+      "atkEffectPrefab": {
+        "_$uuid": "19fdae99-6f7e-426e-ae00-fbbbe7ce805c",
+        "_$type": "Prefab"
+      }
     },
     {
       "_$type": "0742b08a-3d2e-4726-98b2-f3f7afbc5024",

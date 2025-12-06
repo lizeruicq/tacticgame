@@ -45,20 +45,20 @@ export class SkeletonMonster extends BaseMonster {
      */
     private calculateSkeletonStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // Skeleton移动较慢
+            speed: 120,           // Skeleton移动较慢
             attackPower: 25,     // Skeleton攻击力较高
-            attackSpeed: 1500,   // Skeleton攻击速度较慢
-            attackRange: 80,     // Skeleton攻击范围中等
-            maxHealth: 150       // Skeleton血量较高
+            attackSpeed: 1000,   // Skeleton攻击速度较慢
+            attackRange: 70,     // Skeleton攻击范围中等
+            maxHealth: 120       // Skeleton血量较高
         };
         
         // 根据等级调整属性
         const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
+            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
             attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };

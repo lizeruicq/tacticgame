@@ -1,0 +1,211 @@
+{
+  "frames": {
+    "Water Ball_Frame_01小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 460,
+        "w": 224,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 48
+      }
+    },
+    "Water Ball_Frame_02小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 229,
+        "h": 227
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 45,
+        "y": 46
+      }
+    },
+    "Water Ball_Frame_03小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 456,
+        "y": 228,
+        "w": 225,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 48
+      }
+    },
+    "Water Ball_Frame_04小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 455,
+        "y": 682,
+        "w": 224,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 48
+      }
+    },
+    "Water Ball_Frame_05小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 228,
+        "y": 229,
+        "w": 226,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 47,
+        "y": 46
+      }
+    },
+    "Water Ball_Frame_06小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 461,
+        "y": 0,
+        "w": 225,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 47
+      }
+    },
+    "Water Ball_Frame_07小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 686,
+        "w": 224,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 48
+      }
+    },
+    "Water Ball_Frame_08小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 231,
+        "y": 0,
+        "w": 228,
+        "h": 226
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 46,
+        "y": 47
+      }
+    },
+    "Water Ball_Frame_09小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 456,
+        "y": 455,
+        "w": 225,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 47,
+        "y": 47
+      }
+    },
+    "Water Ball_Frame_10小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 226,
+        "y": 686,
+        "w": 224,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 48
+      }
+    },
+    "Water Ball_Frame_11小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 229,
+        "w": 226,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 47,
+        "y": 45
+      }
+    },
+    "Water Ball_Frame_12小.png": {
+      "frame": {
+        "idx": 0,
+        "x": 228,
+        "y": 459,
+        "w": 225,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      },
+      "spriteSourceSize": {
+        "x": 47,
+        "y": 48
+      }
+    }
+  },
+  "meta": {
+    "trimImage": true
+  }
+}

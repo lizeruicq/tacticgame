@@ -121,7 +121,18 @@
               "y": -2,
               "width": 30,
               "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+              "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "x4ujuf6u",
+              "_$type": "Image",
+              "name": "attack_1",
+              "x": 35,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
               "color": "#ffffff"
             }
           ]
@@ -176,11 +187,22 @@
           "_$id": "nu66i7jp",
           "_$type": "Image",
           "name": "attack_1",
-          "x": 44,
+          "x": 78,
           "y": 32,
           "width": 30,
           "height": 30,
-          "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
+          "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "3vc44afi",
+          "_$type": "Image",
+          "name": "attack_2",
+          "x": 110,
+          "y": 33,
+          "width": 30,
+          "height": 30,
+          "skin": "res://179a50cf-365e-4659-a0b8-76ebfd3c19d7",
           "color": "#ffffff"
         }
       ]

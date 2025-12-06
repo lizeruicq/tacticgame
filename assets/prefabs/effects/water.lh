@@ -1,0 +1,27 @@
+{
+  "_$ver": 1,
+  "_$id": "0rn63ix1",
+  "_$type": "Sprite",
+  "name": "water",
+  "x": 564,
+  "y": 1176,
+  "width": 100,
+  "height": 100,
+  "_$child": [
+    {
+      "_$id": "r45o3z3b",
+      "_$type": "Animation",
+      "name": "Animation",
+      "x": -31,
+      "y": -30,
+      "width": 343,
+      "height": 313,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "source": "res://ed33d416-1e7c-4055-9571-806359b5e8b0",
+      "autoPlay": true,
+      "index": 0,
+      "interval": 50
+    }
+  ]
+}

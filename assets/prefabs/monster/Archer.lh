@@ -7,23 +7,26 @@
   "y": -1,
   "width": 720,
   "height": 480,
-  "anchorX": 0.5,
+  "anchorX": 0.72,
   "anchorY": 0.5,
   "scaleX": 0.5,
   "scaleY": 0.5,
   "_$comp": [
     {
-      "_$type": "a213c956-85cb-4dc4-9394-1b873328e173",
-      "scriptPath": "../src/monsters/human/ArcherMonster.ts",
-      "isPlayerCamp": 0,
-      "monsterLevel": 1,
-      "atkEffectPath": ""
-    },
-    {
       "_$type": "049a3e29-fe30-4c90-8c84-9add55f39be4",
       "scriptPath": "../src/monsters/human/ArcherAnimationManager.ts",
       "spriteAnimation": {
         "_$ref": "p8o8q1sq"
+      }
+    },
+    {
+      "_$type": "a213c956-85cb-4dc4-9394-1b873328e173",
+      "scriptPath": "../src/monsters/human/ArcherMonster.ts",
+      "isPlayerCamp": 0,
+      "monsterLevel": 1,
+      "atkEffectPrefab": {
+        "_$uuid": "e8dc9d72-1ad3-4184-8a99-e9524f901dca",
+        "_$type": "Prefab"
       }
     }
   ],

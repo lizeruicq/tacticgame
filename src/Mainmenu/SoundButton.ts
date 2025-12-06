@@ -100,7 +100,7 @@ export class SoundButton extends Laya.Script {
         console.log(`音效按钮状态: ${isEnabled ? '打开' : '关闭'} (音量: ${volume})`);
     }
     
-    onDestroy(): void {
+    onDisable(): void {
         if (this.button) {
             this.button.off(Laya.Event.CLICK, this, this.onSoundButtonClick);
             // 移除按钮点击动画效果

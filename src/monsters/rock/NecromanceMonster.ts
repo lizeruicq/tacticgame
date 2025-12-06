@@ -45,11 +45,11 @@ export class NecromanceMonster extends BaseMonster {
      */
     private calculateNecromanceStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // Necromance移动较慢
-            attackPower: 25,     // Necromance攻击力较高
-            attackSpeed: 1500,   // Necromance攻击速度较慢
-            attackRange: 80,     // Necromance攻击范围中等
-            maxHealth: 150       // Necromance血量较高
+            speed: 50,           // Necromance移动较慢
+            attackPower: 15,     // Necromance攻击力较高
+            attackSpeed: 2000,   // Necromance攻击速度较慢
+            attackRange: 400,     // Necromance攻击范围中等
+            maxHealth: 60       // Necromance血量较高
         };
         
         // 根据等级调整属性
@@ -87,7 +87,10 @@ export class NecromanceMonster extends BaseMonster {
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
 
-        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
+        // 对怪物目标施加冻结效果
+        if (target instanceof BaseMonster) {
+            target.freeze(2000);
+        }
 
         // Necromance攻击后有短暂的硬直时间
         this.addAttackCooldown();

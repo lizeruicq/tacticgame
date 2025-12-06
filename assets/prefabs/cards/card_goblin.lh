@@ -109,17 +109,7 @@
               "y": -2,
               "width": 30,
               "height": 30,
-              "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "e1h6cu6w",
-              "_$type": "Image",
-              "name": "health_2",
-              "x": 70,
-              "y": -2,
-              "width": 30,
-              "height": 30,
+              "alpha": 0.5,
               "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
               "color": "#ffffff"
             }
@@ -140,17 +130,6 @@
               "_$id": "kjiuk3df",
               "_$type": "Image",
               "name": "attack",
-              "y": -2,
-              "width": 30,
-              "height": 30,
-              "skin": "res://1b8df29b-179f-46aa-b65a-e566b8cf6c00",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "zi9ppr6e",
-              "_$type": "Image",
-              "name": "attack_1",
-              "x": 35,
               "y": -2,
               "width": 30,
               "height": 30,
@@ -179,6 +158,17 @@
               "height": 30,
               "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
               "color": "#ffffff"
+            },
+            {
+              "_$id": "91wiji9g",
+              "_$type": "Image",
+              "name": "speed_1",
+              "x": 35,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
+              "color": "#ffffff"
             }
           ]
         }
@@ -195,10 +185,21 @@
       "visible": false,
       "_$child": [
         {
-          "_$id": "e9hu3qak",
+          "_$id": "rba3smpl",
           "_$type": "Image",
-          "name": "health",
-          "x": 118,
+          "name": "health_1",
+          "x": 45,
+          "y": 6,
+          "width": 30,
+          "height": 30,
+          "skin": "res://44187541-a2e0-4a0b-b10e-92de3ab22ecc",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "e1h6cu6w",
+          "_$type": "Image",
+          "name": "health_2",
+          "x": 81,
           "y": 6,
           "width": 30,
           "height": 30,
@@ -209,7 +210,7 @@
           "_$id": "nu66i7jp",
           "_$type": "Image",
           "name": "attack_1",
-          "x": 80,
+          "x": 45,
           "y": 34,
           "width": 30,
           "height": 30,

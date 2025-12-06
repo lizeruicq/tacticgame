@@ -56,9 +56,9 @@ export class SwordMonster extends BaseMonster {
         const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
         
         return {
-            speed: Math.floor(baseStats.speed * levelMultiplier),
+            speed: baseStats.speed,
             attackPower: Math.floor(baseStats.attackPower * levelMultiplier),
-            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed / levelMultiplier)), // 攻击速度上限
+            attackSpeed: Math.max(800, Math.floor(baseStats.attackSpeed)), // 攻击速度上限
             attackRange: Math.floor(baseStats.attackRange * (1 + (this.monsterLevel - 1) * 0.1)), // 攻击范围小幅增长
             maxHealth: Math.floor(baseStats.maxHealth * levelMultiplier)
         };

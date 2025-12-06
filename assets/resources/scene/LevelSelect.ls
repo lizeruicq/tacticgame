@@ -191,7 +191,7 @@
               "repeatY": 2,
               "elasticEnabled": true,
               "spaceX": 28,
-              "spaceY": 84,
+              "spaceY": 8,
               "selectEnable": true,
               "_$child": [
                 {
@@ -236,6 +236,47 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "_$id": "ogj5s1b4",
+          "_$type": "Panel",
+          "name": "Panel",
+          "x": 14,
+          "y": 441,
+          "width": 888,
+          "height": 870,
+          "scrollType": 2,
+          "elasticEnabled": true,
+          "_$child": [
+            {
+              "_$id": "jhc94qfr",
+              "_$type": "Image",
+              "name": "Image",
+              "x": -3,
+              "y": -3,
+              "width": 976,
+              "height": 631,
+              "skin": "res://faa4422e-147b-4fb8-aad6-370b20b65107",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "5k5r1x8w",
+              "_$type": "Label",
+              "name": "monsterTypesLabel",
+              "x": 485,
+              "y": 851,
+              "width": 853,
+              "height": 401,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "text": "关卡信息说明xxxxxxxxxxxxxxxxx",
+              "font": "YuppySC-Regular",
+              "fontSize": 48,
+              "bold": true,
+              "wordWrap": true,
+              "strokeColor": "#63955a"
             }
           ]
         }
