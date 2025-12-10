@@ -100,7 +100,7 @@ export class HumanSwordFe extends BaseMonster {
         // console.log(`SwordFe攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
 
         // SwordFe攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
   
@@ -119,10 +119,10 @@ export class HumanSwordFe extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // SwordFe攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // SwordFe攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

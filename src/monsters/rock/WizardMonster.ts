@@ -1,7 +1,7 @@
 const { regClass, property } = Laya;
 import { BaseMonster, IMonsterStats } from "../BaseMonster";
 import { WizardAnimationManager } from "./WizardAnimationManager";
-
+import { Castle } from "../Castle";
 /**
  * Wizard怪物类
  * 继承自BaseMonster，实现Wizard特有的属性和行为
@@ -41,6 +41,8 @@ export class WizardMonster extends BaseMonster {
         this.wizardAnimationManager = this.owner.getComponent(WizardAnimationManager);
         return this.wizardAnimationManager;
     }
+
+    
     
     // ========== Wizard特有方法 ==========
     
@@ -79,6 +81,13 @@ export class WizardMonster extends BaseMonster {
         // Wizard死亡时的特殊效果
         this.createDeathEffect();
     }
+
+    protected onAttackPerformed(target: BaseMonster | Castle): void {
+        super.onAttackPerformed(target);
+        this.soundManager.playSound('necromance.wav')
+        const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
+
+    }    
 
     // ========== Wizard特有行为 ==========
 
@@ -119,18 +128,18 @@ export class WizardMonster extends BaseMonster {
         return this.monsterLevel;
     }
     
-    /**
-     * 检查是否可以攻击指定目标（考虑Wizard的远程特性）
-     */
-    public canAttackTarget(target: any): boolean {
-        if (!target || !target.owner) return false;
+    // /**
+    //  * 检查是否可以攻击指定目标（考虑Wizard的远程特性）
+    //  */
+    // public canAttackTarget(target: any): boolean {
+    //     if (!target || !target.owner) return false;
         
-        const targetSprite = target.owner as Laya.Sprite;
-        const distance = this.getDistanceToPosition(targetSprite.x, targetSprite.y);
+    //     const targetSprite = target.owner as Laya.Sprite;
+    //     const distance = this.getDistanceToPosition(targetSprite.x, targetSprite.y);
         
-        // Wizard可以攻击更远的目标
-        return distance <= this.monsterStats.attackRange;
-    }
+    //     // Wizard可以攻击更远的目标
+    //     return distance <= this.monsterStats.attackRange;
+    // }
     
     // ========== 调试方法 ==========
     

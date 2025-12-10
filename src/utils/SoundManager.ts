@@ -24,11 +24,11 @@ export class SoundManager extends Laya.Script {
     private static readonly VOLUME_OFF = 0;         // 音效关闭时的音量（0%）
 
     private currentVolume: number = SoundManager.VOLUME_ON;  // 当前音量
-    private currentBgMusic: string = "";            // 当前背景音乐
-    private bgMusicChannel: Laya.SoundChannel = null;  // 背景音乐通道
+    // private currentBgMusic: string = "";            // 当前背景音乐
+    // private bgMusicChannel: Laya.SoundChannel = null;  // 背景音乐通道
 
-    // 音效缓存
-    private soundCache: Map<string, Laya.SoundChannel> = new Map();
+    // // 音效缓存
+    // private soundCache: Map<string, Laya.SoundChannel> = new Map();
 
     // BackgroundMusic 节点
     @property(Laya.SoundNode)
@@ -164,7 +164,7 @@ export class SoundManager extends Laya.Script {
         // 保存设置
         this.saveSettings();
 
-        console.log(`音量已切换: ${this.currentVolume === SoundManager.VOLUME_ON ? '30%' : '0%'}`);
+        
     }
 
     /**
@@ -186,16 +186,16 @@ export class SoundManager extends Laya.Script {
         return this.currentVolume;
     }
 
-    /**
-     * 设置音量
-     * @param volume 音量值（0-1）
-     */
-    public setVolume(volume: number): void {
-        this.currentVolume = Math.max(0, Math.min(1, volume));
-        this.updateBackgroundMusicVolume(this.currentVolume);
-        this.saveSettings();
-        console.log(`音量已设置: ${this.currentVolume}`);
-    }
+    // /**
+    //  * 设置音量
+    //  * @param volume 音量值（0-1）
+    //  */
+    // public setVolume(volume: number): void {
+    //     this.currentVolume = Math.max(0, Math.min(1, volume));
+    //     this.updateBackgroundMusicVolume(this.currentVolume);
+    //     this.saveSettings();
+    //     console.log(`音量已设置: ${this.currentVolume}`);
+    // }
 
     /**
      * 检查音效是否打开（音量 > 0）
@@ -204,38 +204,82 @@ export class SoundManager extends Laya.Script {
         return this.currentVolume > 0;
     }
 
-   
-    /**
-     * 播放背景音乐节点
-     */
-    public playBackgroundMusic(): void {
-        if (this.bgMusicNode && this.bgMusicNode.play) {
-            this.bgMusicNode.play();
-            console.log("背景音乐已播放");
-        }
-    }
+
+    // /**
+    //  * 播放背景音乐节点
+    //  */
+    // public playBackgroundMusic(): void {
+    //     if (this.bgMusicNode && this.bgMusicNode.play) {
+    //         this.bgMusicNode.play();
+    //         console.log("背景音乐已播放");
+    //     }
+    // }
+
+    // /**
+    //  * 暂停背景音乐节点
+    //  */
+    // public pauseBackgroundMusic(): void {
+    //     if (this.bgMusicNode) {
+    //         const soundNode = this.bgMusicNode as any;
+    //         if (soundNode.pause) {
+    //             soundNode.pause();
+    //             console.log("背景音乐已暂停");
+    //         }
+    //     }
+    // }
+
+    // /**
+    //  * 停止背景音乐节点
+    //  */
+    // public stopBackgroundMusic(): void {
+    //     if (this.bgMusicNode && this.bgMusicNode.stop) {
+    //         this.bgMusicNode.stop();
+    //         console.log("背景音乐已停止");
+    //     }
+    // }
 
     /**
-     * 暂停背景音乐节点
+     * 切换关卡BGM
+     * @param bgmName BGM文件名（不包含扩展名）
      */
-    public pauseBackgroundMusic(): void {
-        if (this.bgMusicNode) {
-            const soundNode = this.bgMusicNode as any;
-            if (soundNode.pause) {
-                soundNode.pause();
-                console.log("背景音乐已暂停");
-            }
+    public playLevelBgm(bgmName: string): void {
+       
+        if (!bgmName) {
+            console.warn("BGM名称为空，无法切换");
+            return;
         }
-    }
 
-    /**
-     * 停止背景音乐节点
-     */
-    public stopBackgroundMusic(): void {
+        // 如果音量已关闭，直接返回，不加载和播放BGM
+        if (this.currentVolume <= 0) {
+            return;
+        }
+
+        const bgmPath = `${SoundManager.SOUND_PATH}/${bgmName}`;
+        
+        // 停止当前BGM
         if (this.bgMusicNode && this.bgMusicNode.stop) {
             this.bgMusicNode.stop();
-            console.log("背景音乐已停止");
         }
+
+        // 加载并播放新BGM
+        Laya.loader.load(bgmPath).then(() => {
+            const sound = Laya.loader.getRes(bgmPath);
+            
+            if (sound && this.bgMusicNode) {
+                this.bgMusicNode.source = bgmPath;
+                this.bgMusicNode.play();
+                
+            }
+        }).catch((error) => {
+            console.warn(`[SoundManager] 加载BGM失败: ${bgmPath}`, error);
+        });
+    }
+
+    /**
+     * 恢复默认BGM
+     */
+    public playDefaultBgm(): void {
+        this.playLevelBgm("town.mp3");
     }
     
     /**
@@ -271,105 +315,102 @@ export class SoundManager extends Laya.Script {
 
 
 
-    
+
     /**
      * 播放音效
-     * @param soundName 音效文件名（不包含扩展名）
+     * @param soundName 音效文件名
      */
-    public playSound(soundName: string): void {
-        const soundPath = `${SoundManager.SOUND_PATH}${soundName}.mp3`;
-
-        // 加载并播放音效
-        Laya.loader.load(soundPath, Laya.Handler.create(this, () => {
-            const sound = Laya.loader.getRes(soundPath);
-            if (sound) {
-                const channel = sound.play(0, 1);
-                // 应用当前音量
-                if (channel) {
-                    channel.volume = this.currentVolume;
-                }
-                console.log(`音效 ${soundName} 播放，音量: ${this.currentVolume}`);
-            } else {
-                console.error(`无法加载音效: ${soundPath}`);
+    public playSound(soundName: string, volume = 0.8): void {
+        // 如果音量已关闭，不播放音效
+        if (this.currentVolume <= 0) {
+            return;
+        }
+        const soundPath = `${SoundManager.SOUND_PATH}/${soundName}`;
+        Laya.loader.load(soundPath).then(() => {
+            const channel = Laya.SoundManager.playSound(soundPath);
+            if (channel) {
+                channel.volume = volume ;
             }
-        }));
+        }).catch((error) => {
+            console.warn(`加载音效失败: ${soundPath}`, error);
+        });
     }
-    
-    /**
-     * 播放按钮点击音效
-     */
-    public playButtonClickSound(): void {
-        this.playSound('button_click');
-    }
-    
-    /**
-     * 播放面板打开音效
-     */
-    public playPanelOpenSound(): void {
-        this.playSound('panel_open');
-    }
-    
-    /**
-     * 播放面板关闭音效
-     */
-    public playPanelCloseSound(): void {
-        this.playSound('panel_close');
-    }
-    
-    /**
-     * 播放怪物攻击音效
-     */
-    public playMonsterAttackSound(): void {
-        this.playSound('monster_attack');
-    }
-    
-    /**
-     * 播放怪物受伤音效
-     */
-    public playMonsterHurtSound(): void {
-        this.playSound('monster_hurt');
-    }
-    
-    /**
-     * 播放怪物死亡音效
-     */
-    public playMonsterDeathSound(): void {
-        this.playSound('monster_death');
-    }
-    
-    /**
-     * 播放卡牌使用音效
-     */
-    public playCardUseSound(): void {
-        this.playSound('card_use');
-    }
-    
-    /**
-     * 播放卡牌合成音效
-     */
-    public playCardMergeSound(): void {
-        this.playSound('card_merge');
-    }
-    
-    /**
-     * 设置背景音乐音量
-     * @param volume 音量（0-1）
-     */
-    public setBgMusicVolume(volume: number): void {
-        if (this.bgMusicChannel) {
-            this.bgMusicChannel.volume = Math.max(0, Math.min(1, volume));
-        }
-    }
-    
-    /**
-     * 获取背景音乐音量
-     */
-    public getBgMusicVolume(): number {
-        if (this.bgMusicChannel) {
-            return this.bgMusicChannel.volume;
-        }
-        return 1;
-    }
+
+    // /**
+    //  * 播放按钮点击音效
+    //  */
+    // public playButtonClickSound(): void {
+    //     this.playSound('button_click');
+    // }
+
+    // /**
+    //  * 播放面板打开音效
+    //  */
+    // public playPanelOpenSound(): void {
+    //     this.playSound('panel_open');
+    // }
+
+    // /**
+    //  * 播放面板关闭音效
+    //  */
+    // public playPanelCloseSound(): void {
+    //     this.playSound('panel_close');
+    // }
+
+    // /**
+    //  * 播放怪物攻击音效
+    //  */
+    // public playMonsterAttackSound(): void {
+    //     this.playSound('monster_attack');
+    // }
+
+    // /**
+    //  * 播放怪物受伤音效
+    //  */
+    // public playMonsterHurtSound(): void {
+    //     this.playSound('monster_hurt');
+    // }
+
+    // /**
+    //  * 播放怪物死亡音效
+    //  */
+    // public playMonsterDeathSound(): void {
+    //     this.playSound('monster_death');
+    // }
+
+    // /**
+    //  * 播放卡牌使用音效
+    //  */
+    // public playCardUseSound(): void {
+    //     this.playSound('card_use');
+    // }
+
+    // /**
+    //  * 播放卡牌合成音效
+    //  */
+    // public playCardMergeSound(): void {
+    //     this.playSound('card_merge');
+    // }
+
+    // /**
+    //  * 设置背景音乐音量
+    //  * @param volume 音量（0-1）
+    //  */
+    // public setBgMusicVolume(volume: number): void {
+    //     if (this.bgMusicChannel) {
+    //         this.bgMusicChannel.volume = Math.max(0, Math.min(1, volume));
+    //     }
+    // }
+
+    // /**
+    //  * 获取背景音乐音量
+    //  */
+    // public getBgMusicVolume(): number {
+    //     if (this.bgMusicChannel) {
+    //         return this.bgMusicChannel.volume;
+    //     }
+    //     return 1;
+    // }
     
 }
 

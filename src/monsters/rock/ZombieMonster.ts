@@ -88,6 +88,7 @@ export class ZombieMonster extends BaseMonster {
      */
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
+        this.soundManager.playSound("rock.wav");
 
         // 如果击杀了敌人，监听敌人的尸体移除事件
         if (target instanceof BaseMonster && target.getIsDead()) {
@@ -101,7 +102,7 @@ export class ZombieMonster extends BaseMonster {
         }
 
         // Zombie攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
 
     /**
@@ -166,10 +167,10 @@ export class ZombieMonster extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // Zombie攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // Zombie攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

@@ -1,3 +1,5 @@
+
+
 const { regClass } = Laya;
 
 @regClass()
@@ -135,6 +137,38 @@ export class PlayerManager extends Laya.Script {
      */
     public isGameEnded(): boolean {
         return this.gameEnded;
+    }
+
+    /**
+     * 计算关卡评分（星星数量）
+     * 计算方法：
+     * - 如果玩家失败：星星数量为0
+     * - 如果玩家胜利，我方城堡血量小于30%：星星数量为1
+     * - 如果玩家胜利，我方城堡血量为30%-70%之间：星星数量为2
+     * - 如果玩家胜利，我方城堡血量>70%：星星数量为3
+     *
+     * @param isPlayerWin 玩家是否胜利
+     * @param playerCastleHealthPercentage 玩家城堡血量百分比（0-1）
+     * @returns 获得的星星数量（0-3）
+     */
+    public calculateLevelStars(isPlayerWin: boolean, playerCastleHealthPercentage: number): number {
+        // 玩家失败，返回0星
+        if (!isPlayerWin) {
+            console.log("玩家失败，获得0星");
+            return 0;
+        }
+
+        // 玩家胜利，根据城堡血量百分比计算星星数量
+        if (playerCastleHealthPercentage > 0.7) {
+            console.log(`玩家胜利，城堡血量 ${(playerCastleHealthPercentage * 100).toFixed(1)}% > 70%，获得3星`);
+            return 3;
+        } else if (playerCastleHealthPercentage >= 0.3) {
+            console.log(`玩家胜利，城堡血量 ${(playerCastleHealthPercentage * 100).toFixed(1)}% 在 30%-70% 之间，获得2星`);
+            return 2;
+        } else {
+            console.log(`玩家胜利，城堡血量 ${(playerCastleHealthPercentage * 100).toFixed(1)}% < 30%，获得1星`);
+            return 1;
+        }
     }
 
     /**

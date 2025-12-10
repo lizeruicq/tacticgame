@@ -3,6 +3,7 @@ import { BaseMonster, IMonsterStats, MonsterState } from "../BaseMonster";
 import { RockAnimationManager } from "./RockAnimationManager";
 import { Castle } from "../Castle";
 
+
 /**
  * Rock怪物类
  * 继承自BaseMonster，实现Rock特有的属性和行为
@@ -17,7 +18,7 @@ export class RockMonster extends BaseMonster {
     
     // Rock的动画管理器引用
     private rockAnimationManager: RockAnimationManager | null = null;
-    
+
     // ========== 实现抽象方法 ==========
 
     /**
@@ -94,12 +95,12 @@ export class RockMonster extends BaseMonster {
      */
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
-
+        this.soundManager.playSound("rock.wav");
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
         // console.log(`Rock攻击完成，对 ${targetName} 造成 ${this.monsterStats.attackPower} 点伤害`);
 
         // Rock攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
    
@@ -120,10 +121,10 @@ export class RockMonster extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // Rock攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // Rock攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

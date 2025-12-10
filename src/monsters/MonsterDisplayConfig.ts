@@ -52,8 +52,8 @@ export class MonsterDisplayConfig {
             displayName: "哥布林"
         },
         "Necromance": {
-            originalWidth: 900,   // 与Rock相同的尺寸
-            originalHeight: 900,
+            originalWidth: 1000,   // 与Rock相同的尺寸
+            originalHeight: 1000,
             displayName: "亡灵法师"
         },
         "Skeleton": {

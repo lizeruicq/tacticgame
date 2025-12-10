@@ -1,7 +1,7 @@
 const { regClass, property } = Laya;
 import { MonsterManager } from "../Manager/MonsterManager";
 import { Castle } from "./Castle";
-
+import { SoundManager } from "../utils/SoundManager";
 /**
  * 怪物基础属性接口
  */
@@ -49,6 +49,7 @@ export abstract class BaseMonster extends Laya.Script {
     @property(Laya.Prefab)
     public atkEffectPrefab: Laya.Prefab = null;  // 攻击特效预制体
 
+    protected soundManager: SoundManager = SoundManager.getInstance();
     // 怪物基础属性（由子类设置）
     protected monsterStats: IMonsterStats = {
         speed: 100,

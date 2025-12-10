@@ -90,7 +90,7 @@ export class SwordMonster extends BaseMonster {
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
 
         // Sword攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
     /**
@@ -103,11 +103,11 @@ export class SwordMonster extends BaseMonster {
     
     /**
      * 添加攻击冷却
-     */
-    private addAttackCooldown(): void {
-        // Sword攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    //  */
+    // private addAttackCooldown(): void {
+    //     // Sword攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

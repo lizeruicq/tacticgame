@@ -1,4 +1,4 @@
-const { regClass, property } = Laya;
+const { regClass } = Laya;
 import { BaseMonster, MonsterState, IMonsterStats } from "../BaseMonster";
 import { MonsterManager } from "../../Manager/MonsterManager";
 import { PastorAnimationManager } from "./PastorAnimationManager";
@@ -45,7 +45,7 @@ export class PastorMonster extends BaseMonster {
             attackPower: 0,          // 无攻击力
             attackSpeed: 0,          // 无攻击速度
             attackRange: 0,          // 无攻击范围
-            maxHealth: 100           // 基础血量
+            maxHealth: 30           // 基础血量
         };
 
         // 根据等级调整属性
@@ -61,9 +61,9 @@ export class PastorMonster extends BaseMonster {
 
     // 重写父类的updateIdleBehavior方法
     protected updateIdleBehavior(): void {
-        // 检查是否需要移动到友方怪物附近
-        this.checkAndMoveToAllies();
-        
+        // 检查是否需要移动到需要治愈的目标怪物附近
+        this.checkAndMoveToHealTarget();
+
         // 检查是否可以进行治疗
         const currentTime = Date.now();
         if (this.canCast() && currentTime - this.lastHealTime >= this.healInterval) {
@@ -88,53 +88,61 @@ export class PastorMonster extends BaseMonster {
         }
     }
 
-    private checkAndMoveToAllies(): void {
-        const nearestAlly = this.findNearestAlly();
-        
-        if (!nearestAlly) {
-            return; // 没有友方怪物，保持idle
+    /**
+     * 检查并移动到需要治愈的目标怪物
+     */
+    private checkAndMoveToHealTarget(): void {
+        const healTarget = this.findNearestHealTarget();
+
+        if (!healTarget) {
+            return; // 没有需要治疗的怪物，保持idle
         }
 
-        const distance = this.calculateDistanceToAlly(nearestAlly);
+        const distance = this.calculateDistanceToAlly(healTarget);
 
         if (distance > this.minDistanceToAlly) {
-            // 距离太远，需要移动
-            this.currentTarget = nearestAlly;
+            // 距离太远，需要移动到治疗范围内
+            this.currentTarget = healTarget;
             this.changeState(MonsterState.MOVING);
         }
     }
 
-    private findNearestAlly(): BaseMonster | null {
+    /**
+     * 找到最近的需要治愈的目标怪物
+     * 优先选择血量最少的怪物
+     */
+    private findNearestHealTarget(): BaseMonster | null {
         const monsterManager = MonsterManager.getInstance();
         if (!monsterManager) return null;
 
-        const allies = this.isPlayerCamp ? 
-            monsterManager.getPlayerMonsters() : 
+        const allies = this.isPlayerCamp ?
+            monsterManager.getPlayerMonsters() :
             monsterManager.getEnemyMonsters();
 
-        let nearestAlly: BaseMonster | null = null;
-        let minDistance = Infinity;
+        let healTarget: BaseMonster | null = null;
+        let lowestHealthPercent = 1; // 100%血量
 
         for (const ally of allies) {
             if (ally === this || ally.getIsDead()) continue;
-            
-            const distance = this.calculateDistanceToAlly(ally);
-            if (distance < minDistance) {
-                minDistance = distance;
-                nearestAlly = ally;
+
+            // 只考虑需要治疗的怪物（血量不满）
+            const healthPercent = ally.getCurrentHealth() / ally.getMaxHealth();
+            if (healthPercent < 1 && healthPercent < lowestHealthPercent) {
+                lowestHealthPercent = healthPercent;
+                healTarget = ally;
             }
         }
 
-        return nearestAlly;
+        return healTarget;
     }
 
     private canCast(): boolean {
-        // 检查是否有友方怪物在附近
-        const nearestAlly = this.findNearestAlly();
-        if (!nearestAlly) return false;
+        // 检查是否有需要治疗的怪物在附近
+        const healTarget = this.findNearestHealTarget();
+        if (!healTarget) return false;
 
-        const distance = this.calculateDistanceToAlly(nearestAlly);
-        return distance < this.minDistanceToAlly;
+        const distance = this.calculateDistanceToAlly(healTarget);
+        return distance <= this.minDistanceToAlly;
     }
 
     private performHealing(): void {
@@ -150,6 +158,7 @@ export class PastorMonster extends BaseMonster {
         for (const target of healTargets) {
             this.healTarget(target);
         }
+        this.soundManager.playSound("pastor.wav");
 
         // 施法动画完成后回到idle状态
         Laya.timer.once(1000, this, () => {
@@ -184,12 +193,12 @@ export class PastorMonster extends BaseMonster {
         });
 
         // 最多治疗指定数量的目标
-        this.maxHealTargets = this.maxHealTargets * this.monsterLevel;
+        this.maxHealTargets = this.maxHealTargets + (this.monsterLevel-1);
         return targets.slice(0, this.maxHealTargets);
     }
 
     private healTarget(target: BaseMonster): void {
-        const healAmount = Math.min(this.healAmount, target.getMaxHealth() - target.getCurrentHealth());
+        const healAmount = Math.min(this.healAmount + ((this.monsterLevel -1) * 10), target.getMaxHealth() - target.getCurrentHealth());
         target.heal(healAmount);
 
         console.log(`Pastor治疗了 ${target.constructor.name}，恢复 ${healAmount} 血量`);

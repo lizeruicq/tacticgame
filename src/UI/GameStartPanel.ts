@@ -136,9 +136,11 @@ export class GameStartPanel extends Laya.Script {
                  const gameMainManager = GameMainManager.getInstance();
                 if (gameMainManager) {
                     gameMainManager.resumeGame();
+                    gameMainManager.restoreDefaultBgm();
                 } else {
                 console.error("无法获取GameMainManager实例");
             }
+
                 const sceneManager = SceneManager.getInstance();
                 if (sceneManager) {
                     sceneManager.switchToLevelSelect();

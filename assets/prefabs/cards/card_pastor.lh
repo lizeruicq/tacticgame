@@ -157,6 +157,29 @@
               "height": 30,
               "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
               "color": "#ffffff"
+            },
+            {
+              "_$id": "kxycgtbh",
+              "_$type": "Image",
+              "name": "speed_1",
+              "x": 35,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "rwwaqsg9",
+              "_$type": "Image",
+              "name": "speed_2",
+              "x": 70,
+              "y": -2,
+              "width": 30,
+              "height": 30,
+              "alpha": 0.5,
+              "skin": "res://bf3e902f-c21a-4eb4-b2ed-3f5650d09dae",
+              "color": "#ffffff"
             }
           ]
         }
@@ -193,8 +216,30 @@
           "height": 31,
           "skin": "res://fe49e003-fbe3-4346-bf62-2789cb8310b1",
           "color": "#ffffff"
+        },
+        {
+          "_$id": "rjqz3vmh",
+          "_$type": "Image",
+          "name": "recover_1",
+          "x": 121,
+          "y": 33,
+          "width": 31,
+          "height": 31,
+          "skin": "res://fe49e003-fbe3-4346-bf62-2789cb8310b1",
+          "color": "#ffffff"
         }
       ]
+    },
+    {
+      "_$id": "7e1xxmcz",
+      "_$type": "Image",
+      "name": "cure",
+      "x": 30,
+      "y": 149,
+      "width": 37,
+      "height": 37,
+      "skin": "res://10922e3b-0a37-488a-b9f5-6257e478ffc6",
+      "color": "#ffffff"
     }
   ]
 }

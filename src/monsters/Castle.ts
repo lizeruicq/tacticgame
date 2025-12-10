@@ -170,14 +170,14 @@ export class Castle extends Laya.Script {
      */
     protected startRegeneration(): void {
         this.lastRegenerationTime = Laya.timer.currTimer;
-        console.log(`城堡开始血量回复`);
+
     }
     
     /**
      * 停止血量回复
      */
     protected stopRegeneration(): void {
-        console.log(`城堡停止血量回复`);
+      
     }
     
     /**
@@ -422,44 +422,44 @@ export class Castle extends Laya.Script {
         return { ...this.castleStats }; // 返回副本，防止外部修改
     }
     
-    /**
-     * 设置城堡等级
-     */
-    public setCastleLevel(level: number): void {
-        if (level < 1) level = 1;
-        if (level > 10) level = 10; // 最大等级限制
+    // /**
+    //  * 设置城堡等级
+    //  */
+    // public setCastleLevel(level: number): void {
+    //     if (level < 1) level = 1;
+    //     if (level > 10) level = 10; // 最大等级限制
         
-        this.castleLevel = level;
+    //     this.castleLevel = level;
         
-        // 重新计算属性
-        const oldMaxHealth = this.castleStats.maxHealth;
-        this.castleStats = this.calculateCastleStats();
+    //     // 重新计算属性
+    //     const oldMaxHealth = this.castleStats.maxHealth;
+    //     this.castleStats = this.calculateCastleStats();
         
-        // 按比例调整当前血量
-        const healthRatio = this.currentHealth / oldMaxHealth;
-        this.currentHealth = Math.floor(this.castleStats.maxHealth * healthRatio);
+    //     // 按比例调整当前血量
+    //     const healthRatio = this.currentHealth / oldMaxHealth;
+    //     this.currentHealth = Math.floor(this.castleStats.maxHealth * healthRatio);
         
-        console.log(`城堡等级设置为 ${level}，属性已更新`);
-    }
+    //     console.log(`城堡等级设置为 ${level}，属性已更新`);
+    // }
     
-    /**
-     * 获取城堡等级
-     */
-    public getCastleLevel(): number {
-        return this.castleLevel;
-    }
+    // /**
+    //  * 获取城堡等级
+    //  */
+    // public getCastleLevel(): number {
+    //     return this.castleLevel;
+    // }
     
     /**
      * 获取城堡的详细信息
      */
-    public getCastleInfo(): any {
-        return {
-            name: "Castle",
-            level: this.castleLevel,
-            camp: this.isPlayerCamp ? "Player" : "Enemy",
-            health: `${this.currentHealth}/${this.castleStats.maxHealth}`,
-            state: this.currentState,
-            stats: this.getStats()
-        };
-    }
+    // public getCastleInfo(): any {
+    //     return {
+    //         name: "Castle",
+    //         level: this.castleLevel,
+    //         camp: this.isPlayerCamp ? "Player" : "Enemy",
+    //         health: `${this.currentHealth}/${this.castleStats.maxHealth}`,
+    //         state: this.currentState,
+    //         stats: this.getStats()
+    //     };
+    // }
 }

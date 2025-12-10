@@ -10,5 +10,9 @@
       "x86-64": false
     },
     "exportFormat": "APK"
+  },
+  "ios": {
+    "encryptDCC": true,
+    "teamID": "lizerui"
   }
 }

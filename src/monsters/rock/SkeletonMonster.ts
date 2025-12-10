@@ -46,7 +46,7 @@ export class SkeletonMonster extends BaseMonster {
     private calculateSkeletonStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 120,           // Skeleton移动较慢
-            attackPower: 25,     // Skeleton攻击力较高
+            attackPower: 30,     // Skeleton攻击力较高
             attackSpeed: 1000,   // Skeleton攻击速度较慢
             attackRange: 70,     // Skeleton攻击范围中等
             maxHealth: 120       // Skeleton血量较高
@@ -86,11 +86,11 @@ export class SkeletonMonster extends BaseMonster {
      */
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
-
+        this.soundManager.playSound('skeleton.wav')
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
 
         // Skeleton攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
     /**
@@ -104,10 +104,10 @@ export class SkeletonMonster extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // Skeleton攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // Skeleton攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

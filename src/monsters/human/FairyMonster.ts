@@ -93,7 +93,7 @@ export class FairyMonster extends BaseMonster {
         }
 
         // Fairy攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
     /**
@@ -109,7 +109,7 @@ export class FairyMonster extends BaseMonster {
      */
     private addAttackCooldown(): void {
         // Fairy攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
+        // this.lastAttackTime += 200; // 额外200ms冷却
     }
     
     /**

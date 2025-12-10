@@ -23,6 +23,8 @@ export interface ILevelCardConfig {
     monsterTypes?: string[]; // 本关卡出现的怪物类型说明
     storyBackgroundImagePath?: string; // 关卡故事背景图片路径（StartPanel中显示）
     sceneBackgroundImagePath?: string; // 游戏场景背景图片路径（GameMainManager中显示）
+    bgmName?: string;       // 关卡BGM文件名（不包含扩展名）
+    enemyDecisionInterval?: number; // 敌人AI决策间隔时间（毫秒）
 }
 
 /**
@@ -129,7 +131,7 @@ export class CardConfig {
             type: "Knight",
             prefabPath: "prefabs/cards/card_knight.lh",
             componentClass: "KnightCard",
-            manaCost: 10,
+            manaCost: 4,
             level: 1
         },
 
@@ -181,6 +183,8 @@ export class CardConfig {
             monsterTypes: [" 宁静的石头人部落发现入侵者！\n 人类一股使用短剑的战士小队发起了进攻,指挥石头人与巫师阻止他们！\n 可使用单位：石头人与巫师 \n 石头人：近战单位，攻击力和移动速度中等，血量中等 \n 巫师：远程攻击单位，攻击力较低，血量较低，移动速度较低 "],
             storyBackgroundImagePath: "resources/images/storys/level-1.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            bgmName: "forest.mp3",
+            enemyDecisionInterval: 2700,
             enemyWeights: {
                 // "SwordFe": 0.5,
                 // "Sword": 0.5,
@@ -196,28 +200,32 @@ export class CardConfig {
             monsterTypes: ["可远程攻击弓箭手加入支援人类，他们的弱点是防御力低下。\n 牧师已经赶到，召唤牧师对受伤的石头人施放治疗效果。\n 新可使用单位：牧师\n 牧师：远程治疗单位，无法攻击，但可随机治疗右方场上2名受伤单位。 "],
             storyBackgroundImagePath: "resources/images/storys/level-2.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            bgmName: "forest.mp3",
+            enemyDecisionInterval: 2500,
             enemyWeights: {
-               
+
             }
         },
         {
             level: 3,
-            playerCards: [ "Rock","Wizard","Pastor","Goblin"],
+            playerCards: [ "Rock","Wizard","Pastor","Necromance"],
             enemyCards: ["Sword", "Archer","Fairy"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第三关",
-            monsterTypes: ["人类阵营加入远程攻击单位：仙女。仙女攻击力较低，血量较低，攻击速度中等。但被仙女攻击后，移动和攻击速度会短暂变慢。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，移动速度中等，攻击力较低，血量中等。"],
+            monsterTypes: ["人类阵营加入远程攻击单位：仙女。仙女攻击力较低，血量较低，攻击速度中等。但被仙女攻击后，移动和攻击速度会短暂停滞。\n 我方亡灵加入战线 \n 新可使用单位：亡灵 \n 亡灵：远程控制型单位，攻击力较低、血量偏少，攻击后能让敌人陷入停滞状态，可有效打断敌方攻势。"],
             storyBackgroundImagePath: "resources/images/storys/level-3.jpg",
-            sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
+            sceneBackgroundImagePath: "resources/images/LEVEL/level-snow.jpeg",
+            bgmName: "calm.mp3",
+            enemyDecisionInterval: 2250,
             enemyWeights: {
-               
+
             }
 
         },
         {
             level: 4,
-            playerCards: [ "Skeleton","Wizard","Pastor","Goblin"],
+            playerCards: [ "Skeleton","Wizard","Pastor","Necromance"],
             enemyCards: ["Sword", "Archer","Fairy","Pirate"],
             maxCards: 4,
             cooldownTime: 2000,
@@ -225,23 +233,27 @@ export class CardConfig {
             monsterTypes: ["人类阵营新单位海盗已登陆。海盗移动速度慢，血量高、攻击力高，攻击速度慢。\n 我方骷髅加入战斗\n 新可使用单位：骷髅 \n 骷髅：近战单位，移动速度较快，可以快速输出攻击，但血量较低。"],
             storyBackgroundImagePath: "resources/images/storys/level-4.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
+            bgmName: "shop.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-                
+
             }
 
         },
         {
             level: 5,
-            playerCards: [ "Skeleton","Necromance","Pastor","Goblin"],
+            playerCards: [ "Skeleton","Necromance","Pastor","Zombie"],
             enemyCards: ["Sword", "Sailor","Fairy","Pirate"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第五关",
-            monsterTypes: ["人类阵营新增远程支援单位：水手。水手是远程单位，攻击力较低，血量较低，但攻击范围极广、移动速度快。\n 我方亡灵加入战线 \n 新可使用单位：亡灵 \n 亡灵：远程控制型单位，攻击力较低、血量偏少，攻击后能让敌人陷入停滞状态 2 秒，可有效打断敌方攻势。"],
+            monsterTypes: ["人类阵营新增远程支援单位：水手。水手是远程单位，攻击力较低，血量较低，但攻击范围极广、移动速度快。 \n 我方僵尸加入战斗 \n 新可使用单位：僵尸 \n 僵尸：移动速度较慢的近战单位，攻击力中等、血量较高，击杀敌人后，敌人会转生为一只低血量僵尸，加入石头人阵营作战。"],
             storyBackgroundImagePath: "resources/images/storys/level-5.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
+            bgmName: "shop.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-               
+
             }
 
         },
@@ -254,11 +266,13 @@ export class CardConfig {
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第六关",
-            monsterTypes: ["人类阵营派出近战精锐：女武士。\n 女武士是近战单位，攻击力强劲、移动速度快，血量中等，能快速突进我方战线。\n 我方僵尸加入战斗 \n 新可使用单位：僵尸 \n 僵尸：移动速度较慢的近战单位，攻击力中等、血量较高，击杀敌人后，敌人会转生为一只低血量僵尸，加入石头人阵营作战。"],
+            monsterTypes: ["人类阵营派出近战精锐：女武士。\n 女武士是近战单位，攻击力强劲、移动速度快，血量中等，能快速突进我方战线。\n 我方哥布林加入战斗过\n 新可使用单位：哥布林 \n 哥布林：近战单位，移动迅速，攻击力较低，血量中等。"],
             storyBackgroundImagePath: "resources/images/storys/level-6.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
+            bgmName: "kingdom.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-                
+
             }
 
         },
@@ -272,8 +286,10 @@ export class CardConfig {
             monsterTypes: ["人类阵营的重装单位：骑士参战。\n 骑士是近战重装单位，攻击力高、血量厚实，综合战力强劲但移动速度偏慢。\n 我方巨魔加入作战\n 新可使用单位：巨魔\n 巨魔：近战重型单位，攻击力高、血量充足，能在前排承担伤害并输出高额攻击，是坚实的战线支柱。"],
             storyBackgroundImagePath: "resources/images/storys/level-7.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
+            bgmName: "kingdom.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-               
+
             }
 
         },
@@ -287,8 +303,10 @@ export class CardConfig {
             monsterTypes: ["人类阵营派出女武士、弓箭手、仙女与骑士的混合编队，战术灵活性极强。\n 我方可依托石头人的坦度、骷髅的高机动性、牧师的群体治疗，配合巨魔的高额输出，形成攻防兼备的稳定战线。"],
             storyBackgroundImagePath: "resources/images/storys/level-8.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
+            bgmName: "kingdom.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-               
+
             }
 
         },
@@ -302,25 +320,29 @@ export class CardConfig {
             monsterTypes: ["人类阵营集结海盗、水手与战士的协同小队：海盗高攻高血负责突进，水手远程支援，战士则作为基础近战补充。\n 我方可利用亡灵的控制技能限制敌方走位、巫师的远程输出消耗，搭配僵尸的增殖能力与哥布林的机动，打乱敌方的远近协同节奏。"],
             storyBackgroundImagePath: "resources/images/storys/level-9.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-snow.jpeg",
+            bgmName: "calm.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-                
+
             }
 
         },
         {
             level: 10,
-            // playerCards: [ "Skeleton","Zombie","Wizard","Necromance", "Troll","Rock","Pastor","Goblin"],
-            playerCards: [ "Zombie"],
-            // enemyCards: ["SwordFe", "Archer","Fairy","Knight","Pirate","Sailor","Sword"],
-            enemyCards: ["Knight"],
+            playerCards: [ "Skeleton","Zombie","Wizard","Necromance", "Troll","Rock","Pastor","Goblin"],
+            // playerCards: [ "Zombie"],
+            enemyCards: ["SwordFe", "Archer","Fairy","Knight","Pirate","Sailor","Sword"],
+            // enemyCards: ["Knight"],
             maxCards: 4,
             cooldownTime: 2000,
             guide: "第十关",
             monsterTypes: ["最终决战开启！人类阵营集结了所有精锐单位，涵盖近战高攻、远程输出、控制辅助等全类型，攻势密集且战术组合多样。\n 我方已解锁全部作战单位，用石头人、哥布林、巨魔担任前排坦度，骷髅、僵尸负责突进与战线增殖，巫师、亡灵提供远程输出与控制，牧师保障队伍续航，构建全面的攻防体系。"],
             storyBackgroundImagePath: "resources/images/storys/level-10.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-road.jpeg",
+            bgmName: "victory.mp3",
+            enemyDecisionInterval: 2000,
             enemyWeights: {
-               
+
             }
 
         }

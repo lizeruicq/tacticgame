@@ -68,7 +68,7 @@ export class UIManager extends Laya.Script {
     private readonly COLOR_RED: string = "#ff0000";     // 红色 (0%-30%)
 
     // 提示标签配置
-    private hintDisplayTime: number = 2000;  // 显示时间（毫秒）
+    private hintDisplayTime: number = 3000;  // 显示时间（毫秒）
     private hintFadeDuration: number = 300;  // 渐显/渐隐时间（毫秒）
 
     // Merge 按钮动画配置
@@ -327,7 +327,7 @@ export class UIManager extends Laya.Script {
 
         const currentMana = this.playerManager.getPlayerMana();
         const maxMana = this.playerManager.getPlayerMaxMana();
-        this.manaText.text = `魔法值：${currentMana}/${maxMana}`;
+        this.manaText.text = `${currentMana}/${maxMana}`;
     }
 
     /**
@@ -495,21 +495,21 @@ export class UIManager extends Laya.Script {
         this.mergeButton.scaleY = this.mergeButtonScaleMin;
     }
 
-    /**
-     * 获取玩家城堡血量百分比
-     */
-    public getPlayerHealthPercentage(): number {
-        if (!this.playerCastle) return 0;
-        return this.playerCastle.getHealthPercentage();
-    }
+    // /**
+    //  * 获取玩家城堡血量百分比
+    //  */
+    // public getPlayerHealthPercentage(): number {
+    //     if (!this.playerCastle) return 0;
+    //     return this.playerCastle.getHealthPercentage();
+    // }
 
-    /**
-     * 获取敌方城堡血量百分比
-     */
-    public getEnemyHealthPercentage(): number {
-        if (!this.enemyCastle) return 0;
-        return this.enemyCastle.getHealthPercentage();
-    }
+    // /**
+    //  * 获取敌方城堡血量百分比
+    //  */
+    // public getEnemyHealthPercentage(): number {
+    //     if (!this.enemyCastle) return 0;
+    //     return this.enemyCastle.getHealthPercentage();
+    // }
 
     /**
      * 显示游戏开始面板
@@ -545,13 +545,26 @@ export class UIManager extends Laya.Script {
     }
 
     /**
-     * 隐藏游戏结束面板
+     * 显示关卡星星
+     * 调用GameEndPanel的showStars方法
+     * @param stars 星星数量 (0-3)
      */
-    public hideGameEndPanel(): void {
+    public showLevelStars(stars: number): void {
         if (this.gameEndPanel) {
-            this.gameEndPanel.hide();
+            this.gameEndPanel.showStars(stars);
+        } else {
+            console.warn("GameEndPanel 组件未初始化，无法显示星星");
         }
     }
+
+    // /**
+    //  * 隐藏游戏结束面板
+    //  */
+    // public hideGameEndPanel(): void {
+    //     if (this.gameEndPanel) {
+    //         this.gameEndPanel.hide();
+    //     }
+    // }
 
     /**
      * 显示提示文本（渐显再渐隐）

@@ -119,16 +119,31 @@
           "_$id": "svc6tumn",
           "_$type": "Label",
           "name": "manaText",
-          "x": 69,
-          "y": 1753,
-          "width": 329,
+          "x": 541,
+          "y": 1770,
+          "width": 174,
           "height": 86,
           "zIndex": 3,
-          "text": "魔法值:200",
+          "text": "200",
           "fontSize": 60,
           "color": "#e2ed06",
           "bold": true,
-          "stroke": 12
+          "stroke": 12,
+          "_$child": [
+            {
+              "_$id": "buuk1qvg",
+              "_$type": "Image",
+              "name": "crystal",
+              "x": -67,
+              "y": 30,
+              "width": 102,
+              "height": 96,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "skin": "res://644c2788-4e58-46a8-a04d-5e23ee8f56ab",
+              "color": "#ffffff"
+            }
+          ]
         },
         {
           "_$id": "slvpqtf4",
@@ -309,6 +324,23 @@
               "strokeColor": "#fff12c"
             },
             {
+              "_$id": "b8dbnasg",
+              "_$type": "Label",
+              "name": "monsterTypesLabel_1",
+              "x": 488,
+              "y": 274,
+              "width": 677,
+              "height": 97,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "text": "本轮我方可使用单位",
+              "font": "YuppySC-Regular",
+              "fontSize": 71,
+              "bold": true,
+              "wordWrap": true,
+              "strokeColor": "#63955a"
+            },
+            {
               "_$id": "pdass82l",
               "_$type": "Panel",
               "name": "Panel",
@@ -317,7 +349,7 @@
               "width": 970,
               "height": 1261,
               "zIndex": 10,
-              "scrollType": 2,
+              "scrollType": 1,
               "elasticEnabled": true,
               "_$child": [
                 {
@@ -379,6 +411,18 @@
               },
               "restartButton": {
                 "_$ref": "s4d4msvy"
+              },
+              "fail": {
+                "_$ref": "qecgsbve"
+              },
+              "star1": {
+                "_$ref": "qdxv8q71"
+              },
+              "star2": {
+                "_$ref": "x9vuugqc"
+              },
+              "star3": {
+                "_$ref": "s6eeknzy"
               }
             }
           ],
@@ -435,9 +479,9 @@
               "_$type": "Label",
               "name": "TextLabel",
               "x": 505,
-              "y": 507,
+              "y": 647,
               "width": 669,
-              "height": 401,
+              "height": 275,
               "anchorX": 0.5,
               "anchorY": 0.5,
               "text": "关卡结束说明",
@@ -459,6 +503,72 @@
               "centerX": 0,
               "skin": "res://e6fe7b3a-2e83-4fd2-becf-8759dd40669f",
               "color": "#ffffff"
+            },
+            {
+              "_$id": "qecgsbve",
+              "_$type": "Sprite",
+              "name": "Fail",
+              "x": 246,
+              "y": 270,
+              "width": 462,
+              "height": 258,
+              "visible": false,
+              "texture": {
+                "_$uuid": "a9877c44-70ae-4e48-946a-a20134e1a82b",
+                "_$type": "Texture"
+              }
+            },
+            {
+              "_$id": "2u64jvym",
+              "_$type": "HBox",
+              "name": "HBox",
+              "x": 245,
+              "y": 287,
+              "width": 495,
+              "height": 200,
+              "centerX": 0,
+              "space": -58,
+              "align": "middle",
+              "_$child": [
+                {
+                  "_$id": "qdxv8q71",
+                  "_$type": "Sprite",
+                  "name": "Star",
+                  "width": 200,
+                  "height": 200,
+                  "visible": false,
+                  "texture": {
+                    "_$uuid": "eb82218d-19fe-4127-8b75-2f6a9dfcb521",
+                    "_$type": "Texture"
+                  }
+                },
+                {
+                  "_$id": "x9vuugqc",
+                  "_$type": "Sprite",
+                  "name": "Star_1",
+                  "x": 142,
+                  "width": 200,
+                  "height": 200,
+                  "visible": false,
+                  "texture": {
+                    "_$uuid": "eb82218d-19fe-4127-8b75-2f6a9dfcb521",
+                    "_$type": "Texture"
+                  }
+                },
+                {
+                  "_$id": "s6eeknzy",
+                  "_$type": "Sprite",
+                  "name": "Star_2",
+                  "x": 284,
+                  "width": 200,
+                  "height": 200,
+                  "visible": false,
+                  "texture": {
+                    "_$uuid": "eb82218d-19fe-4127-8b75-2f6a9dfcb521",
+                    "_$type": "Texture"
+                  }
+                }
+              ]
             }
           ]
         },

@@ -86,14 +86,14 @@ export class NecromanceMonster extends BaseMonster {
      */
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
-
+        this.soundManager.playSound("necromance.wav");
         // 对怪物目标施加冻结效果
         if (target instanceof BaseMonster) {
             target.freeze(2000);
         }
 
         // Necromance攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
     /**
@@ -107,10 +107,10 @@ export class NecromanceMonster extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // Necromance攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // Necromance攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

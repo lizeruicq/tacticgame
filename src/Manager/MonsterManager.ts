@@ -391,20 +391,20 @@ export class MonsterManager extends Laya.Script {
         return [...this.enemyCastles]; // 返回副本
     }
     
-    /**
-     * 获取管理器状态信息
-     */
-    public getManagerInfo(): any {
-        return {
-            totalMonsters: this.monsters.length,
-            totalCastles: this.castles.length,
-            playerMonsters: this.playerMonsters.length,
-            enemyMonsters: this.enemyMonsters.length,
-            playerCastles: this.playerCastles.length,
-            enemyCastles: this.enemyCastles.length,
-            maxSearchDistance: this.maxSearchDistance
-        };
-    }
+    // /**
+    //  * 获取管理器状态信息
+    //  */
+    // public getManagerInfo(): any {
+    //     return {
+    //         totalMonsters: this.monsters.length,
+    //         totalCastles: this.castles.length,
+    //         playerMonsters: this.playerMonsters.length,
+    //         enemyMonsters: this.enemyMonsters.length,
+    //         playerCastles: this.playerCastles.length,
+    //         enemyCastles: this.enemyCastles.length,
+    //         maxSearchDistance: this.maxSearchDistance
+    //     };
+    // }
 
     /**
      * 更新怪物层级（根据Y坐标）
@@ -626,7 +626,6 @@ export class MonsterManager extends Laya.Script {
             return;
         }
 
-        console.log(`敌人技能对 ${this.playerMonsters.length} 个玩家怪物造成 ${damage} 点伤害`);
 
         // 对每个玩家怪物造成伤害
         for (const monster of this.playerMonsters) {

@@ -229,6 +229,17 @@
           "color": "#ffffff"
         }
       ]
+    },
+    {
+      "_$id": "29oquysx",
+      "_$type": "Image",
+      "name": "infect",
+      "x": 33,
+      "y": 153,
+      "width": 31,
+      "height": 31,
+      "skin": "res://4743c033-1835-49e0-b04d-bbb302da24ef",
+      "color": "#ffffff"
     }
   ]
 }

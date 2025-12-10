@@ -18,7 +18,7 @@ export class EnemyAIManager extends Laya.Script {
     private readonly maxEnemyPower: number = 500; // 能量最大值
 
     // AI决策参数
-    private decisionInterval: number = 2000; // 每3秒做一次决策
+    private enemyDecisionInterval: number = 2000; // 敌人AI决策间隔时间（毫秒）
     private currentLevel: number = 1;
 
     // AI决策队列
@@ -61,7 +61,7 @@ export class EnemyAIManager extends Laya.Script {
 
     private startAIDecisionMaking(): void {
         // this,this.makeDecision();
-        Laya.timer.loop(this.decisionInterval, this, this.makeDecision);
+        Laya.timer.loop(this.enemyDecisionInterval, this, this.makeDecision);
     }
 
     private makeDecision(): void {
@@ -242,8 +242,23 @@ export class EnemyAIManager extends Laya.Script {
             });
     }
 
+    /**
+     * 设置当前关卡，并从配置中读取该关卡的敌人决策间隔
+     * @param level 关卡编号
+     */
     public setLevel(level: number): void {
         this.currentLevel = level;
+
+        // 从关卡配置中读取敌人决策间隔
+        const levelConfig = CardConfig.getLevelConfig(level);
+        if (levelConfig && levelConfig.enemyDecisionInterval) {
+            this.enemyDecisionInterval = levelConfig.enemyDecisionInterval;
+            
+        } else {
+            // 如果配置中没有设置，使用默认值
+            this.enemyDecisionInterval = 2000;
+            
+        }
     }
 
     public getEnemyMana(): number {
@@ -296,13 +311,14 @@ export class EnemyAIManager extends Laya.Script {
         }
 
         try {
+
+            this.monsterManager.damageAllPlayerMonsters(50);
             // 播放火焰动画效果，等待完成
             await this.gameManager.playFlameEffect();
 
             console.log("火焰效果完成，开始造成伤害");
 
-            // 火焰燃烧完成后，对玩家方所有怪物造成10点伤害
-            this.monsterManager.damageAllPlayerMonsters(30);
+            
 
             // 重置能量值
             this.resetPower();
@@ -315,9 +331,9 @@ export class EnemyAIManager extends Laya.Script {
         }
     }
 
-    public setEnemyMana(mana: number): void {
-        this.enemyMana = Math.max(0, Math.min(mana, this.enemyMaxMana));
-    }
+    // public setEnemyMana(mana: number): void {
+    //     this.enemyMana = Math.max(0, Math.min(mana, this.enemyMaxMana));
+    // }
 
     /**
      * 脚本禁用时执行

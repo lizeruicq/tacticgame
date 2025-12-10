@@ -96,8 +96,8 @@ export class SoundButton extends Laya.Script {
             }));
         }
 
-        const volume = this.soundManager.getVolume();
-        console.log(`音效按钮状态: ${isEnabled ? '打开' : '关闭'} (音量: ${volume})`);
+       
+        
     }
     
     onDisable(): void {

@@ -6,7 +6,8 @@ import { PlayerManager } from "./PlayerManager";
 import { UIManager } from "./UIManager";
 import { GameEndPanel } from "../UI/GameEndPanel";
 import { CardConfig } from "../Cards/CardConfig";
-
+import { SoundManager } from "../utils/SoundManager";
+import { GameDataManager } from "../GameDataManager";
 @regClass()
 export class GameMainManager extends Laya.Script {
 
@@ -43,6 +44,9 @@ export class GameMainManager extends Laya.Script {
     private winner: string = ""; // "player" 或 "enemy"
     // private isPaused: boolean = true; // 游戏初始为暂停状态
 
+    // 关卡评分
+    private levelStars: number = 0; // 当前关卡获得的星星数量
+    private soundManager = SoundManager.getInstance();
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
@@ -304,9 +308,33 @@ export class GameMainManager extends Laya.Script {
      */
     private onGameEnd(): void {
         console.log(`游戏结束，获胜方: ${this.winner}`);
-        
+
+        // 计算关卡评分（星星数量）
+        this.calculateAndDisplayLevelStars();
+
         // 通过UIManager显示游戏结束面板
         this.showGameEndPanel();
+    }
+
+    /**
+     * 计算并显示关卡评分
+     */
+    private calculateAndDisplayLevelStars(): void {
+        if (!this.playerManager || !this.playerCastle) {
+            return;
+        }
+
+        // 判断玩家是否胜利
+        const isPlayerWin = this.winner === "player";
+        if (isPlayerWin) { // 玩家胜利时，调用GameDataManager的onLevelComplete方法
+            GameDataManager.getInstance().onLevelComplete(this.selectedLevel);
+        }
+
+        // 获取玩家城堡的血量百分比
+        const playerCastleHealthPercentage = this.playerCastle.getHealthPercentage();
+
+        // 调用PlayerManager的calculateLevelStars方法计算星星数量
+        this.levelStars = this.playerManager.calculateLevelStars(isPlayerWin, playerCastleHealthPercentage);
     }
     
     /**
@@ -316,6 +344,13 @@ export class GameMainManager extends Laya.Script {
         if (this.uiManager) {
             const isPlayerWin = this.winner === "player";
             this.uiManager.showGameEndPanel(isPlayerWin);
+
+            // 延迟显示星星，等待面板动画完成
+            Laya.timer.once(500, this, () => {
+                this.uiManager.showLevelStars(this.levelStars);
+            });
+
+
         } else {
             console.warn("UIManager未初始化，无法显示游戏结束面板");
         }
@@ -370,6 +405,9 @@ export class GameMainManager extends Laya.Script {
 
         // 加载关卡背景图片
         this.loadSceneBackground(this.selectedLevel);
+
+        // 切换关卡BGM
+        this.playLevelBgm(this.selectedLevel);
 
         this.initializeEnemyAI();
         // 获取UIManager
@@ -512,31 +550,31 @@ export class GameMainManager extends Laya.Script {
         console.log("游戏状态检查已启动");
     }
 
-    /**
-     * 启动魔法值恢复系统
-     */
-    private startManaRegeneration(): void {
-        console.log("魔法值恢复系统已移至PlayerManager管理");
-    }
+    // /**
+    //  * 启动魔法值恢复系统
+    //  */
+    // private startManaRegeneration(): void {
+    //     console.log("魔法值恢复系统已移至PlayerManager管理");
+    // }
 
-    /**
-     * 魔法值恢复
-     */
-    private regenerateMana(): void {
-        // 魔法值恢复已移至PlayerManager管理
-        console.log("魔法值恢复已移至PlayerManager管理");
-    }
+    // /**
+    //  * 魔法值恢复
+    //  */
+    // private regenerateMana(): void {
+    //     // 魔法值恢复已移至PlayerManager管理
+    //     console.log("魔法值恢复已移至PlayerManager管理");
+    // }
 
     
-    /**
-     * Rock死亡完成回调
-     */
-    private onRockDeath(): void {
-        console.log("Rock死亡，游戏结束");
+    // /**
+    //  * Rock死亡完成回调
+    //  */
+    // private onRockDeath(): void {
+    //     console.log("Rock死亡，游戏结束");
 
-        // 这里可以处理游戏结束逻辑
-        // 比如显示游戏结束界面、重置游戏等
-    }
+    //     // 这里可以处理游戏结束逻辑
+    //     // 比如显示游戏结束界面、重置游戏等
+    // }
 
    
 
@@ -680,9 +718,10 @@ export class GameMainManager extends Laya.Script {
         // Cloud 渐显
         cloud.alpha = 0;
         Laya.Tween.to(cloud, { alpha: 1 }, 300, Laya.Ease.linearNone);
-
+        this.soundManager.playSound("thunder.wav");
         // 延迟 300ms 后开始闪电动画
         Laya.timer.once(300, this, () => {
+            
             // 随机打乱闪电顺序
             const shuffledList = this.shuffleArray([...lightningList]);
 
@@ -866,6 +905,38 @@ export class GameMainManager extends Laya.Script {
                 reject(error);
             });
         });
+    }
+
+    /**
+     * 获取当前关卡获得的星星数量
+     * @returns 星星数量 (0-3)
+     */
+    public getLevelStars(): number {
+        return this.levelStars;
+    }
+
+    /**
+     * 播放关卡BGM
+     * @param level 关卡编号
+     */
+    private playLevelBgm(level: number): void {
+        const levelConfig = CardConfig.getLevelConfig(level);
+        if (levelConfig && levelConfig.bgmName) {
+            const soundManager = SoundManager.getInstance();
+            if (soundManager) {
+                soundManager.playLevelBgm(levelConfig.bgmName);
+            }
+        }
+    }
+
+    /**
+     * 恢复默认BGM
+     */
+    public restoreDefaultBgm(): void {
+        const soundManager = SoundManager.getInstance();
+        if (soundManager) {
+            soundManager.playDefaultBgm();
+        }
     }
 
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法

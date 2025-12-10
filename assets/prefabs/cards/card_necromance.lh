@@ -206,6 +206,17 @@
           "color": "#ffffff"
         }
       ]
+    },
+    {
+      "_$id": "39vmji5s",
+      "_$type": "Image",
+      "name": "freeze",
+      "x": 28,
+      "y": 146,
+      "width": 38,
+      "height": 38,
+      "skin": "res://29bb98cd-8f72-4d6b-9cfe-c862048a3efa",
+      "color": "#ffffff"
     }
   ]
 }

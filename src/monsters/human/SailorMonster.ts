@@ -46,10 +46,10 @@ export class SailorMonster extends BaseMonster {
     private calculateSailorStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 120,           // Sailor移动较慢
-            attackPower: 10,     // Sailor攻击力较高
+            attackPower: 20,     // Sailor攻击力较高
             attackSpeed: 2000,   // Sailor攻击速度较慢
             attackRange: 500,     // Sailor攻击范围中等
-            maxHealth: 40       // Sailor血量较高
+            maxHealth: 50       // Sailor血量较高
         };
         
         // 根据等级调整属性
@@ -90,7 +90,7 @@ export class SailorMonster extends BaseMonster {
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
 
         // Sailor攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
     /**
@@ -104,10 +104,10 @@ export class SailorMonster extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // Sailor攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // Sailor攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果

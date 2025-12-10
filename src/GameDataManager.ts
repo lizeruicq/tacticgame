@@ -68,7 +68,7 @@ export class GameDataManager {
                 playerExp: 0,
                 coins: 100,
                 achievements: [],
-                unlockedLevels: [1,2,3,4,5,6,7,8,9,10],  // 初始只解锁第1关
+                unlockedLevels: [1],  // 初始只解锁第1关
                 settings: {
                     soundEnabled: true,
                     musicEnabled: true,
@@ -265,7 +265,6 @@ export class GameDataManager {
         // 更新玩家等级为已解锁的最高关卡
         this.playerData.gameData.playerLevel = this.getMaxUnlockedLevel();
         this.saveGameData();
-        console.log(`关卡 ${levelNum} 完成，玩家等级更新为 ${this.playerData.gameData.playerLevel}`);
     }
 
     /**

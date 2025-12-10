@@ -568,35 +568,35 @@ export class CardManager extends Laya.Script {
         console.log(`UI更新: 法力值 ${this.playerMana}/${this.maxMana}`);
     }
 
-    /**
-     * 获取所有卡片信息
-     */
-    public getAllCardsInfo(): any[] {
-        return this.activeCards.map(card => card.getCardInfo());
-    }
+    // /**
+    //  * 获取所有卡片信息
+    //  */
+    // public getAllCardsInfo(): any[] {
+    //     return this.activeCards.map(card => card.getCardInfo());
+    // }
 
-    /**
-     * 根据名称获取卡片
-     */
-    public getCardByName(name: string): any {
-        return this.activeCards.find(card => card.cardName === name);
-    }
+    // /**
+    //  * 根据名称获取卡片
+    //  */
+    // public getCardByName(name: string): any {
+    //     return this.activeCards.find(card => card.cardName === name);
+    // }
 
-    /**
-     * 检查是否可以使用卡片
-     */
-    public canUseCard(card: any): boolean {
-        return !this.isCardCooldown && this.playerMana >= card.manaCost && card.isUsable;
-    }
+    // /**
+    //  * 检查是否可以使用卡片
+    //  */
+    // public canUseCard(card: any): boolean {
+    //     return !this.isCardCooldown && this.playerMana >= card.manaCost && card.isUsable;
+    // }
 
-    /**
-     * 恢复法力值
-     */
-    public restoreMana(amount: number): void {
-        this.playerMana = Math.min(this.maxMana, this.playerMana + amount);
-        console.log(`恢复法力值 ${amount}，当前: ${this.playerMana}/${this.maxMana}`);
-        this.updateUI();
-    }
+    // /**
+    //  * 恢复法力值
+    //  */
+    // public restoreMana(amount: number): void {
+    //     this.playerMana = Math.min(this.maxMana, this.playerMana + amount);
+    //     console.log(`恢复法力值 ${amount}，当前: ${this.playerMana}/${this.maxMana}`);
+    //     this.updateUI();
+    // }
 
     /**
      * 获取玩家法力值
@@ -605,35 +605,35 @@ export class CardManager extends Laya.Script {
         return this.playerMana;
     }
 
-    /**
-     * 设置玩家法力值
-     */
-    public setPlayerMana(mana: number): void {
-        this.playerMana = Math.max(0, Math.min(this.maxMana, mana));
-        this.updateUI();
-    }
+    // /**
+    //  * 设置玩家法力值
+    //  */
+    // public setPlayerMana(mana: number): void {
+    //     this.playerMana = Math.max(0, Math.min(this.maxMana, mana));
+    //     this.updateUI();
+    // }
 
-    /**
-     * 设置当前关卡
-     */
-    public setCurrentLevel(level: number): void {
-        this.currentLevel = level;
-        this.initializeLevel(level);
-    }
+    // /**
+    //  * 设置当前关卡
+    //  */
+    // public setCurrentLevel(level: number): void {
+    //     this.currentLevel = level;
+    //     this.initializeLevel(level);
+    // }
 
-    /**
-     * 获取当前激活卡牌数量
-     */
-    public getActiveCardCount(): number {
-        return this.activeCards.length;
-    }
+    // /**
+    //  * 获取当前激活卡牌数量
+    //  */
+    // public getActiveCardCount(): number {
+    //     return this.activeCards.length;
+    // }
 
-    /**
-     * 是否在冷却中
-     */
-    public isInCooldown(): boolean {
-        return this.isCardCooldown;
-    }
+    // /**
+    //  * 是否在冷却中
+    //  */
+    // public isInCooldown(): boolean {
+    //     return this.isCardCooldown;
+    // }
 
     /**
      * 播放卡片生成动画（渐显）

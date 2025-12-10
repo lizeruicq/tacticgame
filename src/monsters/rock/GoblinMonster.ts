@@ -45,7 +45,7 @@ export class GoblinMonster extends BaseMonster {
      */
     private calculateGoblinStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
-            speed: 80,           // Goblin移动较慢
+            speed: 120,           // Goblin移动较慢
             attackPower: 15,     // Goblin攻击力较高
             attackSpeed: 2000,   // Goblin攻击速度较慢
             attackRange: 80,     // Goblin攻击范围中等
@@ -86,11 +86,12 @@ export class GoblinMonster extends BaseMonster {
      */
     protected onAttackPerformed(target: BaseMonster | Castle): void {
         super.onAttackPerformed(target);
+        this.soundManager.playSound("rock.wav");
 
         const targetName = target instanceof BaseMonster ? target.constructor.name : 'Castle';
 
         // Goblin攻击后有短暂的硬直时间
-        this.addAttackCooldown();
+        // this.addAttackCooldown();
     }
     
     /**
@@ -104,10 +105,10 @@ export class GoblinMonster extends BaseMonster {
     /**
      * 添加攻击冷却
      */
-    private addAttackCooldown(): void {
-        // Goblin攻击后有额外的冷却时间
-        this.lastAttackTime += 200; // 额外200ms冷却
-    }
+    // private addAttackCooldown(): void {
+    //     // Goblin攻击后有额外的冷却时间
+    //     this.lastAttackTime += 200; // 额外200ms冷却
+    // }
     
     /**
      * 创建死亡效果
