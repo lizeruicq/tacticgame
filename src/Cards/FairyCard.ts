@@ -13,7 +13,7 @@ export class FairyCard extends BaseMonsterCard {
         // 设置Fairy卡片的默认属性
         this.cardName = "Fairy卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Fairy.lh";
+        this.monsterPrefabPath = "res://3ba5f627-8b63-4f9f-9f10-4651a5728d01";
     }
 
     // ========== 实现抽象方法 ==========

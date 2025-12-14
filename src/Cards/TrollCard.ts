@@ -13,7 +13,7 @@ export class TrollCard extends BaseMonsterCard {
         // 设置Troll卡片的默认属性
         this.cardName = "Troll卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Troll.lh";
+        this.monsterPrefabPath = "res://ae5e0b05-ba36-47fa-992c-0f0fa3adeb53";
     }
 
     // ========== 实现抽象方法 ==========

@@ -17,7 +17,7 @@
       "manaCost": 2,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Pastor.lh",
+      "monsterPrefabPath": "res://6b31a931-37a1-442d-b6c2-95b4e537a878",
       "levelLabel": {
         "_$ref": "8lhna57a"
       },

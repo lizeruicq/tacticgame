@@ -15,7 +15,7 @@ export class PastorMonster extends BaseMonster {
     private pastorAnimationManager: PastorAnimationManager = null;
 
     // Pastor特有属性
-    private healAmount: number = 20;           // 每次治疗量
+    private healAmount: number = 10;           // 每次治疗量
     private healInterval: number = 2000;       // 治疗间隔（毫秒）
     private maxHealTargets: number = 2;        // 每次最多治疗目标数
     private minDistanceToAlly: number = 400;   // 与友方怪物的最小距离
@@ -198,7 +198,7 @@ export class PastorMonster extends BaseMonster {
     }
 
     private healTarget(target: BaseMonster): void {
-        const healAmount = Math.min(this.healAmount + ((this.monsterLevel -1) * 10), target.getMaxHealth() - target.getCurrentHealth());
+        const healAmount = Math.min(this.healAmount + ((this.monsterLevel -1) * 5), target.getMaxHealth() - target.getCurrentHealth());
         target.heal(healAmount);
 
         console.log(`Pastor治疗了 ${target.constructor.name}，恢复 ${healAmount} 血量`);

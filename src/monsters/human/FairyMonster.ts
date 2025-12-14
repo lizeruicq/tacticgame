@@ -53,7 +53,7 @@ export class FairyMonster extends BaseMonster {
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1); // 每级增加20%
         
         return {
             speed: baseStats.speed,
@@ -89,7 +89,7 @@ export class FairyMonster extends BaseMonster {
 
         // 对怪物目标施加冻结效果（使用freeze.lh预制体）
         if (target instanceof BaseMonster) {
-            target.freeze(2000, BaseMonster.FROZEN_EFFECT_PREFAB_PATH_FREEZE);
+            target.freeze(1000, BaseMonster.FROZEN_EFFECT_PREFAB_PATH_FREEZE);
         }
 
         // Fairy攻击后有短暂的硬直时间

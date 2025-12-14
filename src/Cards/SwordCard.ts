@@ -13,7 +13,7 @@ export class SwordCard extends BaseMonsterCard {
         // 设置Sword卡片的默认属性
         this.cardName = "Sword卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Sword.lh";
+        this.monsterPrefabPath = "res://608d2715-b93a-4c93-ae4d-8b4b2b852b27";
     }
 
     // ========== 实现抽象方法 ==========

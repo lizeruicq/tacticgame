@@ -13,7 +13,7 @@ export class ArcherCard extends BaseMonsterCard {
         // 设置Archer卡片的默认属性
         this.cardName = "Archer卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Archer.lh";
+        this.monsterPrefabPath = "res://ea989b8b-56a9-4f3d-a3ca-ec04ac981776";
     }
 
     // ========== 实现抽象方法 ==========

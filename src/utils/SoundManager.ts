@@ -24,15 +24,12 @@ export class SoundManager extends Laya.Script {
     private static readonly VOLUME_OFF = 0;         // 音效关闭时的音量（0%）
 
     private currentVolume: number = SoundManager.VOLUME_ON;  // 当前音量
-    // private currentBgMusic: string = "";            // 当前背景音乐
-    // private bgMusicChannel: Laya.SoundChannel = null;  // 背景音乐通道
+    private currentBgMusic: string = "";            // 当前背景音乐
+    private bgMusicChannel: Laya.SoundChannel | null = null;  // 背景音乐通道
 
     // // 音效缓存
     // private soundCache: Map<string, Laya.SoundChannel> = new Map();
 
-    // BackgroundMusic 节点
-    @property(Laya.SoundNode)
-    private bgMusicNode: Laya.SoundNode = null;
 
     /**
      * 脚本初始化（当脚本挂载到节点时调用）
@@ -45,6 +42,7 @@ export class SoundManager extends Laya.Script {
 
             // 将 SoundManager 节点移到持久化层
             this.setupPersistentLayer();
+            this.playDefaultBgm();
 
             // 获取 BackgroundMusic 节点
             // this.findBackgroundMusicNode();
@@ -161,6 +159,19 @@ export class SoundManager extends Laya.Script {
         // 应用音量到 BackgroundMusic 节点
         this.updateBackgroundMusicVolume(this.currentVolume);
 
+        // 如果是从静音切换到有声，则重新播放当前背景音乐
+        if (this.currentVolume > 0 && this.currentBgMusic) {
+            // 重新播放当前背景音乐
+            this.bgMusicChannel = Laya.SoundManager.playMusic(this.currentBgMusic, 0);
+            if (this.bgMusicChannel) {
+                this.bgMusicChannel.volume = 0.3; // 使用最大音量，实际音量由currentVolume控制
+            }
+        } else if (this.currentVolume === 0 && this.bgMusicChannel) {
+            // 如果切换到静音，停止播放背景音乐
+            this.bgMusicChannel.stop();
+            this.bgMusicChannel = null;
+        }
+
         // 保存设置
         this.saveSettings();
 
@@ -168,14 +179,12 @@ export class SoundManager extends Laya.Script {
     }
 
     /**
-     * 更新 BackgroundMusic 节点的音量
+     * 更新 BackgroundMusic 的音量
      */
     private updateBackgroundMusicVolume(volume: number): void {
-        if (this.bgMusicNode && volume === 0)   {
-            this.bgMusicNode.stop();
-        }
-        if (this.bgMusicNode && volume > 0)   {
-            this.bgMusicNode.play();
+        // 控制playMusic播放的背景音乐
+        if (this.bgMusicChannel) {
+            this.bgMusicChannel.volume = volume > 0 ? 0.3 : 0;
         }
     }
     
@@ -240,39 +249,36 @@ export class SoundManager extends Laya.Script {
 
     /**
      * 切换关卡BGM
-     * @param bgmName BGM文件名（不包含扩展名）
+     * @param bgmName BGM文件名（包含扩展名，如 "forest.mp3"）
      */
     public playLevelBgm(bgmName: string): void {
-       
+
         if (!bgmName) {
             console.warn("BGM名称为空，无法切换");
             return;
         }
 
-        // 如果音量已关闭，直接返回，不加载和播放BGM
-        if (this.currentVolume <= 0) {
-            return;
-        }
-
         const bgmPath = `${SoundManager.SOUND_PATH}/${bgmName}`;
-        
+        console.log(`[SoundManager] 准备播放BGM: ${bgmPath}`);
+
         // 停止当前BGM
-        if (this.bgMusicNode && this.bgMusicNode.stop) {
-            this.bgMusicNode.stop();
+        if (this.bgMusicChannel) {
+            this.bgMusicChannel.stop();
+            this.bgMusicChannel = null;
         }
 
-        // 加载并播放新BGM
-        Laya.loader.load(bgmPath).then(() => {
-            const sound = Laya.loader.getRes(bgmPath);
-            
-            if (sound && this.bgMusicNode) {
-                this.bgMusicNode.source = bgmPath;
-                this.bgMusicNode.play();
-                
+        // 使用playMusic播放背景音乐，循环播放(0表示无限循环)
+        try {
+            this.bgMusicChannel = Laya.SoundManager.playMusic(bgmPath, 0);
+            if (this.bgMusicChannel) {
+                // 根据当前音量设置播放音量
+                this.bgMusicChannel.volume = this.currentVolume > 0 ? 0.3 : 0;
+                this.currentBgMusic = bgmPath;
             }
-        }).catch((error) => {
-            console.warn(`[SoundManager] 加载BGM失败: ${bgmPath}`, error);
-        });
+            console.log(`[SoundManager] BGM播放成功: ${bgmPath}`);
+        } catch (error) {
+            console.error(`[SoundManager] BGM播放失败: ${bgmPath}`, error);
+        }
     }
 
     /**
@@ -336,81 +342,6 @@ export class SoundManager extends Laya.Script {
         });
     }
 
-    // /**
-    //  * 播放按钮点击音效
-    //  */
-    // public playButtonClickSound(): void {
-    //     this.playSound('button_click');
-    // }
 
-    // /**
-    //  * 播放面板打开音效
-    //  */
-    // public playPanelOpenSound(): void {
-    //     this.playSound('panel_open');
-    // }
-
-    // /**
-    //  * 播放面板关闭音效
-    //  */
-    // public playPanelCloseSound(): void {
-    //     this.playSound('panel_close');
-    // }
-
-    // /**
-    //  * 播放怪物攻击音效
-    //  */
-    // public playMonsterAttackSound(): void {
-    //     this.playSound('monster_attack');
-    // }
-
-    // /**
-    //  * 播放怪物受伤音效
-    //  */
-    // public playMonsterHurtSound(): void {
-    //     this.playSound('monster_hurt');
-    // }
-
-    // /**
-    //  * 播放怪物死亡音效
-    //  */
-    // public playMonsterDeathSound(): void {
-    //     this.playSound('monster_death');
-    // }
-
-    // /**
-    //  * 播放卡牌使用音效
-    //  */
-    // public playCardUseSound(): void {
-    //     this.playSound('card_use');
-    // }
-
-    // /**
-    //  * 播放卡牌合成音效
-    //  */
-    // public playCardMergeSound(): void {
-    //     this.playSound('card_merge');
-    // }
-
-    // /**
-    //  * 设置背景音乐音量
-    //  * @param volume 音量（0-1）
-    //  */
-    // public setBgMusicVolume(volume: number): void {
-    //     if (this.bgMusicChannel) {
-    //         this.bgMusicChannel.volume = Math.max(0, Math.min(1, volume));
-    //     }
-    // }
-
-    // /**
-    //  * 获取背景音乐音量
-    //  */
-    // public getBgMusicVolume(): number {
-    //     if (this.bgMusicChannel) {
-    //         return this.bgMusicChannel.volume;
-    //     }
-    //     return 1;
-    // }
-    
 }
 

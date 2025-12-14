@@ -18,7 +18,9 @@ export class EnemyAIManager extends Laya.Script {
     private readonly maxEnemyPower: number = 500; // 能量最大值
 
     // AI决策参数
-    private enemyDecisionInterval: number = 2000; // 敌人AI决策间隔时间（毫秒）
+    private enemyDecisionInterval: number = 500; // 敌人AI决策间隔时间（毫秒）
+    private cooldown: number = 2000;              // 生成怪物的冷却时间（毫秒）
+    private lastSpawnTime: number = 0;            // 上次生成怪物的时间戳
     private currentLevel: number = 1;
 
     // AI决策队列
@@ -77,7 +79,16 @@ export class EnemyAIManager extends Laya.Script {
             const monsterConfig = CardConfig.getCardConfig(monsterType);
 
             if (monsterConfig && this.enemyMana >= monsterConfig.manaCost) {
-                // 魔法值足够，执行等待中的决策
+                // 魔法值足够，检查冷却时间
+                const currentTime = Laya.timer.currTimer ?? Date.now();
+                const timeSinceLastSpawn = currentTime - this.lastSpawnTime;
+
+                if (timeSinceLastSpawn < this.cooldown) {
+                    // 冷却时间未结束，继续等待
+                    return;
+                }
+
+                // 魔法值足够且冷却时间已过，执行等待中的决策
                 this.executePendingDecision(monsterType, monsterConfig);
                 this.pendingDecision = null; // 清空等待中的决策
 
@@ -128,7 +139,17 @@ export class EnemyAIManager extends Laya.Script {
             return;
         }
 
-        // 消耗魔法值并召唤怪物
+        // 检查冷却时间
+        const currentTime = Laya.timer.currTimer ?? Date.now();
+        const timeSinceLastSpawn = currentTime - this.lastSpawnTime;
+
+        if (timeSinceLastSpawn < this.cooldown) {
+            // 冷却时间未结束，将决策加入等待队列
+            this.pendingDecision = monsterType; // 记录等待中的决策
+            return;
+        }
+
+        // 魔法值足够且冷却时间已过，消耗魔法值并召唤怪物
         this.executeDecision(monsterType, monsterConfig);
     }
 
@@ -142,6 +163,9 @@ export class EnemyAIManager extends Laya.Script {
 
         // 召唤怪物
         this.spawnMonster(monsterType);
+
+        // 更新上次生成时间，进入冷却
+        this.lastSpawnTime = Laya.timer.currTimer ?? Date.now();
     }
 
     /**
@@ -154,6 +178,9 @@ export class EnemyAIManager extends Laya.Script {
 
         // 召唤怪物
         this.spawnMonster(monsterType);
+
+        // 更新上次生成时间，进入冷却
+        this.lastSpawnTime = Laya.timer.currTimer ?? Date.now();
     }
 
     private selectMonsterByWeight(availableCards: string[]): string | null {
@@ -311,12 +338,13 @@ export class EnemyAIManager extends Laya.Script {
         }
 
         try {
+            
+            // this.monsterManager.damageAllPlayerMonsters(50);
+            // // 播放火焰动画效果，等待完成
+            // await this.gameManager.playFlameEffect();
 
-            this.monsterManager.damageAllPlayerMonsters(50);
-            // 播放火焰动画效果，等待完成
-            await this.gameManager.playFlameEffect();
-
-            console.log("火焰效果完成，开始造成伤害");
+            await this.gameManager.synthesizeMonsters(false);
+            
 
             
 

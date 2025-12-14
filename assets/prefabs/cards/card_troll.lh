@@ -17,7 +17,7 @@
       "manaCost": 3,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Troll.lh",
+      "monsterPrefabPath": "res://ae5e0b05-ba36-47fa-992c-0f0fa3adeb53",
       "levelLabel": {
         "_$ref": "cpbc2vsm"
       },

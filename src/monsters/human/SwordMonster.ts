@@ -53,7 +53,7 @@ export class SwordMonster extends BaseMonster {
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1); // 每级增加20%
         
         return {
             speed: baseStats.speed,

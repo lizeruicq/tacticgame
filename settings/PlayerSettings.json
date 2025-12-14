@@ -8,10 +8,10 @@
   },
   "modules": {
     "laya.ui": true,
-    "laya.d3": true,
     "laya.light2D": true
   },
   "splash": {
+    "enabled": false,
     "fit": "center"
   }
 }

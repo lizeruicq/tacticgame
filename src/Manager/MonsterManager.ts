@@ -509,9 +509,22 @@ export class MonsterManager extends Laya.Script {
         const monsterList: BaseMonster[] = isPlayerCamp ? this.playerMonsters : this.enemyMonsters;
         const camp: string = isPlayerCamp ? "玩家" : "敌方";
 
-        
-        this.gameMainManager.playLightningEffect();
-        this.gameMainManager.showHint(`对敌人产生闪电伤害，${camp}同类怪物开始合成`);
+        if(isPlayerCamp)
+        {
+            this.gameMainManager.playLightningEffect();
+            this.gameMainManager.showHint(`对敌人产生闪电伤害，${camp}同类怪物开始合成`);
+        }
+        else
+        {
+            this.gameMainManager.playFlameEffect();
+            if(!this.gameMainManager.gameDataManager.getCanEnemyMerge())
+            {
+                return;
+            }
+            // this.gameMainManager.showHint(`我方🫡火焰伤害，${camp}同类怪物开始合成`);
+        }
+        // this.gameMainManager.playLightningEffect();
+        // this.gameMainManager.showHint(`对敌人产生闪电伤害，${camp}同类怪物开始合成`);
 
         // 递归合成
         await this.synthesizeRecursive(monsterList, isPlayerCamp);

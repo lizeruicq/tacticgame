@@ -13,7 +13,7 @@ export class PirateCard extends BaseMonsterCard {
         // 设置Pirate卡片的默认属性
         this.cardName = "Pirate卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Pirate.lh";
+        this.monsterPrefabPath = "res://de0cfd07-ee56-4063-9a8b-c04f6646186b";
     }
 
     // ========== 实现抽象方法 ==========

@@ -13,7 +13,7 @@ export class KnightCard extends BaseMonsterCard {
         // 设置Knight卡片的默认属性
         this.cardName = "Knight卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Knight.lh";
+        this.monsterPrefabPath = "res://e22b9052-17c9-4746-8d2f-e4c33b99148b";
     }
 
     // ========== 实现抽象方法 ==========

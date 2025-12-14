@@ -169,7 +169,7 @@ export class Castle extends Laya.Script {
      * 开始血量回复
      */
     protected startRegeneration(): void {
-        this.lastRegenerationTime = Laya.timer.currTimer;
+        this.lastRegenerationTime = Laya.timer.currTimer ?? Date.now();
 
     }
     
@@ -185,8 +185,9 @@ export class Castle extends Laya.Script {
      */
     protected updateRegeneration(): void {
         if (this.isDestroyed || this.currentHealth >= this.castleStats.maxHealth) return;
-        
-        const currentTime = Laya.timer.currTimer;
+
+        // 使用 Date.now() 替代 Laya.timer.currTimer 以避免潜在的 currentTime 错误
+        const currentTime = Date.now();
         if (currentTime - this.lastRegenerationTime >= this.regenerationInterval) {
             this.heal(this.castleStats.regeneration);
             this.lastRegenerationTime = currentTime;

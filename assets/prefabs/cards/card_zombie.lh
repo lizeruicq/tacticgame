@@ -17,7 +17,7 @@
       "manaCost": 3,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Zombie.lh",
+      "monsterPrefabPath": "res://6e917600-162b-407e-ae53-499e7acc97bc",
       "levelLabel": {
         "_$ref": "cpbc2vsm"
       },

@@ -13,7 +13,7 @@ export class ZombieCard extends BaseMonsterCard {
         // 设置Zombie卡片的默认属性
         this.cardName = "Zombie卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Zombie.lh";
+        this.monsterPrefabPath = "res://6e917600-162b-407e-ae53-499e7acc97bc";
     }
 
     // ========== 实现抽象方法 ==========

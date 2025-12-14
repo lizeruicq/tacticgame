@@ -13,6 +13,7 @@ export interface GameData {
         musicEnabled: boolean;
         language: string;
     };
+    canEnemyMerge: boolean;  // 敌人是否可以合并
     lastPlayTime: number;
 }
 
@@ -74,6 +75,7 @@ export class GameDataManager {
                     musicEnabled: true,
                     language: 'zh_CN'
                 },
+                canEnemyMerge: true,  // 默认开启敌人合并功能
                 lastPlayTime: Date.now()
             },
             isDataLoaded: false
@@ -268,14 +270,40 @@ export class GameDataManager {
     }
 
     /**
+     * 获取敌人是否可以合并的状态
+     */
+    public getCanEnemyMerge(): boolean {
+        if (!this.playerData || !this.playerData.gameData) {
+            return true; // 默认开启
+        }
+        return this.playerData.gameData.canEnemyMerge;
+    }
+
+    /**
+     * 设置敌人是否可以合并
+     * @param canMerge 是否可以合并
+     */
+    public setCanEnemyMerge(canMerge: boolean): void {
+        if (this.playerData && this.playerData.gameData) {
+            this.playerData.gameData.canEnemyMerge = canMerge;
+            this.saveGameData(); // 保存数据
+        }
+    }
+
+    /**
      * 重置游戏数据
      */
-    public resetGameData() {
-        this.playerData.gameData = this.getDefaultPlayerData().gameData;
-        this.saveGameData();
-        console.log('游戏数据已重置');
+    public resetGameData(): void {
+        if (this.playerData) {
+            const defaultData = this.getDefaultPlayerData();
+            this.playerData.gameData = defaultData.gameData;
+            this.saveGameData();
+            
+            // 通知设置面板更新界面
+            Laya.stage.event("GameDataReset");
+        }
     }
-    
+
     /**
      * 清除所有数据
      */

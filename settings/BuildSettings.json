@@ -1,7 +1,10 @@
 {
-  "name": "tacticgame",
-  "displayName": "策略游戏",
+  "name": "theRockWar",
+  "displayName": "石头人保卫战",
   "startupScene": "res://f185fe1d-024e-49f7-bb50-d2ad1836c73a",
+  "web": {
+    "allowTextureCompressedFormat": false
+  },
   "android": {
     "targetArchitectures": {
       "ARMv7": true,
@@ -12,7 +15,49 @@
     "exportFormat": "APK"
   },
   "ios": {
+    "allowTextureCompressedFormat": false,
     "encryptDCC": true,
-    "teamID": "lizerui"
+    "renderMode": "webgl",
+    "exportProject": true,
+    "bundleIdentifier": "com.rio.rockwar",
+    "screenOrientation": "portrait",
+    "appStoreIcons": {
+      "1024pt": "res://3689fab7-a6e3-46c9-9521-a9bb4f9a196e"
+    },
+    "iPhoneAppIcons": {
+      "60pt@3x": "res://d6f70578-18b8-4aa0-8b55-ce7f1812d7eb",
+      "60pt@2x": "res://2cc4902d-1bb6-40d8-ad5f-c42f281f3359"
+    },
+    "iPadAppIcons": {
+      "83.5pt@2x": "res://e02b116f-50fb-4c44-85c6-98430214cf57",
+      "76pt@2x": "res://fdeb2744-98f8-455c-a7e2-ccea7bda3aee",
+      "76pt@1x": "res://4419c2fd-2c0e-4ade-bfe2-865672f3e494"
+    },
+    "iPhoneSpotlightIcons": {
+      "40pt@3x": "res://2cc4902d-1bb6-40d8-ad5f-c42f281f3359",
+      "40pt@2x": "res://f228dcde-5098-4c1e-96bc-03d288e267fa"
+    },
+    "iPadSpotlightIcons": {
+      "40pt@2x": "res://f228dcde-5098-4c1e-96bc-03d288e267fa",
+      "40pt@1x": "res://35b6ddda-bd17-4956-9de5-a721b45776a7"
+    },
+    "iPhoneSettingsIcons": {
+      "29pt@3x": "res://69d56c72-06f3-468b-a032-a99f7b94fe69",
+      "29pt@2x": "res://6a5945f5-2279-4721-bfc2-820ef6382b4c"
+    },
+    "iPadSettingsIcons": {
+      "29pt@2x": "res://6a5945f5-2279-4721-bfc2-820ef6382b4c",
+      "29pt@1x": "res://1ab6aacd-c24f-4287-9d93-442c95b347c3"
+    },
+    "iPhoneNotificationsIcons": {
+      "20pt@3x": "res://0603987d-e668-4715-9845-779853f25f6b",
+      "20pt@2x": "res://35b6ddda-bd17-4956-9de5-a721b45776a7"
+    },
+    "iPadNotificationsIcons": {
+      "20pt@2x": "res://35b6ddda-bd17-4956-9de5-a721b45776a7",
+      "20pt@1x": "res://92ff1712-8f09-4f47-8638-b9b27404e2f9"
+    },
+    "teamID": "UWR5Y8Y7U8",
+    "exportMethod": "debugging"
   }
 }

@@ -17,7 +17,7 @@
       "manaCost": 3,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Skeleton.lh",
+      "monsterPrefabPath": "res://66c916fc-309a-4172-9045-82c55f33b916",
       "levelLabel": {
         "_$ref": "cpbc2vsm"
       },

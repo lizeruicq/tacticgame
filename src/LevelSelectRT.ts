@@ -4,6 +4,7 @@ import { SceneManager } from "./SceneManager";
 import { GameDataManager } from "./GameDataManager";
 import { ButtonAnimationUtils } from './utils/ButtonAnimationUtils';
 import { HelpPanel } from './Mainmenu/HelpPanel';
+import { LevelLockPanel } from './UI/LevelLockPanel';
 @regClass()
 export class LevelSelectRT extends LevelSelectRTBase {
     private selectedLevel: number = 1;
@@ -194,7 +195,18 @@ export class LevelSelectRT extends LevelSelectRTBase {
         } else {
             console.error("未找到Help按钮");
         }
+
+        // 设置关卡解锁按钮
+        const levelUnlockBtn = this.getChildByName("LevelUnlock") as Laya.Button;
+        if (levelUnlockBtn) {
+            levelUnlockBtn.on(Laya.Event.CLICK, this, this.onLevelUnlockClick);
+            ButtonAnimationUtils.addButtonClickEffect(levelUnlockBtn);
+        } else {
+            console.error("未找到LevelUnlock按钮");
+        }
     }
+
+    
 
     private onStartClick(): void {
         const gameDataManager = GameDataManager.getInstance();
@@ -257,6 +269,28 @@ export class LevelSelectRT extends LevelSelectRTBase {
     }
 
     /**
+     * 关卡解锁按钮点击事件
+     */
+    private onLevelUnlockClick(): void {
+        console.log("关卡解锁按钮被点击了！");
+
+        // 获取LevelLockPanel组件并显示
+        const panelNode = this.getChildByName("LevelLockPanel");
+        if (panelNode) {
+            const levelLockPanel = panelNode.getComponent(LevelLockPanel);
+            if (levelLockPanel) {
+                levelLockPanel.show();
+            } else {
+                console.warn("LevelLockPanel组件未找到！");
+            }
+        } else {
+            console.warn("LevelLockPanel节点未找到！");
+        }
+    }
+
+
+
+    /**
      * 组件被禁用时执行，比如从节点从舞台移除后
      */
     // onDisable(): void {
@@ -287,6 +321,13 @@ export class LevelSelectRT extends LevelSelectRTBase {
         const helpBtn = this.getChildByName("Help") as Laya.Button;
         if (helpBtn) {
             helpBtn.off(Laya.Event.CLICK, this, this.onHelpClick);
+        }
+
+        const levelUnlockBtn = this.getChildByName("LevelUnlock") as Laya.Button;
+        if (levelUnlockBtn) {
+            levelUnlockBtn.off(Laya.Event.CLICK, this, this.onLevelUnlockClick);
+            // 清除按钮上的所有Tween动画
+            Laya.Tween.clearAll(levelUnlockBtn);
         }
     }
 }

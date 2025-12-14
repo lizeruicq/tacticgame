@@ -18,7 +18,7 @@
       "manaCost": 3,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Rock.lh",
+      "monsterPrefabPath": "res://a375d387-c81f-46ea-8b81-e71a9d23f831",
       "levelLabel": {
         "_$ref": "59d9cmqx"
       },

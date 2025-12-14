@@ -13,7 +13,7 @@ export class SailorCard extends BaseMonsterCard {
         // 设置Sailor卡片的默认属性
         this.cardName = "Sailor卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Sailor.lh";
+        this.monsterPrefabPath = "res://1ebf4fd9-638e-4505-b654-f801deba9f73";
     }
 
     // ========== 实现抽象方法 ==========

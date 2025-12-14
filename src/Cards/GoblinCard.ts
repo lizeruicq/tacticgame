@@ -13,7 +13,7 @@ export class GoblinCard extends BaseMonsterCard {
         // 设置Goblin卡片的默认属性
         this.cardName = "Goblin卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Goblin.lh";
+        this.monsterPrefabPath = "res://fd485021-de92-48d9-83d4-8e3384fed8cf";
     }
 
     // ========== 实现抽象方法 ==========

@@ -17,7 +17,7 @@
       "manaCost": 3,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Necromance.lh",
+      "monsterPrefabPath": "res://fbf0fcb5-b551-4c82-b0d2-6839de193008",
       "levelLabel": {
         "_$ref": "cpbc2vsm"
       },

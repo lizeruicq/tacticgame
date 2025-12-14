@@ -53,7 +53,7 @@ export class NecromanceMonster extends BaseMonster {
         };
         
         // 根据等级调整属性
-        const levelMultiplier = 1 + (this.monsterLevel - 1) * 0.2; // 每级增加20%
+        const levelMultiplier = 1 + (this.monsterLevel - 1); // 每级增加20%
         
         return {
             speed: Math.floor(baseStats.speed * levelMultiplier),
@@ -89,7 +89,7 @@ export class NecromanceMonster extends BaseMonster {
         this.soundManager.playSound("necromance.wav");
         // 对怪物目标施加冻结效果
         if (target instanceof BaseMonster) {
-            target.freeze(2000);
+            target.freeze(1000);
         }
 
         // Necromance攻击后有短暂的硬直时间

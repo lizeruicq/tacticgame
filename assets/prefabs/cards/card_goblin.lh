@@ -17,7 +17,7 @@
       "manaCost": 3,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Goblin.lh",
+      "monsterPrefabPath": "res://fd485021-de92-48d9-83d4-8e3384fed8cf",
       "levelLabel": {
         "_$ref": "cpbc2vsm"
       },

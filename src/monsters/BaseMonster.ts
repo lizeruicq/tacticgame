@@ -360,7 +360,8 @@ export abstract class BaseMonster extends Laya.Script {
         }
 
         // 检查攻击冷却
-        const currentTime = Laya.timer.currTimer;
+        // 使用 Date.now() 替代 Laya.timer.currTimer 以避免潜在的 currentTime 错误
+        const currentTime = Date.now();
         if (currentTime - this.lastAttackTime >= this.monsterStats.attackSpeed) {
             this.performAttack();
             this.lastAttackTime = currentTime;

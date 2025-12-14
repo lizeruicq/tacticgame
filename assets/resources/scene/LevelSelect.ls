@@ -27,7 +27,7 @@
       "_$type": "Image",
       "name": "header",
       "x": 215,
-      "y": 163,
+      "y": 237,
       "width": 818,
       "height": 305,
       "skin": "res://4b75cef2-59e0-4ec6-83a6-7f997b88a171",
@@ -84,7 +84,7 @@
       "_$type": "Button",
       "name": "Help",
       "x": 1038,
-      "y": 137,
+      "y": 175,
       "width": 106,
       "height": 110,
       "anchorX": 0.5,
@@ -99,6 +99,28 @@
       "labelAlign": "center",
       "labelVAlign": "middle",
       "labelPadding": "-23,0,0,0",
+      "labelStroke": 10,
+      "labelStrokeColor": "#f4c5c5"
+    },
+    {
+      "_$id": "9w8wfsge",
+      "_$type": "Button",
+      "name": "LevelUnlock",
+      "x": 1036,
+      "y": 417,
+      "width": 199,
+      "height": 176,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "stateNum": 1,
+      "skin": "res://d2c11364-2b68-4ffa-b71f-6eb26bbf00fd",
+      "label": "",
+      "labelSize": 34,
+      "labelBold": true,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "labelStroke": 10,
       "labelStrokeColor": "#f4c5c5"
     },
@@ -766,15 +788,13 @@
                       "wordWrap": true
                     },
                     {
-                      "_$id": "nutsyul5",
-                      "_$type": "Image",
+                      "_$id": "3smdw9ub",
+                      "_$prefab": "2f827888-2c31-48fb-a594-d31c8130158e",
                       "name": "cure",
+                      "active": true,
                       "x": 24,
                       "y": 134,
-                      "width": 53,
-                      "height": 53,
-                      "skin": "res://10922e3b-0a37-488a-b9f5-6257e478ffc6",
-                      "color": "#ffffff"
+                      "visible": true
                     }
                   ]
                 },
@@ -1862,6 +1882,184 @@
         },
         {
           "_$id": "g8k6eps7",
+          "_$type": "Button",
+          "name": "closeButton",
+          "x": 1039,
+          "y": 129,
+          "width": 98,
+          "height": 98,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "rotation": 12.523365473183917,
+          "stateNum": 1,
+          "skin": "res://cd4d6bb6-a7a3-4008-990e-d0abbc50916d",
+          "label": "",
+          "labelFont": "YuppyTC-Regular",
+          "labelSize": 82,
+          "labelBold": true,
+          "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+          "labelAlign": "center",
+          "labelVAlign": "middle",
+          "labelPadding": "18,0,0,0",
+          "labelStroke": 33,
+          "labelStrokeColor": "#073030"
+        }
+      ]
+    },
+    {
+      "_$id": "pizm94pp",
+      "_$type": "Box",
+      "name": "LevelLockPanel",
+      "x": 578,
+      "y": 1082,
+      "width": 1153,
+      "height": 1241,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "visible": false,
+      "centerX": -12,
+      "_$comp": [
+        {
+          "_$type": "37302a9b-4493-423b-aba0-d60fd55a00d9",
+          "scriptPath": "../src/UI/LevelLockPanel.ts",
+          "unlockAllLevels": {
+            "_$ref": "ewxhpeko"
+          },
+          "completeLevels": {
+            "_$ref": "qbebeubd"
+          },
+          "yesButton": {
+            "_$ref": "c2vqwszn"
+          },
+          "closeButton": {
+            "_$ref": "l2g5ngyw"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "wtfycnny",
+          "_$type": "Image",
+          "name": "panel",
+          "x": 577,
+          "y": 614,
+          "width": 1142,
+          "height": 1183,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "centerX": 0,
+          "centerY": -7,
+          "skin": "res://222286e3-9778-414a-9529-36b5ddd4fb6e",
+          "color": "#ffffff",
+          "_$child": [
+            {
+              "_$id": "ewxhpeko",
+              "_$type": "Image",
+              "name": "unlockAllLevels",
+              "x": 583,
+              "y": 605,
+              "width": 938,
+              "height": 758,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "visible": false,
+              "centerX": 12,
+              "centerY": 13,
+              "skin": "res://216f22ab-98b8-4ac1-9ce9-3ede87632b61",
+              "color": "#ffffff",
+              "_$child": [
+                {
+                  "_$id": "mjr1fobn",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 165,
+                  "y": 72,
+                  "width": 609,
+                  "height": 351,
+                  "text": "如果直接解锁所有关卡，会失去一些挑战游戏的乐趣，确定要直接解锁所有关卡吗？",
+                  "font": "YuppyTC-Regular",
+                  "fontSize": 52,
+                  "color": "#f7f7f7",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "wordWrap": true,
+                  "leading": 27,
+                  "underlineColor": "#39e5e5",
+                  "stroke": 19
+                },
+                {
+                  "_$id": "c2vqwszn",
+                  "_$type": "Button",
+                  "name": "yes",
+                  "x": 430,
+                  "y": 531,
+                  "width": 112,
+                  "height": 112,
+                  "anchorX": 0.5,
+                  "anchorY": 0.5,
+                  "scaleX": 1.5,
+                  "scaleY": 1.5,
+                  "rotation": 12.523365473183917,
+                  "stateNum": 1,
+                  "skin": "res://2c753585-318e-4479-bf7f-ea9e97971fc6",
+                  "label": "",
+                  "labelFont": "YuppyTC-Regular",
+                  "labelSize": 82,
+                  "labelBold": true,
+                  "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+                  "labelAlign": "center",
+                  "labelVAlign": "middle",
+                  "labelPadding": "18,0,0,0",
+                  "labelStroke": 33,
+                  "labelStrokeColor": "#073030"
+                }
+              ]
+            },
+            {
+              "_$id": "qbebeubd",
+              "_$type": "Image",
+              "name": "completedLevels",
+              "x": 571,
+              "y": 667,
+              "width": 952,
+              "height": 686,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "visible": false,
+              "centerX": 0,
+              "centerY": 75,
+              "skin": "res://873dfff4-29d8-4b02-a17d-8ec7758a5dd3",
+              "color": "#ffffff",
+              "_$child": [
+                {
+                  "_$id": "s4qpua5h",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 71,
+                  "y": -199,
+                  "width": 811,
+                  "height": 188,
+                  "text": "你完成了所有关卡！\n石头人赶走了侵略者！",
+                  "font": "YuppyTC-Regular",
+                  "fontSize": 64,
+                  "color": "#f7f7f7",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "wordWrap": true,
+                  "leading": 27,
+                  "underlineColor": "#39e5e5",
+                  "stroke": 19
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "l2g5ngyw",
           "_$type": "Button",
           "name": "closeButton",
           "x": 1039,

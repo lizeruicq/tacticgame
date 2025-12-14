@@ -19,7 +19,7 @@ export class GameMainManager extends Laya.Script {
 
     // 获取传递的关卡数据
     private selectedLevel: number = 0;
-
+    public gameDataManager: GameDataManager = GameDataManager.getInstance();
     // 场景节点引用
     private battleField: Laya.Box = null;
     private spawnArea: Laya.Sprite = null;
@@ -327,7 +327,7 @@ export class GameMainManager extends Laya.Script {
         // 判断玩家是否胜利
         const isPlayerWin = this.winner === "player";
         if (isPlayerWin) { // 玩家胜利时，调用GameDataManager的onLevelComplete方法
-            GameDataManager.getInstance().onLevelComplete(this.selectedLevel);
+            this.gameDataManager.onLevelComplete(this.selectedLevel);
         }
 
         // 获取玩家城堡的血量百分比
@@ -746,7 +746,7 @@ export class GameMainManager extends Laya.Script {
 
                 // 在闪电动画完成时对所有敌方怪物造成伤害
                 if (this.monsterManager) {
-                    this.monsterManager.damageAllEnemyMonsters(30);
+                    this.monsterManager.damageAllEnemyMonsters(50);
                 }
             });
         });
@@ -855,8 +855,14 @@ export class GameMainManager extends Laya.Script {
                 reject(new Error("BattleField节点不存在"));
                 return;
             }
-
-            this.showHint("侵略者开始纵火");
+            if(this.gameDataManager.getCanEnemyMerge())
+            {
+               this.showHint("侵略者开始纵火,敌方怪物开始合成");
+            }
+            else {
+                this.showHint("侵略者开始纵火");
+            }
+            
 
             // 加载火焰预制体
             const flamePrefabPath = "prefabs/effects/Flame.lh";
@@ -883,7 +889,7 @@ export class GameMainManager extends Laya.Script {
 
                     // 渐显动画
                     Laya.Tween.to(flameSprite, { alpha: 1 }, 300, Laya.Ease.linearNone);
-
+                    this.monsterManager.damageAllPlayerMonsters(50);
                     // 3秒后渐隐并销毁
                     Laya.timer.once(3000, this, () => {
                         Laya.Tween.to(flameSprite, { alpha: 0 }, 300, Laya.Ease.linearNone, Laya.Handler.create(this, () => {

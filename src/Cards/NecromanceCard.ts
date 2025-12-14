@@ -13,7 +13,7 @@ export class NecromanceCard extends BaseMonsterCard {
         // 设置Necromance卡片的默认属性
         this.cardName = "Necromance卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Necromance.lh";
+        this.monsterPrefabPath = "res://fbf0fcb5-b551-4c82-b0d2-6839de193008";
     }
 
     // ========== 实现抽象方法 ==========

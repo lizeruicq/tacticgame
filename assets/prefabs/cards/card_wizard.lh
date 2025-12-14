@@ -17,7 +17,7 @@
       "manaCost": 4,
       "monsterLevel": 1,
       "isPlayerCard": true,
-      "monsterPrefabPath": "prefabs/monster/Wizard.lh",
+      "monsterPrefabPath": "res://7d30bc52-1016-46a0-9d80-2792ebfd70bf",
       "levelLabel": {
         "_$ref": "cpbc2vsm"
       },

@@ -323,7 +323,7 @@ export class CardManager extends Laya.Script {
 
         if (!mergeTargetCard) {
             // 没有找到重合的卡牌，恢复原位
-            console.log("没有找到重合的卡牌，恢复原位");
+            this.gameManager.showHint("没有找到重合的卡牌");
             this.resetCardPosition(draggedCard);
             this.restoreCardZIndex(draggedCard);
             return;
@@ -331,14 +331,19 @@ export class CardManager extends Laya.Script {
 
         // 检查两张卡牌是否相同且都是1级
         if (!this.canMergeCards(draggedCard, mergeTargetCard)) {
-            console.log("卡牌无法合成，恢复原位");
+            
+            this.resetCardPosition(draggedCard);
+            this.restoreCardZIndex(draggedCard);
+            return;
+        }
+        if (this.playerMana < 1) {
+            this.gameManager.showHint("需要至少1点法力合成卡牌");
             this.resetCardPosition(draggedCard);
             this.restoreCardZIndex(draggedCard);
             return;
         }
 
         // 执行合成
-        console.log(`合成卡牌: ${draggedCard.cardName} + ${mergeTargetCard.cardName}`);
         this.mergeCards(draggedCard, mergeTargetCard);
 
         // 启动冷却时间（与卡牌使用相同的流程）
@@ -384,13 +389,13 @@ export class CardManager extends Laya.Script {
     private canMergeCards(card1: any, card2: any): boolean {
         // 检查卡牌类型是否相同
         if (card1.cardName !== card2.cardName) {
-            console.log(`卡牌类型不同: ${card1.cardName} vs ${card2.cardName}`);
+            this.gameManager.showHint(`卡牌类型不同`);
             return false;
         }
 
         // 检查两张卡牌是否都是1级
         if (card1.monsterLevel !== 1 || card2.monsterLevel !== 1) {
-            console.log(`卡牌等级不符: ${card1.monsterLevel} vs ${card2.monsterLevel}`);
+            this.gameManager.showHint(`卡牌等级不一致`);
             return false;
         }
 
@@ -402,6 +407,7 @@ export class CardManager extends Laya.Script {
      * 被覆盖的卡牌升级为2级，被拖拽的卡牌移除
      */
     private mergeCards(draggedCard: any, targetCard: any): void {
+        this.gameManager.consumeMana(1);
         // 升级目标卡牌为2级
         targetCard.monsterLevel = 2;
 
@@ -420,6 +426,7 @@ export class CardManager extends Laya.Script {
 
         // 销毁被拖拽的卡牌
         this.destroyCard(draggedCard);
+        this.gameManager.showHint("合成成功，消耗1点魔法值")
     }
 
     /**
@@ -436,8 +443,6 @@ export class CardManager extends Laya.Script {
      * 卡片使用回调
      */
     public onCardUsed(card: any): void {
-        console.log(`CardManager: ${card.cardName} 被使用`);
-
         // 通过GameMainManager扣除魔法值
         // const gameManager = GameMainManager.getInstance();
         if (this.gameManager) {
@@ -449,7 +454,7 @@ export class CardManager extends Laya.Script {
 
             const success = this.gameManager.consumeMana(card.manaCost);
             if (!success) {
-                console.log("魔法值不足，无法使用卡牌");
+                this.gameManager.showHint("魔法值不足，无法使用卡牌");
                 return; // 魔法值不足，不执行后续操作
             }
         } else {

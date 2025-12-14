@@ -150,7 +150,7 @@
           "_$type": "ProgressBar",
           "name": "EnemyHpBar",
           "x": 1104,
-          "y": 168,
+          "y": 284,
           "width": 502,
           "height": 37,
           "rotation": 90,
@@ -180,7 +180,7 @@
           "_$type": "ProgressBar",
           "name": "EnemyPowerBar",
           "x": 1052,
-          "y": 171,
+          "y": 287,
           "width": 240,
           "height": 37,
           "rotation": 90,
@@ -192,10 +192,10 @@
           "_$id": "obxzpln9",
           "_$type": "Button",
           "name": "StopButton",
-          "x": 1007,
-          "y": 48,
-          "width": 120,
-          "height": 120,
+          "x": 993,
+          "y": 121,
+          "width": 140,
+          "height": 140,
           "zIndex": 1,
           "stateNum": 1,
           "skin": "res://dd766b95-76b9-4a63-a357-ec4b65ceb23f",
@@ -823,6 +823,295 @@
           "name": "card_rock_3",
           "active": true,
           "x": 801,
+          "y": 0,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "_$id": "prefab_container",
+      "_$type": "Sprite",
+      "name": "PrefabContainer",
+      "width": 0,
+      "height": 0,
+      "visible": false,
+      "_$child": [
+        {
+          "_$id": "monster_rock",
+          "_$prefab": "a375d387-c81f-46ea-8b81-e71a9d23f831",
+          "name": "Rock",
+          "active": false,
+          "x": 89,
+          "y": 1642,
+          "visible": true
+        },
+        {
+          "_$id": "monster_wizard",
+          "_$prefab": "7d30bc52-1016-46a0-9d80-2792ebfd70bf",
+          "name": "Wizard",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "monster_pastor",
+          "_$prefab": "6b31a931-37a1-442d-b6c2-95b4e537a878",
+          "name": "Pastor",
+          "active": false,
+          "x": 270,
+          "y": 1563,
+          "visible": true
+        },
+        {
+          "_$id": "monster_goblin",
+          "_$prefab": "fd485021-de92-48d9-83d4-8e3384fed8cf",
+          "name": "Goblin",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "monster_necromance",
+          "_$prefab": "fbf0fcb5-b551-4c82-b0d2-6839de193008",
+          "name": "Necromance",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "monster_skeleton",
+          "_$prefab": "66c916fc-309a-4172-9045-82c55f33b916",
+          "name": "Skeleton",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "monster_troll",
+          "_$prefab": "ae5e0b05-ba36-47fa-992c-0f0fa3adeb53",
+          "name": "Troll",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "monster_zombie",
+          "_$prefab": "6e917600-162b-407e-ae53-499e7acc97bc",
+          "name": "Zombie",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "monster_swordfe",
+          "_$prefab": "63110cd7-0556-43ce-8cb4-8bf4451ada5f",
+          "name": "SwordFe",
+          "active": false,
+          "x": 271,
+          "y": 1506,
+          "visible": true
+        },
+        {
+          "_$id": "monster_archer",
+          "_$prefab": "ea989b8b-56a9-4f3d-a3ca-ec04ac981776",
+          "name": "Archer",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "monster_fairy",
+          "_$prefab": "3ba5f627-8b63-4f9f-9f10-4651a5728d01",
+          "name": "Fairy",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "monster_knight",
+          "_$prefab": "e22b9052-17c9-4746-8d2f-e4c33b99148b",
+          "name": "Knight",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "monster_pirate",
+          "_$prefab": "de0cfd07-ee56-4063-9a8b-c04f6646186b",
+          "name": "Pirate",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "monster_sailor",
+          "_$prefab": "1ebf4fd9-638e-4505-b654-f801deba9f73",
+          "name": "Sailor",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "monster_sword",
+          "_$prefab": "608d2715-b93a-4c93-ae4d-8b4b2b852b27",
+          "name": "Sword",
+          "active": false,
+          "x": 629,
+          "y": -1,
+          "visible": true
+        },
+        {
+          "_$id": "effect_arrow",
+          "_$prefab": "e8dc9d72-1ad3-4184-8a99-e9524f901dca",
+          "name": "arrow",
+          "active": false,
+          "x": 408,
+          "y": 1291,
+          "visible": true
+        },
+        {
+          "_$id": "effect_cure_ball",
+          "_$prefab": "c1ad1081-2a3e-4304-b3e8-c56a0a7d0b18",
+          "name": "cure_ball",
+          "active": false,
+          "x": 564,
+          "y": 1176,
+          "visible": true
+        },
+        {
+          "_$id": "effect_firebullet",
+          "_$prefab": "5d2c7d70-ce12-4acc-b875-dfc0f498090b",
+          "name": "firebullet",
+          "active": false,
+          "x": 564,
+          "y": 1176,
+          "visible": true
+        },
+        {
+          "_$id": "effect_flame",
+          "_$prefab": "9579ae60-08f6-40ad-bbd8-fcbc9e8b4a8b",
+          "name": "Flame",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "effect_freeze",
+          "_$prefab": "cdc21c6c-4226-4dff-a0f5-3f6f54c9458f",
+          "name": "freeze",
+          "active": false,
+          "x": 564,
+          "y": 1176,
+          "visible": true
+        },
+        {
+          "_$id": "effect_spawn",
+          "_$prefab": "c71d57e4-3ebc-4a2e-a53f-dea1d444ce03",
+          "name": "spawn",
+          "active": false,
+          "x": 564,
+          "y": 1176,
+          "visible": true
+        },
+        {
+          "_$id": "effect_water",
+          "_$prefab": "19fdae99-6f7e-426e-ae00-fbbbe7ce805c",
+          "name": "water",
+          "active": false,
+          "x": 564,
+          "y": 1176,
+          "visible": true
+        },
+        {
+          "_$id": "effect_wizard_ball",
+          "_$prefab": "0d117a61-b124-4ec0-b2a4-5ac0a94313aa",
+          "name": "wizard_ball",
+          "active": false,
+          "x": 564,
+          "y": 1176,
+          "visible": true
+        },
+        {
+          "_$id": "card_rock",
+          "_$prefab": "bfce3c49-3edb-492e-aab3-cd0198586a90",
+          "name": "card_rock",
+          "active": false,
+          "x": 0,
+          "y": 28,
+          "visible": true
+        },
+        {
+          "_$id": "card_wizard",
+          "_$prefab": "a6d568df-b152-4b1f-81dd-93c16814182c",
+          "name": "card_wizard",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "card_pastor",
+          "_$prefab": "21486761-43d5-4111-8daa-dd9666eafb6a",
+          "name": "card_pastor",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "card_goblin",
+          "_$prefab": "7c60432a-465d-4d8f-9238-9a395e22875a",
+          "name": "card_goblin",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "card_necromance",
+          "_$prefab": "2f89aa53-4fb2-4019-87d8-fedca50bbd74",
+          "name": "card_necromance",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "card_skeleton",
+          "_$prefab": "fe7ae46c-06f0-4473-a8f0-55e5a842ca3f",
+          "name": "card_skeleton",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "card_troll",
+          "_$prefab": "ef6c679c-a739-4ae0-8d10-60024de7b475",
+          "name": "card_troll",
+          "active": false,
+          "x": 0,
+          "y": 0,
+          "visible": true
+        },
+        {
+          "_$id": "card_zombie",
+          "_$prefab": "5df243f5-8f90-43fa-b3c1-f1f390133b89",
+          "name": "card_zombie",
+          "active": false,
+          "x": 0,
           "y": 0,
           "visible": true
         }

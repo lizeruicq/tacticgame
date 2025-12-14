@@ -13,7 +13,7 @@ export class SkeletonCard extends BaseMonsterCard {
         // 设置Skeleton卡片的默认属性
         this.cardName = "Skeleton卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "prefabs/monster/Skeleton.lh";
+        this.monsterPrefabPath = "res://66c916fc-309a-4172-9045-82c55f33b916";
     }
 
     // ========== 实现抽象方法 ==========

@@ -42,9 +42,9 @@
           "_$id": "efju76s6",
           "_$type": "Image",
           "name": "mainbackground",
-          "x": -96,
+          "x": -122,
           "y": -1,
-          "width": 1335,
+          "width": 1423,
           "height": 2578,
           "skin": "res://e75da8f0-b6f4-4ba1-9671-58ba02123609",
           "color": "#ffffff"
@@ -65,7 +65,7 @@
           "_$type": "Image",
           "name": "PlayerAvatar",
           "x": 7,
-          "y": 58,
+          "y": 162,
           "width": 100,
           "height": 100,
           "scaleX": 1.5,
@@ -78,7 +78,7 @@
           "_$type": "Label",
           "name": "PlayerName",
           "x": 173,
-          "y": 139,
+          "y": 243,
           "width": 172,
           "height": 52,
           "anchorY": 0.5,
@@ -95,7 +95,7 @@
           "_$type": "Button",
           "name": "StartButton",
           "x": 590,
-          "y": 1541,
+          "y": 1645,
           "width": 180,
           "height": 180,
           "anchorX": 0.5,
@@ -119,7 +119,7 @@
           "_$type": "Button",
           "name": "HelpButton",
           "x": 403,
-          "y": 1293,
+          "y": 1397,
           "width": 139,
           "height": 139,
           "anchorX": 0.5,
@@ -143,7 +143,7 @@
           "_$type": "Button",
           "name": "SettingButton",
           "x": 784,
-          "y": 1293,
+          "y": 1397,
           "width": 139,
           "height": 139,
           "anchorX": 0.5,
@@ -167,7 +167,7 @@
           "_$type": "Button",
           "name": "SoundButton",
           "x": 1064,
-          "y": 132,
+          "y": 236,
           "width": 94,
           "height": 94,
           "anchorX": 0.5,
@@ -216,6 +216,9 @@
           },
           "resetButton": {
             "_$ref": "p42yplra"
+          },
+          "mergesetButton": {
+            "_$ref": "a15lecty"
           },
           "confirmPanel": {
             "_$ref": "l6qtf0iv"
@@ -277,7 +280,7 @@
               "labelColors": "#fcfcfc,#32cc6b,#ff0000",
               "labelAlign": "center",
               "labelVAlign": "middle",
-              "labelPadding": "18,0,0,0",
+              "labelPadding": "19,0,0,0",
               "labelStroke": 33,
               "labelStrokeColor": "#073030"
             },
@@ -304,6 +307,31 @@
               "labelAlign": "center",
               "labelVAlign": "middle",
               "labelPadding": "18,0,0,0",
+              "labelStroke": 33,
+              "labelStrokeColor": "#073030"
+            },
+            {
+              "_$id": "a15lecty",
+              "_$type": "Button",
+              "name": "mergesetButton",
+              "x": 636,
+              "y": 626,
+              "width": 409,
+              "height": 121,
+              "anchorX": 0.5,
+              "anchorY": 0.5,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "stateNum": 1,
+              "skin": "res://3ed11228-2cb7-4023-8cca-330237e33362",
+              "label": "敌方怪物升级：开",
+              "labelFont": "YuppyTC-Regular",
+              "labelSize": 48,
+              "labelBold": true,
+              "labelColors": "#fcfcfc,#32cc6b,#ff0000",
+              "labelAlign": "center",
+              "labelVAlign": "middle",
+              "labelPadding": "19,0,0,0",
               "labelStroke": 33,
               "labelStrokeColor": "#073030"
             }
@@ -561,23 +589,7 @@
       "_$comp": [
         {
           "_$type": "14c7a2ca-929f-42bf-a6e5-48267379264b",
-          "scriptPath": "../src/utils/SoundManager.ts",
-          "bgMusicNode": {
-            "_$ref": "071sgxch"
-          }
-        }
-      ],
-      "_$child": [
-        {
-          "_$id": "071sgxch",
-          "_$type": "SoundNode",
-          "name": "BackgroundMusic",
-          "width": 100,
-          "height": 100,
-          "source": "res://0885e5e8-35b4-4ecb-8fc1-608db0d362b1",
-          "isMusic": true,
-          "loop": 99,
-          "autoPlay": true
+          "scriptPath": "../src/utils/SoundManager.ts"
         }
       ]
     }
