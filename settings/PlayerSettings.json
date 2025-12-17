@@ -4,7 +4,9 @@
     "designHeight": 2556,
     "scaleMode": "showall",
     "alignV": "middle",
-    "alignH": "center"
+    "alignH": "center",
+    "screenMode": "vertical",
+    "backgroundColor": "#aff6d3"
   },
   "modules": {
     "laya.ui": true,

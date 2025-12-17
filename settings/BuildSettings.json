@@ -1,7 +1,13 @@
 {
   "name": "theRockWar",
   "displayName": "石头人保卫战",
+  "icon": "res://fdeb2744-98f8-455c-a7e2-ccea7bda3aee",
+  "outputPath": "/Users/zeruili/Desktop",
+  "minifyJS": true,
+  "sourcemap": true,
+  "sourcesContent": true,
   "startupScene": "res://f185fe1d-024e-49f7-bb50-d2ad1836c73a",
+  "copyBinFiles": false,
   "web": {
     "allowTextureCompressedFormat": false
   },
@@ -16,7 +22,7 @@
   },
   "ios": {
     "allowTextureCompressedFormat": false,
-    "encryptDCC": true,
+    "encryptDCC": false,
     "renderMode": "webgl",
     "exportProject": true,
     "bundleIdentifier": "com.rio.rockwar",
