@@ -184,7 +184,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-1.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             bgmName: "forest.mp3",
-            enemyDecisionInterval: 1000,
+            enemyDecisionInterval: 2500,
             enemyWeights: {
                 // "SwordFe": 0.5,
                 // "Sword": 0.5,
@@ -201,7 +201,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-2.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             bgmName: "forest.mp3",
-            enemyDecisionInterval: 700,
+            enemyDecisionInterval: 2000,
             enemyWeights: {
 
             }
@@ -217,7 +217,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-3.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-snow.jpg",
             bgmName: "calm.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 2000,
             enemyWeights: {
 
             }
@@ -234,7 +234,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-4.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
             bgmName: "shop.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 2000,
             enemyWeights: {
 
             }
@@ -251,7 +251,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-5.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
             bgmName: "shop.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 1500,
             enemyWeights: {
 
             }
@@ -270,7 +270,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-6.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-mud.jpeg",
             bgmName: "kingdom.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 1500,
             enemyWeights: {
 
             }
@@ -287,7 +287,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-7.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
             bgmName: "kingdom.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 1500,
             enemyWeights: {
 
             }
@@ -304,7 +304,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-8.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-dessert.jpeg",
             bgmName: "kingdom.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 1000,
             enemyWeights: {
 
             }
@@ -321,7 +321,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-9.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-snow.jpg",
             bgmName: "calm.mp3",
-            enemyDecisionInterval: 500,
+            enemyDecisionInterval: 1000,
             enemyWeights: {
 
             }
