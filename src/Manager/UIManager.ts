@@ -5,6 +5,7 @@ import { GameMainManager } from "./GameMainManager";
 import { Castle } from "../monsters/Castle";
 import { GameStartPanel } from "../UI/GameStartPanel";
 import { GameEndPanel } from "../UI/GameEndPanel";
+import { SceneManager } from "../SceneManager";
 
 /**
  * UI管理器
@@ -95,7 +96,7 @@ export class UIManager extends Laya.Script {
      */
     private initializeManagers(): void {
         // 获取GameMainManager节点
-        const gameMainManagerNode = this.owner.scene.getChildByName("GameMainManager");
+        const gameMainManagerNode = SceneManager.getChildSafe(this.owner.scene, "GameMainManager");
 
         // 从GameMainManager节点获取组件实例
         if (gameMainManagerNode) {
@@ -160,13 +161,13 @@ export class UIManager extends Laya.Script {
         const gameScene = this.owner.scene;
 
         // 获取玩家城堡
-        const playerCastleNode = gameScene.getChildByName("castle-self");
+        const playerCastleNode = SceneManager.getChildSafe(gameScene, "castle-self");
         if (playerCastleNode) {
             this.playerCastle = playerCastleNode.getComponent(Castle);
         }
 
         // 获取敌方城堡
-        const enemyCastleNode = gameScene.getChildByName("castle-enemy");
+        const enemyCastleNode = SceneManager.getChildSafe(gameScene, "castle-enemy");
         if (enemyCastleNode) {
             this.enemyCastle = enemyCastleNode.getComponent(Castle);
         }

@@ -2,7 +2,7 @@
   "name": "theRockWar",
   "displayName": "石头人保卫战",
   "icon": "res://fdeb2744-98f8-455c-a7e2-ccea7bda3aee",
-  "outputPath": "/Users/zeruili/Desktop",
+  "outputPath": "/Users/zeruili/Desktop/石头人保卫战1.1",
   "minifyJS": true,
   "sourcemap": true,
   "sourcesContent": true,
@@ -22,7 +22,6 @@
   },
   "ios": {
     "allowTextureCompressedFormat": false,
-    "encryptDCC": false,
     "renderMode": "webgl",
     "exportProject": true,
     "bundleIdentifier": "com.rio.rockwar",

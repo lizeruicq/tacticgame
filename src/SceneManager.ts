@@ -180,4 +180,20 @@ export class SceneManager {
     public getIsLoading(): boolean {
         return this.isLoading;
     }
+
+    /**
+     * 在场景或节点中安全地查找子节点（支持Main容器）
+     * @param parent 父节点或场景
+     * @param nodeName 节点名称
+     * @returns 找到的节点，如果未找到则返回null
+     */
+    public static getChildSafe(parent: Laya.Node | Laya.Scene | Laya.Scene3D, nodeName: string): Laya.Node | null {
+        // 先尝试直接获取
+        let child = parent.getChildByName(nodeName);
+        if (child) return child;
+
+        // 如果没找到，尝试从Main容器中获取
+        const mainBox = parent.getChildByName("Main") as Laya.Box;
+        return mainBox ? mainBox.getChildByName(nodeName) : null;
+    }
 }

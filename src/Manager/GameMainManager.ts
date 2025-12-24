@@ -8,6 +8,7 @@ import { GameEndPanel } from "../UI/GameEndPanel";
 import { CardConfig } from "../Cards/CardConfig";
 import { SoundManager } from "../utils/SoundManager";
 import { GameDataManager } from "../GameDataManager";
+import { SceneManager } from "../SceneManager";
 @regClass()
 export class GameMainManager extends Laya.Script {
 
@@ -102,7 +103,7 @@ export class GameMainManager extends Laya.Script {
         const gameScene = this.owner.scene;
 
         // 查找BattleField节点
-        this.battleField = gameScene.getChildByName("BattleField") as Laya.Box;
+        this.battleField = SceneManager.getChildSafe(gameScene, "BattleField") as Laya.Box;
         if (!this.battleField) {
             console.error("未找到BattleField节点！");
         } else {
@@ -173,8 +174,8 @@ export class GameMainManager extends Laya.Script {
      */
     private initializeUIManager(): void {
         const gameScene = this.owner.scene;
-        const uiManagerNode = gameScene.getChildByName("UIManager");
-        
+        const uiManagerNode = SceneManager.getChildSafe(gameScene, "UIManager");
+
         if (uiManagerNode) {
             this.uiManager = uiManagerNode.getComponent(UIManager);
             if (!this.uiManager) {
@@ -183,7 +184,7 @@ export class GameMainManager extends Laya.Script {
         } else {
             console.error("未找到UIManager节点");
         }
-        
+
         // 初始化游戏结束面板
         this.initializeGameEndPanel();
     }
@@ -193,8 +194,8 @@ export class GameMainManager extends Laya.Script {
      */
     private initializeGameEndPanel(): void {
         const gameScene = this.owner.scene;
-        const endPanelNode = gameScene.getChildByName("EndPanel");
-        
+        const endPanelNode = SceneManager.getChildSafe(gameScene, "EndPanel");
+
         if (endPanelNode) {
             this.gameEndPanel = endPanelNode.getComponent(GameEndPanel);
             if (!this.gameEndPanel) {
@@ -230,7 +231,7 @@ export class GameMainManager extends Laya.Script {
         const gameScene = this.owner.scene;
 
         // 查找玩家城堡
-        const playerCastleNode = gameScene.getChildByName("castle-self");
+        const playerCastleNode = SceneManager.getChildSafe(gameScene, "castle-self");
         if (playerCastleNode) {
             this.playerCastle = playerCastleNode.getComponent(Castle);
             if (this.playerCastle) {
@@ -246,7 +247,7 @@ export class GameMainManager extends Laya.Script {
         }
 
         // 查找敌方城堡
-        const enemyCastleNode = gameScene.getChildByName("castle-enemy");
+        const enemyCastleNode = SceneManager.getChildSafe(gameScene, "castle-enemy");
         if (enemyCastleNode) {
             this.enemyCastle = enemyCastleNode.getComponent(Castle);
             if (this.enemyCastle) {
@@ -412,7 +413,7 @@ export class GameMainManager extends Laya.Script {
         this.initializeEnemyAI();
         // 获取UIManager
         const gameScene = this.owner.scene;
-        const uiManagerNode = gameScene.getChildByName("UIParent");
+        const uiManagerNode = SceneManager.getChildSafe(gameScene, "UIParent");
         if (uiManagerNode) {
             this.uiManager = uiManagerNode.getComponent(UIManager);
         }

@@ -184,7 +184,7 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-1.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             bgmName: "forest.mp3",
-            enemyDecisionInterval: 2500,
+            enemyDecisionInterval: 3000,
             enemyWeights: {
                 // "SwordFe": 0.5,
                 // "Sword": 0.5,
@@ -201,14 +201,15 @@ export class CardConfig {
             storyBackgroundImagePath: "resources/images/storys/level-2.jpg",
             sceneBackgroundImagePath: "resources/images/LEVEL/level-grass.jpeg",
             bgmName: "forest.mp3",
-            enemyDecisionInterval: 2000,
+            enemyDecisionInterval: 2500,
             enemyWeights: {
 
             }
         },
         {
+            // 简单,增加难度
             level: 3,
-            playerCards: [ "Rock","Wizard","Pastor","Necromance"],
+            playerCards: [ "Rock","Pastor","Necromance","Rock"],
             enemyCards: ["Sword", "Archer","Fairy"],
             maxCards: 4,
             cooldownTime: 2000,
@@ -258,6 +259,7 @@ export class CardConfig {
 
         },
         {
+            // 简单
             level: 6,
             // ,"Wizard","Pastor","Goblin"
             playerCards: [ "Zombie","Wizard","Pastor","Goblin"],
@@ -277,6 +279,7 @@ export class CardConfig {
 
         },
         {
+            // 简单
             level: 7,
             playerCards: [ "Zombie","Skeleton","Troll","Goblin"],
             enemyCards: ["Knight", "Pirate","Fairy","SwordFe"],
@@ -334,7 +337,7 @@ export class CardConfig {
             enemyCards: ["SwordFe", "Archer","Fairy","Knight","Pirate","Sailor","Sword"],
             // enemyCards: ["Knight"],
             maxCards: 4,
-            cooldownTime: 2000,
+            cooldownTime: 1500,
             guide: "第十关",
             monsterTypes: ["⭕️最终决战开启！人类阵营集结了所有精锐单位，涵盖近战高攻、远程输出、控制辅助等全类型，攻势密集且战术组合多样。\n⭕️我方已集结全部作战单位，用石头人、哥布林、巨魔担任前排坦度，骷髅、僵尸负责突进与战线增殖，巫师、亡灵提供远程输出与控制，牧师保障队伍续航，构建全面的攻防体系。"],
             storyBackgroundImagePath: "resources/images/storys/level-10.jpg",

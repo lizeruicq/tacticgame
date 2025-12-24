@@ -167,7 +167,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         console.log("设置按钮...");
 
         // 设置开始按钮
-        const startBtn = this.getChildByName("Start") as Laya.Button;
+        const startBtn = SceneManager.getChildSafe(this, "Start") as Laya.Button;
         if (startBtn) {
             startBtn.on(Laya.Event.CLICK, this, this.onStartClick);
             ButtonAnimationUtils.addButtonClickEffect(startBtn);
@@ -177,7 +177,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         }
 
         // 设置返回按钮
-        const backBtn = this.getChildByName("Back") as Laya.Button;
+        const backBtn = SceneManager.getChildSafe(this, "Back") as Laya.Button;
         if (backBtn) {
             backBtn.on(Laya.Event.CLICK, this, this.onBackClick);
             ButtonAnimationUtils.addButtonClickEffect(backBtn);
@@ -187,7 +187,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         }
 
         // 设置帮助按钮
-        const helpBtn = this.getChildByName("Help") as Laya.Button;
+        const helpBtn = SceneManager.getChildSafe(this, "Help") as Laya.Button;
         if (helpBtn) {
             helpBtn.on(Laya.Event.CLICK, this, this.onHelpClick);
             ButtonAnimationUtils.addButtonClickEffect(helpBtn);
@@ -197,7 +197,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         }
 
         // 设置关卡解锁按钮
-        const levelUnlockBtn = this.getChildByName("LevelUnlock") as Laya.Button;
+        const levelUnlockBtn = SceneManager.getChildSafe(this, "LevelUnlock") as Laya.Button;
         if (levelUnlockBtn) {
             levelUnlockBtn.on(Laya.Event.CLICK, this, this.onLevelUnlockClick);
             ButtonAnimationUtils.addButtonClickEffect(levelUnlockBtn);
@@ -254,7 +254,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
 
         // 如果还没有获取帮助面板实例，则先获取
         if (!this.helpPanel) {
-            const panelNode = this.getChildByName("HelpPanel");
+            const panelNode = SceneManager.getChildSafe(this, "HelpPanel");
             if (panelNode) {
                 this.helpPanel = panelNode.getComponent(HelpPanel);
             }
@@ -275,7 +275,7 @@ export class LevelSelectRT extends LevelSelectRTBase {
         console.log("关卡解锁按钮被点击了！");
 
         // 获取LevelLockPanel组件并显示
-        const panelNode = this.getChildByName("LevelLockPanel");
+        const panelNode = SceneManager.getChildSafe(this, "LevelLockPanel");
         if (panelNode) {
             const levelLockPanel = panelNode.getComponent(LevelLockPanel);
             if (levelLockPanel) {
@@ -308,22 +308,22 @@ export class LevelSelectRT extends LevelSelectRTBase {
             this.item0Tab.off(Laya.Event.CHANGE, this, this.onTabChange);
         }
 
-        const startBtn = this.getChildByName("Start") as Laya.Button;
+        const startBtn = SceneManager.getChildSafe(this, "Start") as Laya.Button;
         if (startBtn) {
             startBtn.off(Laya.Event.CLICK, this, this.onStartClick);
         }
 
-        const backBtn = this.getChildByName("Back") as Laya.Button;
+        const backBtn = SceneManager.getChildSafe(this, "Back") as Laya.Button;
         if (backBtn) {
             backBtn.off(Laya.Event.CLICK, this, this.onBackClick);
         }
 
-        const helpBtn = this.getChildByName("Help") as Laya.Button;
+        const helpBtn = SceneManager.getChildSafe(this, "Help") as Laya.Button;
         if (helpBtn) {
             helpBtn.off(Laya.Event.CLICK, this, this.onHelpClick);
         }
 
-        const levelUnlockBtn = this.getChildByName("LevelUnlock") as Laya.Button;
+        const levelUnlockBtn = SceneManager.getChildSafe(this, "LevelUnlock") as Laya.Button;
         if (levelUnlockBtn) {
             levelUnlockBtn.off(Laya.Event.CLICK, this, this.onLevelUnlockClick);
             // 清除按钮上的所有Tween动画
