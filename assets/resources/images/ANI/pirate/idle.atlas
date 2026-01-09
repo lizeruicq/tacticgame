@@ -1,122 +1,122 @@
 {
   "frames": {
-    "1_entity_000_IDLE_000.png": {
+    "3_3-PIRATE_IDLE_000.png": {
       "frame": {
         "idx": 0,
         "x": 0,
         "y": 0,
-        "w": 739,
-        "h": 874
+        "w": 782,
+        "h": 837
       },
       "sourceSize": {
-        "w": 1550,
-        "h": 1293
+        "w": 1324,
+        "h": 1253
       },
       "spriteSourceSize": {
-        "x": 188,
-        "y": 302
+        "x": 136,
+        "y": 291
       }
     },
-    "1_entity_000_IDLE_001.png": {
+    "3_3-PIRATE_IDLE_001.png": {
       "frame": {
         "idx": 0,
-        "x": 723,
-        "y": 880,
-        "w": 722,
-        "h": 876
+        "x": 784,
+        "y": 0,
+        "w": 768,
+        "h": 837
       },
       "sourceSize": {
-        "w": 1550,
-        "h": 1293
+        "w": 1324,
+        "h": 1253
       },
       "spriteSourceSize": {
-        "x": 200,
-        "y": 300
+        "x": 144,
+        "y": 291
       }
     },
-    "1_entity_000_IDLE_002.png": {
+    "3_3-PIRATE_IDLE_002.png": {
+      "frame": {
+        "idx": 0,
+        "x": 769,
+        "y": 839,
+        "w": 753,
+        "h": 836
+      },
+      "sourceSize": {
+        "w": 1324,
+        "h": 1253
+      },
+      "spriteSourceSize": {
+        "x": 153,
+        "y": 292
+      }
+    },
+    "3_3-PIRATE_IDLE_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1554,
+        "y": 0,
+        "w": 737,
+        "h": 836
+      },
+      "sourceSize": {
+        "w": 1324,
+        "h": 1253
+      },
+      "spriteSourceSize": {
+        "x": 163,
+        "y": 292
+      }
+    },
+    "3_3-PIRATE_IDLE_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 769,
+        "y": 1677,
+        "w": 737,
+        "h": 836
+      },
+      "sourceSize": {
+        "w": 1324,
+        "h": 1253
+      },
+      "spriteSourceSize": {
+        "x": 163,
+        "y": 292
+      }
+    },
+    "3_3-PIRATE_IDLE_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1524,
+        "y": 839,
+        "w": 752,
+        "h": 836
+      },
+      "sourceSize": {
+        "w": 1324,
+        "h": 1253
+      },
+      "spriteSourceSize": {
+        "x": 154,
+        "y": 292
+      }
+    },
+    "3_3-PIRATE_IDLE_006.png": {
       "frame": {
         "idx": 0,
         "x": 0,
-        "y": 1756,
-        "w": 719,
-        "h": 877
+        "y": 839,
+        "w": 767,
+        "h": 837
       },
       "sourceSize": {
-        "w": 1550,
-        "h": 1293
+        "w": 1324,
+        "h": 1253
       },
       "spriteSourceSize": {
-        "x": 198,
-        "y": 299
-      }
-    },
-    "1_entity_000_IDLE_003.png": {
-      "frame": {
-        "idx": 0,
-        "x": 741,
-        "y": 0,
-        "w": 721,
-        "h": 878
-      },
-      "sourceSize": {
-        "w": 1550,
-        "h": 1293
-      },
-      "spriteSourceSize": {
-        "x": 194,
-        "y": 298
-      }
-    },
-    "1_entity_000_IDLE_004.png": {
-      "frame": {
-        "idx": 0,
-        "x": 0,
-        "y": 876,
-        "w": 721,
-        "h": 878
-      },
-      "sourceSize": {
-        "w": 1550,
-        "h": 1293
-      },
-      "spriteSourceSize": {
-        "x": 194,
-        "y": 298
-      }
-    },
-    "1_entity_000_IDLE_005.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1464,
-        "y": 0,
-        "w": 720,
-        "h": 877
-      },
-      "sourceSize": {
-        "w": 1550,
-        "h": 1293
-      },
-      "spriteSourceSize": {
-        "x": 197,
-        "y": 299
-      }
-    },
-    "1_entity_000_IDLE_006.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1447,
-        "y": 880,
-        "w": 722,
-        "h": 876
-      },
-      "sourceSize": {
-        "w": 1550,
-        "h": 1293
-      },
-      "spriteSourceSize": {
-        "x": 200,
-        "y": 300
+        "x": 145,
+        "y": 291
       }
     }
   },

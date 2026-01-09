@@ -207,6 +207,7 @@ export class CardConfig {
             }
         },
         {
+            // 简单
             level: 3,
             playerCards: [ "Rock","Wizard","Pastor","Necromance"],
             enemyCards: ["Sword", "Archer","Fairy"],
@@ -258,6 +259,7 @@ export class CardConfig {
 
         },
         {
+            // 简单
             level: 6,
             // ,"Wizard","Pastor","Goblin"
             playerCards: [ "Zombie","Wizard","Pastor","Goblin"],
@@ -277,6 +279,7 @@ export class CardConfig {
 
         },
         {
+            // 简单
             level: 7,
             playerCards: [ "Zombie","Skeleton","Troll","Goblin"],
             enemyCards: ["Knight", "Pirate","Fairy","SwordFe"],
@@ -294,6 +297,7 @@ export class CardConfig {
 
         },
         {
+            // 简单
             level: 8,
             playerCards: [ "Rock","Skeleton","Pastor","Troll"],
             enemyCards: ["SwordFe", "Archer","Fairy","Knight"],

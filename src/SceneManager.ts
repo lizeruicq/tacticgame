@@ -10,6 +10,7 @@ export class SceneManager {
     
     // 场景路径常量
     public static readonly SCENES = {
+        LOADING: "resources/scene/LoadingScreen.ls",
         MAIN_MENU: "resources/scene/MainMenu.ls",
         LEVEL_SELECT: "resources/scene/LevelSelect.ls",
         GAME: "resources/scene/GameScene.ls",

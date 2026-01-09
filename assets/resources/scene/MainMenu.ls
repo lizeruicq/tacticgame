@@ -47,7 +47,7 @@
           "y": -11,
           "width": 1423,
           "height": 2578,
-          "skin": "res://e75da8f0-b6f4-4ba1-9671-58ba02123609",
+          "skin": "res://5f341a06-1f88-419f-ac2c-f8aa9ad34ab4",
           "color": "#ffffff"
         },
         {
@@ -58,7 +58,7 @@
           "y": 383,
           "width": 931,
           "height": 931,
-          "skin": "res://2ebbb988-ebc8-4468-902d-87f6d9774d8b",
+          "skin": "res://0ff81919-a7cc-4fd5-a354-2dd860b54efe",
           "color": "#ffffff"
         },
         {

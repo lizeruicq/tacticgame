@@ -8,6 +8,9 @@
     "screenMode": "vertical",
     "backgroundColor": "#aff6d3"
   },
+  "2D": {
+    "defaultFont": "YuppySC-Regular"
+  },
   "modules": {
     "laya.ui": true,
     "laya.light2D": true

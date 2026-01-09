@@ -3,10 +3,8 @@
   "displayName": "石头人保卫战",
   "icon": "res://fdeb2744-98f8-455c-a7e2-ccea7bda3aee",
   "outputPath": "/Users/zeruili/Desktop",
-  "minifyJS": true,
-  "sourcemap": true,
   "sourcesContent": true,
-  "startupScene": "res://f185fe1d-024e-49f7-bb50-d2ad1836c73a",
+  "startupScene": "res://18b51845-e6f6-4711-947b-233d6367c51f",
   "copyBinFiles": false,
   "web": {
     "allowTextureCompressedFormat": false
@@ -22,7 +20,6 @@
   },
   "ios": {
     "allowTextureCompressedFormat": false,
-    "encryptDCC": false,
     "renderMode": "webgl",
     "exportProject": true,
     "bundleIdentifier": "com.rio.rockwar",
@@ -65,5 +62,8 @@
     },
     "teamID": "UWR5Y8Y7U8",
     "exportMethod": "debugging"
+  },
+  "wxgame": {
+    "appid": "wx15a49d22b71a7b23"
   }
 }

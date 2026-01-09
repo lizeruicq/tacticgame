@@ -1,11 +1,13 @@
 const { regClass } = Laya;
 import { WeChatManager, WeChatUserInfo, WeChatEventType } from './Wechat/WeChatManager';
+import { CloudDatabaseManager } from './utils/CloudDatabaseManager';
 
 // 游戏数据接口
 export interface GameData {
     playerLevel: number;
     playerExp: number;
     coins: number;
+    
     achievements: string[];
     unlockedLevels: number[];  // 已解锁的关卡列表
     settings: {
@@ -84,9 +86,14 @@ export class GameDataManager {
     
     /**
      * 初始化数据
+     * 调试模式：仅调用 getOpenid() 测试云函数
      */
     private async initializeData() {
         try {
+            // 调试：仅调用 getOpenid() 测试云函数是否正常
+            const cloudDatabaseManager = CloudDatabaseManager.getInstance();
+            const openid = await cloudDatabaseManager.getOpenid();
+            console.log('✅ 云函数调试 - 获取 openid 成功:', openid);
             // 加载游戏数据
             this.loadGameData();
             
@@ -97,7 +104,7 @@ export class GameDataManager {
             this.playerData.isDataLoaded = true;
             console.log('游戏数据初始化完成');
         } catch (error) {
-            console.error('初始化游戏数据失败:', error);
+            console.error('❌ 云函数调试 - 获取 openid 失败:', error);
         }
     }
     

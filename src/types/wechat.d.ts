@@ -141,6 +141,34 @@ declare namespace wx {
         complete?: () => void;
     }
     function showToast(option: ShowToastOption): void;
+
+    // 云开发相关类型
+    namespace cloud {
+        interface InitConfig {
+            env: string;
+            traceUser?: boolean;
+        }
+
+        interface GetTempFileURLResult {
+            fileList: Array<{
+                fileID: string;
+                tempFileURL: string;
+                status: number;
+                errMsg: string;
+            }>;
+            errMsg: string;
+        }
+
+        interface GetTempFileURLOption {
+            fileList: string[];
+            success?: (res: GetTempFileURLResult) => void;
+            fail?: (error: any) => void;
+            complete?: () => void;
+        }
+
+        function init(config: InitConfig): void;
+        function getTempFileURL(option: GetTempFileURLOption): Promise<GetTempFileURLResult>;
+    }
 }
 
 // 全局wx对象

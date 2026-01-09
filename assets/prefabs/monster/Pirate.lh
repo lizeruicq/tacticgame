@@ -17,7 +17,7 @@
       "scriptPath": "../src/monsters/human/PirateMonster.ts",
       "isPlayerCamp": 0,
       "monsterLevel": 1,
-      "atkEffectPath": ""
+      "atkEffectPrefab": null
     },
     {
       "_$type": "769d0825-187d-46c3-93d1-0e0a25f05200",
@@ -32,13 +32,13 @@
       "_$id": "p8o8q1sq",
       "_$type": "Animation",
       "name": "pirateAnimation",
-      "x": 86,
-      "y": 9,
+      "x": 121,
+      "y": -23,
       "width": 1070,
       "height": 1358,
       "scaleX": 0.5,
       "scaleY": 0.5,
-      "source": "res://eadc9957-b119-4a5c-a4e8-251e9650fd7d",
+      "source": "res://d9028eb5-1506-440d-9d2d-96be64c86620",
       "index": 0,
       "interval": 50
     },
