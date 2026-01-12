@@ -2,6 +2,7 @@ const { regClass, property } = Laya;
 import { BaseMonsterCard } from "../Cards/BaseMonsterCard";
 import { CardConfig } from "../Cards/CardConfig";
 import { GameMainManager } from "./GameMainManager";
+import { MonsterManager } from "./MonsterManager";
 
 /**
  * 卡片管理器
@@ -32,10 +33,13 @@ export class CardManager extends Laya.Script {
 
     // 卡牌拖拽相关
     private draggedCard: any = null;                   // 当前被拖拽的卡牌
-    private dragStartX: number = 0;                    // 拖拽开始的X坐标
+    private dragStartX: number = 0;                    // 拖拽开始的世界坐标X
+    private dragStartY: number = 0;                    // 拖拽开始的世界坐标Y
+    private dragStartLocalX: number = 0;               // 拖拽开始的本地坐标X（用于恢复）
+    private dragStartLocalY: number = 0;               // 拖拽开始的本地坐标Y（用于恢复）
     private dragStartTime: number = 0;                 // 拖拽开始的时间
     private isDragging: boolean = false;               // 是否正在拖拽
-    private longPressDelay: number = 300;              // 长按延迟（毫秒）
+    private longPressDelay: number = 50;              // 长按延迟（毫秒）
     private originalZIndex: number = 0;                // 卡片原始zIndex
     private onLongPressCallback: () => void = null;    // 长按回调函数
 
@@ -229,15 +233,27 @@ export class CardManager extends Laya.Script {
         }
 
         this.draggedCard = card;
-        this.dragStartX = (card.owner as Laya.Sprite).x;
+        const cardSprite = card.owner as Laya.Sprite;
+        // 保存卡片的本地坐标（用于恢复）
+        this.dragStartLocalX = cardSprite.x;
+        this.dragStartLocalY = cardSprite.y;
+        // 获取卡片的世界坐标（相对于舞台）
+        const worldPos = cardSprite.localToGlobal(new Laya.Point(0, 0));
+        this.dragStartX = worldPos.x;
+        this.dragStartY = worldPos.y;
         this.dragStartTime = Date.now();
 
         // 定义长按回调函数
         this.onLongPressCallback = () => {
             if (this.draggedCard && !this.isDragging) {
-                this.gameManager.showHint("拖拽并合成高级卡牌");
+                this.gameManager.showHint("拖拽放置或者合成高级卡牌");
                 const cardSprite = this.draggedCard.owner as Laya.Sprite;
                 cardSprite.y = -30;
+                // 显示spawnArea（透明度改为0.7）
+                const spawnArea = this.gameManager.getSpawnArea();
+                if (spawnArea) {
+                     spawnArea.alpha = 0.3;
+                 }
             }
         };
 
@@ -267,11 +283,20 @@ export class CardManager extends Laya.Script {
             this.isDragging = true;
         }
 
-        // 如果正在拖拽，更新卡牌位置（只允许左右移动）
+        // 如果正在拖拽，更新卡牌位置（允许任意方向移动）
         if (this.isDragging) {
             const cardSprite = this.draggedCard.owner as Laya.Sprite;
+            // 计算鼠标相对于拖拽开始位置的位移（世界坐标）
             const deltaX = Laya.stage.mouseX - this.dragStartX;
-            cardSprite.x = this.dragStartX + deltaX - cardSprite.width ;
+            const deltaY = Laya.stage.mouseY - this.dragStartY;
+            // 计算卡牌应该移动到的世界坐标
+            const newWorldX = this.dragStartX + deltaX - cardSprite.width /2;
+            const newWorldY = this.dragStartY + deltaY - cardSprite.height /2;
+            // 将世界坐标转换为本地坐标
+            const parent = cardSprite.parent as Laya.Sprite;
+            const localPos = parent.globalToLocal(new Laya.Point(newWorldX, newWorldY));
+            cardSprite.x = localPos.x;
+            cardSprite.y = localPos.y;
         }
     }
 
@@ -290,10 +315,16 @@ export class CardManager extends Laya.Script {
             Laya.timer.clear(this, this.onLongPressCallback);
             this.onLongPressCallback = null;
         }
+         const spawnArea = this.gameManager.getSpawnArea();
+            if (spawnArea) {
+                spawnArea.alpha = 0;
+            }
 
         // 如果正在拖拽，检查是否可以合成
         if (this.isDragging) {
             this.checkAndMergeCard(this.draggedCard);
+            // 隐藏spawnArea（透明度改为0）
+           
         } else {
             // 恢复卡片的zIndex（即使没有拖拽，也要确保zIndex恢复）
             this.restoreCardZIndex(this.draggedCard);
@@ -315,15 +346,25 @@ export class CardManager extends Laya.Script {
     }
 
     /**
-     * 检查并合成卡牌
+     * 检查并合成卡牌或生成怪物
      */
     private checkAndMergeCard(draggedCard: any): void {
-        // 查找与被拖拽卡牌重合的其他卡牌
+        const cardSprite = draggedCard.owner as Laya.Sprite;
+        const isInSpawnArea = this.isPositionInSpawnArea(cardSprite);
+
+        // 如果卡牌在spawnArea范围内，生成怪物
+        if (isInSpawnArea) {
+            this.spawnMonsterFromCard(draggedCard, cardSprite);
+            this.restoreCardZIndex(draggedCard);
+            return;
+        }
+
+        // 如果不在spawnArea范围内，检查是否可以合成
         const mergeTargetCard = this.findOverlapCard(draggedCard);
 
         if (!mergeTargetCard) {
             // 没有找到重合的卡牌，恢复原位
-            this.gameManager.showHint("没有找到重合的卡牌");
+            this.gameManager.showHint("释放位置不在生成区域，且未找到可合成的卡牌");
             this.resetCardPosition(draggedCard);
             this.restoreCardZIndex(draggedCard);
             return;
@@ -331,11 +372,11 @@ export class CardManager extends Laya.Script {
 
         // 检查两张卡牌是否相同且都是1级
         if (!this.canMergeCards(draggedCard, mergeTargetCard)) {
-            
             this.resetCardPosition(draggedCard);
             this.restoreCardZIndex(draggedCard);
             return;
         }
+
         if (this.playerMana < 1) {
             this.gameManager.showHint("需要至少1点法力合成卡牌");
             this.resetCardPosition(draggedCard);
@@ -345,8 +386,46 @@ export class CardManager extends Laya.Script {
 
         // 执行合成
         this.mergeCards(draggedCard, mergeTargetCard);
+        this.startCardCooldown();
+    }
 
-        // 启动冷却时间（与卡牌使用相同的流程）
+    /**
+     * 从卡牌生成怪物
+     */
+    private spawnMonsterFromCard(draggedCard: any, cardSprite: Laya.Sprite): void {
+        const monsterType = draggedCard.getMonsterType();
+        const position = 
+        { 
+            x: cardSprite.localToGlobal(new Laya.Point(0, 0)).x  + cardSprite.width / 2, 
+            y: cardSprite.localToGlobal(new Laya.Point(0, 0)).y + cardSprite.height / 2
+         };
+
+        // 检查魔法值
+        if (this.playerMana < draggedCard.manaCost) {
+            this.gameManager.showHint("魔法值不足，无法生成怪物");
+            this.resetCardPosition(draggedCard);
+            return;
+        }
+
+        // 消耗魔法值
+        this.gameManager.consumeMana(draggedCard.manaCost);
+
+        // 通过MonsterManager创建怪物
+        const monsterManager = MonsterManager.getInstance();
+        if (monsterManager) {
+            monsterManager.createMonster(monsterType, true, position, draggedCard.monsterLevel)
+                .then((monsterSprite: any) => {
+                    if (monsterSprite) {
+                        const battleField = this.gameManager.getBattleField();
+                        battleField.addChild(monsterSprite);  
+                    }
+                });
+        }
+        this.playCardUseAnimation(draggedCard);
+        // 销毁卡牌
+        // this.destroyCard(draggedCard);
+
+        // 启动冷却时间
         this.startCardCooldown();
     }
 
@@ -380,6 +459,37 @@ export class CardManager extends Laya.Script {
                  bounds2.x + bounds2.width < bounds1.x ||
                  bounds1.y + bounds1.height < bounds2.y ||
                  bounds2.y + bounds2.height < bounds1.y);
+    }
+
+    /**
+     * 检查卡牌释放位置是否在spawnArea范围内
+     */
+    private isPositionInSpawnArea(cardSprite: Laya.Sprite): boolean {
+        const spawnArea = this.gameManager.getSpawnArea();
+        if (!spawnArea) return false;
+
+        // 获取卡牌的世界坐标中心点
+        const cardWorldPos = cardSprite.localToGlobal(new Laya.Point(cardSprite.width / 2, cardSprite.height / 2));
+        const cardCenterX = cardWorldPos.x;
+        const cardCenterY = cardWorldPos.y;
+
+        // 获取spawnArea的世界坐标
+        // spawnArea的锚点为(0.5, 0.5)，所以中心点就是(x, y)
+        const areaWorldPos = spawnArea.localToGlobal(new Laya.Point(spawnArea.width / 2 , spawnArea.height / 2 ));
+        const areaCenterX = areaWorldPos.x;
+        const areaCenterY = areaWorldPos.y;
+        const areaWidth = spawnArea.width;
+        const areaHeight = spawnArea.height;
+
+        // 计算spawnArea的实际边界（世界坐标）
+        const areaLeft = areaCenterX - areaWidth / 2;
+        const areaRight = areaCenterX + areaWidth / 2;
+        const areaTop = areaCenterY - areaHeight / 2;
+        const areaBottom = areaCenterY + areaHeight / 2;
+
+        // 检查卡牌中心是否在spawnArea范围内
+        return cardCenterX >= areaLeft && cardCenterX <= areaRight &&
+               cardCenterY >= areaTop && cardCenterY <= areaBottom;
     }
 
     /**
@@ -434,9 +544,8 @@ export class CardManager extends Laya.Script {
      */
     private resetCardPosition(card: any): void {
         const cardSprite = card.owner as Laya.Sprite;
-        // 使用Tween动画恢复到原位
-        Laya.Tween.to(cardSprite, { x: this.dragStartX }, 200, Laya.Ease.quadOut);
-        cardSprite.y = 0;
+        // 使用Tween动画恢复到原位（使用本地坐标）
+        Laya.Tween.to(cardSprite, { x: this.dragStartLocalX, y: this.dragStartLocalY }, 200, Laya.Ease.quadOut);
     }
 
     /**

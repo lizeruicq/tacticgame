@@ -661,16 +661,17 @@
           "_$id": "956g9jgg",
           "_$type": "Sprite",
           "name": "spawnArea",
-          "x": 449,
-          "y": 1655,
-          "width": 717,
-          "height": 313,
+          "x": 429,
+          "y": 1623,
+          "width": 741,
+          "height": 365,
           "anchorX": 0.5,
           "anchorY": 0.5,
+          "alpha": 0,
           "_gcmds": [
             {
               "_$type": "DrawRectCmd",
-              "fillColor": "rgba(10,10,62,0)"
+              "fillColor": "#19f700"
             }
           ]
         },
