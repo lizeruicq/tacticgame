@@ -1185,7 +1185,7 @@
                   "width": 224,
                   "height": 343,
                   "texture": {
-                    "_$uuid": "7d1eb54b-5cf8-487d-97e2-e6903a70c5b5",
+                    "_$uuid": "4be09639-068e-46be-9b08-83eb481fdece",
                     "_$type": "Texture"
                   },
                   "_$child": [
@@ -1374,7 +1374,7 @@
                       "y": 19,
                       "width": 200,
                       "height": 315,
-                      "text": "骷髅人，近战单位。以极高的移动速度攻击速度快速突入并刺穿敌人的阵线。升级后，会提升血量和攻击力",
+                      "text": "牛头人，近战单位。以极高的移动速度攻击速度快速突入并刺穿敌人的阵线。升级后，会提升血量和攻击力",
                       "font": "YuppySC-Regular",
                       "fontSize": 32,
                       "color": "#ffffff",
@@ -1806,18 +1806,20 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "8tm4rlh4",
+          "_$id": "8za1a923",
           "_$type": "Panel",
           "name": "Panel",
-          "x": 131,
-          "y": 144,
+          "x": 119,
+          "y": 127,
           "width": 883,
           "height": 939,
+          "zIndex": 1,
+          "centerY": -24,
           "scrollType": 2,
           "elasticEnabled": true,
           "_$child": [
             {
-              "_$id": "imrvo14i",
+              "_$id": "l11m7ep6",
               "_$type": "Label",
               "name": "Label",
               "x": 67,
@@ -1834,7 +1836,7 @@
               "strokeColor": "#ffffff"
             },
             {
-              "_$id": "mhi8awbz",
+              "_$id": "6gb6g0ky",
               "_$type": "Image",
               "name": "intro1",
               "x": 78,
@@ -1845,44 +1847,44 @@
               "color": "#ffffff"
             },
             {
-              "_$id": "1ufaxg75",
+              "_$id": "j0aa461y",
               "_$type": "Image",
               "name": "intro2",
-              "x": 84,
-              "y": 963,
-              "width": 738,
-              "height": 575,
-              "skin": "res://d9a48168-8201-4d50-a938-e095f3f027c2",
+              "x": 70,
+              "y": 947,
+              "width": 761,
+              "height": 1113,
+              "skin": "res://318a1d59-14c0-4f59-9691-ac5c68a46147",
               "color": "#ffffff"
             },
             {
-              "_$id": "pfs0u32h",
+              "_$id": "2j5b0m87",
               "_$type": "Image",
               "name": "intro3",
               "x": 79,
-              "y": 1554,
+              "y": 1860,
               "width": 742,
               "height": 1128,
               "skin": "res://2596af97-7c37-4145-aaff-ba9b35b0cf2f",
               "color": "#ffffff"
             },
             {
-              "_$id": "rb74gloz",
+              "_$id": "0nf00shb",
               "_$type": "Image",
               "name": "intro4",
-              "x": 76,
-              "y": 2698,
+              "x": 73,
+              "y": 2986,
               "width": 745,
               "height": 1456,
-              "skin": "res://d26d10ec-7654-4ea3-80d1-c33ff008a3d2",
+              "skin": "res://2c219897-b7b4-4482-9911-aedf8f8287a8",
               "color": "#ffffff"
             },
             {
-              "_$id": "4yct4xdc",
+              "_$id": "4t8nl9no",
               "_$type": "Image",
               "name": "intro5",
               "x": 68,
-              "y": 4011,
+              "y": 4317,
               "width": 767,
               "height": 634,
               "skin": "res://b99632bb-465a-4631-8c35-082300bb32b1",
@@ -2041,7 +2043,7 @@
               "visible": false,
               "centerX": 0,
               "centerY": 75,
-              "skin": "res://873dfff4-29d8-4b02-a17d-8ec7758a5dd3",
+              "skin": "res://d466cf6b-8a38-4d9f-b823-17b4aa5203e0",
               "color": "#ffffff",
               "_$child": [
                 {

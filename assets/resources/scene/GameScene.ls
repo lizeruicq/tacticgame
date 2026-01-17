@@ -668,10 +668,13 @@
           "anchorX": 0.5,
           "anchorY": 0.5,
           "alpha": 0,
+          "texture": {
+            "_$uuid": "c40d34b7-e6d0-4b25-a4f3-7faf0943e96e",
+            "_$type": "Texture"
+          },
           "_gcmds": [
             {
-              "_$type": "DrawRectCmd",
-              "fillColor": "#19f700"
+              "_$type": "DrawRectCmd"
             }
           ]
         },

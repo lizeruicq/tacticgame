@@ -111,6 +111,7 @@ export class GameMainManager extends Laya.Script {
 
         // 查找spawnArea节点
         this.spawnArea = this.battleField.getChildByName("spawnArea") as Laya.Sprite;
+        this.spawnArea.texture = Laya.loader.getRes("resources/images/BG/spawn.jpeg");
         if (!this.spawnArea) {
             console.error("未找到spawnArea节点！");
         } else {

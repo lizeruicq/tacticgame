@@ -15,7 +15,7 @@ export class CardManager extends Laya.Script {
     public text: string = "";
 
     @property(Number)
-    public playerMana: number = 10; // 玩家法力值
+    public playerMana: number = 0; // 玩家法力值
 
     @property(Number)
     public maxMana: number = 10; // 最大法力值
@@ -62,6 +62,7 @@ export class CardManager extends Laya.Script {
     private initializeLevel(level: number): void {
         console.log(`初始化关卡 ${level}`);
         this.gameManager = GameMainManager.getInstance();
+
 
         // 获取关卡配置
         const levelConfig = CardConfig.getLevelConfig(level);
@@ -252,7 +253,7 @@ export class CardManager extends Laya.Script {
                 // 显示spawnArea（透明度改为0.7）
                 const spawnArea = this.gameManager.getSpawnArea();
                 if (spawnArea) {
-                     spawnArea.alpha = 0.3;
+                     spawnArea.alpha = 1;
                  }
             }
         };
@@ -313,6 +314,7 @@ export class CardManager extends Laya.Script {
         // 清除长按定时器（只清除长按回调，不清除冷却定时器）
         if (this.onLongPressCallback) {
             Laya.timer.clear(this, this.onLongPressCallback);
+            this.resetCardPosition(this.draggedCard);
             this.onLongPressCallback = null;
         }
          const spawnArea = this.gameManager.getSpawnArea();
@@ -351,12 +353,23 @@ export class CardManager extends Laya.Script {
     private checkAndMergeCard(draggedCard: any): void {
         const cardSprite = draggedCard.owner as Laya.Sprite;
         const isInSpawnArea = this.isPositionInSpawnArea(cardSprite);
-
+        this.playerMana = this.gameManager.getPlayerMana();
         // 如果卡牌在spawnArea范围内，生成怪物
         if (isInSpawnArea) {
-            this.spawnMonsterFromCard(draggedCard, cardSprite);
-            this.restoreCardZIndex(draggedCard);
-            return;
+
+             // 检查魔法值
+            if (this.playerMana < draggedCard.manaCost) {
+                this.gameManager.showHint("魔法值不足，无法生成怪物");
+                this.resetCardPosition(draggedCard);
+                    return;
+                }
+            else {
+                this.spawnMonsterFromCard(draggedCard, cardSprite);
+                this.restoreCardZIndex(draggedCard);
+                return;
+            }
+
+            
         }
 
         // 如果不在spawnArea范围内，检查是否可以合成
@@ -400,13 +413,7 @@ export class CardManager extends Laya.Script {
             y: cardSprite.localToGlobal(new Laya.Point(0, 0)).y + cardSprite.height / 2
          };
 
-        // 检查魔法值
-        if (this.playerMana < draggedCard.manaCost) {
-            this.gameManager.showHint("魔法值不足，无法生成怪物");
-            this.resetCardPosition(draggedCard);
-            return;
-        }
-
+       
         // 消耗魔法值
         this.gameManager.consumeMana(draggedCard.manaCost);
 

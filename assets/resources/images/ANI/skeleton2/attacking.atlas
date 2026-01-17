@@ -1,207 +1,207 @@
 {
   "frames": {
-    "0_Minotaur_Slashing_000.png": {
+    "0_Skeleton_Crusader_Slashing_000.png": {
       "frame": {
         "idx": 0,
-        "x": 1673,
-        "y": 1061,
-        "w": 420,
-        "h": 540
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 186,
-        "y": 211
-      }
-    },
-    "0_Minotaur_Slashing_001.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1695,
+        "x": 1795,
         "y": 0,
-        "w": 414,
-        "h": 539
+        "w": 397,
+        "h": 509
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 197,
-        "y": 212
+        "x": 230,
+        "y": 241
       }
     },
-    "0_Minotaur_Slashing_002.png": {
+    "0_Skeleton_Crusader_Slashing_001.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 1526,
+        "w": 381,
+        "h": 509
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 238,
+        "y": 241
+      }
+    },
+    "0_Skeleton_Crusader_Slashing_002.png": {
       "frame": {
         "idx": 0,
         "x": 0,
         "y": 0,
-        "w": 638,
-        "h": 543
+        "w": 603,
+        "h": 508
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 225,
-        "y": 209
+        "x": 258,
+        "y": 242
       }
     },
-    "0_Minotaur_Slashing_003.png": {
+    "0_Skeleton_Crusader_Slashing_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1195,
+        "y": 1020,
+        "w": 593,
+        "h": 507
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 268,
+        "y": 243
+      }
+    },
+    "0_Skeleton_Crusader_Slashing_004.png": {
+      "frame": {
+        "idx": 0,
+        "x": 595,
+        "y": 1522,
+        "w": 595,
+        "h": 504
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 266,
+        "y": 246
+      }
+    },
+    "0_Skeleton_Crusader_Slashing_005.png": {
       "frame": {
         "idx": 0,
         "x": 0,
-        "y": 545,
-        "w": 584,
-        "h": 534
+        "y": 510,
+        "w": 600,
+        "h": 504
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 279,
-        "y": 218
+        "x": 261,
+        "y": 246
       }
     },
-    "0_Minotaur_Slashing_004.png": {
+    "0_Skeleton_Crusader_Slashing_006.png": {
       "frame": {
         "idx": 0,
-        "x": 586,
-        "y": 1061,
-        "w": 577,
-        "h": 514
+        "x": 595,
+        "y": 1017,
+        "w": 598,
+        "h": 503
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 286,
-        "y": 238
+        "x": 263,
+        "y": 247
       }
     },
-    "0_Minotaur_Slashing_005.png": {
+    "0_Skeleton_Crusader_Slashing_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 602,
+        "y": 510,
+        "w": 597,
+        "h": 505
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 264,
+        "y": 245
+      }
+    },
+    "0_Skeleton_Crusader_Slashing_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 605,
+        "y": 0,
+        "w": 595,
+        "h": 507
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 266,
+        "y": 243
+      }
+    },
+    "0_Skeleton_Crusader_Slashing_009.png": {
       "frame": {
         "idx": 0,
         "x": 0,
-        "y": 1081,
+        "y": 1016,
+        "w": 593,
+        "h": 508
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 268,
+        "y": 242
+      }
+    },
+    "0_Skeleton_Crusader_Slashing_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1790,
+        "y": 1020,
         "w": 578,
-        "h": 513
+        "h": 509
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 285,
-        "y": 238
+        "x": 266,
+        "y": 241
       }
     },
-    "0_Minotaur_Slashing_006.png": {
+    "0_Skeleton_Crusader_Slashing_011.png": {
       "frame": {
         "idx": 0,
-        "x": 640,
-        "y": 0,
-        "w": 579,
-        "h": 513
+        "x": 1201,
+        "y": 509,
+        "w": 592,
+        "h": 509
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 284,
-        "y": 238
-      }
-    },
-    "0_Minotaur_Slashing_007.png": {
-      "frame": {
-        "idx": 0,
-        "x": 586,
-        "y": 545,
-        "w": 580,
-        "h": 514
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 283,
-        "y": 237
-      }
-    },
-    "0_Minotaur_Slashing_008.png": {
-      "frame": {
-        "idx": 0,
-        "x": 0,
-        "y": 1596,
-        "w": 483,
-        "h": 520
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 284,
-        "y": 231
-      }
-    },
-    "0_Minotaur_Slashing_009.png": {
-      "frame": {
-        "idx": 0,
-        "x": 580,
-        "y": 1577,
-        "w": 484,
-        "h": 533
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 275,
-        "y": 218
-      }
-    },
-    "0_Minotaur_Slashing_010.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1165,
-        "y": 1061,
-        "w": 506,
-        "h": 541
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 244,
-        "y": 210
-      }
-    },
-    "0_Minotaur_Slashing_011.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1168,
-        "y": 515,
-        "w": 525,
-        "h": 544
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 215,
-        "y": 208
+        "x": 249,
+        "y": 241
       }
     }
   },

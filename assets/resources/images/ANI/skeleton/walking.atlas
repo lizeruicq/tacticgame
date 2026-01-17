@@ -1,165 +1,80 @@
 {
   "frames": {
-    "0_Skeleton_Crusader_Running_000.png": {
+    "0_Minotaur_Walking_000.png": {
       "frame": {
         "idx": 0,
-        "x": 1152,
-        "y": 0,
-        "w": 380,
-        "h": 507
+        "x": 869,
+        "y": 547,
+        "w": 434,
+        "h": 541
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 247,
-        "y": 243
+        "x": 227,
+        "y": 215
       }
     },
-    "0_Skeleton_Crusader_Running_001.png": {
+    "0_Minotaur_Walking_001.png": {
       "frame": {
         "idx": 0,
         "x": 0,
-        "y": 1033,
-        "w": 380,
-        "h": 511
+        "y": 1094,
+        "w": 434,
+        "h": 540
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 247,
-        "y": 231
+        "x": 228,
+        "y": 214
       }
     },
-    "0_Skeleton_Crusader_Running_002.png": {
+    "0_Minotaur_Walking_002.png": {
       "frame": {
         "idx": 0,
-        "x": 383,
-        "y": 1030,
-        "w": 379,
-        "h": 514
+        "x": 873,
+        "y": 0,
+        "w": 434,
+        "h": 541
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 231,
-        "y": 221
+        "x": 227,
+        "y": 212
       }
     },
-    "0_Skeleton_Crusader_Running_003.png": {
+    "0_Minotaur_Walking_003.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1302,
+        "y": 1090,
+        "w": 432,
+        "h": 542
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 210
+      }
+    },
+    "0_Minotaur_Walking_004.png": {
       "frame": {
         "idx": 0,
         "x": 0,
-        "y": 516,
-        "w": 381,
-        "h": 515
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 216,
-        "y": 211
-      }
-    },
-    "0_Skeleton_Crusader_Running_004.png": {
-      "frame": {
-        "idx": 0,
-        "x": 383,
-        "y": 516,
-        "w": 383,
-        "h": 512
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 216,
-        "y": 222
-      }
-    },
-    "0_Skeleton_Crusader_Running_005.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1151,
-        "y": 518,
-        "w": 378,
-        "h": 510
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 231,
-        "y": 232
-      }
-    },
-    "0_Skeleton_Crusader_Running_006.png": {
-      "frame": {
-        "idx": 0,
-        "x": 1144,
-        "y": 1032,
-        "w": 380,
-        "h": 508
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 246,
-        "y": 242
-      }
-    },
-    "0_Skeleton_Crusader_Running_007.png": {
-      "frame": {
-        "idx": 0,
-        "x": 768,
-        "y": 518,
-        "w": 381,
-        "h": 512
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 247,
-        "y": 232
-      }
-    },
-    "0_Skeleton_Crusader_Running_008.png": {
-      "frame": {
-        "idx": 0,
-        "x": 771,
-        "y": 0,
-        "w": 379,
-        "h": 516
-      },
-      "sourceSize": {
-        "w": 900,
-        "h": 900
-      },
-      "spriteSourceSize": {
-        "x": 232,
-        "y": 221
-      }
-    },
-    "0_Skeleton_Crusader_Running_009.png": {
-      "frame": {
-        "idx": 0,
-        "x": 0,
-        "y": 0,
-        "w": 384,
-        "h": 514
+        "y": 1636,
+        "w": 429,
+        "h": 542
       },
       "sourceSize": {
         "w": 900,
@@ -167,41 +82,330 @@
       },
       "spriteSourceSize": {
         "x": 217,
+        "y": 209
+      }
+    },
+    "0_Minotaur_Walking_005.png": {
+      "frame": {
+        "idx": 0,
+        "x": 431,
+        "y": 1639,
+        "w": 426,
+        "h": 542
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 212,
+        "y": 208
+      }
+    },
+    "0_Minotaur_Walking_006.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1738,
+        "y": 0,
+        "w": 423,
+        "h": 543
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 207,
+        "y": 207
+      }
+    },
+    "0_Minotaur_Walking_007.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2163,
+        "y": 0,
+        "w": 421,
+        "h": 541
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 207,
+        "y": 209
+      }
+    },
+    "0_Minotaur_Walking_008.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 2180,
+        "w": 421,
+        "h": 541
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 207,
+        "y": 210
+      }
+    },
+    "0_Minotaur_Walking_009.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1731,
+        "y": 1634,
+        "w": 425,
+        "h": 542
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 212,
+        "y": 211
+      }
+    },
+    "0_Minotaur_Walking_010.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1302,
+        "y": 1634,
+        "w": 427,
+        "h": 543
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 218,
         "y": 212
       }
     },
-    "0_Skeleton_Crusader_Running_010.png": {
+    "0_Minotaur_Walking_011.png": {
       "frame": {
         "idx": 0,
-        "x": 386,
-        "y": 0,
-        "w": 383,
-        "h": 514
+        "x": 869,
+        "y": 1090,
+        "w": 431,
+        "h": 544
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 215,
-        "y": 221
+        "x": 223,
+        "y": 213
       }
     },
-    "0_Skeleton_Crusader_Running_011.png": {
+    "0_Minotaur_Walking_012.png": {
       "frame": {
         "idx": 0,
-        "x": 764,
-        "y": 1032,
-        "w": 378,
-        "h": 512
+        "x": 0,
+        "y": 547,
+        "w": 433,
+        "h": 545
       },
       "sourceSize": {
         "w": 900,
         "h": 900
       },
       "spriteSourceSize": {
-        "x": 230,
-        "y": 231
+        "x": 229,
+        "y": 214
+      }
+    },
+    "0_Minotaur_Walking_013.png": {
+      "frame": {
+        "idx": 0,
+        "x": 437,
+        "y": 0,
+        "w": 434,
+        "h": 545
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 229,
+        "y": 213
+      }
+    },
+    "0_Minotaur_Walking_014.png": {
+      "frame": {
+        "idx": 0,
+        "x": 0,
+        "y": 0,
+        "w": 435,
+        "h": 545
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 229,
+        "y": 212
+      }
+    },
+    "0_Minotaur_Walking_015.png": {
+      "frame": {
+        "idx": 0,
+        "x": 435,
+        "y": 547,
+        "w": 432,
+        "h": 544
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 211
+      }
+    },
+    "0_Minotaur_Walking_016.png": {
+      "frame": {
+        "idx": 0,
+        "x": 436,
+        "y": 1093,
+        "w": 430,
+        "h": 544
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 218,
+        "y": 210
+      }
+    },
+    "0_Minotaur_Walking_017.png": {
+      "frame": {
+        "idx": 0,
+        "x": 868,
+        "y": 1636,
+        "w": 426,
+        "h": 544
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 213,
+        "y": 209
+      }
+    },
+    "0_Minotaur_Walking_018.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1736,
+        "y": 1086,
+        "w": 423,
+        "h": 544
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 208,
+        "y": 208
+      }
+    },
+    "0_Minotaur_Walking_019.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2161,
+        "y": 545,
+        "w": 421,
+        "h": 543
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 207,
+        "y": 209
+      }
+    },
+    "0_Minotaur_Walking_020.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2158,
+        "y": 2175,
+        "w": 421,
+        "h": 541
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 206,
+        "y": 211
+      }
+    },
+    "0_Minotaur_Walking_021.png": {
+      "frame": {
+        "idx": 0,
+        "x": 2158,
+        "y": 1632,
+        "w": 424,
+        "h": 541
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 211,
+        "y": 212
+      }
+    },
+    "0_Minotaur_Walking_022.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1309,
+        "y": 0,
+        "w": 427,
+        "h": 540
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 213
+      }
+    },
+    "0_Minotaur_Walking_023.png": {
+      "frame": {
+        "idx": 0,
+        "x": 1305,
+        "y": 543,
+        "w": 430,
+        "h": 541
+      },
+      "sourceSize": {
+        "w": 900,
+        "h": 900
+      },
+      "spriteSourceSize": {
+        "x": 221,
+        "y": 213
       }
     }
   },

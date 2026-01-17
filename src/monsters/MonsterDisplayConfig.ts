@@ -87,7 +87,7 @@ export class MonsterDisplayConfig {
             displayName: "骑士"
         },
         "Pirate": {
-            originalWidth: 1421,   // 与SwordFe相同的尺寸
+            originalWidth: 1300,   // 与SwordFe相同的尺寸
             originalHeight: 1203,
             displayName: "海盗"
         },
