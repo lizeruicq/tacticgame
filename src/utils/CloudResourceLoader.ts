@@ -51,11 +51,63 @@ export class CloudResourceLoader {
         const self = this;
 
         (Laya.loader.load as any) = function(url: any, ...args: any[]): Promise<any> {
-            if (typeof url === 'string' && self.shouldLoadFromCloud(url) && self.cloudInitialized) {
-                return self.loadFromCloudForLaya(url, args[0]);
+            if (typeof url === 'string' && self.cloudInitialized) {
+                // 如果是本地 atlas 文件，加载后自动替换为云端 PNG
+                if (!self.shouldLoadFromCloud(url) && url.endsWith('.atlas')) {
+                    return self.loadLocalAtlasWithCloudPNG(url, args[0]);
+                }
+                // 如果需要从云端加载
+                if (self.shouldLoadFromCloud(url)) {
+                    return self.loadFromCloudForLaya(url, args[0]);
+                }
             }
             return self.originalLayaLoad(url, ...args);
         };
+    }
+
+    /**
+     * 加载本地 atlas 文件，然后用云端 PNG 替换
+     * 这样可以避免 atlas 文件的云端获取问题，直接用本地 atlas 来指向云端的 PNG
+     */
+    private async loadLocalAtlasWithCloudPNG(url: string, type?: string): Promise<any> {
+        try {
+            console.log(`📦 加载本地 atlas: ${url}`);
+
+            // 1. 先加载本地 atlas 文件
+            const result = await this.originalLayaLoad(url, type);
+
+            // 2. 获取对应的 PNG 路径
+            const pngPath = url.replace(/\.atlas$/, '.png');
+
+            // 3. 检查 PNG 是否需要从云端加载
+            if (this.shouldLoadFromCloud(pngPath) && !this.loadedResources.has(pngPath)) {
+                try {
+                    console.log(`☁️ 预加载云端 PNG: ${pngPath}`);
+                    const pngTempURL = await this.getTempFileURL(this.getCloudPath(pngPath));
+
+                    // 4. 加载云端 PNG
+                    await this.originalLayaLoad(pngTempURL);
+
+                    // 5. 获取加载的资源
+                    const pngResource = Laya.loader.getRes(pngTempURL);
+                    if (pngResource) {
+                        // 6. 将 PNG 资源缓存到 Laya，使用本地路径作为 key
+                        // 这样 atlas 引用 PNG 时就会找到这个缓存
+                        Laya.loader.cacheRes(pngPath, pngResource);
+                        this.loadedResources.add(pngPath);
+                        console.log(`✅ 云端 PNG 加载成功: ${pngPath}`);
+                    }
+                } catch (err) {
+                    console.error(`⚠️ 预加载云端 PNG 失败: ${pngPath}`, err);
+                }
+            }
+
+            this.loadedResources.add(url);
+            return result;
+        } catch (error) {
+            console.error(`❌ 加载本地 atlas 失败: ${url}`, error);
+            throw error;
+        }
     }
 
     /**
