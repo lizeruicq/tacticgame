@@ -111,6 +111,9 @@ export class WeChatManager {
         // 监听用户点击右上角菜单的"转发"按钮
         this.setupShareAppMessage();
 
+        // // 监听用户点击右上角菜单的"分享到朋友圈"按钮
+        // this.setupShareTimeline();
+
         console.log('微信分享功能初始化成功');
     }
 
@@ -133,7 +136,7 @@ export class WeChatManager {
     }
 
     /**
-     * 设置分享内容
+     * 设置分享给朋友的内容
      */
     private setupShareAppMessage(): void {
         if (typeof wx !== 'undefined' && (wx as any).onShareAppMessage) {
@@ -142,6 +145,17 @@ export class WeChatManager {
             });
         }
     }
+
+    // /**
+    //  * 设置分享到朋友圈的内容
+    //  */
+    // private setupShareTimeline(): void {
+    //     if (typeof wx !== 'undefined' && (wx as any).onShareTimeline) {
+    //         (wx as any).onShareTimeline(() => {
+    //             return this.getShareContent();
+    //         });
+    //     }
+    // }
 
     /**
      * 获取分享内容

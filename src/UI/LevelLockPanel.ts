@@ -91,16 +91,16 @@ export class LevelLockPanel extends Laya.Script {
     /**
      * 确认按钮点击事件
      */
-    private onYesButtonClick(): void {
+    private async onYesButtonClick(): Promise<void> {
         const gameDataManager = GameDataManager.getInstance();
         // 解锁所有关卡（1-11）
         for (let i = 1; i <= 11; i++) {
-            gameDataManager.unlockLevel(i);
+            await gameDataManager.unlockLevel(i);
         }
-        
+
         // 隐藏面板
         this.hide();
-        
+
         // 重新加载关卡选择场景
         const sceneManager = SceneManager.getInstance();
         sceneManager.switchToScene(SceneManager.SCENES.MAIN_MENU).then(() => {

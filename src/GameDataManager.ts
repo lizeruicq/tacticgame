@@ -39,12 +39,19 @@ export class GameDataManager {
     
     // 微信管理器
     private weChatManager: WeChatManager;
-    
+
+    // 云数据库管理器
+    private cloudDatabaseManager: CloudDatabaseManager;
+
+    // 玩家 openid
+    private openid: string = '';
+
     // 存储键名
     private static readonly GAME_DATA_KEY = 'game_data';
     
     private constructor() {
         this.weChatManager = WeChatManager.getInstance();
+        this.cloudDatabaseManager = CloudDatabaseManager.getInstance();
         this.playerData = this.getDefaultPlayerData();
         this.initializeData();
         this.setupEventListeners();
@@ -86,25 +93,30 @@ export class GameDataManager {
     
     /**
      * 初始化数据
-     * 调试模式：仅调用 getOpenid() 测试云函数
      */
     private async initializeData() {
         try {
-            // 调试：仅调用 getOpenid() 测试云函数是否正常
-            const cloudDatabaseManager = CloudDatabaseManager.getInstance();
-            const openid = await cloudDatabaseManager.getOpenid();
-            console.log('✅ 云函数调试 - 获取 openid 成功:', openid);
-            // 加载游戏数据
-            this.loadGameData();
-            
+            // 获取玩家 openid
+            this.openid = await this.cloudDatabaseManager.getOpenid();
+            console.log('✅ 获取 openid 成功:', this.openid);
+
             // 获取微信用户数据
             const weChatUserData = this.weChatManager.getUserData();
             this.playerData.weChatUserInfo = weChatUserData.userInfo;
-            
+
+            // 从云端加载玩家数据
+            await this.loadPlayerDataFromCloud();
+
+            // 加载本地游戏数据
+            this.loadGameData();
+
             this.playerData.isDataLoaded = true;
             console.log('游戏数据初始化完成');
         } catch (error) {
-            console.error('❌ 云函数调试 - 获取 openid 失败:', error);
+            console.error('❌ 初始化数据失败:', error);
+            // 降级处理：使用本地数据
+            this.loadGameData();
+            this.playerData.isDataLoaded = true;
         }
     }
     
@@ -241,12 +253,15 @@ export class GameDataManager {
     /**
      * 解锁关卡
      */
-    public unlockLevel(levelNum: number): void {
+    public async unlockLevel(levelNum: number): Promise<void> {
         if (!this.isLevelUnlocked(levelNum)) {
             this.playerData.gameData.unlockedLevels.push(levelNum);
             this.playerData.gameData.unlockedLevels.sort((a, b) => a - b);
             this.saveGameData();
             console.log(`关卡 ${levelNum} 已解锁`);
+
+            // 同步到云端
+            await this.savePlayerDataToCloud();
         }
     }
 
@@ -268,12 +283,15 @@ export class GameDataManager {
     /**
      * 游戏胜利，解锁下一关
      */
-    public onLevelComplete(levelNum: number): void {
+    public async onLevelComplete(levelNum: number): Promise<void> {
         // 解锁下一关
-        this.unlockLevel(levelNum + 1);
+        await this.unlockLevel(levelNum + 1);
         // 更新玩家等级为已解锁的最高关卡
         this.playerData.gameData.playerLevel = this.getMaxUnlockedLevel();
         this.saveGameData();
+
+        // 同步到云端
+        await this.savePlayerDataToCloud();
     }
 
     /**
@@ -300,12 +318,15 @@ export class GameDataManager {
     /**
      * 重置游戏数据
      */
-    public resetGameData(): void {
+    public async resetGameData(): Promise<void> {
         if (this.playerData) {
             const defaultData = this.getDefaultPlayerData();
             this.playerData.gameData = defaultData.gameData;
             this.saveGameData();
-            
+
+            // 同步到云端
+            await this.savePlayerDataToCloud();
+
             // 通知设置面板更新界面
             Laya.stage.event("GameDataReset");
         }
@@ -364,18 +385,70 @@ export class GameDataManager {
         try {
             // 刷新微信数据
             await this.weChatManager.refreshUserData();
-            
+
+            // 从云端刷新玩家数据
+            await this.loadPlayerDataFromCloud();
+
             // 重新加载游戏数据
             this.loadGameData();
-            
+
             // 更新微信用户信息
             const weChatUserData = this.weChatManager.getUserData();
             this.playerData.weChatUserInfo = weChatUserData.userInfo;
-            
+
             console.log('所有数据刷新完成');
         } catch (error) {
             console.error('刷新数据失败:', error);
             throw error;
+        }
+    }
+
+    /**
+     * 从云端加载玩家数据
+     */
+    private async loadPlayerDataFromCloud(): Promise<void> {
+        try {
+            if (!this.openid) {
+                console.warn('⚠️ openid 未设置，无法从云端加载数据');
+                return;
+            }
+
+            const { exists, playerInfo } = await this.cloudDatabaseManager.checkPlayerExists(this.openid);
+
+            if (exists && playerInfo) {
+                this.playerData.gameData.unlockedLevels = playerInfo.unlockedLevels || [1];
+                console.log('✅ 从云端加载玩家数据成功，已解锁关卡:', this.playerData.gameData.unlockedLevels);
+            } else {
+                await this.savePlayerDataToCloud();
+                console.log('✅ 新玩家，已保存初始数据到云端');
+            }
+        } catch (error) {
+            console.error('❌ 从云端加载玩家数据失败:', error);
+        }
+    }
+
+    /**
+     * 保存玩家数据到云端
+     */
+    private async savePlayerDataToCloud(): Promise<void> {
+        try {
+            if (!this.openid) {
+                console.warn('⚠️ openid 未设置，无法保存数据到云端');
+                return;
+            }
+
+            const playerInfo = {
+                openid: this.openid,
+                nickName: this.playerData.weChatUserInfo?.nickName || '游戏玩家',
+                avatarUrl: this.playerData.weChatUserInfo?.avatarUrl || '',
+                unlockedLevels: this.playerData.gameData.unlockedLevels,
+                updatedAt: Date.now()
+            };
+
+            await this.cloudDatabaseManager.updatePlayerData(this.openid, playerInfo);
+            console.log('✅ 玩家数据已保存到云端');
+        } catch (error) {
+            console.error('❌ 保存玩家数据到云端失败:', error);
         }
     }
 }

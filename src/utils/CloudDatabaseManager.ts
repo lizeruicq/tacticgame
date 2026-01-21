@@ -52,77 +52,77 @@ export class CloudDatabaseManager {
         });
     }
 
-    /**
-     * 保存玩家信息到云开发
-     */
-    public async savePlayerInfo(playerInfo: {
-        openid: string;
-        nickName: string;
-        avatarUrl: string;
-        gender: number;
-        city: string;
-        province: string;
-        country: string;
-        language: string;
-    }): Promise<any> {
-        try {
-            console.log('☁️ 保存玩家信息到云开发...');
-            const result = await this.callCloudFunction('savePlayerInfo', playerInfo);
-            console.log('✅ 玩家信息保存成功');
-            return result;
-        } catch (error) {
-            console.error('❌ 保存玩家信息失败:', error);
-            throw error;
-        }
-    }
+    // /**
+    //  * 保存玩家信息到云开发
+    //  */
+    // public async savePlayerInfo(playerInfo: {
+    //     openid: string;
+    //     nickName: string;
+    //     avatarUrl: string;
+    //     gender: number;
+    //     city: string;
+    //     province: string;
+    //     country: string;
+    //     language: string;
+    // }): Promise<any> {
+    //     try {
+    //         console.log('☁️ 保存玩家信息到云开发...');
+    //         const result = await this.callCloudFunction('savePlayerInfo', playerInfo);
+    //         console.log('✅ 玩家信息保存成功');
+    //         return result;
+    //     } catch (error) {
+    //         console.error('❌ 保存玩家信息失败:', error);
+    //         throw error;
+    //     }
+    // }
 
-    /**
-     * 从云开发获取玩家信息
-     */
-    public async getPlayerInfo(openid: string): Promise<any> {
-        try {
-            console.log('☁️ 从云开发获取玩家信息...');
-            const result = await this.callCloudFunction('getPlayerInfo', { openid });
-            console.log('✅ 获取玩家信息成功');
-            return result;
-        } catch (error) {
-            console.error('❌ 获取玩家信息失败:', error);
-            throw error;
-        }
-    }
+    // /**
+    //  * 从云开发获取玩家信息
+    //  */
+    // public async getPlayerInfo(openid: string): Promise<any> {
+    //     try {
+    //         console.log('☁️ 从云开发获取玩家信息...');
+    //         const result = await this.callCloudFunction('getPlayerInfo', { openid });
+    //         console.log('✅ 获取玩家信息成功');
+    //         return result;
+    //     } catch (error) {
+    //         console.error('❌ 获取玩家信息失败:', error);
+    //         throw error;
+    //     }
+    // }
 
-    /**
-     * 保存游戏数据到云开发
-     */
-    public async updateGameData(openid: string, gameData: any): Promise<any> {
-        try {
-            console.log('☁️ 保存游戏数据到云开发...');
-            const result = await this.callCloudFunction('updateGameData', {
-                openid,
-                gameData
-            });
-            console.log('✅ 游戏数据保存成功');
-            return result;
-        } catch (error) {
-            console.error('❌ 保存游戏数据失败:', error);
-            throw error;
-        }
-    }
+    // /**
+    //  * 保存游戏数据到云开发
+    //  */
+    // public async updateGameData(openid: string, gameData: any): Promise<any> {
+    //     try {
+    //         console.log('☁️ 保存游戏数据到云开发...');
+    //         const result = await this.callCloudFunction('updateGameData', {
+    //             openid,
+    //             gameData
+    //         });
+    //         console.log('✅ 游戏数据保存成功');
+    //         return result;
+    //     } catch (error) {
+    //         console.error('❌ 保存游戏数据失败:', error);
+    //         throw error;
+    //     }
+    // }
 
-    /**
-     * 从云开发获取游戏数据
-     */
-    public async getGameData(openid: string): Promise<any> {
-        try {
-            console.log('☁️ 从云开发获取游戏数据...');
-            const result = await this.callCloudFunction('getGameData', { openid });
-            console.log('✅ 获取游戏数据成功');
-            return result;
-        } catch (error) {
-            console.error('❌ 获取游戏数据失败:', error);
-            throw error;
-        }
-    }
+    // /**
+    //  * 从云开发获取游戏数据
+    //  */
+    // public async getGameData(openid: string): Promise<any> {
+    //     try {
+    //         console.log('☁️ 从云开发获取游戏数据...');
+    //         const result = await this.callCloudFunction('getGameData', { openid });
+    //         console.log('✅ 获取游戏数据成功');
+    //         return result;
+    //     } catch (error) {
+    //         console.error('❌ 获取游戏数据失败:', error);
+    //         throw error;
+    //     }
+    // }
 
     /**
      * 检查玩家是否存在
@@ -162,6 +162,39 @@ export class CloudDatabaseManager {
                 }
             });
         });
+    }
+
+    /**
+     * 更新玩家数据
+     */
+    public async updatePlayerData(openid: string, playerInfo: any): Promise<any> {
+        try {
+            console.log('☁️ 更新玩家数据到云端...');
+            const result = await this.callCloudFunction('updatePlayerData', {
+                openid,
+                playerInfo
+            });
+            console.log('✅ 玩家数据更新成功');
+            return result;
+        } catch (error) {
+            console.error('❌ 更新玩家数据失败:', error);
+            throw error;
+        }
+    }
+
+    /**
+     * 获取玩家数据
+     */
+    public async getPlayerData(openid: string): Promise<any> {
+        try {
+            console.log('☁️ 从云端获取玩家数据...');
+            const result = await this.callCloudFunction('getPlayerData', { openid });
+            console.log('✅ 获取玩家数据成功');
+            return result;
+        } catch (error) {
+            console.error('❌ 获取玩家数据失败:', error);
+            throw error;
+        }
     }
 }
 

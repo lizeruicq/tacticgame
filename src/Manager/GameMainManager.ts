@@ -270,7 +270,7 @@ export class GameMainManager extends Laya.Script {
     /**
      * 城堡被摧毁时的处理
      */
-    private onCastleDestroyed(castleType: string): void {
+    private async onCastleDestroyed(castleType: string): Promise<void> {
         if (this.gameEnded) return;
 
         this.gameEnded = true;
@@ -289,7 +289,7 @@ export class GameMainManager extends Laya.Script {
         this.stopGameSystems();
 
         // 触发游戏结束事件
-        this.onGameEnd();
+        await this.onGameEnd();
     }
 
     /**
@@ -307,11 +307,11 @@ export class GameMainManager extends Laya.Script {
     /**
      * 游戏结束处理
      */
-    private onGameEnd(): void {
+    private async onGameEnd(): Promise<void> {
         console.log(`游戏结束，获胜方: ${this.winner}`);
 
         // 计算关卡评分（星星数量）
-        this.calculateAndDisplayLevelStars();
+        await this.calculateAndDisplayLevelStars();
 
         // 通过UIManager显示游戏结束面板
         this.showGameEndPanel();
@@ -320,7 +320,7 @@ export class GameMainManager extends Laya.Script {
     /**
      * 计算并显示关卡评分
      */
-    private calculateAndDisplayLevelStars(): void {
+    private async calculateAndDisplayLevelStars(): Promise<void> {
         if (!this.playerManager || !this.playerCastle) {
             return;
         }
@@ -328,7 +328,7 @@ export class GameMainManager extends Laya.Script {
         // 判断玩家是否胜利
         const isPlayerWin = this.winner === "player";
         if (isPlayerWin) { // 玩家胜利时，调用GameDataManager的onLevelComplete方法
-            this.gameDataManager.onLevelComplete(this.selectedLevel);
+            await this.gameDataManager.onLevelComplete(this.selectedLevel);
         }
 
         // 获取玩家城堡的血量百分比

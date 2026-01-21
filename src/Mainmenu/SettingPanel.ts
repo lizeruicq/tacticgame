@@ -114,15 +114,15 @@ export class SettingPanel extends Laya.Script {
         }
     }
 
-    private onYesButtonClick(): void {
+    private async onYesButtonClick(): Promise<void> {
         if (this.gameDataManager) {
-            this.gameDataManager.resetGameData();
+            await this.gameDataManager.resetGameData();
         }
-        
+
         if (this.confirmPanel) {
             this.confirmPanel.visible = false;
         }
-        
+
         this.hide();
     }
 
