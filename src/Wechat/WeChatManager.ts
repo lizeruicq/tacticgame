@@ -29,6 +29,13 @@ export interface WeChatEventCallback {
     (data: any): void;
 }
 
+// 分享配置接口
+export interface ShareConfig {
+    title: string;
+    imageUrl: string;
+    query: string;
+}
+
 /**
  * 微信API管理器单例
  * 负责所有微信相关接口的调用和数据管理
@@ -46,7 +53,14 @@ export class WeChatManager {
     
     // 事件监听器
     private eventListeners: Map<WeChatEventType, WeChatEventCallback[]> = new Map();
-    
+
+    // 分享配置
+    private shareConfig: ShareConfig = {
+        title: '来抵抗人类的野蛮入侵！',
+        imageUrl: 'https://636c-cloud1-8g8n4rwc79d64d40-1392708262.tcb.qcloud.la/game-resources/images/storys/level-4.jpg?sign=9dc571c9d5a74952374e612f2771496b&t=1769005061',
+        query: ''
+    };
+
     // 存储键名
     private static readonly STORAGE_KEY = 'wechat_user_data';
     private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24小时缓存
@@ -54,7 +68,7 @@ export class WeChatManager {
     private constructor() {
         this.initEventListeners();
         this.loadUserDataFromStorage();
-        this.setupShare();
+        this.initWeChatShare();
     }
     
     /**
@@ -76,19 +90,79 @@ export class WeChatManager {
     }
 
     /**
-     * 设置分享功能
+     * 初始化微信分享功能
      */
-    private setupShare(): void {
+    private initWeChatShare(): void {
+        // 只在微信小游戏平台执行
         if (!this.isWeChatMiniGame()) {
+            console.log('当前不是微信小游戏平台，分享功能不可用');
             return;
         }
 
-        (wx as any).onShareAppMessage(() => ({
-            title: '来抵抗人类的野蛮入侵！',
-            imageUrl: 'resources/images/UI/level-4.jpg',
-            query: ''
-        }));
+        // 检查微信API是否可用
+        if (typeof wx === 'undefined') {
+            console.warn('微信API不可用');
+            return;
+        }
+
+        // 显示右上角转发按钮
+        this.showShareMenu();
+
+        // 监听用户点击右上角菜单的"转发"按钮
+        this.setupShareAppMessage();
+
+        console.log('微信分享功能初始化成功');
     }
+
+    /**
+     * 显示右上角转发按钮
+     */
+    private showShareMenu(): void {
+        if (typeof wx !== 'undefined' && (wx as any).showShareMenu) {
+            (wx as any).showShareMenu({
+                withShareTicket: true,
+                menus: ['shareAppMessage', 'shareTimeline'],
+                success: () => {
+                    console.log('显示转发菜单成功');
+                },
+                fail: (err: any) => {
+                    console.error('显示转发菜单失败:', err);
+                }
+            });
+        }
+    }
+
+    /**
+     * 设置分享内容
+     */
+    private setupShareAppMessage(): void {
+        if (typeof wx !== 'undefined' && (wx as any).onShareAppMessage) {
+            (wx as any).onShareAppMessage(() => {
+                return this.getShareContent();
+            });
+        }
+    }
+
+    /**
+     * 获取分享内容
+     */
+    private getShareContent(): ShareConfig {
+        return {
+            title: this.shareConfig.title,
+            imageUrl: this.shareConfig.imageUrl,
+            query: this.shareConfig.query
+        };
+    }
+
+    // /**
+    //  * 更新分享配置
+    //  */
+    // public updateShareConfig(config: Partial<ShareConfig>): void {
+    //     this.shareConfig = {
+    //         ...this.shareConfig,
+    //         ...config
+    //     };
+    // }
     
     /**
      * 检查是否在微信小游戏环境中
