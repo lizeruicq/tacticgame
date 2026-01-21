@@ -48,10 +48,10 @@ export class ZombieMonster extends BaseMonster {
     private calculateZombieStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 40,           // Zombie移动较慢
-            attackPower: 30,     // Zombie攻击力较高
+            attackPower: 20,     // Zombie攻击力较高
             attackSpeed: 3000,   // Zombie攻击速度较慢
             attackRange: 80,     // Zombie攻击范围中等
-            maxHealth: 150       // Zombie血量较高
+            maxHealth: 130       // Zombie血量较高
         };
         
         // 根据等级调整属性

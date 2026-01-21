@@ -46,7 +46,7 @@ export class ArcherMonster extends BaseMonster {
     private calculateArcherStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 70,           // Archer移动较慢
-            attackPower: 10,     // Archer攻击力较高
+            attackPower: 15,     // Archer攻击力较高
             attackSpeed: 2000,   // Archer攻击速度较慢
             attackRange: 400,     // Archer攻击范围中等
             maxHealth: 30       // Archer血量较高

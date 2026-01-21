@@ -46,7 +46,7 @@ export class KnightMonster extends BaseMonster {
     private calculateKnightStats(): IMonsterStats {
         const baseStats: IMonsterStats = {
             speed: 60,           // Knight移动较慢
-            attackPower: 50,     // Knight攻击力较高
+            attackPower: 60,     // Knight攻击力较高
             attackSpeed: 3000,   // Knight攻击速度较慢
             attackRange: 120,     // Knight攻击范围中等
             maxHealth: 200       // Knight血量较高

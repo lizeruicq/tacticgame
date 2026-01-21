@@ -54,6 +54,7 @@ export class WeChatManager {
     private constructor() {
         this.initEventListeners();
         this.loadUserDataFromStorage();
+        this.setupShare();
     }
     
     /**
@@ -72,6 +73,21 @@ export class WeChatManager {
     private initEventListeners(): void {
         this.eventListeners.set(WeChatEventType.USER_INFO_UPDATED, []);
         this.eventListeners.set(WeChatEventType.AUTHORIZATION_CHANGED, []);
+    }
+
+    /**
+     * 设置分享功能
+     */
+    private setupShare(): void {
+        if (!this.isWeChatMiniGame()) {
+            return;
+        }
+
+        (wx as any).onShareAppMessage(() => ({
+            title: '岩石战争 - 来挑战我吧！',
+            imageUrl: '',
+            query: ''
+        }));
     }
     
     /**

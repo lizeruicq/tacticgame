@@ -54,7 +54,7 @@ export class HumanSwordFe extends BaseMonster {
         const baseStats: IMonsterStats = {
             speed: 100,           // SwordFe移动较慢
             attackPower: 50,     // SwordFe攻击力较高
-            attackSpeed: 2500,   // SwordFe攻击速度较慢
+            attackSpeed: 2000,   // SwordFe攻击速度较慢
             attackRange: 80,    // SwordFe攻击范围中等
             maxHealth: 100       // SwordFe血量较高
         };

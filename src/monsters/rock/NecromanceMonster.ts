@@ -48,8 +48,8 @@ export class NecromanceMonster extends BaseMonster {
             speed: 50,           // Necromance移动较慢
             attackPower: 15,     // Necromance攻击力较高
             attackSpeed: 2000,   // Necromance攻击速度较慢
-            attackRange: 400,     // Necromance攻击范围中等
-            maxHealth: 60       // Necromance血量较高
+            attackRange: 300,     // Necromance攻击范围中等
+            maxHealth: 50       // Necromance血量较高
         };
         
         // 根据等级调整属性
