@@ -28,6 +28,8 @@ export class GameStartPanel extends Laya.Script {
     @property(Laya.Image)
     public backgroundImage: Laya.Image = null;
 
+
+
     // 当前关卡
     private currentLevel: number = 1;
 
@@ -52,6 +54,8 @@ export class GameStartPanel extends Laya.Script {
         if (this.restartButton) {
             this.restartButton.on(Laya.Event.CLICK, this, this.onRestartButtonClick);
         }
+
+      
 
         // 初始化面板为隐藏状态（缩放为0，不可见）
         const panelBox = this.owner as Laya.Box;
@@ -217,6 +221,8 @@ export class GameStartPanel extends Laya.Script {
         });
     }
 
+    
+
     onDisable(): void {
         // 清理事件监听
         if (this.startButton) {
@@ -230,6 +236,8 @@ export class GameStartPanel extends Laya.Script {
         if (this.restartButton) {
             this.restartButton.off(Laya.Event.CLICK, this, this.onRestartButtonClick);
         }
+       
+        
     }
 }
 

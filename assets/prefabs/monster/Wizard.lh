@@ -48,7 +48,7 @@
       "_$type": "ProgressBar",
       "name": "healthbar",
       "x": 100,
-      "y": 10,
+      "y": 40,
       "width": 268,
       "height": 26,
       "centerX": -16,

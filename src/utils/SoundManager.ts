@@ -285,7 +285,7 @@ export class SoundManager extends Laya.Script {
      * 恢复默认BGM
      */
     public playDefaultBgm(): void {
-        this.playLevelBgm("town.mp3");
+        this.playLevelBgm("town/town.mp3");
     }
     
     /**

@@ -946,6 +946,19 @@ export class GameMainManager extends Laya.Script {
         }
     }
 
+     public getCanEnemyMerge(): boolean {
+        if (this.gameDataManager) {
+            return this.gameDataManager.getCanEnemyMerge();
+        }
+    }
+
+    public onMergeSetButtonClick(): void {
+        if (this.gameDataManager) {
+            const currentStatus = this.gameDataManager.getCanEnemyMerge();
+            this.gameDataManager.setCanEnemyMerge(!currentStatus);
+        }
+    }
+
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
     //onUpdate(): void {}
 

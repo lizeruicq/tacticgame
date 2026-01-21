@@ -29,14 +29,15 @@ export class CloudResourceConfig {
         // ==================== 图片资源 ====================
         
         // 背景图片 - 从云端加载
-        { path: "resources/images/BG/mainbackground.jpg", loadFromCloud: true, preload: true },
+        // { path: "resources/images/BG/mainbackground.jpg", loadFromCloud: true, preload: true },
+
         
         // 关卡背景图片 - 从云端加载
-        { path: "resources/images/LEVEL/level-grass.jpeg", loadFromCloud: true, preload: true },
-        { path: "resources/images/LEVEL/level-snow.jpg", loadFromCloud: true, preload: true },
-        { path: "resources/images/LEVEL/level-mud.jpeg", loadFromCloud: true, preload: true },
-        { path: "resources/images/LEVEL/level-dessert.jpeg", loadFromCloud: true, preload: true },
-        { path: "resources/images/LEVEL/level-road.jpeg", loadFromCloud: true, preload: true },
+        // { path: "resources/images/LEVEL/level-grass.jpeg", loadFromCloud: true, preload: true },
+        // { path: "resources/images/LEVEL/level-snow.jpg", loadFromCloud: true, preload: true },
+        // { path: "resources/images/LEVEL/level-mud.jpeg", loadFromCloud: true, preload: true },
+        // { path: "resources/images/LEVEL/level-dessert.jpeg", loadFromCloud: true, preload: true },
+        // { path: "resources/images/LEVEL/level-road.jpeg", loadFromCloud: true, preload: true },
 
         // 关卡故事背景图片 - 从云端加载
         { path: "resources/images/storys/level-1.jpg", loadFromCloud: true, preload: true },
@@ -51,14 +52,14 @@ export class CloudResourceConfig {
         { path: "resources/images/storys/level-10.jpg", loadFromCloud: true, preload: true },
         
         // 卡牌图片 - 从云端加载
-        { path: "resources/images/CARD/rock.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/wizard.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/pastor.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/goblin.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/necromance.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/skeleton.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/zombie.png", loadFromCloud: true, preload: true },
-        { path: "resources/images/CARD/troll.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/rock.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/wizard.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/pastor.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/goblin.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/necromance.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/skeleton.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/zombie.png", loadFromCloud: true, preload: true },
+        // { path: "resources/images/CARD/troll.png", loadFromCloud: true, preload: true },
 
         // ==================== 怪物动画图集 ====================
         // ANI目录下的所有怪物动画图集
@@ -225,12 +226,12 @@ export class CloudResourceConfig {
         // ==================== 音频资源 ====================
 
         // BGM - 从云端加载
-        { path: "resources/sound/forest.mp3", loadFromCloud: true, preload: true },
-        { path: "resources/sound/calm.mp3", loadFromCloud: true, preload: true },
-        { path: "resources/sound/shop.mp3", loadFromCloud: true, preload: true },
-        { path: "resources/sound/kingdom.mp3", loadFromCloud: true, preload: true },
-        { path: "resources/sound/victory.mp3", loadFromCloud: true, preload: true },
-        { path: "resources/sound/town.mp3", loadFromCloud: true, preload: true },
+        // { path: "resources/sound/forest.mp3", loadFromCloud: true, preload: true },
+        // { path: "resources/sound/calm.mp3", loadFromCloud: true, preload: true },
+        // { path: "resources/sound/shop.mp3", loadFromCloud: true, preload: true },
+        // { path: "resources/sound/kingdom.mp3", loadFromCloud: true, preload: true },
+        // { path: "resources/sound/victory.mp3", loadFromCloud: true, preload: true },
+        // { path: "resources/sound/town.mp3", loadFromCloud: true, preload: true },
 
         // 音效 - 从本地加载（小文件，加载快）
         // 如果需要从云端加载，将 loadFromCloud 改为 true

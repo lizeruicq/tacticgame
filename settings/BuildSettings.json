@@ -6,6 +6,57 @@
   "sourcesContent": true,
   "startupScene": "res://18b51845-e6f6-4711-947b-233d6367c51f",
   "copyBinFiles": false,
+  "enableSubpackages": true,
+  "subpackages": [
+    {
+      "path": "resources/images/ANI",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/images/BG",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/images/CARD/cards1",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/images/LEVEL",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/images/sprite",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/images/UI",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/sound/calm",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/sound/forest",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/sound/kingdom",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/sound/victory",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/sound/town",
+      "autoLoad": true
+    },
+    {
+      "path": "resources/images/CARD/cards2",
+      "autoLoad": true
+    }
+  ],
   "web": {
     "allowTextureCompressedFormat": false
   },

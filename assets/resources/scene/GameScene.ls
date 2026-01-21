@@ -51,6 +51,9 @@
           },
           "mergeButton": {
             "_$ref": "g64u6gba"
+          },
+          "mergesetButton": {
+            "_$ref": "w7judjde"
           }
         }
       ],
@@ -150,7 +153,7 @@
           "_$type": "ProgressBar",
           "name": "EnemyHpBar",
           "x": 1104,
-          "y": 284,
+          "y": 119,
           "width": 502,
           "height": 37,
           "rotation": 90,
@@ -180,7 +183,7 @@
           "_$type": "ProgressBar",
           "name": "EnemyPowerBar",
           "x": 1052,
-          "y": 287,
+          "y": 122,
           "width": 240,
           "height": 37,
           "rotation": 90,
@@ -192,16 +195,44 @@
           "_$id": "obxzpln9",
           "_$type": "Button",
           "name": "StopButton",
-          "x": 993,
-          "y": 121,
+          "x": 954,
+          "y": 2361,
           "width": 140,
           "height": 140,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
           "zIndex": 1,
           "stateNum": 1,
           "skin": "res://dd766b95-76b9-4a63-a357-ec4b65ceb23f",
           "label": "",
           "labelAlign": "center",
           "labelVAlign": "middle"
+        },
+        {
+          "_$id": "w7judjde",
+          "_$type": "Button",
+          "name": "mergesetButton",
+          "x": 640,
+          "y": 2350,
+          "width": 262,
+          "height": 68,
+          "anchorX": 0.5,
+          "anchorY": 0.5,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "zIndex": 1,
+          "stateNum": 1,
+          "skin": "res://3ed11228-2cb7-4023-8cca-330237e33362",
+          "label": "敌方怪物升级：开",
+          "labelFont": "YuppyTC-Regular",
+          "labelSize": 23,
+          "labelBold": true,
+          "labelColors": "#eeeeee,#32cc6b,#00ff04",
+          "labelAlign": "center",
+          "labelVAlign": "middle",
+          "labelPadding": "2,0,0,0",
+          "labelStroke": 9,
+          "labelStrokeColor": "#073030"
         },
         {
           "_$id": "tmi3s46b",
@@ -236,6 +267,9 @@
               },
               "backgroundImage": {
                 "_$ref": "2u68dzdm"
+              },
+              "mergesetButton": {
+                "_$ref": "w7judjde"
               }
             }
           ],
@@ -642,9 +676,9 @@
           "scriptPath": "../src/monsters/Castle.ts",
           "isPlayerCamp": false,
           "castleLevel": 1,
-          "textureHealthy": "resources/images/sprite/castke/Asset 27.png",
-          "textureDamaged": "resources/images/sprite/castke/Asset 28.png",
-          "textureCritical": "resources/images/sprite/castke/Asset 29.png"
+          "textureHealthy": "resources/images/sprite/castke/Asset27.png",
+          "textureDamaged": "resources/images/sprite/castke/Asset28.png",
+          "textureCritical": "resources/images/sprite/castke/Asset29.png"
         }
       ]
     },
@@ -754,9 +788,9 @@
           "scriptPath": "../src/monsters/Castle.ts",
           "isPlayerCamp": true,
           "castleLevel": 1,
-          "textureHealthy": "resources/images/sprite/castke/Asset 21.png",
-          "textureDamaged": "resources/images/sprite/castke/Asset 22.png",
-          "textureCritical": "resources/images/sprite/castke/Asset 23.png"
+          "textureHealthy": "resources/images/sprite/castke/Asset21.png",
+          "textureDamaged": "resources/images/sprite/castke/Asset22.png",
+          "textureCritical": "resources/images/sprite/castke/Asset23.png"
         }
       ]
     },

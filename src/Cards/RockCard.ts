@@ -13,7 +13,7 @@ export class RockCard extends BaseMonsterCard {
         // 设置Rock卡片的默认属性
         this.cardName = "Rock卡片";
         this.manaCost = 3;
-        this.monsterPrefabPath = "res://a375d387-c81f-46ea-8b81-e71a9d23f831";
+        this.monsterPrefabPath = "resources/images/CARD/rock.png";
     }
 
     // ========== 实现抽象方法 ==========

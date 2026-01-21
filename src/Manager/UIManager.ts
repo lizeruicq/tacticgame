@@ -48,6 +48,10 @@ export class UIManager extends Laya.Script {
     @property({ type: Laya.Button })
     public mergeButton: Laya.Button = null;
 
+    @property(Laya.Button)
+    public mergesetButton: Laya.Button;
+
+
     // 管理器引用
     private playerManager: PlayerManager = null;
     private enemyAIManager: EnemyAIManager = null;
@@ -193,7 +197,9 @@ export class UIManager extends Laya.Script {
             this.mergeButton.on(Laya.Event.CLICK, this, this.onMergeButtonClick);
         }
         // this.gameStartPanel = this.gameStartPanelBox.getComponent(GameStartPanel);
-
+        if (this.mergesetButton) {
+            this.mergesetButton.on(Laya.Event.CLICK, this, this.onMergeSetButtonClick);
+        }
         // 初始化游戏开始面板
         this.initializeGameStartPanel();
 
@@ -206,6 +212,7 @@ export class UIManager extends Laya.Script {
             this.updateEnemyHealthBar();
             this.updateManaText();
             this.refreshPowerBars();
+            this.updateMergeButtonText();
         });
     }
 
@@ -595,6 +602,21 @@ export class UIManager extends Laya.Script {
         }
     }
 
+     private updateMergeButtonText(): void {
+        if (this.mergesetButton && this.gameMainManager) {
+            const canMerge = this.gameMainManager.getCanEnemyMerge();
+            this.mergesetButton.label = canMerge ? "敌人可合成" : "敌人不可合成";
+        }
+    }
+
+    private onMergeSetButtonClick(): void {
+        if (this.gameMainManager) {
+            this.gameMainManager.onMergeSetButtonClick();
+            
+            this.updateMergeButtonText()
+        }
+    }
+
     onDisable(): void {
         // // console.log("UIManager 禁用");
         // 清理事件监听
@@ -616,6 +638,10 @@ export class UIManager extends Laya.Script {
         if (this.enemyCastle && this.enemyCastle.owner) {
             this.enemyCastle.owner.off("CASTLE_DAMAGE_TAKEN", this, this.onEnemyCastleDamaged);
             this.enemyCastle.owner.off("CASTLE_HEALED", this, this.onEnemyCastleHealed);
+        }
+
+         if (this.mergesetButton) {
+            this.mergesetButton.off(Laya.Event.CLICK, this, this.onMergeSetButtonClick);
         }
 
         // 清理所有定时器（包括 loop 和 once）
