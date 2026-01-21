@@ -84,8 +84,8 @@ export class WeChatManager {
         }
 
         (wx as any).onShareAppMessage(() => ({
-            title: '岩石战争 - 来挑战我吧！',
-            imageUrl: '',
+            title: '来抵抗人类的野蛮入侵！',
+            imageUrl: 'resources/images/UI/level-4.jpg',
             query: ''
         }));
     }
