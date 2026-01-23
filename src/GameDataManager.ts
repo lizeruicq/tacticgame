@@ -4,19 +4,8 @@ import { CloudDatabaseManager } from './utils/CloudDatabaseManager';
 
 // 游戏数据接口
 export interface GameData {
-    playerLevel: number;
-    playerExp: number;
-    coins: number;
-    
-    achievements: string[];
     unlockedLevels: number[];  // 已解锁的关卡列表
-    settings: {
-        soundEnabled: boolean;
-        musicEnabled: boolean;
-        language: string;
-    };
-    canEnemyMerge: boolean;  // 敌人是否可以合并
-    lastPlayTime: number;
+    canEnemyMerge: boolean;    // 敌人是否可以合并
 }
 
 // 完整的玩家数据接口
@@ -74,18 +63,8 @@ export class GameDataManager {
         return {
             weChatUserInfo: null,
             gameData: {
-                playerLevel: 1,
-                playerExp: 0,
-                coins: 100,
-                achievements: [],
                 unlockedLevels: [1],  // 初始只解锁第1关
-                settings: {
-                    soundEnabled: true,
-                    musicEnabled: true,
-                    language: 'zh_CN'
-                },
-                canEnemyMerge: true,  // 默认开启敌人合并功能
-                lastPlayTime: Date.now()
+                canEnemyMerge: true   // 默认开启敌人合并功能
             },
             isDataLoaded: false
         };
@@ -104,11 +83,11 @@ export class GameDataManager {
             const weChatUserData = this.weChatManager.getUserData();
             this.playerData.weChatUserInfo = weChatUserData.userInfo;
 
-            // 从云端加载玩家数据
-            await this.loadPlayerDataFromCloud();
-
-            // 加载本地游戏数据
+            // 先加载本地游戏数据作为基础
             this.loadGameData();
+
+            // 再从云端加载玩家数据，云端数据优先级更高
+            await this.loadPlayerDataFromCloud();
 
             this.playerData.isDataLoaded = true;
             console.log('游戏数据初始化完成');
@@ -154,11 +133,7 @@ export class GameDataManager {
      */
     private saveGameData() {
         try {
-            const dataToSave = {
-                ...this.playerData.gameData,
-                lastPlayTime: Date.now()
-            };
-            Laya.LocalStorage.setItem(GameDataManager.GAME_DATA_KEY, JSON.stringify(dataToSave));
+            Laya.LocalStorage.setItem(GameDataManager.GAME_DATA_KEY, JSON.stringify(this.playerData.gameData));
             console.log('游戏数据保存成功');
         } catch (error) {
             console.error('保存游戏数据失败:', error);
@@ -176,7 +151,7 @@ export class GameDataManager {
      * 获取玩家显示名称
      */
     public getPlayerDisplayName(): string {
-        return this.playerData.weChatUserInfo?.nickName || `玩家${this.playerData.gameData.playerLevel}级`;
+        return this.playerData.weChatUserInfo?.nickName || '游戏玩家';
     }
     
     /**
@@ -185,64 +160,7 @@ export class GameDataManager {
     public getPlayerAvatarUrl(): string {
         return this.playerData.weChatUserInfo?.avatarUrl || '';
     }
-    
-    /**
-     * 更新玩家等级
-     */
-    public updatePlayerLevel(level: number) {
-        this.playerData.gameData.playerLevel = level;
-        this.saveGameData();
-    }
-    
-    /**
-     * 更新玩家经验
-     */
-    public updatePlayerExp(exp: number) {
-        this.playerData.gameData.playerExp = exp;
-        this.saveGameData();
-    }
-    
-    /**
-     * 更新玩家金币
-     */
-    public updatePlayerCoins(coins: number) {
-        this.playerData.gameData.coins = coins;
-        this.saveGameData();
-    }
-    
-    /**
-     * 添加成就
-     */
-    public addAchievement(achievementId: string) {
-        if (this.playerData.gameData.achievements.indexOf(achievementId) === -1) {
-            this.playerData.gameData.achievements.push(achievementId);
-            this.saveGameData();
-            console.log(`获得新成就: ${achievementId}`);
-        }
-    }
-    
-    /**
-     * 更新游戏设置
-     */
-    public updateSettings(settings: Partial<GameData['settings']>) {
-        this.playerData.gameData.settings = { ...this.playerData.gameData.settings, ...settings };
-        this.saveGameData();
-    }
-    
-    /**
-     * 获取游戏统计信息
-     */
-    public getGameStats() {
-        return {
-            playerLevel: this.playerData.gameData.playerLevel,
-            playerExp: this.playerData.gameData.playerExp,
-            coins: this.playerData.gameData.coins,
-            achievementCount: this.playerData.gameData.achievements.length,
-            hasWeChatInfo: !!this.playerData.weChatUserInfo,
-            lastPlayTime: this.playerData.gameData.lastPlayTime
-        };
-    }
-    
+
     /**
      * 检查关卡是否已解锁
      */
@@ -284,35 +202,23 @@ export class GameDataManager {
      * 游戏胜利，解锁下一关
      */
     public async onLevelComplete(levelNum: number): Promise<void> {
-        // 解锁下一关
+        // 解锁下一关（会自动保存到本地和云端）
         await this.unlockLevel(levelNum + 1);
-        // 更新玩家等级为已解锁的最高关卡
-        this.playerData.gameData.playerLevel = this.getMaxUnlockedLevel();
-        this.saveGameData();
-
-        // 同步到云端
-        await this.savePlayerDataToCloud();
     }
 
     /**
      * 获取敌人是否可以合并的状态
      */
     public getCanEnemyMerge(): boolean {
-        if (!this.playerData || !this.playerData.gameData) {
-            return true; // 默认开启
-        }
         return this.playerData.gameData.canEnemyMerge;
     }
 
     /**
      * 设置敌人是否可以合并
-     * @param canMerge 是否可以合并
      */
     public setCanEnemyMerge(canMerge: boolean): void {
-        if (this.playerData && this.playerData.gameData) {
-            this.playerData.gameData.canEnemyMerge = canMerge;
-            this.saveGameData(); // 保存数据
-        }
+        this.playerData.gameData.canEnemyMerge = canMerge;
+        this.saveGameData();
     }
 
     /**
@@ -377,6 +283,28 @@ export class GameDataManager {
     public isDataLoaded(): boolean {
         return this.playerData.isDataLoaded;
     }
+
+    /**
+     * 等待数据加载完成
+     * 用于确保在访问游戏数据前，云端数据已经加载
+     */
+    public async waitForDataLoaded(maxWaitTime: number = 10000): Promise<boolean> {
+        const startTime = Date.now();
+
+        while (!this.playerData.isDataLoaded) {
+            // 检查是否超时
+            if (Date.now() - startTime > maxWaitTime) {
+                console.warn('⚠️ 等待数据加载超时，使用当前数据');
+                return false;
+            }
+
+            // 等待100ms后再检查
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        console.log('✅ 数据加载完成，可以进入游戏');
+        return true;
+    }
     
     /**
      * 强制刷新所有数据
@@ -386,19 +314,16 @@ export class GameDataManager {
             // 刷新微信数据
             await this.weChatManager.refreshUserData();
 
-            // 从云端刷新玩家数据
+            // 从云端刷新玩家数据（会自动同步到本地存储）
             await this.loadPlayerDataFromCloud();
-
-            // 重新加载游戏数据
-            this.loadGameData();
 
             // 更新微信用户信息
             const weChatUserData = this.weChatManager.getUserData();
             this.playerData.weChatUserInfo = weChatUserData.userInfo;
 
-            console.log('所有数据刷新完成');
+            console.log('✅ 所有数据刷新完成，本地和云端已同步');
         } catch (error) {
-            console.error('刷新数据失败:', error);
+            console.error('❌ 刷新数据失败:', error);
             throw error;
         }
     }
@@ -416,8 +341,14 @@ export class GameDataManager {
             const { exists, playerInfo } = await this.cloudDatabaseManager.checkPlayerExists(this.openid);
 
             if (exists && playerInfo) {
+                // 云端数据优先级更高，直接覆盖本地数据
                 this.playerData.gameData.unlockedLevels = playerInfo.unlockedLevels || [1];
                 console.log('✅ 从云端加载玩家数据成功，已解锁关卡:', this.playerData.gameData.unlockedLevels);
+                console.log('📊 当前 unlockedLevels 内容:', JSON.stringify(this.playerData.gameData.unlockedLevels));
+
+                // 🔑 关键：同步更新本地存储，确保本地和云端数据一致
+                this.saveGameData();
+                console.log('✅ 已同步云端数据到本地存储');
             } else {
                 await this.savePlayerDataToCloud();
                 console.log('✅ 新玩家，已保存初始数据到云端');

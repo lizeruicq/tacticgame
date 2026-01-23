@@ -65,7 +65,7 @@
           "y": 50,
           "width": 800,
           "height": 80,
-          "text": "正在加载资源...",
+          "text": "正在召集部落...",
           "font": "YuppySC-Regular",
           "fontSize": 60,
           "color": "#ffffff",
@@ -83,7 +83,7 @@
           "width": 700,
           "height": 40,
           "alpha": 0.983,
-          "skin": "res://ae3de75e-ee9f-478d-9f8b-ede75a4fc296",
+          "skin": "res://b07991ec-62dd-4c5e-b01c-a5314e1722bb",
           "sizeGrid": "4,4,4,4,0",
           "value": 0
         },

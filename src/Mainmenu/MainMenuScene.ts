@@ -30,6 +30,13 @@ export class MainMenuScene extends Laya.Script {
     private sceneManager : SceneManager;
     private settingPanel: SettingPanel;
     private helpPanel: HelpPanel;
+
+    // 资源管理
+    private currentAvatarUrl: string = '';  // 当前加载的头像URL
+
+    // 事件回调引用（用于移除监听）
+    private onUserInfoUpdatedCallback: (userInfo: WeChatUserInfo) => void;
+    private onAuthorizationChangedCallback: (isAuthorized: boolean) => void;
     
     onStart() {
         console.log("MainMenuScene started");
@@ -89,16 +96,21 @@ export class MainMenuScene extends Laya.Script {
      * 设置微信事件监听器
      */
     private setupWeChatEventListeners() {
-        // 监听用户信息更新
-        this.weChatManager.addEventListener(WeChatEventType.USER_INFO_UPDATED, (userInfo: WeChatUserInfo) => {
+        // 保存回调引用，以便后续移除监听
+        this.onUserInfoUpdatedCallback = (userInfo: WeChatUserInfo) => {
             console.log('用户信息已更新:', userInfo);
             this.updatePlayerDisplay(userInfo);
-        });
-        
-        // 监听授权状态变化
-        this.weChatManager.addEventListener(WeChatEventType.AUTHORIZATION_CHANGED, (isAuthorized: boolean) => {
+        };
+
+        this.onAuthorizationChangedCallback = (isAuthorized: boolean) => {
             console.log('授权状态变化:', isAuthorized);
-        });
+        };
+
+        // 监听用户信息更新
+        this.weChatManager.addEventListener(WeChatEventType.USER_INFO_UPDATED, this.onUserInfoUpdatedCallback);
+
+        // 监听授权状态变化
+        this.weChatManager.addEventListener(WeChatEventType.AUTHORIZATION_CHANGED, this.onAuthorizationChangedCallback);
     }
     
     /**
@@ -343,11 +355,28 @@ export class MainMenuScene extends Laya.Script {
 
         console.log("开始加载头像:", avatarUrl);
 
+        // 如果已经加载过相同的头像，直接返回
+        if (this.currentAvatarUrl === avatarUrl) {
+            console.log("头像已加载，跳过重复加载");
+            return;
+        }
+
+        // 清理旧的头像资源
+        if (this.currentAvatarUrl) {
+            try {
+                Laya.loader.clearRes(this.currentAvatarUrl);
+                console.log("已清理旧头像资源:", this.currentAvatarUrl);
+            } catch (error) {
+                console.warn("清理旧头像资源失败:", error);
+            }
+        }
+
         // 使用 Laya.loader.load 并指定为图片类型
         Laya.loader.load([{url: avatarUrl, type: Laya.Loader.IMAGE}], Laya.Handler.create(this, () => {
             const texture = Laya.loader.getRes(avatarUrl);
             if (texture && this.playerAvatar) {
                 this.playerAvatar.texture = texture;
+                this.currentAvatarUrl = avatarUrl;  // 记录当前加载的头像URL
                 console.log("头像加载成功");
             } else {
                 console.log("头像加载失败");
@@ -371,20 +400,26 @@ export class MainMenuScene extends Laya.Script {
     /**
      * 开始游戏
      */
-    private startGame() {
+    private async startGame() {
         const playerName = this.gameDataManager.getPlayerDisplayName();
         console.log("开始游戏，玩家:", playerName);
-        
+
         // 显示欢迎提示
         this.weChatManager.showToast({
             title: `欢迎 ${playerName}`,
             icon: 'success',
             duration: 2000
         });
-        
+
+        // ⚠️ 关键：等待云端数据加载完成，确保关卡选择页面能读取到正确的解锁数据
+        console.log("⏳ 等待游戏数据加载完成...");
+        const dataLoaded = await this.gameDataManager.waitForDataLoaded();
+
+        if (!dataLoaded) {
+            console.warn("⚠️ 数据加载超时，但继续进入游戏");
+        }
+
         // 切换到关卡选择场景
-        
-        
         this.sceneManager.switchToLevelSelect().then(() => {
             console.log("成功切换到关卡选择场景");
         }).catch((error) => {
@@ -392,24 +427,52 @@ export class MainMenuScene extends Laya.Script {
         });
     }
     
-    onDestroy() {
-        // 清理事件监听
+    onDisable() {
+        console.log("MainMenuScene 销毁，开始清理资源...");
+
+        // 清理UI按钮事件监听
         if (this.startButton) {
             this.startButton.off(Laya.Event.CLICK, this, this.onStartButtonClick);
-            // 移除按钮点击动画效果
             ButtonAnimationUtils.removeButtonClickEffect(this.startButton);
         }
 
-        // 清理设置按钮事件监听
         if (this.settingButton) {
             this.settingButton.off(Laya.Event.CLICK, this, this.onSettingButtonClick);
             ButtonAnimationUtils.removeButtonClickEffect(this.settingButton);
         }
 
-        // 清理帮助按钮事件监听
         if (this.helpButton) {
             this.helpButton.off(Laya.Event.CLICK, this, this.onHelpButtonClick);
             ButtonAnimationUtils.removeButtonClickEffect(this.helpButton);
         }
+
+        // 清理微信事件监听器
+        if (this.onUserInfoUpdatedCallback) {
+            this.weChatManager.removeEventListener(WeChatEventType.USER_INFO_UPDATED, this.onUserInfoUpdatedCallback);
+            console.log("已移除用户信息更新事件监听");
+        }
+
+        if (this.onAuthorizationChangedCallback) {
+            this.weChatManager.removeEventListener(WeChatEventType.AUTHORIZATION_CHANGED, this.onAuthorizationChangedCallback);
+            console.log("已移除授权状态变化事件监听");
+        }
+
+        // 清理头像资源
+        if (this.currentAvatarUrl) {
+            try {
+                Laya.loader.clearRes(this.currentAvatarUrl);
+                console.log("已清理头像资源:", this.currentAvatarUrl);
+            } catch (error) {
+                console.warn("清理头像资源失败:", error);
+            }
+            this.currentAvatarUrl = '';
+        }
+
+        // 清理头像显示
+        if (this.playerAvatar) {
+            this.playerAvatar.texture = null;
+        }
+
+        console.log("MainMenuScene 资源清理完成");
     }
 }
