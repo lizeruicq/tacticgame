@@ -17,7 +17,7 @@
       "name": "background",
       "x": 590,
       "y": 1278,
-      "width": 1179,
+      "width": 1209,
       "height": 2556,
       "anchorX": 0.5,
       "anchorY": 0.5,

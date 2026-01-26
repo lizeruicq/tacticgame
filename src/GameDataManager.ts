@@ -64,7 +64,7 @@ export class GameDataManager {
             weChatUserInfo: null,
             gameData: {
                 unlockedLevels: [1],  // 初始只解锁第1关
-                canEnemyMerge: true   // 默认开启敌人合并功能
+                canEnemyMerge: false   // 默认开启敌人合并功能
             },
             isDataLoaded: false
         };
@@ -344,7 +344,7 @@ export class GameDataManager {
                 // 云端数据优先级更高，直接覆盖本地数据
                 this.playerData.gameData.unlockedLevels = playerInfo.unlockedLevels || [1];
                 console.log('✅ 从云端加载玩家数据成功，已解锁关卡:', this.playerData.gameData.unlockedLevels);
-                console.log('📊 当前 unlockedLevels 内容:', JSON.stringify(this.playerData.gameData.unlockedLevels));
+            
 
                 // 🔑 关键：同步更新本地存储，确保本地和云端数据一致
                 this.saveGameData();
